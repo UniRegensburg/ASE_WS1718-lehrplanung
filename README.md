@@ -1,2 +1,3 @@
-# ASE_WS1718-lehrplanung
-ASE_WS1718-lehrplanung created by GitHub Classroom
+# ASE_WS1718-Lehrplanung
+
+Projekt Lehrplanung für das Advanced Software Engineering Seminar.
