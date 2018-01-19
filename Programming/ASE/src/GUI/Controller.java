@@ -1,5 +1,5 @@
 
-package sample;
+package GUI;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,8 +12,6 @@ public class Controller {
 
     public Controller() {
 
-        System.out.println("Hallo");
-
     }
 
 
@@ -24,10 +22,6 @@ public class Controller {
             System.out.println("Button geht");
 
         });
-        //private void handleButtonAction(ActionEvent event) {
 
-        //System.out.println("Button Action");
-        //  outputTextArea.appendText("Button Action\n");
-        //}
     }
 }
