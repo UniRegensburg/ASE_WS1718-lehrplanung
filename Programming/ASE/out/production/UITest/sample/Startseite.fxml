@@ -12,7 +12,7 @@
    <children>
       <ImageView fitHeight="800.0" fitWidth="1200.0">
          <image>
-            <Image url="file:///C:/Users/weber_000/Desktop/4771.jpg" />
+            <Image url="SourceFiles/4771.jpg" />
          </image>
       </ImageView>
       <ButtonBar layoutX="152.0" layoutY="368.0" prefHeight="40.0" prefWidth="761.0">
@@ -29,7 +29,7 @@
          <children>
             <ImageView fitHeight="172.0" fitWidth="247.0">
                <image>
-                  <Image url="file:///C:/Users/weber_000/Desktop/LOGO200.png" />
+                  <Image url="SourceFiles/LOGO200.png" />
                </image>
             </ImageView>
          </children>
