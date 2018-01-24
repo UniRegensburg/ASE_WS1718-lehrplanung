@@ -5,11 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class DatabaseInterface {
 
     public DatabaseInterface() {
-        selectAllDozenten();
 
     }
 
@@ -25,22 +26,38 @@ public class DatabaseInterface {
         return conn;
     }
 
-    public void selectAllDozenten(){
+    public ArrayList<String[]> selectAllDozenten(){
         String sql = "SELECT Vorname, Nachname, Titel FROM Dozenten";
+        ArrayList<String[]> result = new ArrayList<String[]>();
 
         try (Connection conn = this.connect();
              Statement stmt  = conn.createStatement();
              ResultSet rs    = stmt.executeQuery(sql)){
 
-            // loop through the result set
-            while (rs.next()) {
-                System.out.println(rs.getString("Vorname") +  "\t" +
-                        rs.getString("Nachname") + "\t" +
-                        rs.getString("Titel"));
+            int columnCount = rs.getMetaData().getColumnCount();
+
+            while(rs.next()) {
+
+                String[] row = new String[columnCount];
+
+                for(int i = 0; i < columnCount; i++) {
+
+                    row[i] = rs.getString(i+1);
+
+                }
+
+                result.add(row);
+
             }
+
+            return result;
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
+        return null;
+
     }
 
     public static void main(String[] args) {
