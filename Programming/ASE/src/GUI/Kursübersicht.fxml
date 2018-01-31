@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller">
    <children>
       <ImageView fitHeight="800.0" fitWidth="1206.0">
          <image>
@@ -23,7 +23,7 @@
       </ImageView>
       <Pane layoutX="44.0" layoutY="33.0" prefHeight="36.0" prefWidth="1068.0">
          <children>
-            <Label layoutX="14.0" layoutY="1.0" prefHeight="35.0" prefWidth="193.0" text="Lehrplanung">
+            <Label fx:id="Label" layoutX="14.0" layoutY="1.0" prefHeight="35.0" prefWidth="193.0" text="Lehrplanung">
                <font>
                   <Font size="24.0" />
                </font>
@@ -81,8 +81,10 @@
                                  <children>
                                     <TableView fx:id="KursTable" editable="true" prefHeight="486.0" prefWidth="1050.0">
                                       <columns>
-                                        <TableColumn fx:id="KursTabelle_Vorname" prefWidth="75.0" text="C1" />
-                                        <TableColumn prefWidth="679.0" text="C2" />
+                                        <TableColumn fx:id="Name" prefWidth="192.0" text="Name" />
+                                        <TableColumn fx:id="Vorname" prefWidth="195.0" text="Vorname" />
+                                          <TableColumn fx:id="Titel" prefWidth="72.0" text="Titel" />
+                                          <TableColumn fx:id="Deputat" prefWidth="162.0" text="Deputat" />
                                       </columns>
                                     </TableView>
                                  </children></Pane>

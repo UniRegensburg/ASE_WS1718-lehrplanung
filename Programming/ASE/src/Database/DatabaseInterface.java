@@ -14,7 +14,7 @@ public class DatabaseInterface {
 
     }
 
-    private Connection connect() {
+    public Connection connect() {
         // SQLite connection string
         String url = "jdbc:sqlite:src/Database/LehrplanungDB.db";
         Connection conn = null;
