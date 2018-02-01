@@ -1,5 +1,5 @@
 
-package GUI;
+package Control;
 
 
 import javafx.collections.ObservableList;
@@ -49,7 +49,7 @@ public class Controller  {
 
         dc = new DatabaseInterface();
 
-        myButton2.setOnAction((event) -> {
+  /*      myButton2.setOnAction((event) -> {
 
             data = dc.GetDozenten();
 
@@ -67,7 +67,7 @@ public class Controller  {
 
 
 
-        });
+        });*/
 
         //Label.setText("I'm a Label.");
 
