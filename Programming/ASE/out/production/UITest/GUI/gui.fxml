@@ -38,9 +38,10 @@
                            <center>
                               <TableView fx:id="LecturerTable" prefHeight="779.0" prefWidth="1433.0" BorderPane.alignment="CENTER">
                                 <columns>
-                                  <TableColumn fx:id="Title" prefWidth="75.0" text="Titel" />
-                                  <TableColumn fx:id="Name" prefWidth="75.0" text="Nachname" />
+                                    <TableColumn fx:id="ID" prefWidth="75.0" text="ID" />
                                     <TableColumn fx:id="Surname" prefWidth="75.0" text="Vorname" />
+                                  <TableColumn fx:id="Name" prefWidth="75.0" text="Nachname" />
+                                  <TableColumn fx:id="Title" prefWidth="75.0" text="Titel" />
                                     <TableColumn fx:id="Deputat" prefWidth="75.0" text="Deputat" />
                                 </columns>
                               </TableView>
@@ -61,8 +62,8 @@
                                        <children>
                                           <TextField fx:id="textfield_search_teachers" />
                                           <Button fx:id="btn_search_teachers" mnemonicParsing="false" text="Suchen" GridPane.columnIndex="1" />
-                                          <Button fx:id="btn_edit_teacher" mnemonicParsing="false" prefHeight="27.0" prefWidth="94.0" text="Bearbeiten" GridPane.columnIndex="2" />
-                                          <Button fx:id="btn_delete_teacher" mnemonicParsing="false" text="Löschen" GridPane.columnIndex="3" />
+                                          <Button fx:id="updateLecturerButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="94.0" text="Bearbeiten" GridPane.columnIndex="2" />
+                                          <Button fx:id="deleteLecturerButton" mnemonicParsing="false" text="Löschen" GridPane.columnIndex="3" />
                                        </children>
                                     </GridPane>
                                  </children>
@@ -71,7 +72,7 @@
                            <bottom>
                               <SplitPane prefHeight="51.0" prefWidth="1433.0" BorderPane.alignment="CENTER">
                                  <items>
-                                    <Button fx:id="myButton2" mnemonicParsing="false" text="Neue Lehrperson hinzufügen">
+                                    <Button fx:id="createLecturerButton" mnemonicParsing="false" text="Neue Lehrperson hinzufügen">
                                        <padding>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </padding>
@@ -127,10 +128,10 @@
                                                 <Font size="17.0" />
                                              </font>
                                           </Text>
-                                          <TextField GridPane.columnIndex="1" />
-                                          <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <TextField fx:id="lecturerNameText" GridPane.columnIndex="1" />
+                                          <TextField fx:id="lecturerSurnameText" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <TextField fx:id="lecturerTitleText" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <TextField fx:id="lecturerDeputatText" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                        </children>
                                     </GridPane>
                                  </children>
@@ -139,7 +140,7 @@
                            <bottom>
                               <SplitPane dividerPositions="0.5" prefHeight="12.0" prefWidth="1415.0" BorderPane.alignment="CENTER">
                                  <items>
-                                    <Button mnemonicParsing="false" text="Speichern" />
+                                    <Button fx:id="saveLecturerButton" mnemonicParsing="false" text="Speichern" />
                                     <Button mnemonicParsing="false" text="Abbrechen" />
                                  </items>
                               </SplitPane>

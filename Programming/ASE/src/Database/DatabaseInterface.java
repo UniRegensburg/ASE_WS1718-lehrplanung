@@ -1,10 +1,9 @@
 package Database;
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.net.CookieHandler;
+import java.sql.*;
+
 import Interfaces.Lecturer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,7 +11,11 @@ import javafx.collections.ObservableList;
 
 public class DatabaseInterface {
 
+    Connection conn;
+
     public DatabaseInterface() {
+
+        conn = connect();
 
     }
 
@@ -31,19 +34,51 @@ public class DatabaseInterface {
     public ObservableList<Lecturer> GetDozenten() {
         try {
 
-            Connection conn = connect();
             ObservableList<Lecturer> data = FXCollections.observableArrayList();
 
             ResultSet rs=conn.createStatement().executeQuery("SELECT * FROM Dozenten");
             while (rs.next()) {
 
-                data.add(new Lecturer(rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5)));
+                data.add(new Lecturer(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getInt(5)));
             }
             return data;
 
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public void writeLecturers(String name, String surname, String title, Integer deputat) {
+        try {
+            Statement st = conn.createStatement();
+            st.executeUpdate("INSERT INTO Dozenten(Nachname,Vorname,Titel,Deputat)VALUES('"+name+"'," +
+                    "'"+surname+"','"+title+"','"+deputat+"')");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void deleteLecturers(Integer ID){
+        try{
+            Statement st = conn.createStatement();
+            st.executeUpdate("DELETE FROM Dozenten WHERE ID = '"+ID+"'");
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateLecturers(Integer ID, String name, String surname, String title, Integer deputat){
+        try{
+            Statement st = conn.createStatement();
+            st.executeUpdate("UPDATE Dozenten SET Nachname ='"+name+"', Vorname ='"+surname+"', Titel ='"+title+"', Deputat ='"+deputat+"' WHERE ID = '"+ID+"'");
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
