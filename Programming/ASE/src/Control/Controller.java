@@ -4,7 +4,6 @@ package Control;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import Interfaces.Lecturer;
 
 
@@ -18,7 +17,7 @@ public class Controller  {
 
 
     @FXML
-    private TableView<Lecturer> CourseTable;
+    private TableView<Lecturer> LecturerTable;
 
     @FXML
     private TableColumn<Lecturer, String> Name;
@@ -32,12 +31,6 @@ public class Controller  {
     @FXML
     private TableColumn<Lecturer, Integer> Deputat;
 
-    //@FXML
-    //private Label Label;
-
-    @FXML
-    private Button myButton2;
-
     @FXML
     private ObservableList<Lecturer> data;
     private DatabaseInterface dc;
@@ -49,8 +42,6 @@ public class Controller  {
 
         dc = new DatabaseInterface();
 
-  /*      myButton2.setOnAction((event) -> {
-
             data = dc.GetDozenten();
 
             Name.setCellValueFactory(new PropertyValueFactory<>("LecturerName"));
@@ -58,18 +49,8 @@ public class Controller  {
             Title.setCellValueFactory(new PropertyValueFactory<>("LecturerTitle"));
             Deputat.setCellValueFactory(new PropertyValueFactory<>("LecturerDeputat"));
 
-            CourseTable.setItems(null);
-            CourseTable.setItems(data);
-
-
-
-
-
-
-
-        });*/
-
-        //Label.setText("I'm a Label.");
+            LecturerTable.setItems(null);
+            LecturerTable.setItems(data);
 
     }
 
