@@ -1,12 +1,14 @@
 package Database;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.sql.SQLException;
+import Interfaces.Lecturer;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 
 public class DatabaseInterface {
 
@@ -26,44 +28,24 @@ public class DatabaseInterface {
         return conn;
     }
 
-    public ArrayList<String[]> selectAllDozenten(){
-        String sql = "SELECT Vorname, Nachname, Titel FROM Dozenten";
-        ArrayList<String[]> result = new ArrayList<String[]>();
+    public ObservableList<Lecturer> GetDozenten() {
+        try {
 
-        try (Connection conn = this.connect();
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)){
+            Connection conn = connect();
+            ObservableList<Lecturer> data = FXCollections.observableArrayList();
 
-            int columnCount = rs.getMetaData().getColumnCount();
+            ResultSet rs=conn.createStatement().executeQuery("SELECT * FROM Dozenten");
+            while (rs.next()) {
 
-            while(rs.next()) {
-
-                String[] row = new String[columnCount];
-
-                for(int i = 0; i < columnCount; i++) {
-
-                    row[i] = rs.getString(i+1);
-
-                }
-
-                result.add(row);
-
+                data.add(new Lecturer(rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5)));
             }
-
-            return result;
+            return data;
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return null;
         }
-
-        return null;
-
     }
-
-    public static void main(String[] args) {
-        DatabaseInterface DF = new DatabaseInterface();
-    }
-
 }
 
 

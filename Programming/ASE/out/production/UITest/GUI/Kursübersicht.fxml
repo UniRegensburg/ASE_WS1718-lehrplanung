@@ -79,11 +79,11 @@
                            <content>
                               <Pane prefHeight="499.0" prefWidth="1045.0">
                                  <children>
-                                    <TableView fx:id="KursTable" editable="true" prefHeight="486.0" prefWidth="1050.0">
+                                    <TableView fx:id="CourseTable" editable="true" prefHeight="486.0" prefWidth="1050.0">
                                       <columns>
                                         <TableColumn fx:id="Name" prefWidth="192.0" text="Name" />
-                                        <TableColumn fx:id="Vorname" prefWidth="195.0" text="Vorname" />
-                                          <TableColumn fx:id="Titel" prefWidth="72.0" text="Titel" />
+                                        <TableColumn fx:id="Surname" prefWidth="195.0" text="Vorname" />
+                                          <TableColumn fx:id="Title" prefWidth="72.0" text="Titel" />
                                           <TableColumn fx:id="Deputat" prefWidth="162.0" text="Deputat" />
                                       </columns>
                                     </TableView>
