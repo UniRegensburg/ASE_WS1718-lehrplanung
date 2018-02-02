@@ -3,6 +3,8 @@ package Database;
 
 import java.net.CookieHandler;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import Interfaces.Lecturer;
 import Interfaces.Course;
@@ -47,6 +49,21 @@ public class DatabaseInterface {
             return data;
 
         } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List GetProgramms(){
+        List<String> Programms = new ArrayList<String>();
+        try{
+            ResultSet rs = conn.createStatement().executeQuery("SELECT Titel FROM Studiengang");
+            while (rs.next()){
+                Programms.add(rs.getString(1));
+            }
+            return Programms;
+        }
+        catch (SQLException e) {
             e.printStackTrace();
             return null;
         }

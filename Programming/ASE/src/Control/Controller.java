@@ -4,13 +4,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import Interfaces.Lecturer;
 import Interfaces.Course;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import Database.DatabaseInterface;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.control.TextField;
 
 import javax.swing.event.TableModelListener;
 
@@ -38,6 +35,8 @@ public class Controller  {
     private ObservableList<Lecturer> data;
     @FXML
     private ObservableList<Course> dataCourse;
+    @FXML
+    private ComboBox CourseProgrammCombo;
 
     private Boolean edit = false;
     private Integer IDTemp = null;
@@ -53,6 +52,7 @@ public class Controller  {
         deleteLecturer();
         updateLecturer();
         fillCourse();
+        fillCourseProgrammCombo();
 
     }
 
@@ -167,6 +167,13 @@ public class Controller  {
         CourseTable.setItems(null);
         CourseTable.setItems(dataCourse);
 
+    }
+
+    private void fillCourseProgrammCombo(){
+
+        for(int i = 0; i < dc.GetProgramms().size(); i++){
+            CourseProgrammCombo.getItems().addAll(""+dc.GetProgramms().get(i)+"");
+        }
     }
 
 }
