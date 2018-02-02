@@ -219,7 +219,7 @@
                                       <columns>
                                         <TableColumn fx:id="CourseID" prefWidth="149.99998772144318" text="ID" />
                                         <TableColumn fx:id="CourseTitle" minWidth="0.0" prefWidth="178.08383178710938" text="Titel" />
-                                          <TableColumn fx:id="CourseModul" minWidth="0.0" prefWidth="178.08383178710938" text="Modul" />
+                                          <TableColumn fx:id="CourseModule" minWidth="0.0" prefWidth="178.08383178710938" text="Modul" />
                                           <TableColumn fx:id="CourseKind" minWidth="0.0" prefWidth="178.08383178710938" text="Art" />
                                           <TableColumn fx:id="CourseChair" minWidth="0.0" prefWidth="178.08383178710938" text="Lehrstuhl" />
                                           <TableColumn fx:id="CourseSWS" minWidth="0.0" prefWidth="178.08383178710938" text="SWS" />
