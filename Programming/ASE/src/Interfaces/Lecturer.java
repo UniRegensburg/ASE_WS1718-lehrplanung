@@ -12,7 +12,8 @@ public class Lecturer {
     private SimpleStringProperty LecturerTitle = new SimpleStringProperty();
     private SimpleIntegerProperty LecturerDeputat = new SimpleIntegerProperty();
 
-    public Lecturer(Integer LecturerID, String LecturerSurname, String LecturerName, String LecturerTitle, Integer LecturerDeputat) {
+    public Lecturer(Integer LecturerID, String LecturerSurname, String LecturerName, String LecturerTitle,
+                    Integer LecturerDeputat) {
 
         this.LecturerName = new SimpleStringProperty(LecturerName);
         this.LecturerSurname = new SimpleStringProperty(LecturerSurname);

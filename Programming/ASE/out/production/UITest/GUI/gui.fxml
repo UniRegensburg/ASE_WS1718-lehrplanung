@@ -217,12 +217,12 @@
                                  <center>
                                     <TableView fx:id="table_courses_overview" BorderPane.alignment="CENTER">
                                       <columns>
-                                        <TableColumn fx:id="col_vvz_number" prefWidth="149.99998772144318" text="VVZ-Nummer" />
+                                        <TableColumn fx:id="col_vvz_number" prefWidth="149.99998772144318" text="ID" />
                                         <TableColumn fx:id="col_course_name" minWidth="0.0" prefWidth="178.08383178710938" text="Titel" />
-                                          <TableColumn fx:id="col_delete_course" minWidth="0.0" prefWidth="178.08383178710938" text="Löschen" />
-                                          <TableColumn fx:id="col_edit_course" minWidth="0.0" prefWidth="178.08383178710938" text="Bearbeiten" />
-                                          <TableColumn fx:id="col_copy_course" minWidth="0.0" prefWidth="178.08383178710938" text="Kurs kopieren" />
-                                          <TableColumn fx:id="col_select_course" minWidth="0.0" prefWidth="178.08383178710938" text="Kurs wählen" />
+                                          <TableColumn fx:id="col_delete_course" minWidth="0.0" prefWidth="178.08383178710938" text="Modul" />
+                                          <TableColumn fx:id="col_edit_course" minWidth="0.0" prefWidth="178.08383178710938" text="Art" />
+                                          <TableColumn fx:id="col_copy_course" minWidth="0.0" prefWidth="178.08383178710938" text="Lehrstuhl" />
+                                          <TableColumn fx:id="col_select_course" minWidth="0.0" prefWidth="178.08383178710938" text="SWS" />
                                       </columns>
                                     </TableView>
                                  </center>
