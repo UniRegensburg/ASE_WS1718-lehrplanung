@@ -202,7 +202,7 @@
                                     </HBox>
                                     <HBox>
                                        <children>
-                                          <ComboBox fx:id="course_overview_select_program" />
+                                          <ComboBox fx:id="CourseProgrammCombo" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Studiengang wählen">
                                              <HBox.margin>
                                                 <Insets left="10.0" top="5.0" />

@@ -61,10 +61,16 @@
       <file leaf-file-name="DatabaseInterface.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Database/DatabaseInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="50" column="24" lean-forward="true" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
+            <state relative-caret-position="464">
+              <caret line="59" column="88" lean-forward="false" selection-start-line="59" selection-start-column="88" selection-end-line="59" selection-end-column="88" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#connect#0;class#DatabaseInterface#0" expanded="false" />
+                <element signature="e#1414#1422#0" expanded="true" />
+                <element signature="method#GetCourses#0;class#DatabaseInterface#0" expanded="false" />
+                <element signature="method#writeLecturers#0;class#DatabaseInterface#0" expanded="false" />
+                <element signature="method#deleteLecturers#0;class#DatabaseInterface#0" expanded="false" />
+                <element signature="method#updateLecturers#0;class#DatabaseInterface#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -103,10 +109,15 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Control/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="167" column="39" lean-forward="false" selection-start-line="167" selection-start-column="39" selection-end-line="167" selection-end-column="39" />
+            <state relative-caret-position="585">
+              <caret line="178" column="1" lean-forward="true" selection-start-line="178" selection-start-column="1" selection-end-line="178" selection-end-column="1" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="method#createLecturer#0;class#Controller#0" expanded="false" />
+                <element signature="method#saveLecturer#0;class#Controller#0" expanded="false" />
+                <element signature="method#deleteLecturer#0;class#Controller#0" expanded="false" />
+                <element signature="method#updateLecturer#0;class#Controller#0" expanded="false" />
+                <element signature="method#fillCourse#0;class#Controller#0" expanded="false" />
+                <element signature="method#fillCourseProgrammCombo#0;class#Controller#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -164,8 +175,8 @@
         <option value="$PROJECT_DIR$/src/GUI/gui.fxml" />
         <option value="$PROJECT_DIR$/src/Interfaces/Lecturer.java" />
         <option value="$PROJECT_DIR$/src/Interfaces/Course.java" />
-        <option value="$PROJECT_DIR$/src/Database/DatabaseInterface.java" />
         <option value="$PROJECT_DIR$/src/Control/Controller.java" />
+        <option value="$PROJECT_DIR$/src/Database/DatabaseInterface.java" />
       </list>
     </option>
   </component>
@@ -516,7 +527,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31308413" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20967741" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32258064" sideWeight="0.5" order="21" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -555,7 +566,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -575,6 +586,12 @@
           <caret line="19" column="31" lean-forward="false" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#connect#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="e#1414#1422#0" expanded="true" />
+            <element signature="method#GetCourses#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="method#writeLecturers#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="method#deleteLecturers#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="method#updateLecturers#0;class#DatabaseInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -587,6 +604,12 @@
           <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#connect#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="e#1414#1422#0" expanded="true" />
+            <element signature="method#GetCourses#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="method#writeLecturers#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="method#deleteLecturers#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="method#updateLecturers#0;class#DatabaseInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -630,6 +653,12 @@
           <caret line="21" column="31" lean-forward="false" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#connect#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="e#1414#1422#0" expanded="true" />
+            <element signature="method#GetCourses#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="method#writeLecturers#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="method#deleteLecturers#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="method#updateLecturers#0;class#DatabaseInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -649,7 +678,12 @@
         <state relative-caret-position="480">
           <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#createLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#updateLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillCourseProgrammCombo#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -660,6 +694,12 @@
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#connect#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="e#1414#1422#0" expanded="true" />
+            <element signature="method#GetCourses#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="method#writeLecturers#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="method#deleteLecturers#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="method#updateLecturers#0;class#DatabaseInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -678,6 +718,12 @@
           <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#connect#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="e#1414#1422#0" expanded="true" />
+            <element signature="method#GetCourses#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="method#writeLecturers#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="method#deleteLecturers#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="method#updateLecturers#0;class#DatabaseInterface#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -687,7 +733,12 @@
         <state relative-caret-position="561">
           <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#createLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#updateLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillCourseProgrammCombo#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -750,16 +801,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Database/DatabaseInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="50" column="24" lean-forward="true" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Interfaces/Lecturer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
@@ -776,12 +817,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Control/Controller.java">
+    <entry file="file://$PROJECT_DIR$/src/Database/DatabaseInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="167" column="39" lean-forward="false" selection-start-line="167" selection-start-column="39" selection-end-line="167" selection-end-column="39" />
+        <state relative-caret-position="464">
+          <caret line="59" column="88" lean-forward="false" selection-start-line="59" selection-start-column="88" selection-end-line="59" selection-end-column="88" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#connect#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="e#1414#1422#0" expanded="true" />
+            <element signature="method#GetCourses#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="method#writeLecturers#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="method#deleteLecturers#0;class#DatabaseInterface#0" expanded="false" />
+            <element signature="method#updateLecturers#0;class#DatabaseInterface#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Control/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="178" column="1" lean-forward="true" selection-start-line="178" selection-start-column="1" selection-end-line="178" selection-end-column="1" />
+          <folding>
+            <element signature="method#createLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#updateLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillCourseProgrammCombo#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
