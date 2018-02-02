@@ -5,6 +5,8 @@ import java.net.CookieHandler;
 import java.sql.*;
 
 import Interfaces.Lecturer;
+import Interfaces.Course;
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -41,6 +43,27 @@ public class DatabaseInterface {
 
                 data.add(new Lecturer(rs.getInt(1), rs.getString(2),
                         rs.getString(3), rs.getString(4), rs.getInt(5)));
+            }
+            return data;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ObservableList<Course> GetCourses(){
+        try {
+
+            ObservableList<Course> data = FXCollections.observableArrayList();
+
+            ResultSet rs=conn.createStatement().executeQuery("SELECT ID, SWS, Modul, Art, Titel, Lehrstuhl " +
+                    "FROM Kurse");
+            while (rs.next()) {
+
+                data.add(new Course(rs.getInt(1), rs.getInt(2),
+                        rs.getString(3), rs.getString(4), rs.getString(5),
+                        rs.getString(6)));
             }
             return data;
 

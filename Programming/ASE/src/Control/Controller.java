@@ -3,6 +3,7 @@ package Control;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import Interfaces.Lecturer;
+import Interfaces.Course;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -10,6 +11,8 @@ import Database.DatabaseInterface;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.control.TextField;
+
+import javax.swing.event.TableModelListener;
 
 public class Controller  {
 
@@ -26,7 +29,15 @@ public class Controller  {
     @FXML
     private TableColumn<Lecturer, Integer> Deputat, ID;
     @FXML
+    private TableView<Course> CourseTable;
+    @FXML
+    private TableColumn<Course, String> CourseTitle, CourseModul, CourseKind, CourseChair;
+    @FXML
+    private TableColumn<Course, Integer> CourseID, CourseSWS;
+    @FXML
     private ObservableList<Lecturer> data;
+    @FXML
+    private ObservableList<Course> dataCourse;
 
     private Boolean edit = false;
     private Integer IDTemp = null;
@@ -41,6 +52,7 @@ public class Controller  {
         saveLecturer();
         deleteLecturer();
         updateLecturer();
+        fillCourse();
 
     }
 
@@ -138,6 +150,22 @@ public class Controller  {
             IDTemp = selected.getLecturerID();
 
         });
+
+    }
+
+    private void fillCourse() {
+
+        dataCourse = dc.GetCourses();
+
+        CourseID.setCellValueFactory((new PropertyValueFactory<>("courseID")));
+        CourseTitle.setCellValueFactory(new PropertyValueFactory<>("courseTitle"));
+        CourseSWS.setCellValueFactory(new PropertyValueFactory<>("courseSWS"));
+        CourseKind.setCellValueFactory(new PropertyValueFactory<>("courseKind"));
+        CourseModul.setCellValueFactory(new PropertyValueFactory<>("courseModul"));
+        CourseChair.setCellValueFactory(new PropertyValueFactory<>("courseChair"));
+
+        CourseTable.setItems(null);
+        CourseTable.setItems(dataCourse);
 
     }
 
