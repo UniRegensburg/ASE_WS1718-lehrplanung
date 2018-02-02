@@ -28,7 +28,7 @@ public class Controller  {
     @FXML
     private TableView<Course> CourseTable;
     @FXML
-    private TableColumn<Course, String> CourseTitle, CourseModul, CourseKind, CourseChair;
+    private TableColumn<Course, String> CourseTitle, CourseModule, CourseKind, CourseChair;
     @FXML
     private TableColumn<Course, Integer> CourseID, CourseSWS;
     @FXML
@@ -161,7 +161,7 @@ public class Controller  {
         CourseTitle.setCellValueFactory(new PropertyValueFactory<>("courseTitle"));
         CourseSWS.setCellValueFactory(new PropertyValueFactory<>("courseSWS"));
         CourseKind.setCellValueFactory(new PropertyValueFactory<>("courseKind"));
-        CourseModul.setCellValueFactory(new PropertyValueFactory<>("courseModul"));
+        CourseModule.setCellValueFactory(new PropertyValueFactory<>("courseModule"));
         CourseChair.setCellValueFactory(new PropertyValueFactory<>("courseChair"));
 
         CourseTable.setItems(null);
@@ -174,6 +174,7 @@ public class Controller  {
         for(int i = 0; i < dc.GetProgramms().size(); i++){
             CourseProgrammCombo.getItems().addAll(""+dc.GetProgramms().get(i)+"");
         }
+        CourseProgrammCombo.getSelectionModel().selectFirst();
     }
 
 }

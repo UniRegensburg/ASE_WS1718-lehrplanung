@@ -33,7 +33,7 @@ public class Course {
         return courseSWS.get();
     }
 
-    public String getcourseModule() {
+    public String getCourseModule() {
         return courseModule.get();
     }
 

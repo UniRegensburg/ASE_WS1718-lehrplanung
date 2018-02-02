@@ -78,9 +78,8 @@ public class DatabaseInterface {
                     "FROM Kurse");
             while (rs.next()) {
 
-                data.add(new Course(rs.getInt(1), rs.getInt(2),
-                        rs.getString(3), rs.getString(4), rs.getString(5),
-                        rs.getString(6)));
+                data.add(new Course(rs.getInt(1), rs.getInt(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6)));
             }
             return data;
 
