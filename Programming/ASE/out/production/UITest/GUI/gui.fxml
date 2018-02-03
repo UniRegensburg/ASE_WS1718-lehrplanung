@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.geometry.*?>
 <?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
@@ -15,7 +19,10 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -29,7 +36,7 @@
    <center>
       <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
-          <Tab fx:id="tab_teachers"  text="Lehrpersonen">
+          <Tab fx:id="tab_teachers" text="Lehrpersonen">
                <content>
                   <AnchorPane prefHeight="891.0" prefWidth="1440.0">
                      <children>
@@ -173,7 +180,7 @@
                            <bottom>
                               <SplitPane dividerPositions="0.4993045897079277" BorderPane.alignment="CENTER">
                                 <items>
-                                  <AnchorPane>
+                                  <AnchorPane prefHeight="39.0" prefWidth="585.0">
                                        <children>
                                           <Button fx:id="btn_add_course" layoutX="157.0" layoutY="10.0" mnemonicParsing="false" text="Neuen Kurs anlegen" />
                                        </children>
@@ -187,9 +194,9 @@
                               </SplitPane>
                            </bottom>
                            <top>
-                              <SplitPane dividerPositions="0.5013908205841446" BorderPane.alignment="CENTER">
+                              <SplitPane dividerPositions="0.48956884561891517" BorderPane.alignment="CENTER">
                                 <items>
-                                    <HBox>
+                                    <HBox prefHeight="27.0" prefWidth="512.0">
                                        <children>
                                           <ComboBox fx:id="course_overview_select_semester" />
                                           <Text boundsType="LOGICAL_VERTICAL_CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="Semester wählen">
@@ -198,7 +205,7 @@
                                              </HBox.margin></Text>
                                        </children>
                                     </HBox>
-                                    <HBox>
+                                    <HBox prefHeight="27.0" prefWidth="766.0">
                                        <children>
                                           <ComboBox fx:id="course_overview_select_program" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Studiengang wählen">
@@ -213,14 +220,10 @@
                            <left>
                               <BorderPane BorderPane.alignment="CENTER">
                                  <center>
-                                    <TableView fx:id="table_courses_overview"  BorderPane.alignment="CENTER">
+                                    <TableView fx:id="table_courses_overview" BorderPane.alignment="CENTER">
                                       <columns>
                                         <TableColumn fx:id="col_vvz_number" prefWidth="149.99998772144318" text="VVZ-Nummer" />
                                         <TableColumn fx:id="col_course_name" minWidth="0.0" prefWidth="178.08383178710938" text="Titel" />
-                                          <TableColumn fx:id="col_delete_course" minWidth="0.0" prefWidth="178.08383178710938" text="Löschen" />
-                                          <TableColumn fx:id="col_edit_course" minWidth="0.0" prefWidth="178.08383178710938" text="Bearbeiten" />
-                                          <TableColumn fx:id="col_copy_course" minWidth="0.0" prefWidth="178.08383178710938" text="Kurs kopieren" />
-                                          <TableColumn fx:id="col_select_course" minWidth="0.0" prefWidth="178.08383178710938" text="Kurs wählen" />
                                       </columns>
                                     </TableView>
                                  </center>
@@ -228,28 +231,34 @@
                                     <GridPane BorderPane.alignment="CENTER">
                                       <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="507.63995361328125" minWidth="10.0" prefWidth="401.1911315917969" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.75555419921875" minWidth="10.0" prefWidth="129.34222412109375" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.0533447265625" minWidth="10.0" prefWidth="112.689697265625" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.310302734375" minWidth="10.0" prefWidth="161.310302734375" />
                                       </columnConstraints>
                                       <rowConstraints>
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
                                           <TextField fx:id="searchbox_courses_overview" />
-                                          <Button fx:id="btn_courses_search_course_overview" mnemonicParsing="false"  text="Suchen" GridPane.columnIndex="1" />
+                                          <Button fx:id="btn_courses_search_course_overview" mnemonicParsing="false" text="Suchen" GridPane.columnIndex="1" />
+                                          <Button fx:id="btnEditCourse" mnemonicParsing="false" text="Kurs bearbeiten" GridPane.columnIndex="2" />
+                                          <Button fx:id="btnCopyCourse" mnemonicParsing="false" text="Kurs kopieren" GridPane.columnIndex="3" />
+                                          <Button fx:id="btnDeleteCourse" mnemonicParsing="false" text="Kurs löschen" GridPane.columnIndex="4" />
                                        </children>
                                     </GridPane>
                                  </top>
                                  <bottom>
-                                    <SplitPane dividerPositions="0.7241857241857241" BorderPane.alignment="CENTER">
+                                    <SplitPane dividerPositions="0.7241857241857241" prefHeight="27.0" prefWidth="907.0" BorderPane.alignment="CENTER">
                                       <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0">
                                              <children>
-                                                <TextField fx:id="number_of_selected_courses" layoutX="301.0" layoutY="6.0" />
+                                                <TextField fx:id="number_of_selected_courses" layoutX="301.0" layoutY="6.0" prefHeight="51.0" prefWidth="651.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                              </children>
                                           </AnchorPane>
                                         <AnchorPane>
                                              <children>
-                                                <Button fx:id="btn_copy_selected_courses" layoutX="7.0" layoutY="24.0" mnemonicParsing="false" text="ausgewählte Kurse übernehmen" />
+                                                <Button fx:id="btn_copy_selected_courses" layoutX="7.0" layoutY="24.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="246.0" text="ausgewählte Kurse übernehmen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                              </children>
                                           </AnchorPane>
                                       </items>
@@ -257,6 +266,36 @@
                                  </bottom>
                               </BorderPane>
                            </left>
+                           <center>
+                              <BorderPane fx:id="addProgramDialogue" maxHeight="100.0" minHeight="100.0" BorderPane.alignment="TOP_LEFT">
+                                 <top>
+                                    <SplitPane dividerPositions="0.5">
+                                       <items>
+                                          <Button fx:id="btnAddProgram" mnemonicParsing="false" text="Studiengang hinzufügen" BorderPane.alignment="CENTER" />
+                                          <Button fx:id="btnAddProgram1" mnemonicParsing="false" text="Semester hinzufügen" />
+                                       </items>
+                                    </SplitPane>
+                                 </top>
+                                 <center>
+                                    <Pane BorderPane.alignment="CENTER">
+                                       <children>
+                                          <SplitPane fx:id="dialogueAddNewSemester" dividerPositions="0.5" visible="false">
+                                             <items>
+                                                <TextField fx:id="newSemesterName" promptText="Semester " />
+                                                <Button fx:id="btnSaveNewSemester" mnemonicParsing="false" text="Speichern" />
+                                             </items>
+                                          </SplitPane>
+                                          <SplitPane fx:id="dialogueAddNewProgram" dividerPositions="0.5" visible="false">
+                                             <items>
+                                                <TextField fx:id="newProgramName" promptText="Studiengang Titel" />
+                                                <Button fx:id="btnSaveNewProgram" mnemonicParsing="false" text="Speichern" />
+                                             </items>
+                                          </SplitPane>
+                                       </children>
+                                    </Pane>
+                                 </center>
+                              </BorderPane>
+                           </center>
                         </BorderPane>
                         <BorderPane prefHeight="947.0" prefWidth="1440.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <top>
@@ -804,6 +843,7 @@
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                        <children>
                                           <Button layoutX="15.0" layoutY="20.0" mnemonicParsing="false" text="Anzeigen" />
+                                          <Button fx:id="btnExportCurrentTable" layoutX="15.0" layoutY="62.0" mnemonicParsing="false" text="Aktuelle Ansicht exportieren" />
                                        </children>
                                     </AnchorPane>
                                 </items>
@@ -844,8 +884,8 @@
                      <children>
                         <MenuButton fx:id="btn_main_menu" layoutX="4.0" layoutY="1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" text="Menu">
                           <items>
-                            <MenuItem mnemonicParsing="false" text="Action 1" />
-                            <MenuItem mnemonicParsing="false" text="Action 2" />
+                            <MenuItem mnemonicParsing="false" text="Aktuelle Bearbeitung exportieren" />
+                            <MenuItem mnemonicParsing="false" text="Speichern" />
                           </items>
                         </MenuButton>
                      </children>
