@@ -16,10 +16,12 @@ import javafx.collections.ObservableList;
 public class DatabaseInterface {
 
     Connection conn;
+    Integer programID;
 
     public DatabaseInterface() {
 
         conn = connect();
+        programID = 0;
 
     }
 
@@ -73,9 +75,16 @@ public class DatabaseInterface {
         try {
 
             ObservableList<Course> data = FXCollections.observableArrayList();
+            ResultSet rs;
 
-            ResultSet rs=conn.createStatement().executeQuery("SELECT ID, SWS, Modul, Art, Titel, Lehrstuhl " +
-                    "FROM Kurse");
+            if(programID == 0){
+                rs=conn.createStatement().executeQuery("SELECT ID, SWS, Modul, Art, Titel, Lehrstuhl " +
+                        "FROM Kurse");
+            }
+            else{
+                rs=conn.createStatement().executeQuery("SELECT ID, SWS, Modul, Art, Titel, Lehrstuhl " +
+                        "FROM Kurse WHERE Studiengang ='"+programID+"'");
+            }
             while (rs.next()) {
 
                 data.add(new Course(rs.getInt(1), rs.getInt(2), rs.getString(3),
@@ -119,6 +128,21 @@ public class DatabaseInterface {
         catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void getSelectedCourses(String program){
+
+        try {
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("SELECT ID FROM Studiengang WHERE Titel = '"+ program +"'");
+            while(rs.next()){
+                programID = rs.getInt(1);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }
 

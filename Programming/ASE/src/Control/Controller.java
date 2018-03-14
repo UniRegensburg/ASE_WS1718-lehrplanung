@@ -9,12 +9,13 @@ import Database.DatabaseInterface;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
+import javax.swing.event.ChangeListener;
 import javax.swing.event.TableModelListener;
 
 public class Controller  {
 
     @FXML
-    private Button createLecturerButton, saveLecturerButton, deleteLecturerButton, updateLecturerButton;
+    private Button createLecturerButton, createCourseButton, saveLecturerButton, /*saveCourseButton,*/ deleteLecturerButton, updateLecturerButton, cancelLecturerButton;
     @FXML
     private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText;
     @FXML
@@ -36,7 +37,7 @@ public class Controller  {
     @FXML
     private ObservableList<Course> dataCourse;
     @FXML
-    private ComboBox CourseProgrammCombo;
+    private ComboBox courseProgramCombo;
 
     private Boolean edit = false;
     private Integer IDTemp = null;
@@ -48,11 +49,14 @@ public class Controller  {
 
         fillLecturers();
         createLecturer();
+        createCourse();
         saveLecturer();
+        //saveCourse();
         deleteLecturer();
         updateLecturer();
         fillCourse();
-        fillCourseProgrammCombo();
+        fillCourseProgramCombo();
+        cancelLecturer();
 
     }
 
@@ -72,7 +76,6 @@ public class Controller  {
 
     }
 
-
     private void createLecturer() {
 
         createLecturerButton.setOnAction((event) -> {
@@ -85,6 +88,17 @@ public class Controller  {
 
     }
 
+    private void createCourse() {
+
+        createCourseButton.setOnAction((event) -> {
+
+            //pane_course_overview.setVisible(false);
+            //pane_single_course.setVisible(true);
+
+
+        });
+
+    }
 
     private void saveLecturer() {
 
@@ -118,6 +132,15 @@ public class Controller  {
 
     }
 
+    private void saveCourse() {
+
+        saveLecturerButton.setOnAction((event) -> {
+
+
+
+        });
+
+    }
 
     private void deleteLecturer() {
 
@@ -169,12 +192,30 @@ public class Controller  {
 
     }
 
-    private void fillCourseProgrammCombo(){
+    private void fillCourseProgramCombo(){
 
         for(int i = 0; i < dc.GetProgramms().size(); i++){
-            CourseProgrammCombo.getItems().addAll(""+dc.GetProgramms().get(i)+"");
+            courseProgramCombo.getItems().addAll(""+dc.GetProgramms().get(i)+"");
         }
-        CourseProgrammCombo.getSelectionModel().selectFirst();
+        courseProgramCombo.getSelectionModel().selectFirst();
+    }
+
+    public void courseProgramAction() {
+
+        dc.getSelectedCourses(courseProgramCombo.getValue().toString());
+        fillCourse();
+
+    }
+
+    private void cancelLecturer(){
+
+        cancelLecturerButton.setOnAction((event) -> {
+
+            pane_teachers_overview.setVisible(true);
+            pane_single_teacher.setVisible(false);
+
+        });
+
     }
 
 }

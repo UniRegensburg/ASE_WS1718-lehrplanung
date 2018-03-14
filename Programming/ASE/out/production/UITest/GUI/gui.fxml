@@ -140,8 +140,8 @@
                            <bottom>
                               <SplitPane dividerPositions="0.5" prefHeight="12.0" prefWidth="1415.0" BorderPane.alignment="CENTER">
                                  <items>
+                                    <Button fx:id="cancelLecturerButton" mnemonicParsing="false" text="Abbrechen" />
                                     <Button fx:id="saveLecturerButton" mnemonicParsing="false" text="Speichern" />
-                                    <Button mnemonicParsing="false" text="Abbrechen" />
                                  </items>
                               </SplitPane>
                            </bottom>
@@ -177,7 +177,7 @@
                                 <items>
                                   <AnchorPane>
                                        <children>
-                                          <Button fx:id="btn_add_course" layoutX="157.0" layoutY="10.0" mnemonicParsing="false" text="Neuen Kurs anlegen" />
+                                          <Button fx:id="createCourseButton" layoutX="157.0" layoutY="10.0" mnemonicParsing="false" text="Neuen Kurs anlegen" />
                                        </children>
                                     </AnchorPane>
                                   <AnchorPane>
@@ -202,7 +202,7 @@
                                     </HBox>
                                     <HBox>
                                        <children>
-                                          <ComboBox fx:id="CourseProgrammCombo" />
+                                          <ComboBox fx:id="courseProgramCombo" onAction="#courseProgramAction" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Studiengang wählen">
                                              <HBox.margin>
                                                 <Insets left="10.0" top="5.0" />
