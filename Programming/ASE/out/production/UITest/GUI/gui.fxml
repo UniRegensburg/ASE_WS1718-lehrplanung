@@ -2,11 +2,13 @@
 
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
@@ -14,6 +16,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -32,867 +35,1040 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="bg_pane" prefHeight="1024.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Controller">
-   <center>
-      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-        <tabs>
-          <Tab fx:id="tab_teachers" text="Lehrpersonen">
-               <content>
-                  <AnchorPane prefHeight="891.0" prefWidth="1440.0">
-                     <children>
-                        <BorderPane fx:id="pane_teachers_overview" layoutX="6.0" prefHeight="920.0" prefWidth="1440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <center>
-                              <TableView fx:id="table_teachers" prefHeight="779.0" prefWidth="1433.0" BorderPane.alignment="CENTER">
-                                <columns>
-                                  <TableColumn fx:id="col_teacher_id" prefWidth="75.0" text="ID" />
-                                  <TableColumn fx:id="col_teacher_surname" prefWidth="75.0" text="Nachname" />
-                                    <TableColumn fx:id="col_teacher_prename" prefWidth="75.0" text="Vorname" />
-                                    <TableColumn fx:id="col_teacher_title" prefWidth="75.0" text="Titel" />
-                                </columns>
-                              </TableView>
-                           </center>
-                           <top>
-                              <HBox BorderPane.alignment="CENTER">
-                                 <children>
-                                    <GridPane>
-                                      <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                       <children>
-                                          <TextField fx:id="textfield_search_teachers" />
-                                          <Button fx:id="btn_search_teachers" mnemonicParsing="false" text="Suchen" GridPane.columnIndex="1" />
-                                          <Button fx:id="btn_edit_teacher" mnemonicParsing="false" prefHeight="27.0" prefWidth="94.0" text="Bearbeiten" GridPane.columnIndex="2" />
-                                          <Button fx:id="btn_delete_teacher" mnemonicParsing="false" text="Löschen" GridPane.columnIndex="3" />
-                                       </children>
-                                    </GridPane>
-                                 </children>
-                              </HBox>
-                           </top>
-                           <bottom>
-                              <SplitPane prefHeight="51.0" prefWidth="1433.0" BorderPane.alignment="CENTER">
-                                 <items>
-                                    <Button fx:id="btn_add_new_teacher" mnemonicParsing="false" text="Neue Lehrperson hinzufügen">
-                                       <padding>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </padding>
-                                    </Button>
-                                 </items>
-                              </SplitPane>
-                           </bottom>
-                        </BorderPane>
-                        <BorderPane fx:id="pane_single_teacher" layoutX="16.0" layoutY="10.0" prefHeight="920.0" prefWidth="1440.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <top>
-                              <SplitPane BorderPane.alignment="CENTER">
-                                 <items>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrperson anlegen">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Text>
-                                 </items>
-                              </SplitPane>
-                           </top>
-                           <center>
-                              <AnchorPane prefHeight="758.0" prefWidth="1118.0">
-                                 <children>
-                                    <GridPane layoutY="6.0" AnchorPane.leftAnchor="30.0">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nachname">
-                                             <font>
-                                                <Font size="17.0" />
-                                             </font>
-                                          </Text>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vorname" GridPane.rowIndex="1">
-                                             <font>
-                                                <Font size="17.0" />
-                                             </font>
-                                          </Text>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Titel" GridPane.rowIndex="2">
-                                             <font>
-                                                <Font size="17.0" />
-                                             </font>
-                                          </Text>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Deputat" GridPane.rowIndex="3">
-                                             <font>
-                                                <Font size="17.0" />
-                                             </font>
-                                          </Text>
-                                          <TextField GridPane.columnIndex="1" />
-                                          <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                       </children>
-                                    </GridPane>
-                                 </children>
-                              </AnchorPane>
-                           </center>
-                           <bottom>
-                              <SplitPane dividerPositions="0.5" prefHeight="12.0" prefWidth="1415.0" BorderPane.alignment="CENTER">
-                                 <items>
-                                    <Button mnemonicParsing="false" text="Speichern" />
-                                    <Button mnemonicParsing="false" text="Abbrechen" />
-                                 </items>
-                              </SplitPane>
-                           </bottom>
-                           <right>
-                              <GridPane prefHeight="828.0" prefWidth="297.0" BorderPane.alignment="CENTER">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                    <ListView prefHeight="200.0" prefWidth="200.0" />
-                                    <TextArea GridPane.rowIndex="2" />
-                                    <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="303.0" text="Kurse übernehmen" GridPane.rowIndex="1" />
-                                 </children>
-                              </GridPane>
-                           </right>
-                        </BorderPane>
-                     </children>
-                  </AnchorPane>
-               </content>
-          </Tab>
-          <Tab fx:id="tab_courses" text="Kurse">
-            <content>
-              <AnchorPane fx:id="courses_start">
-                     <children>
-                        <BorderPane fx:id="pane_courses_overview_start" layoutX="262.0" layoutY="313.0" prefHeight="920.0" prefWidth="1440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <bottom>
-                              <SplitPane dividerPositions="0.4993045897079277" BorderPane.alignment="CENTER">
-                                <items>
-                                  <AnchorPane prefHeight="39.0" prefWidth="585.0">
-                                       <children>
-                                          <Button fx:id="btn_add_course" layoutX="157.0" layoutY="10.0" mnemonicParsing="false" text="Neuen Kurs anlegen" />
-                                       </children>
-                                    </AnchorPane>
-                                  <AnchorPane>
-                                       <children>
-                                          <Button fx:id="btn_course_preview" layoutX="172.0" layoutY="12.0" mnemonicParsing="false" text="Vorschau" />
-                                       </children>
-                                    </AnchorPane>
-                                </items>
-                              </SplitPane>
-                           </bottom>
-                           <top>
-                              <SplitPane dividerPositions="0.48956884561891517" BorderPane.alignment="CENTER">
-                                <items>
-                                    <HBox prefHeight="27.0" prefWidth="512.0">
-                                       <children>
-                                          <ComboBox fx:id="course_overview_select_semester" />
-                                          <Text boundsType="LOGICAL_VERTICAL_CENTER" strokeType="OUTSIDE" strokeWidth="0.0" text="Semester wählen">
-                                             <HBox.margin>
-                                                <Insets left="10.0" top="5.0" />
-                                             </HBox.margin></Text>
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="27.0" prefWidth="766.0">
-                                       <children>
-                                          <ComboBox fx:id="course_overview_select_program" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Studiengang wählen">
-                                             <HBox.margin>
-                                                <Insets left="10.0" top="5.0" />
-                                             </HBox.margin></Text>
-                                       </children>
-                                    </HBox>
-                                </items>
-                              </SplitPane>
-                           </top>
-                           <left>
-                              <BorderPane BorderPane.alignment="CENTER">
+<ScrollPane maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Controller">
+   <content>
+      <BorderPane fx:id="bg_pane" maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" style="-fx-background-color: #787878;">
+         <center>
+            <TabPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #787878;" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" tabMinHeight="30.0" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab fx:id="tab_teachers" style="-fx-background-radius: 0; -fx-cursor: hand;" text="Lehrpersonen">
+                     <content>
+                        <AnchorPane prefHeight="891.0" prefWidth="1440.0" style="-fx-background-color: #dddddd;">
+                           <children>
+                              <BorderPane fx:id="pane_teachers_overview" layoutX="6.0" prefHeight="920.0" prefWidth="1440.0" style="-fx-background-color: #dddddd;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <center>
-                                    <TableView fx:id="table_courses_overview" BorderPane.alignment="CENTER">
+                                    <TableView fx:id="LecturerTable" prefHeight="0.0" prefWidth="1433.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
                                       <columns>
-                                        <TableColumn fx:id="col_vvz_number" prefWidth="149.99998772144318" text="VVZ-Nummer" />
-                                        <TableColumn fx:id="col_course_name" minWidth="0.0" prefWidth="178.08383178710938" text="Titel" />
+                                          <TableColumn fx:id="ID" prefWidth="75.0" text="ID" />
+                                          <TableColumn fx:id="Surname" prefWidth="75.0" text="Vorname" />
+                                        <TableColumn fx:id="Name" prefWidth="75.0" text="Nachname" />
+                                        <TableColumn fx:id="Title" prefWidth="75.0" text="Titel" />
+                                          <TableColumn fx:id="Deputat" prefWidth="75.0" text="Deputat" />
                                       </columns>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
                                     </TableView>
                                  </center>
                                  <top>
-                                    <GridPane BorderPane.alignment="CENTER">
-                                      <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="507.63995361328125" minWidth="10.0" prefWidth="401.1911315917969" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.75555419921875" minWidth="10.0" prefWidth="129.34222412109375" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="186.0533447265625" minWidth="10.0" prefWidth="112.689697265625" />
-                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.310302734375" minWidth="10.0" prefWidth="161.310302734375" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
+                                    <HBox style="-fx-background-color: #dddddd;" BorderPane.alignment="CENTER">
                                        <children>
-                                          <TextField fx:id="searchbox_courses_overview" />
-                                          <Button fx:id="btn_courses_search_course_overview" mnemonicParsing="false" text="Suchen" GridPane.columnIndex="1" />
-                                          <Button fx:id="btnEditCourse" mnemonicParsing="false" text="Kurs bearbeiten" GridPane.columnIndex="2" />
-                                          <Button fx:id="btnCopyCourse" mnemonicParsing="false" text="Kurs kopieren" GridPane.columnIndex="3" />
-                                          <Button fx:id="btnDeleteCourse" mnemonicParsing="false" text="Kurs löschen" GridPane.columnIndex="4" />
+                                          <GridPane>
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <TextField fx:id="textfield_search_teachers" promptText="Lehrperson suchen" style="-fx-background-color: #ffffff; -fx-background-radius: 0;">
+                                                   <cursor>
+                                                      <Cursor fx:constant="TEXT" />
+                                                   </cursor>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </TextField>
+                                                <Button fx:id="btn_search_teachers" mnemonicParsing="false" style="-fx-background-radius: 0; -fx-background-color: #ffffff;" text="Suchen" GridPane.columnIndex="1">
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                   <GridPane.margin>
+                                                      <Insets bottom="2.0" left="3.0" top="1.0" />
+                                                   </GridPane.margin>
+                                                </Button>
+                                                <Button fx:id="updateLecturerButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="94.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Bearbeiten" GridPane.columnIndex="2">
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                   <GridPane.margin>
+                                                      <Insets bottom="2.0" top="1.0" />
+                                                   </GridPane.margin>
+                                                </Button>
+                                                <Button fx:id="deleteLecturerButton" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Löschen" GridPane.columnIndex="3">
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                   <GridPane.margin>
+                                                      <Insets bottom="2.0" top="1.0" />
+                                                   </GridPane.margin>
+                                                </Button>
+                                             </children>
+                                          </GridPane>
                                        </children>
-                                    </GridPane>
+                                       <opaqueInsets>
+                                          <Insets top="5.0" />
+                                       </opaqueInsets>
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </HBox>
                                  </top>
                                  <bottom>
-                                    <SplitPane dividerPositions="0.7241857241857241" prefHeight="27.0" prefWidth="907.0" BorderPane.alignment="CENTER">
-                                      <items>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0">
+                                    <SplitPane prefHeight="51.0" prefWidth="1433.0" style="-fx-background-color: #787878;" BorderPane.alignment="CENTER">
+                                       <items>
+                                          <Button fx:id="createLecturerButton" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Neue Lehrperson hinzufügen">
+                                             <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </padding>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                       </items>
+                                       <cursor>
+                                          <Cursor fx:constant="DEFAULT" />
+                                       </cursor>
+                                    </SplitPane>
+                                 </bottom>
+                              </BorderPane>
+                              <BorderPane fx:id="pane_single_teacher" layoutX="16.0" layoutY="10.0" prefHeight="920.0" prefWidth="1440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <top>
+                                    <SplitPane BorderPane.alignment="CENTER">
+                                       <items>
+                                          <HBox style="-fx-background-color: #ffffff;">
                                              <children>
-                                                <TextField fx:id="number_of_selected_courses" layoutX="301.0" layoutY="6.0" prefHeight="51.0" prefWidth="651.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <Text fill="#787878" strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrperson anlegen">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="5.0" left="10.0" top="5.0" />
+                                             </padding>
+                                          </HBox>
+                                       </items>
+                                    </SplitPane>
+                                 </top>
+                                 <center>
+                                    <AnchorPane prefHeight="758.0" prefWidth="1118.0" style="-fx-background-color: #ffffff;">
+                                       <children>
+                                          <GridPane layoutX="12.0" layoutY="2.0" prefHeight="186.0" prefWidth="266.0" AnchorPane.leftAnchor="12.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nachname">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vorname" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Titel" GridPane.rowIndex="2">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Deputat" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </Text>
+                                                <TextField fx:id="lecturerNameText" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" />
+                                                <TextField fx:id="lecturerSurnameText" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <TextField fx:id="lecturerTitleText" style="-fx-background-color: #f5f5f5;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <TextField fx:id="lecturerDeputatText" style="-fx-background-color: #f5f5f5;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                             </children>
+                                             <opaqueInsets>
+                                                <Insets left="10.0" />
+                                             </opaqueInsets>
+                                          </GridPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </center>
+                                 <bottom>
+                                    <SplitPane dividerPositions="0.5" prefHeight="12.0" prefWidth="1415.0" BorderPane.alignment="CENTER">
+                                       <items>
+                                          <Button fx:id="saveLecturerButton" mnemonicParsing="false" text="Speichern" />
+                                          <Button mnemonicParsing="false" text="Abbrechen" />
+                                       </items>
+                                    </SplitPane>
+                                 </bottom>
+                                 <right>
+                                    <GridPane prefHeight="828.0" prefWidth="297.0" style="-fx-background-color: #f5f5f5;" BorderPane.alignment="CENTER">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <ListView prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f5f5f5;" />
+                                          <Button fx:id="btn_add_courses_to_teacher" mnemonicParsing="false" prefHeight="50.0" prefWidth="303.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" stylesheets="@style.css" text="Kurse übernehmen" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font></Button>
+                                       </children>
+                                    </GridPane>
+                                 </right>
+                              </BorderPane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                </Tab>
+                <Tab fx:id="tab_courses" style="-fx-background-radius: 0; -fx-cursor: hand;" text="Kurse">
+                  <content>
+                    <AnchorPane fx:id="courses_start" style="-fx-background-color: #787878;">
+                           <children>
+                              <BorderPane fx:id="pane_courses_overview_start" layoutX="262.0" layoutY="313.0" prefHeight="920.0" prefWidth="1440.0" style="-fx-background-color: #787878;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <bottom>
+                                    <SplitPane dividerPositions="0.4993045897079277" style="-fx-background-color: #787878;" BorderPane.alignment="CENTER">
+                                      <items>
+                                        <AnchorPane style="-fx-background-color: #787878;">
+                                             <children>
+                                                <Button fx:id="btn_add_course" layoutX="157.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Neuen Kurs anlegen" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="20.0">
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
+                                                   </padding>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </Button>
                                              </children>
                                           </AnchorPane>
-                                        <AnchorPane>
+                                        <AnchorPane prefHeight="77.0" prefWidth="817.0" style="-fx-background-color: #787878;">
                                              <children>
-                                                <Button fx:id="btn_copy_selected_courses" layoutX="7.0" layoutY="24.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="246.0" text="ausgewählte Kurse übernehmen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <Button fx:id="btn_course_preview" layoutX="172.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Vorschau" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="20.0">
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </Button>
                                              </children>
                                           </AnchorPane>
                                       </items>
                                     </SplitPane>
                                  </bottom>
-                              </BorderPane>
-                           </left>
-                           <center>
-                              <BorderPane fx:id="addProgramDialogue" maxHeight="100.0" minHeight="100.0" BorderPane.alignment="TOP_LEFT">
                                  <top>
-                                    <SplitPane dividerPositions="0.5">
-                                       <items>
-                                          <Button fx:id="btnAddProgram" mnemonicParsing="false" text="Studiengang hinzufügen" BorderPane.alignment="CENTER" />
-                                          <Button fx:id="btnAddProgram1" mnemonicParsing="false" text="Semester hinzufügen" />
-                                       </items>
+                                    <SplitPane dividerPositions="0.17107093184979139" style="-fx-background-color: #dddddd;" BorderPane.alignment="CENTER">
+                                      <items>
+                                          <HBox prefHeight="35.0" prefWidth="240.0" style="-fx-background-color: #dddddd;">
+                                             <children>
+                                                <ComboBox fx:id="course_overview_select_semester" promptText="Semester wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;">
+                                                   <HBox.margin>
+                                                      <Insets left="5.0" top="5.0" />
+                                                   </HBox.margin>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </ComboBox>
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="29.0" prefWidth="775.0" style="-fx-background-color: #dddddd;">
+                                             <children>
+                                                <ComboBox fx:id="CourseProgrammCombo" promptText="Studiengang wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;">
+                                                   <HBox.margin>
+                                                      <Insets left="5.0" top="5.0" />
+                                                   </HBox.margin>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </ComboBox>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="10.0" />
+                                             </padding>
+                                          </HBox>
+                                      </items>
                                     </SplitPane>
                                  </top>
-                                 <center>
-                                    <Pane BorderPane.alignment="CENTER">
+                                 <left>
+                                    <BorderPane prefHeight="857.0" prefWidth="1439.0" BorderPane.alignment="CENTER">
+                                       <center>
+                                          <TableView fx:id="CourseTable" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+                                            <columns>
+                                              <TableColumn fx:id="CourseID" prefWidth="149.99998772144318" text="ID" />
+                                              <TableColumn fx:id="CourseTitle" minWidth="0.0" prefWidth="178.08383178710938" text="Titel" />
+                                                <TableColumn fx:id="CourseModule" minWidth="0.0" prefWidth="178.08383178710938" text="Modul" />
+                                                <TableColumn fx:id="CourseKind" minWidth="0.0" prefWidth="178.08383178710938" text="Art" />
+                                                <TableColumn fx:id="CourseChair" minWidth="0.0" prefWidth="178.08383178710938" text="Lehrstuhl" />
+                                                <TableColumn fx:id="CourseSWS" minWidth="0.0" prefWidth="178.08383178710938" text="SWS" />
+                                            </columns>
+                                             <padding>
+                                                <Insets top="10.0" />
+                                             </padding>
+                                          </TableView>
+                                       </center>
+                                       <top>
+                                          <GridPane style="-fx-background-color: #dddddd;" BorderPane.alignment="CENTER">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="711.4509887695312" minWidth="10.0" prefWidth="362.6502685546875" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1110.5458984375" minWidth="10.0" prefWidth="1076.3497314453125" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <TextField fx:id="searchbox_courses_overview" prefHeight="27.0" prefWidth="603.0" promptText="Kurse durchsuchen" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="5.0" left="5.0" top="5.0" />
+                                                   </GridPane.margin>
+                                                   <cursor>
+                                                      <Cursor fx:constant="TEXT" />
+                                                   </cursor>
+                                                </TextField>
+                                                <Button fx:id="btn_courses_search_course_overview" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Suchen" GridPane.columnIndex="1">
+                                                   <GridPane.margin>
+                                                      <Insets bottom="5.0" left="10.0" top="5.0" />
+                                                   </GridPane.margin>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </Button>
+                                             </children>
+                                             <opaqueInsets>
+                                                <Insets bottom="5.0" />
+                                             </opaqueInsets>
+                                             <padding>
+                                                <Insets bottom="5.0" top="5.0" />
+                                             </padding>
+                                          </GridPane>
+                                       </top>
+                                       <bottom>
+                                          <SplitPane dividerPositions="0.7241857241857241" style="-fx-background-color: #787878;" BorderPane.alignment="CENTER">
+                                            <items>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" style="-fx-background-color: #787878;">
+                                                   <children>
+                                                      <TextField fx:id="number_of_selected_courses" layoutX="301.0" layoutY="6.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                                   </children>
+                                                </AnchorPane>
+                                              <AnchorPane style="-fx-background-color: #787878;">
+                                                   <children>
+                                                      <Button fx:id="btn_copy_selected_courses" layoutX="7.0" layoutY="24.0" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="ausgewählte Kurse übernehmen" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                         <padding>
+                                                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                         </padding>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
+                                                      </Button>
+                                                   </children>
+                                                </AnchorPane>
+                                            </items>
+                                          </SplitPane>
+                                       </bottom>
+                                    </BorderPane>
+                                 </left>
+                              </BorderPane>
+                              <BorderPane prefHeight="947.0" prefWidth="1440.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <top>
+                                    <HBox style="-fx-background-color: #ffffff;">
                                        <children>
-                                          <SplitPane fx:id="dialogueAddNewSemester" dividerPositions="0.5" visible="false">
-                                             <items>
-                                                <TextField fx:id="newSemesterName" promptText="Semester " />
-                                                <Button fx:id="btnSaveNewSemester" mnemonicParsing="false" text="Speichern" />
-                                             </items>
-                                          </SplitPane>
-                                          <SplitPane fx:id="dialogueAddNewProgram" dividerPositions="0.5" visible="false">
-                                             <items>
-                                                <TextField fx:id="newProgramName" promptText="Studiengang Titel" />
-                                                <Button fx:id="btnSaveNewProgram" mnemonicParsing="false" text="Speichern" />
-                                             </items>
-                                          </SplitPane>
+                                          <Text fill="#787878" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Kurs anlegen" BorderPane.alignment="TOP_LEFT">
+                                             <BorderPane.margin>
+                                                <Insets bottom="5.0" left="10.0" top="5.0" />
+                                             </BorderPane.margin>
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets bottom="5.0" left="10.0" top="5.0" />
+                                             </HBox.margin>
+                                          </Text>
                                        </children>
-                                    </Pane>
+                                       <opaqueInsets>
+                                          <Insets bottom="5.0" left="10.0" top="5.0" />
+                                       </opaqueInsets>
+                                    </HBox>
+                                 </top>
+                                 <left>
+                                    <GridPane prefHeight="786.0" prefWidth="528.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <TextField fx:id="add_course_pane1" minHeight="-Infinity" prefHeight="40.0" prefWidth="201.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <cursor>
+                                                <Cursor fx:constant="TEXT" />
+                                             </cursor>
+                                          </TextField>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Titel" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <TextField minHeight="-Infinity" prefHeight="40.0" prefWidth="201.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1">
+                                             <cursor>
+                                                <Cursor fx:constant="TEXT" />
+                                             </cursor>
+                                          </TextField>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SWS" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Art" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hyperlink" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Maximale Teilnehmer" GridPane.rowIndex="5">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Erwartete Teilnehmer" GridPane.rowIndex="6">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Online Anmeldung" GridPane.rowIndex="7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Credits" GridPane.rowIndex="8">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <MenuButton mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" text="Vorlesung" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                            <items>
+                                              <MenuItem mnemonicParsing="false" text="Action 1" />
+                                              <MenuItem mnemonicParsing="false" text="Action 2" />
+                                            </items>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </MenuButton>
+                                          <TextField prefHeight="40.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                             <cursor>
+                                                <Cursor fx:constant="TEXT" />
+                                             </cursor>
+                                          </TextField>
+                                          <TextField prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <cursor>
+                                                <Cursor fx:constant="TEXT" />
+                                             </cursor>
+                                          </TextField>
+                                          <TextField prefHeight="40.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                             <cursor>
+                                                <Cursor fx:constant="TEXT" />
+                                             </cursor>
+                                          </TextField>
+                                          <TextField prefHeight="40.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                             <cursor>
+                                                <Cursor fx:constant="TEXT" />
+                                             </cursor>
+                                          </TextField>
+                                          <CheckBox mnemonicParsing="false" text="ja" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </CheckBox>
+                                          <TextField prefHeight="40.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                             <cursor>
+                                                <Cursor fx:constant="TEXT" />
+                                             </cursor>
+                                          </TextField>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sprache" GridPane.rowIndex="9">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <TextField prefHeight="40.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                             <cursor>
+                                                <Cursor fx:constant="TEXT" />
+                                             </cursor>
+                                          </TextField>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nummer">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                       </children>
+                                    </GridPane>
+                                 </left>
+                                 <center>
+                                    <GridPane prefHeight="731.0" prefWidth="493.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+                                      <columnConstraints>
+                                        <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="540.9344482421875" minWidth="10.0" prefWidth="347.53741455078125" />
+                                        <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="624.899169921875" minWidth="10.0" prefWidth="564.4625854492188" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints maxHeight="66.30815124511719" minHeight="50.0" prefHeight="52.847412109375" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="95.152587890625" minHeight="10.0" prefHeight="61.38665771484375" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="140.22666931152344" minHeight="50.0" prefHeight="56.927398681640625" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="127.07260131835938" minHeight="10.0" prefHeight="58.7733154296875" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="116.2266845703125" minHeight="50.0" prefHeight="61.234100341796875" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="85.76589965820312" minHeight="50.0" prefHeight="61.00146484375" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="144.9215087890625" minHeight="50.0" prefHeight="54.6207275390625" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="289.6859130859375" minHeight="50.0" prefHeight="272.3792724609375" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Turnus">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="20.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <MenuButton mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" text="jedes Semester" GridPane.columnIndex="1">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                <MenuItem mnemonicParsing="false" text="Action 2" />
+                                             </items>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </MenuButton>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wahlbereich" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="20.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <CheckBox mnemonicParsing="false" text="ja" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </CheckBox>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gruppen" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="20.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <TextField prefHeight="40.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                             <cursor>
+                                                <Cursor fx:constant="TEXT" />
+                                             </cursor>
+                                          </TextField>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="aus Studienbeiträgen finanziert" wrappingWidth="267.91912841796875" GridPane.rowIndex="2">
+                                             <GridPane.margin>
+                                                <Insets left="20.0" />
+                                             </GridPane.margin>
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Text>
+                                          <CheckBox mnemonicParsing="false" text="ja" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </CheckBox>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prüfungsdatum" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="20.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <DatePicker prefHeight="40.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </DatePicker>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Anfangsdatum" GridPane.rowIndex="5">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="20.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enddatum" GridPane.rowIndex="6">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="20.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <DatePicker prefHeight="40.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </DatePicker>
+                                          <DatePicker prefHeight="40.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </DatePicker>
+                                          <TreeView prefHeight="117.0" prefWidth="295.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modul" GridPane.rowIndex="7">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="30.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                       </children>
+                                    </GridPane>
+                                 </center>
+                                 <right>
+                                    <GridPane minWidth="-Infinity" prefHeight="867.0" prefWidth="0.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="487.0" minHeight="10.0" prefHeight="487.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="233.38519287109375" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                    </GridPane>
+                                 </right>
+                                 <bottom>
+                                    <SplitPane dividerPositions="0.29797979797979796" style="-fx-background-color: #787878;" BorderPane.alignment="CENTER">
+                                      <items>
+                                          <Button mnemonicParsing="false" prefHeight="49.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Abbrechen">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                          <Button alignment="CENTER" mnemonicParsing="false" prefHeight="49.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Speichern &amp; Weiter">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                      </items>
+                                    </SplitPane>
+                                 </bottom>
+                              </BorderPane>
+                              <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="957.0" prefWidth="1450.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <bottom>
+                                    <SplitPane dividerPositions="0.29797979797979796" BorderPane.alignment="CENTER">
+                                       <items>
+                                          <Button mnemonicParsing="false" prefHeight="49.0" text="Abbrechen">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                          </Button>
+                                          <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" text="Speichern &amp; Weiter">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                          </Button>
+                                       </items>
+                                    </SplitPane>
+                                 </bottom>
+                                 <center>
+                                    <GridPane prefHeight="731.0" prefWidth="493.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Beschreibung">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="40.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fällt aus am" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="40.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ausfalltermine" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="448.30816650390625" minWidth="220.0" prefWidth="215.53924560546875" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="696.4607543945312" minWidth="100.0" prefWidth="696.4607543945312" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="200.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="50.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="50.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </center>
+                                 <left>
+                                    <GridPane prefHeight="752.0" prefWidth="528.0" BorderPane.alignment="CENTER">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrperson" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Uhrzeit von" GridPane.rowIndex="3">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tag" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ct/st" GridPane.rowIndex="5">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rhythmus" GridPane.rowIndex="6">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <MenuButton mnemonicParsing="false" text="Gruppe 1" GridPane.columnIndex="1">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                <MenuItem mnemonicParsing="false" text="Action 2" />
+                                             </items>
+                                          </MenuButton>
+                                          <TextField prefHeight="27.0" prefWidth="153.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gruppe">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <MenuButton mnemonicParsing="false" text="Montag" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                <MenuItem mnemonicParsing="false" text="Action 2" />
+                                             </items>
+                                          </MenuButton>
+                                          <MenuButton mnemonicParsing="false" text="Alexander Bazo" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                <MenuItem mnemonicParsing="false" text="Action 2" />
+                                             </items>
+                                          </MenuButton>
+                                          <MenuButton mnemonicParsing="false" text="ct" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                <MenuItem mnemonicParsing="false" text="Action 2" />
+                                             </items>
+                                          </MenuButton>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Uhrzeit bis" GridPane.rowIndex="4">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <MenuButton mnemonicParsing="false" text="wöchentlich" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                <MenuItem mnemonicParsing="false" text="Action 2" />
+                                             </items>
+                                          </MenuButton>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Teilnehmer" GridPane.rowIndex="7">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <TextField prefHeight="27.0" prefWidth="153.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Voraussetzung" GridPane.rowIndex="8">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <TextField prefHeight="27.0" prefWidth="153.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Leistungsnachweis" GridPane.rowIndex="9">
+                                             <font>
+                                                <Font size="26.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="10.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <MenuButton mnemonicParsing="false" text="Prüfung" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                                                <MenuItem mnemonicParsing="false" text="Action 2" />
+                                             </items>
+                                          </MenuButton>
+                                          <TextField prefHeight="27.0" prefWidth="153.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </left>
+                                 <top>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kurs anlegen" BorderPane.alignment="TOP_LEFT">
+                                       <font>
+                                          <Font size="47.0" />
+                                       </font>
+                                       <BorderPane.margin>
+                                          <Insets left="10.0" />
+                                       </BorderPane.margin>
+                                    </Text>
+                                 </top>
+                              </BorderPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab fx:id="tab_overviews" style="-fx-background-radius: 0; -fx-cursor: hand; hover: #000000;" text="Übersichten">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #dddddd;">
+                           <children>
+                              <BorderPane prefHeight="947.0" prefWidth="1440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <top>
+                                    <GridPane BorderPane.alignment="CENTER">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <CheckBox mnemonicParsing="false" text="B.A. Medieninformatik">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="M.A. Medieninformatik" GridPane.columnIndex="1">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="B.A. Informationswissenschaft" GridPane.columnIndex="2">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="M.A. Informationswissenschaft" GridPane.columnIndex="3">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                          <CheckBox mnemonicParsing="false" text="M.A. Digital Humanities" GridPane.columnIndex="4">
+                                             <GridPane.margin>
+                                                <Insets left="5.0" />
+                                             </GridPane.margin>
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </CheckBox>
+                                       </children>
+                                    </GridPane>
+                                 </top>
+                                 <right>
+                                    <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="871.0" prefWidth="274.0" BorderPane.alignment="CENTER">
+                                      <items>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                             <children>
+                                                <ListView layoutX="2.0" layoutY="100.0" prefHeight="454.0" prefWidth="158.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children>
+                                          </AnchorPane>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ffffff;">
+                                             <children>
+                                                <Button layoutX="15.0" layoutY="17.0" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-border-color: #7D003C; -fx-background-radius: 0;" text="Anzeigen" />
+                                                <Button layoutX="15.0" layoutY="58.0" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-border-color: #7D003C; -fx-background-radius: 0;" text="Exportieren" />
+                                             </children>
+                                          </AnchorPane>
+                                      </items>
+                                    </SplitPane>
+                                 </right>
+                                 <center>
+                                    <ImageView fitHeight="721.0" fitWidth="973.0" pickOnBounds="true" preserveRatio="true" visible="false" BorderPane.alignment="CENTER" />
                                  </center>
                               </BorderPane>
-                           </center>
-                        </BorderPane>
-                        <BorderPane prefHeight="947.0" prefWidth="1440.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <top>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kurs anlegen" BorderPane.alignment="TOP_LEFT">
-                                 <BorderPane.margin>
-                                    <Insets left="10.0" />
-                                 </BorderPane.margin>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </TabPane>
+         </center>
+         <top>
+            <SplitPane dividerPositions="0.9158553546592489" prefHeight="44.0" prefWidth="1440.0" style="-fx-background-color: #dddddd;" BorderPane.alignment="CENTER">
+              <items>
+                <AnchorPane prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #dddddd;">
+                     <children>
+                        <HBox layoutX="8.0" layoutY="7.0" prefHeight="42.0" prefWidth="1314.0" style="-fx-background-color: #787878;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Text fill="WHITE" layoutX="8.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrplanung" wrappingWidth="182.85295867919922">
                                  <font>
-                                    <Font size="47.0" />
+                                    <Font name="System Bold" size="26.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" top="5.0" />
+                                 </HBox.margin>
                               </Text>
-                           </top>
-                           <left>
-                              <GridPane prefHeight="752.0" prefWidth="528.0" BorderPane.alignment="CENTER">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                    <TextField prefHeight="27.0" prefWidth="153.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Titel" GridPane.rowIndex="1">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <TextField prefHeight="15.0" prefWidth="201.0" GridPane.columnIndex="1" />
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SWS" GridPane.rowIndex="3">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Art" GridPane.rowIndex="2">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hyperlink" GridPane.rowIndex="4">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Maximale Teilnehmer" GridPane.rowIndex="5">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Erwartete Teilnehmer" GridPane.rowIndex="6">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Online Anmeldung" GridPane.rowIndex="7">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Credits" GridPane.rowIndex="8">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <MenuButton mnemonicParsing="false" text="Vorlesung" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                      <items>
-                                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                                      </items>
-                                    </MenuButton>
-                                    <TextField prefHeight="27.0" prefWidth="153.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                    <TextField prefHeight="27.0" prefWidth="153.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <TextField prefHeight="27.0" prefWidth="155.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                    <TextField prefHeight="27.0" prefWidth="155.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                    <CheckBox mnemonicParsing="false" text="ja" GridPane.columnIndex="1" GridPane.rowIndex="7">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                    </CheckBox>
-                                    <TextField prefHeight="27.0" prefWidth="155.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sprache" GridPane.rowIndex="9">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <TextField prefHeight="27.0" prefWidth="155.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nummer">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                 </children>
-                              </GridPane>
-                           </left>
-                           <center>
-                              <GridPane prefHeight="731.0" prefWidth="493.0" BorderPane.alignment="CENTER">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints maxHeight="66.30815124511719" minHeight="50.0" prefHeight="52.847412109375" vgrow="SOMETIMES" />
-                                  <RowConstraints maxHeight="95.152587890625" minHeight="10.0" prefHeight="61.38665771484375" vgrow="SOMETIMES" />
-                                  <RowConstraints maxHeight="140.22666931152344" minHeight="50.0" prefHeight="56.927398681640625" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="127.07260131835938" minHeight="10.0" prefHeight="58.7733154296875" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="116.2266845703125" minHeight="50.0" prefHeight="61.234100341796875" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="85.76589965820312" minHeight="50.0" prefHeight="61.00146484375" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="144.9215087890625" minHeight="50.0" prefHeight="54.6207275390625" vgrow="SOMETIMES" />
-                                    <RowConstraints maxHeight="289.6859130859375" minHeight="50.0" prefHeight="272.3792724609375" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Turnus">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="20.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <MenuButton mnemonicParsing="false" text="jedes Semester" GridPane.columnIndex="1">
-                                       <items>
-                                          <MenuItem mnemonicParsing="false" text="Action 1" />
-                                          <MenuItem mnemonicParsing="false" text="Action 2" />
-                                       </items>
-                                    </MenuButton>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wahlbereich" GridPane.rowIndex="1">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="20.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <CheckBox mnemonicParsing="false" text="ja" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                    </CheckBox>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gruppen" GridPane.rowIndex="3">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="20.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="aus Studienbeiträgen finanziert" wrappingWidth="267.91912841796875" GridPane.rowIndex="2">
-                                       <font>
-                                          <Font size="21.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="20.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <CheckBox mnemonicParsing="false" text="ja" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                    </CheckBox>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prüfungsdatum" GridPane.rowIndex="4">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="20.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Anfangsdatum" GridPane.rowIndex="5">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="20.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enddatum" GridPane.rowIndex="6">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="20.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                    <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                    <TreeView prefHeight="117.0" prefWidth="295.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modul" GridPane.rowIndex="7">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="30.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                 </children>
-                              </GridPane>
-                           </center>
-                           <right>
-                              <GridPane prefHeight="731.0" prefWidth="322.0" BorderPane.alignment="CENTER">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints maxHeight="487.0" minHeight="10.0" prefHeight="487.0" vgrow="SOMETIMES" />
-                                  <RowConstraints maxHeight="233.38519287109375" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                              </GridPane>
-                           </right>
-                           <bottom>
-                              <SplitPane dividerPositions="0.29797979797979796" BorderPane.alignment="CENTER">
-                                <items>
-                                    <Button mnemonicParsing="false" prefHeight="49.0" text="Abbrechen">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                    </Button>
-                                    <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" text="Speichern &amp; Weiter">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                    </Button>
-                                </items>
-                              </SplitPane>
-                           </bottom>
-                        </BorderPane>
-                        <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="957.0" prefWidth="1450.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <bottom>
-                              <SplitPane dividerPositions="0.29797979797979796" BorderPane.alignment="CENTER">
-                                 <items>
-                                    <Button mnemonicParsing="false" prefHeight="49.0" text="Abbrechen">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                    </Button>
-                                    <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" text="Speichern &amp; Weiter">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                    </Button>
-                                 </items>
-                              </SplitPane>
-                           </bottom>
-                           <center>
-                              <GridPane prefHeight="731.0" prefWidth="493.0" BorderPane.alignment="CENTER">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Beschreibung">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="40.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fällt aus am" GridPane.rowIndex="1">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="40.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ausfalltermine" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                 </children>
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="448.30816650390625" minWidth="220.0" prefWidth="215.53924560546875" />
-                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="696.4607543945312" minWidth="100.0" prefWidth="696.4607543945312" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="200.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="50.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="50.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                              </GridPane>
-                           </center>
-                           <left>
-                              <GridPane prefHeight="752.0" prefWidth="528.0" BorderPane.alignment="CENTER">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrperson" GridPane.rowIndex="1">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Uhrzeit von" GridPane.rowIndex="3">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tag" GridPane.rowIndex="2">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ct/st" GridPane.rowIndex="5">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rhythmus" GridPane.rowIndex="6">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <MenuButton mnemonicParsing="false" text="Gruppe 1" GridPane.columnIndex="1">
-                                       <items>
-                                          <MenuItem mnemonicParsing="false" text="Action 1" />
-                                          <MenuItem mnemonicParsing="false" text="Action 2" />
-                                       </items>
-                                    </MenuButton>
-                                    <TextField prefHeight="27.0" prefWidth="153.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gruppe">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <MenuButton mnemonicParsing="false" text="Montag" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                       <items>
-                                          <MenuItem mnemonicParsing="false" text="Action 1" />
-                                          <MenuItem mnemonicParsing="false" text="Action 2" />
-                                       </items>
-                                    </MenuButton>
-                                    <MenuButton mnemonicParsing="false" text="Alexander Bazo" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                       <items>
-                                          <MenuItem mnemonicParsing="false" text="Action 1" />
-                                          <MenuItem mnemonicParsing="false" text="Action 2" />
-                                       </items>
-                                    </MenuButton>
-                                    <MenuButton mnemonicParsing="false" text="ct" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                                       <items>
-                                          <MenuItem mnemonicParsing="false" text="Action 1" />
-                                          <MenuItem mnemonicParsing="false" text="Action 2" />
-                                       </items>
-                                    </MenuButton>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Uhrzeit bis" GridPane.rowIndex="4">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <MenuButton mnemonicParsing="false" text="wöchentlich" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                                       <items>
-                                          <MenuItem mnemonicParsing="false" text="Action 1" />
-                                          <MenuItem mnemonicParsing="false" text="Action 2" />
-                                       </items>
-                                    </MenuButton>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Teilnehmer" GridPane.rowIndex="7">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <TextField prefHeight="27.0" prefWidth="153.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Voraussetzung" GridPane.rowIndex="8">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <TextField prefHeight="27.0" prefWidth="153.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Leistungsnachweis" GridPane.rowIndex="9">
-                                       <font>
-                                          <Font size="26.0" />
-                                       </font>
-                                       <GridPane.margin>
-                                          <Insets left="10.0" />
-                                       </GridPane.margin>
-                                    </Text>
-                                    <MenuButton mnemonicParsing="false" text="Prüfung" GridPane.columnIndex="1" GridPane.rowIndex="9">
-                                       <items>
-                                          <MenuItem mnemonicParsing="false" text="Action 1" />
-                                          <MenuItem mnemonicParsing="false" text="Action 2" />
-                                       </items>
-                                    </MenuButton>
-                                    <TextField prefHeight="27.0" prefWidth="153.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                 </children>
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                              </GridPane>
-                           </left>
-                           <top>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kurs anlegen" BorderPane.alignment="TOP_LEFT">
-                                 <font>
-                                    <Font size="47.0" />
-                                 </font>
-                                 <BorderPane.margin>
-                                    <Insets left="10.0" />
-                                 </BorderPane.margin>
-                              </Text>
-                           </top>
-                        </BorderPane>
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
-            </content>
-          </Tab>
-            <Tab fx:id="tab_overviews" text="Übersichten">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #787878;">
                      <children>
-                        <BorderPane prefHeight="947.0" prefWidth="1440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <top>
-                              <GridPane BorderPane.alignment="CENTER">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
-                                 <children>
-                                    <CheckBox mnemonicParsing="false" text="B.A. Medieninformatik">
-                                       <GridPane.margin>
-                                          <Insets left="5.0" />
-                                       </GridPane.margin>
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </CheckBox>
-                                    <CheckBox mnemonicParsing="false" text="M.A. Medieninformatik" GridPane.columnIndex="1">
-                                       <GridPane.margin>
-                                          <Insets left="5.0" />
-                                       </GridPane.margin>
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </CheckBox>
-                                    <CheckBox mnemonicParsing="false" text="B.A. Informationswissenschaft" GridPane.columnIndex="2">
-                                       <GridPane.margin>
-                                          <Insets left="5.0" />
-                                       </GridPane.margin>
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </CheckBox>
-                                    <CheckBox mnemonicParsing="false" text="M.A. Informationswissenschaft" GridPane.columnIndex="3">
-                                       <GridPane.margin>
-                                          <Insets left="5.0" />
-                                       </GridPane.margin>
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </CheckBox>
-                                    <CheckBox mnemonicParsing="false" text="M.A. Digital Humanities" GridPane.columnIndex="4">
-                                       <GridPane.margin>
-                                          <Insets left="5.0" />
-                                       </GridPane.margin>
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </CheckBox>
-                                 </children>
-                              </GridPane>
-                           </top>
-                           <right>
-                              <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="871.0" prefWidth="274.0" BorderPane.alignment="CENTER">
+                        <HBox layoutX="4.0" layoutY="1.0" prefHeight="42.0" prefWidth="116.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <MenuButton fx:id="btn_main_menu" layoutX="4.0" layoutY="1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" text="Menu">
                                 <items>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                       <children>
-                                          <ListView layoutX="2.0" layoutY="100.0" prefHeight="454.0" prefWidth="158.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                       </children>
-                                    </AnchorPane>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                       <children>
-                                          <Button layoutX="15.0" layoutY="20.0" mnemonicParsing="false" text="Anzeigen" />
-                                          <Button fx:id="btnExportCurrentTable" layoutX="15.0" layoutY="62.0" mnemonicParsing="false" text="Aktuelle Ansicht exportieren" />
-                                       </children>
-                                    </AnchorPane>
+                                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                                  <MenuItem mnemonicParsing="false" text="Action 2" />
                                 </items>
-                              </SplitPane>
-                           </right>
-                           <center>
-                              <ImageView fitHeight="721.0" fitWidth="973.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-                           </center>
-                        </BorderPane>
-                     </children></AnchorPane>
-               </content>
-            </Tab>
-        </tabs>
-      </TabPane>
-   </center>
-   <top>
-      <SplitPane dividerPositions="0.9165507649513213" prefHeight="44.0" prefWidth="1440.0" BorderPane.alignment="CENTER">
-        <items>
-          <AnchorPane prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <HBox layoutX="8.0" layoutY="7.0" prefHeight="42.0" prefWidth="1314.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Text layoutX="8.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrplanung" wrappingWidth="182.85295867919922">
-                           <font>
-                              <Font name="System Bold" size="26.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="5.0" top="5.0" />
-                           </HBox.margin>
-                        </Text>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <HBox.margin>
+                                    <Insets bottom="2.0" left="2.0" top="2.0" />
+                                 </HBox.margin>
+                              </MenuButton>
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
-               </children>
-            </AnchorPane>
-          <AnchorPane prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <HBox layoutX="4.0" layoutY="1.0" prefHeight="42.0" prefWidth="116.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <MenuButton fx:id="btn_main_menu" layoutX="4.0" layoutY="1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" text="Menu">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="Aktuelle Bearbeitung exportieren" />
-                            <MenuItem mnemonicParsing="false" text="Speichern" />
-                          </items>
-                        </MenuButton>
-                     </children>
-                  </HBox>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-   </top>
-</BorderPane>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </top>
+      </BorderPane>
+   </content>
+</ScrollPane>
