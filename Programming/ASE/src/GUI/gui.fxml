@@ -28,8 +28,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<ScrollPane maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Controller">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Controller">
 
    <content>
       <BorderPane fx:id="bg_pane" style="-fx-background-color: #787878;">
