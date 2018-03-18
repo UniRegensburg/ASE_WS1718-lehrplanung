@@ -9,6 +9,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
@@ -34,6 +35,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+
 
 <ScrollPane maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Controller">
    <content>
@@ -214,6 +216,7 @@
                                  </bottom>
                                  <right>
                                     <GridPane prefHeight="828.0" prefWidth="297.0" style="-fx-background-color: #f5f5f5;" BorderPane.alignment="CENTER">
+
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                                       </columnConstraints>
@@ -223,6 +226,7 @@
                                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
+
                                           <ListView prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f5f5f5;" />
                                           <Button fx:id="btn_add_courses_to_teacher" mnemonicParsing="false" prefHeight="50.0" prefWidth="303.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" stylesheets="@style.css" text="Kurse übernehmen" GridPane.rowIndex="1">
                                              <font>
@@ -402,6 +406,7 @@
                                  </top>
                                  <left>
                                     <GridPane prefHeight="786.0" prefWidth="528.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" />
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -556,6 +561,7 @@
                                                 <Insets left="10.0" />
                                              </GridPane.margin>
                                           </Text>
+
                                        </children>
                                     </GridPane>
                                  </left>
@@ -575,6 +581,7 @@
                                           <RowConstraints maxHeight="144.9215087890625" minHeight="50.0" prefHeight="54.6207275390625" vgrow="SOMETIMES" />
                                           <RowConstraints maxHeight="289.6859130859375" minHeight="50.0" prefHeight="272.3792724609375" vgrow="SOMETIMES" />
                                       </rowConstraints>
+
                                        <children>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Turnus">
                                              <font>
@@ -778,6 +785,7 @@
                                  <left>
                                     <GridPane prefHeight="752.0" prefWidth="528.0" BorderPane.alignment="CENTER">
                                        <children>
+
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrperson" GridPane.rowIndex="1">
                                              <font>
                                                 <Font size="26.0" />
@@ -937,6 +945,7 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #dddddd;">
                            <children>
                               <BorderPane prefHeight="947.0" prefWidth="1440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
                                  <top>
                                     <GridPane BorderPane.alignment="CENTER">
                                       <columnConstraints>
@@ -950,6 +959,7 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                        <children>
+
                                           <CheckBox mnemonicParsing="false" text="B.A. Medieninformatik">
                                              <GridPane.margin>
                                                 <Insets left="5.0" />
@@ -990,6 +1000,7 @@
                                                 <Font size="15.0" />
                                              </font>
                                           </CheckBox>
+
                                        </children>
                                     </GridPane>
                                  </top>

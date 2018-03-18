@@ -1,18 +1,27 @@
 package Database;
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.net.CookieHandler;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import Interfaces.Lecturer;
+import Interfaces.Course;
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 
 public class DatabaseInterface {
 
+    Connection conn;
+    Integer programID;
+
     public DatabaseInterface() {
+
+        conn = connect();
+        programID = 0;
 
     }
 
@@ -31,13 +40,13 @@ public class DatabaseInterface {
     public ObservableList<Lecturer> GetDozenten() {
         try {
 
-            Connection conn = connect();
             ObservableList<Lecturer> data = FXCollections.observableArrayList();
 
             ResultSet rs=conn.createStatement().executeQuery("SELECT * FROM Dozenten");
             while (rs.next()) {
 
-                data.add(new Lecturer(rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5)));
+                data.add(new Lecturer(rs.getInt(1), rs.getString(2),
+                        rs.getString(3), rs.getString(4), rs.getInt(5)));
             }
             return data;
 
@@ -45,6 +54,95 @@ public class DatabaseInterface {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public List GetProgramms(){
+        List<String> Programms = new ArrayList<String>();
+        try{
+            ResultSet rs = conn.createStatement().executeQuery("SELECT Titel FROM Studiengang");
+            while (rs.next()){
+                Programms.add(rs.getString(1));
+            }
+            return Programms;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ObservableList<Course> GetCourses(){
+        try {
+
+            ObservableList<Course> data = FXCollections.observableArrayList();
+            ResultSet rs;
+
+            if(programID == 0){
+                rs=conn.createStatement().executeQuery("SELECT ID, SWS, Modul, Art, Titel, Lehrstuhl " +
+                        "FROM Kurse");
+            }
+            else{
+                rs=conn.createStatement().executeQuery("SELECT ID, SWS, Modul, Art, Titel, Lehrstuhl " +
+                        "FROM Kurse WHERE Studiengang ='"+programID+"'");
+            }
+            while (rs.next()) {
+
+                data.add(new Course(rs.getInt(1), rs.getInt(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6)));
+            }
+            return data;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public void writeLecturers(String name, String surname, String title, Integer deputat) {
+        try {
+            Statement st = conn.createStatement();
+            st.executeUpdate("INSERT INTO Dozenten(Nachname,Vorname,Titel,Deputat)VALUES('"+name+"'," +
+                    "'"+surname+"','"+title+"','"+deputat+"')");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void deleteLecturers(Integer ID){
+        try{
+            Statement st = conn.createStatement();
+            st.executeUpdate("DELETE FROM Dozenten WHERE ID = '"+ID+"'");
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateLecturers(Integer ID, String name, String surname, String title, Integer deputat){
+        try{
+            Statement st = conn.createStatement();
+            st.executeUpdate("UPDATE Dozenten SET Nachname ='"+name+"', Vorname ='"+surname+"', Titel ='"+title+"', Deputat ='"+deputat+"' WHERE ID = '"+ID+"'");
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getSelectedCourses(String program){
+
+        try {
+            Statement st = conn.createStatement();
+            ResultSet rs = st.executeQuery("SELECT ID FROM Studiengang WHERE Titel = '"+ program +"'");
+            while(rs.next()){
+                programID = rs.getInt(1);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 }
 
