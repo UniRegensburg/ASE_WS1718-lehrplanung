@@ -123,7 +123,8 @@ public class DatabaseInterface {
     public void updateLecturers(Integer ID, String name, String surname, String title, Integer deputat){
         try{
             Statement st = conn.createStatement();
-            st.executeUpdate("UPDATE Dozenten SET Nachname ='"+name+"', Vorname ='"+surname+"', Titel ='"+title+"', Deputat ='"+deputat+"' WHERE ID = '"+ID+"'");
+            st.executeUpdate("UPDATE Dozenten SET Nachname ='"+name+"', Vorname ='"+surname+"', " +
+                    "Titel ='"+title+"', Deputat ='"+deputat+"' WHERE ID = '"+ID+"'");
         }
         catch (SQLException e) {
             e.printStackTrace();
