@@ -15,11 +15,13 @@ import javax.swing.event.TableModelListener;
 public class Controller  {
 
     @FXML
-    private Button createLecturerButton, createCourseButton, saveLecturerButton, /*saveCourseButton,*/ deleteLecturerButton, updateLecturerButton, cancelLecturerButton;
+    private Button createLecturerButton, createCourseButton, saveLecturerButton, saveCourseButton, deleteLecturerButton,
+            updateLecturerButton, cancelLecturerButton, cancelCourseButton;
     @FXML
     private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText;
     @FXML
-    private BorderPane pane_teachers_overview, pane_single_teacher;
+    private BorderPane pane_teachers_overview, pane_single_teacher, pane_courses_overview_start,
+            pane_courses_overview_create1;
     @FXML
     private TableView<Lecturer> LecturerTable;
     @FXML
@@ -39,7 +41,8 @@ public class Controller  {
     @FXML
     private ComboBox courseProgramCombo;
 
-    private Boolean edit = false;
+    private Boolean editLecturer = false;
+    private Boolean editCourse = false;
     private Integer IDTemp = null;
 
     private DatabaseInterface dc = new DatabaseInterface();;
@@ -48,15 +51,22 @@ public class Controller  {
     private void initialize() {
 
         fillLecturers();
+
         createLecturer();
         createCourse();
+
         saveLecturer();
         //saveCourse();
+
         deleteLecturer();
         updateLecturer();
+
         fillCourse();
         fillCourseProgramCombo();
+
         cancelLecturer();
+        cancelCourse();
+
         courseProgramAction();
 
     }
@@ -84,7 +94,6 @@ public class Controller  {
             pane_teachers_overview.setVisible(false);
             pane_single_teacher.setVisible(true);
 
-
         });
 
     }
@@ -93,9 +102,8 @@ public class Controller  {
 
         createCourseButton.setOnAction((event) -> {
 
-            //pane_course_overview.setVisible(false);
-            //pane_single_course.setVisible(true);
-
+            pane_courses_overview_start.setVisible(false);
+            pane_courses_overview_create1.setVisible(true);
 
         });
 
@@ -110,13 +118,13 @@ public class Controller  {
             String title = lecturerTitleText.getText();
             Integer deputat = Integer.parseInt(lecturerDeputatText.getText());
 
-            if(edit == false) {
+            if(editLecturer == false) {
                 dc.writeLecturers(name, surname, title, deputat);
             }
             else {
                 dc.updateLecturers(IDTemp, name, surname, title, deputat);
                 IDTemp = null;
-                edit = false;
+                editLecturer = false;
             }
 
             pane_teachers_overview.setVisible(true);
@@ -135,7 +143,7 @@ public class Controller  {
 
     private void saveCourse() {
 
-        saveLecturerButton.setOnAction((event) -> {
+        saveCourseButton.setOnAction((event) -> {
 
 
 
@@ -160,7 +168,7 @@ public class Controller  {
 
         updateLecturerButton.setOnAction((event) -> {
 
-            edit = true;
+            editLecturer = true;
             Lecturer selected = LecturerTable.getSelectionModel().getSelectedItem();
 
             pane_teachers_overview.setVisible(false);
@@ -212,8 +220,25 @@ public class Controller  {
 
         cancelLecturerButton.setOnAction((event) -> {
 
+            editLecturer = false;
+            lecturerNameText.clear();
+            lecturerSurnameText.clear();
+            lecturerTitleText.clear();
+            lecturerDeputatText.clear();
+
             pane_teachers_overview.setVisible(true);
             pane_single_teacher.setVisible(false);
+
+        });
+
+    }
+
+    private void cancelCourse() {
+
+        cancelCourseButton.setOnAction((event) -> {
+
+            pane_courses_overview_start.setVisible(true);
+            pane_courses_overview_create1.setVisible(false);
 
         });
 

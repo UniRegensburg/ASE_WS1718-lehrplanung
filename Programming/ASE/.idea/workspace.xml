@@ -61,18 +61,11 @@
       <file leaf-file-name="DatabaseInterface.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Database/DatabaseInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-              <folding>
-                <element signature="method#connect#0;class#DatabaseInterface#0" expanded="false" />
-                <element signature="method#GetDozenten#0;class#DatabaseInterface#0" expanded="false" />
-                <element signature="method#GetProgramms#0;class#DatabaseInterface#0" expanded="false" />
-                <element signature="method#GetCourses#0;class#DatabaseInterface#0" expanded="false" />
-                <element signature="method#writeLecturers#0;class#DatabaseInterface#0" expanded="false" />
-                <element signature="method#deleteLecturers#0;class#DatabaseInterface#0" expanded="false" />
-                <element signature="method#updateLecturers#0;class#DatabaseInterface#0" expanded="false" />
-                <marker date="1521374303251" expanded="false" signature="4235:4241" ph="{...}" />
-              </folding>
+
+            <state relative-caret-position="2057">
+              <caret line="130" column="9" lean-forward="true" selection-start-line="130" selection-start-column="9" selection-end-line="130" selection-end-column="9" />
+              <folding />
+
             </state>
           </provider>
         </entry>
@@ -80,11 +73,11 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Control/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+
+            <state relative-caret-position="289">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding />
+
             </state>
           </provider>
         </entry>
@@ -92,20 +85,21 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Control/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1033">
-              <caret line="142" column="0" lean-forward="true" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+
+            <state relative-caret-position="1530">
+              <caret line="131" column="0" lean-forward="true" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+
               <folding>
                 <element signature="method#fillLecturers#0;class#Controller#0" expanded="false" />
                 <element signature="method#createLecturer#0;class#Controller#0" expanded="false" />
                 <element signature="method#createCourse#0;class#Controller#0" expanded="false" />
-                <element signature="method#saveLecturer#0;class#Controller#0" expanded="false" />
                 <element signature="method#deleteLecturer#0;class#Controller#0" expanded="false" />
                 <element signature="method#updateLecturer#0;class#Controller#0" expanded="false" />
-                <element signature="e#4238#4815#0" expanded="false" />
                 <element signature="method#fillCourse#0;class#Controller#0" expanded="false" />
                 <element signature="method#fillCourseProgramCombo#0;class#Controller#0" expanded="false" />
                 <element signature="method#courseProgramAction#0;class#Controller#0" expanded="false" />
                 <element signature="method#cancelLecturer#0;class#Controller#0" expanded="false" />
+                <element signature="method#cancelCourse#0;class#Controller#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -114,9 +108,13 @@
       <file leaf-file-name="gui.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/gui.fxml">
           <provider editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="31" column="12" lean-forward="false" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
-              <folding />
+
+            <state relative-caret-position="680">
+              <caret line="40" column="12" lean-forward="false" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
+              <folding>
+                <marker date="1521377680342" expanded="true" signature="82046:82050" ph="..." />
+              </folding>
+
             </state>
           </provider>
           <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
@@ -175,15 +173,21 @@
         <option value="$PROJECT_DIR$/src/Control/Controller.java" />
         <option value="$PROJECT_DIR$/src/Control/Main.java" />
         <option value="$PROJECT_DIR$/src/GUI/gui.fxml" />
+
+        <option value="$PROJECT_DIR$/src/Database/DatabaseInterface.java" />
+        <option value="$PROJECT_DIR$/src/Control/Controller.java" />
+
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds">
-    <option name="x" value="68" />
-    <option name="y" value="55" />
-    <option name="width" value="1171" />
-    <option name="height" value="781" />
+
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="18" />
+    <option name="y" value="23" />
+    <option name="width" value="1411" />
+    <option name="height" value="829" />
+
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -223,9 +227,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -267,6 +268,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -513,7 +517,9 @@
     <option name="totallyTimeSpent" value="1302000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="68" y="55" width="1171" height="781" extended-state="0" />
+
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -524,12 +530,16 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31308413" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1889986" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.110091746" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32258064" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1118702" sideWeight="0.6703755" order="2" side_tool="false" content_ui="combo" />
+
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.194375" sideWeight="0.6703755" order="2" side_tool="false" content_ui="combo" />
+
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2489019" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -583,7 +593,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -606,7 +616,9 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="321">
           <caret line="32" column="24" lean-forward="true" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
-          <folding />
+          <folding>
+            <marker date="1521377680342" expanded="true" signature="82046:82050" ph="..." />
+          </folding>
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
@@ -633,16 +645,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="707">
           <caret line="61" column="93" lean-forward="false" selection-start-line="61" selection-start-column="93" selection-end-line="61" selection-end-column="93" />
-          <folding>
-            <element signature="method#connect#0;class#DatabaseInterface#0" expanded="false" />
-            <element signature="method#GetDozenten#0;class#DatabaseInterface#0" expanded="false" />
-            <element signature="method#GetProgramms#0;class#DatabaseInterface#0" expanded="false" />
-            <element signature="method#GetCourses#0;class#DatabaseInterface#0" expanded="false" />
-            <element signature="method#writeLecturers#0;class#DatabaseInterface#0" expanded="false" />
-            <element signature="method#deleteLecturers#0;class#DatabaseInterface#0" expanded="false" />
-            <element signature="method#updateLecturers#0;class#DatabaseInterface#0" expanded="false" />
-            <marker date="1521374303251" expanded="false" signature="4235:4241" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -655,14 +658,13 @@
             <element signature="method#fillLecturers#0;class#Controller#0" expanded="false" />
             <element signature="method#createLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#createCourse#0;class#Controller#0" expanded="false" />
-            <element signature="method#saveLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#deleteLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#updateLecturer#0;class#Controller#0" expanded="false" />
-            <element signature="e#4238#4815#0" expanded="false" />
             <element signature="method#fillCourse#0;class#Controller#0" expanded="false" />
             <element signature="method#fillCourseProgramCombo#0;class#Controller#0" expanded="false" />
             <element signature="method#courseProgramAction#0;class#Controller#0" expanded="false" />
             <element signature="method#cancelLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#cancelCourse#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -695,14 +697,13 @@
             <element signature="method#fillLecturers#0;class#Controller#0" expanded="false" />
             <element signature="method#createLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#createCourse#0;class#Controller#0" expanded="false" />
-            <element signature="method#saveLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#deleteLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#updateLecturer#0;class#Controller#0" expanded="false" />
-            <element signature="e#4238#4815#0" expanded="false" />
             <element signature="method#fillCourse#0;class#Controller#0" expanded="false" />
             <element signature="method#fillCourseProgramCombo#0;class#Controller#0" expanded="false" />
             <element signature="method#courseProgramAction#0;class#Controller#0" expanded="false" />
             <element signature="method#cancelLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#cancelCourse#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -711,7 +712,9 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="33" column="24" lean-forward="false" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
-          <folding />
+          <folding>
+            <marker date="1521377680342" expanded="true" signature="82046:82050" ph="..." />
+          </folding>
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
@@ -726,14 +729,13 @@
             <element signature="method#fillLecturers#0;class#Controller#0" expanded="false" />
             <element signature="method#createLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#createCourse#0;class#Controller#0" expanded="false" />
-            <element signature="method#saveLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#deleteLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#updateLecturer#0;class#Controller#0" expanded="false" />
-            <element signature="e#4238#4815#0" expanded="false" />
             <element signature="method#fillCourse#0;class#Controller#0" expanded="false" />
             <element signature="method#fillCourseProgramCombo#0;class#Controller#0" expanded="false" />
             <element signature="method#courseProgramAction#0;class#Controller#0" expanded="false" />
             <element signature="method#cancelLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#cancelCourse#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -752,7 +754,9 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="33" column="24" lean-forward="false" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
-          <folding />
+          <folding>
+            <marker date="1521377680342" expanded="true" signature="82046:82050" ph="..." />
+          </folding>
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
@@ -773,7 +777,9 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="32" column="24" lean-forward="false" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
-          <folding />
+          <folding>
+            <marker date="1521377680342" expanded="true" signature="82046:82050" ph="..." />
+          </folding>
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
@@ -795,7 +801,9 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="32" column="24" lean-forward="true" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
-          <folding />
+          <folding>
+            <marker date="1521377680342" expanded="true" signature="82046:82050" ph="..." />
+          </folding>
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
@@ -811,14 +819,13 @@
             <element signature="method#fillLecturers#0;class#Controller#0" expanded="false" />
             <element signature="method#createLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#createCourse#0;class#Controller#0" expanded="false" />
-            <element signature="method#saveLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#deleteLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#updateLecturer#0;class#Controller#0" expanded="false" />
-            <element signature="e#4238#4815#0" expanded="false" />
             <element signature="method#fillCourse#0;class#Controller#0" expanded="false" />
             <element signature="method#fillCourseProgramCombo#0;class#Controller#0" expanded="false" />
             <element signature="method#courseProgramAction#0;class#Controller#0" expanded="false" />
             <element signature="method#cancelLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#cancelCourse#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -841,14 +848,13 @@
             <element signature="method#fillLecturers#0;class#Controller#0" expanded="false" />
             <element signature="method#createLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#createCourse#0;class#Controller#0" expanded="false" />
-            <element signature="method#saveLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#deleteLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#updateLecturer#0;class#Controller#0" expanded="false" />
-            <element signature="e#4238#4815#0" expanded="false" />
             <element signature="method#fillCourse#0;class#Controller#0" expanded="false" />
             <element signature="method#fillCourseProgramCombo#0;class#Controller#0" expanded="false" />
             <element signature="method#courseProgramAction#0;class#Controller#0" expanded="false" />
             <element signature="method#cancelLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#cancelCourse#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -878,14 +884,13 @@
             <element signature="method#fillLecturers#0;class#Controller#0" expanded="false" />
             <element signature="method#createLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#createCourse#0;class#Controller#0" expanded="false" />
-            <element signature="method#saveLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#deleteLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#updateLecturer#0;class#Controller#0" expanded="false" />
-            <element signature="e#4238#4815#0" expanded="false" />
             <element signature="method#fillCourse#0;class#Controller#0" expanded="false" />
             <element signature="method#fillCourseProgramCombo#0;class#Controller#0" expanded="false" />
             <element signature="method#courseProgramAction#0;class#Controller#0" expanded="false" />
             <element signature="method#cancelLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#cancelCourse#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -929,7 +934,9 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="321">
           <caret line="32" column="24" lean-forward="true" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
-          <folding />
+          <folding>
+            <marker date="1521377680342" expanded="true" signature="82046:82050" ph="..." />
+          </folding>
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
@@ -948,31 +955,52 @@
     <entry file="file://$PROJECT_DIR$/src/Interfaces/Course.java" />
     <entry file="file://$PROJECT_DIR$/src/GUI/gui.fxml">
       <provider editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="31" column="12" lean-forward="false" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
-          <folding />
+
+        <state relative-caret-position="680">
+          <caret line="40" column="12" lean-forward="false" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
+          <folding>
+            <marker date="1521377680342" expanded="true" signature="82046:82050" ph="..." />
+          </folding>
+
         </state>
       </provider>
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
     </entry>
+
+    <entry file="file://$PROJECT_DIR$/src/Database/DatabaseInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2057">
+          <caret line="130" column="9" lean-forward="true" selection-start-line="130" selection-start-column="9" selection-end-line="130" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Control/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Control/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1033">
-          <caret line="142" column="0" lean-forward="true" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+        <state relative-caret-position="1530">
+          <caret line="131" column="0" lean-forward="true" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+
           <folding>
             <element signature="method#fillLecturers#0;class#Controller#0" expanded="false" />
             <element signature="method#createLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#createCourse#0;class#Controller#0" expanded="false" />
-            <element signature="method#saveLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#deleteLecturer#0;class#Controller#0" expanded="false" />
             <element signature="method#updateLecturer#0;class#Controller#0" expanded="false" />
-            <element signature="e#4238#4815#0" expanded="false" />
             <element signature="method#fillCourse#0;class#Controller#0" expanded="false" />
             <element signature="method#fillCourseProgramCombo#0;class#Controller#0" expanded="false" />
             <element signature="method#courseProgramAction#0;class#Controller#0" expanded="false" />
             <element signature="method#cancelLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#cancelCourse#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
