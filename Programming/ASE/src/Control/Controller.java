@@ -57,6 +57,7 @@ public class Controller  {
         fillCourse();
         fillCourseProgramCombo();
         cancelLecturer();
+        courseProgramAction();
 
     }
 
