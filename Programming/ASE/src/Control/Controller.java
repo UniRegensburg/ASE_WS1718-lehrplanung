@@ -18,7 +18,9 @@ public class Controller  {
     private Button createLecturerButton, createCourseButton, saveLecturerButton, saveCourseButton, deleteLecturerButton,
             updateLecturerButton, cancelLecturerButton, cancelCourseButton;
     @FXML
-    private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText;
+    private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText, courseNumberText,
+            courseTitleText, SWScourseText, hypertextCourseText, maxParticipantsCourseText, creditsCourseText,
+            expectedParticipantsCourseText, groupsCourseText;
     @FXML
     private BorderPane pane_teachers_overview, pane_single_teacher, pane_courses_overview_start,
             pane_courses_overview_create1;
@@ -39,7 +41,7 @@ public class Controller  {
     @FXML
     private ObservableList<Course> dataCourse;
     @FXML
-    private ComboBox courseProgramCombo;
+    private ComboBox courseProgramCombo/*, kindCourseCombo*/;
 
     private Boolean editLecturer = false;
     private Boolean editCourse = false;
@@ -68,6 +70,8 @@ public class Controller  {
         cancelCourse();
 
         courseProgramAction();
+
+        //courseKindComboAction();
 
     }
 
@@ -145,7 +149,40 @@ public class Controller  {
 
         saveCourseButton.setOnAction((event) -> {
 
+            String number = courseNumberText.getText();
+            String title = courseTitleText.getText();
+            String SWS = SWScourseText.getText();
+            String hypertext = hypertextCourseText.getText();
+            String maxParticipants = maxParticipantsCourseText.getText();
+            String expectedParticipants = expectedParticipantsCourseText.getText();
+            String credits = creditsCourseText.getText();
+            String language = creditsCourseText.getText();
+            String groups = groupsCourseText.getText();
 
+            //String kind = kindCourseCombo.getValue().toString();
+
+
+
+
+
+            if(editCourse == false) {
+                //dc.writeLecturers(name, surname, title, deputat);
+            }
+            else {
+                //dc.updateLecturers(IDTemp, name, surname, title, deputat);
+                //IDTemp = null;
+                editCourse = false;
+            }
+
+            pane_courses_overview_start.setVisible(true);
+            pane_courses_overview_create1.setVisible(false);
+
+            /*lecturerNameText.clear();
+            lecturerSurnameText.clear();
+            lecturerTitleText.clear();
+            lecturerDeputatText.clear();
+
+            fillCourse();*/
 
         });
 
@@ -213,6 +250,12 @@ public class Controller  {
 
         dc.getSelectedCourses(courseProgramCombo.getValue().toString());
         fillCourse();
+
+    }
+
+    public void courseKindComboAction() {
+
+        //kindCourseCombo.getSelectionModel().selectFirst();
 
     }
 
