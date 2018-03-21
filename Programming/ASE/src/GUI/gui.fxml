@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -28,7 +35,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Controller">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Controller">
 
    <content>
       <BorderPane fx:id="bg_pane" style="-fx-background-color: #787878;">
@@ -397,7 +404,7 @@
                                     </HBox>
                                  </top>
                                  <left>
-                                    <GridPane prefHeight="786.0" prefWidth="528.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+                                    <GridPane fx:id="kindCourseCombo" prefHeight="786.0" prefWidth="528.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
 
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" />
@@ -490,17 +497,7 @@
                                                 <Insets left="10.0" />
                                              </GridPane.margin>
                                           </Text>
-                                          <MenuButton fx:id="kindCourseCombo" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                            <items>
-                                              <MenuItem mnemonicParsing="false" text="Vorlesung" />
-                                              <MenuItem mnemonicParsing="false" text="Seminar" />
-                                                <MenuItem mnemonicParsing="false" text="Übung" />
-                                                <MenuItem mnemonicParsing="false" text="Blockkurs" />
-                                            </items>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </MenuButton>
+                                          <ComboBox fx:id="kindCourseCombo" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                           <TextField fx:id="hypertextCourseText" prefHeight="40.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                              <cursor>
                                                 <Cursor fx:constant="TEXT" />
@@ -585,15 +582,7 @@
                                                 <Insets left="20.0" />
                                              </GridPane.margin>
                                           </Text>
-                                          <MenuButton mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" text="jedes Semester" GridPane.columnIndex="1">
-                                             <items>
-                                                <MenuItem mnemonicParsing="false" text="Action 1" />
-                                                <MenuItem mnemonicParsing="false" text="Action 2" />
-                                             </items>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </MenuButton>
+                                          <ComboBox fx:id="courseFrequencyComboBox" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wahlbereich" GridPane.rowIndex="1">
                                              <font>
                                                 <Font size="15.0" />
@@ -679,7 +668,7 @@
                                              </cursor>
                                           </DatePicker>
                                           <TreeView prefHeight="117.0" prefWidth="295.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modul" GridPane.rowIndex="7">
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modul" textOrigin="CENTER" GridPane.rowIndex="7">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
@@ -725,7 +714,7 @@
                                     </SplitPane>
                                  </bottom>
                               </BorderPane>
-                              <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="957.0" prefWidth="1450.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="957.0" prefWidth="1450.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <bottom>
                                     <SplitPane dividerPositions="0.29797979797979796" BorderPane.alignment="CENTER">
                                        <items>
@@ -747,7 +736,7 @@
                                        <children>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Beschreibung">
                                              <font>
-                                                <Font size="26.0" />
+                                                <Font size="15.0" />
                                              </font>
                                              <GridPane.margin>
                                                 <Insets left="40.0" />
@@ -755,14 +744,17 @@
                                           </Text>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fällt aus am" GridPane.rowIndex="1">
                                              <font>
-                                                <Font size="26.0" />
+                                                <Font size="15.0" />
                                              </font>
                                              <GridPane.margin>
                                                 <Insets left="40.0" />
                                              </GridPane.margin>
                                           </Text>
                                           <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                                          <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                             <cursor>
+                                                <Cursor fx:constant="TEXT" />
+                                             </cursor></TextArea>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ausfalltermine" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                        </children>
                                        <columnConstraints>
@@ -782,7 +774,7 @@
 
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrperson" GridPane.rowIndex="1">
                                              <font>
-                                                <Font size="26.0" />
+                                                <Font size="15.0" />
                                              </font>
                                              <GridPane.margin>
                                                 <Insets left="10.0" />
@@ -790,7 +782,7 @@
                                           </Text>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Uhrzeit von" GridPane.rowIndex="3">
                                              <font>
-                                                <Font size="26.0" />
+                                                <Font size="15.0" />
                                              </font>
                                              <GridPane.margin>
                                                 <Insets left="10.0" />
@@ -798,7 +790,7 @@
                                           </Text>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tag" GridPane.rowIndex="2">
                                              <font>
-                                                <Font size="26.0" />
+                                                <Font size="15.0" />
                                              </font>
                                              <GridPane.margin>
                                                 <Insets left="10.0" />
@@ -806,7 +798,7 @@
                                           </Text>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ct/st" GridPane.rowIndex="5">
                                              <font>
-                                                <Font size="26.0" />
+                                                <Font size="15.0" />
                                              </font>
                                              <GridPane.margin>
                                                 <Insets left="10.0" />
@@ -814,22 +806,16 @@
                                           </Text>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rhythmus" GridPane.rowIndex="6">
                                              <font>
-                                                <Font size="26.0" />
+                                                <Font size="15.0" />
                                              </font>
                                              <GridPane.margin>
                                                 <Insets left="10.0" />
                                              </GridPane.margin>
                                           </Text>
-                                          <MenuButton mnemonicParsing="false" text="Gruppe 1" GridPane.columnIndex="1">
-                                             <items>
-                                                <MenuItem mnemonicParsing="false" text="Action 1" />
-                                                <MenuItem mnemonicParsing="false" text="Action 2" />
-                                             </items>
-                                          </MenuButton>
                                           <TextField prefHeight="27.0" prefWidth="153.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gruppe">
                                              <font>
-                                                <Font size="26.0" />
+                                                <Font size="15.0" />
                                              </font>
                                              <GridPane.margin>
                                                 <Insets left="10.0" />
@@ -855,7 +841,7 @@
                                           </MenuButton>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Uhrzeit bis" GridPane.rowIndex="4">
                                              <font>
-                                                <Font size="26.0" />
+                                                <Font size="15.0" />
                                              </font>
                                              <GridPane.margin>
                                                 <Insets left="10.0" />
@@ -869,7 +855,7 @@
                                           </MenuButton>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Teilnehmer" GridPane.rowIndex="7">
                                              <font>
-                                                <Font size="26.0" />
+                                                <Font size="15.0" />
                                              </font>
                                              <GridPane.margin>
                                                 <Insets left="10.0" />
@@ -878,7 +864,7 @@
                                           <TextField prefHeight="27.0" prefWidth="153.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Voraussetzung" GridPane.rowIndex="8">
                                              <font>
-                                                <Font size="26.0" />
+                                                <Font size="15.0" />
                                              </font>
                                              <GridPane.margin>
                                                 <Insets left="10.0" />
@@ -887,7 +873,7 @@
                                           <TextField prefHeight="27.0" prefWidth="153.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Leistungsnachweis" GridPane.rowIndex="9">
                                              <font>
-                                                <Font size="26.0" />
+                                                <Font size="15.0" />
                                              </font>
                                              <GridPane.margin>
                                                 <Insets left="10.0" />
@@ -900,6 +886,7 @@
                                              </items>
                                           </MenuButton>
                                           <TextField prefHeight="27.0" prefWidth="153.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                          <ComboBox prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" />
                                        </children>
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
@@ -919,16 +906,6 @@
                                        </rowConstraints>
                                     </GridPane>
                                  </left>
-                                 <top>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kurs anlegen" BorderPane.alignment="TOP_LEFT">
-                                       <font>
-                                          <Font size="47.0" />
-                                       </font>
-                                       <BorderPane.margin>
-                                          <Insets left="10.0" />
-                                       </BorderPane.margin>
-                                    </Text>
-                                 </top>
                               </BorderPane>
                            </children>
                         </AnchorPane>
