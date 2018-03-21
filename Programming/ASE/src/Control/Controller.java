@@ -16,14 +16,15 @@ public class Controller  {
 
     @FXML
     private Button createLecturerButton, createCourseButton, saveLecturerButton, saveCourseButton, deleteLecturerButton,
-            updateLecturerButton, cancelLecturerButton, cancelCourseButton;
+            updateLecturerButton, cancelLecturerButton, cancelCourseButton, nextCourseButton, backCourseButton;
     @FXML
     private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText, courseNumberText,
             courseTitleText, SWScourseText, hypertextCourseText, maxParticipantsCourseText, creditsCourseText,
-            expectedParticipantsCourseText, groupsCourseText;
+            expectedParticipantsCourseText, groupsCourseText, endTimeText, startTimeText, participantsText,
+            requirementsText, descriptionText;
     @FXML
     private BorderPane pane_teachers_overview, pane_single_teacher, pane_courses_overview_start,
-            pane_courses_overview_create1;
+            pane_courses_overview_create1, nextCoursePane;
     @FXML
     private TableView<Lecturer> LecturerTable;
     @FXML
@@ -42,6 +43,11 @@ public class Controller  {
     private ObservableList<Course> dataCourse;
     @FXML
     private ComboBox courseProgramCombo/*, kindCourseCombo*/;
+    @FXML
+    private CheckBox onlineRegBox, extraCourseBox, financingCourseBox;
+    @FXML
+    private DatePicker finalsDate, startDate, endDate;
+
 
     private Boolean editLecturer = false;
     private Boolean editCourse = false;
@@ -72,6 +78,9 @@ public class Controller  {
         courseProgramAction();
 
         //courseKindComboAction();
+
+        nextCourseWindow();
+        goBackOourse();
 
     }
 
@@ -108,6 +117,17 @@ public class Controller  {
 
             pane_courses_overview_start.setVisible(false);
             pane_courses_overview_create1.setVisible(true);
+
+        });
+
+    }
+
+    private void nextCourseWindow() {
+
+        nextCourseButton.setOnAction((event) -> {
+
+            pane_courses_overview_create1.setVisible(false);
+            nextCoursePane.setVisible(true);
 
         });
 
@@ -152,7 +172,7 @@ public class Controller  {
             String number = courseNumberText.getText();
             String title = courseTitleText.getText();
             String SWS = SWScourseText.getText();
-            String hypertext = hypertextCourseText.getText();
+            String hyperlink = hypertextCourseText.getText();
             String maxParticipants = maxParticipantsCourseText.getText();
             String expectedParticipants = expectedParticipantsCourseText.getText();
             String credits = creditsCourseText.getText();
@@ -160,6 +180,21 @@ public class Controller  {
             String groups = groupsCourseText.getText();
 
             //String kind = kindCourseCombo.getValue().toString();
+            Boolean onlineReg = onlineRegBox.isSelected();
+            Boolean extraCourse = extraCourseBox.isSelected();
+            Boolean financing = financingCourseBox.isSelected();
+            String finals = finalsDate.getValue().toString();
+            String start = startDate.getValue().toString();
+            String end = endDate.getValue().toString();
+
+
+
+            // ZWEITE SEITE
+            /*String start = startTimeText.getText();
+            String end = endTimeText.getText();
+            String requirements = requirementsText.getText();
+            String participants = participantsText.getText();
+            String description = descriptionText.getText();*/
 
 
 
@@ -282,6 +317,17 @@ public class Controller  {
 
             pane_courses_overview_start.setVisible(true);
             pane_courses_overview_create1.setVisible(false);
+
+        });
+
+    }
+
+    private void goBackOourse() {
+
+        backCourseButton.setOnAction((event) -> {
+
+            pane_courses_overview_create1.setVisible(true);
+            nextCoursePane.setVisible(false);
 
         });
 
