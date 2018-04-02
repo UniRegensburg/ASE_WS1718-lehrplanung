@@ -56,14 +56,29 @@ public class DatabaseInterface {
         }
     }
 
-    public List GetProgramms(){
-        List<String> Programms = new ArrayList<String>();
+    public List GetPrograms(){
+        List<String> Programs = new ArrayList<String>();
         try{
             ResultSet rs = conn.createStatement().executeQuery("SELECT Titel FROM Studiengang");
             while (rs.next()){
-                Programms.add(rs.getString(1));
+                Programs.add(rs.getString(1));
             }
-            return Programms;
+            return Programs;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List GetLecturers(){
+        List <String> Lecturers = new ArrayList<>();
+        try{
+            ResultSet rs = conn.createStatement().executeQuery("SELECT Vorname, Nachname FROM Dozenten");
+            while (rs.next()){
+                Lecturers.add(rs.getString(1)+" "+rs.getString(2));
+            }
+            return Lecturers;
         }
         catch (SQLException e) {
             e.printStackTrace();
@@ -108,6 +123,31 @@ public class DatabaseInterface {
             e.printStackTrace();
         }
 
+    }
+
+    public void writeCourse(String number, String title, String kind, String SWS, String hyperlink, String maxP, String expP, Boolean online, String credits, Boolean extra, Boolean finance, String finals, String start, String end, String language, String chair, String lecturer, String day, String startTime, String endTime, String ct, String rotation, String participants, String requirements, String cert, String deputat, String description, String cancelled)
+    {
+        try{
+            Statement getChair = conn.createStatement();
+            int chairID = 0;
+
+            ResultSet rs = getChair.executeQuery("SELECT ID FROM Studiengang WHERE Titel = '"+ chair +"'");
+            while(rs.next()){
+                chairID = rs.getInt(1);
+            }
+
+            Statement st = conn.createStatement();
+            st.executeQuery("INSERT INTO Kurse(Kursnummer,Titel,Art,SWS,Hyperlink,MaxTeilnehmer,ErwTeilnehmer," +
+                    "OnlineAnmeldung,Credits,Wahlbereich,Finanzierung,Pruefungsdatum,Anfangsdatum,Enddatum,Sprache," +
+                    "Studiengang,Kursbeginn,Kursende,CtSt,Turnus,Teilnehmer,Anforderung,Zertifikat,Deputat,Beschreibung)" +
+                    "VALUES('"+number+"','"+title+"','"+kind+"','"+SWS+"','"+hyperlink+"','"+maxP+"','"+expP+"','"+online+"'," +
+                    "'"+credits+"','"+extra+"','"+finance+"','"+finals+"','"+start+"','"+end+"','"+language+"','"+chairID+"'," +
+                    "'"+startTime+"','"+endTime+"','"+ct+"','"+rotation+"','"+participants+"','"+requirements+"','"+cert+"'," +
+                    "'"+deputat+"','"+description+"')");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void deleteLecturers(Integer ID){

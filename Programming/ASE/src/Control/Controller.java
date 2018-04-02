@@ -22,11 +22,11 @@ public class Controller  {
     @FXML
     private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText, courseNumberText,
             courseTitleText, SWScourseText, hypertextCourseText, maxParticipantsCourseText, creditsCourseText,
-            expectedParticipantsCourseText, groupsCourseText, endTimeText, participantsText,
+            expectedParticipantsCourseText, startTimeText, endTimeText, participantsText,
             requirementsText, descriptionText, deputatText;
     @FXML
     private BorderPane pane_teachers_overview, pane_single_teacher, pane_courses_overview_start,
-            pane_courses_overview_create1, nextCoursePane;
+            pane_courses_overview_create1, pane_courses_overview_create2;
     @FXML
     private TableView<Lecturer> LecturerTable;
     @FXML
@@ -125,6 +125,7 @@ public class Controller  {
 
         fillCourse();
         fillCourseProgramCombo();
+        fillLecturersCombo();
 
         cancelLecturer();
         cancelCourse();
@@ -182,7 +183,7 @@ public class Controller  {
         nextCourseButton.setOnAction((event) -> {
 
             pane_courses_overview_create1.setVisible(false);
-            nextCoursePane.setVisible(true);
+            pane_courses_overview_create2.setVisible(true);
 
         });
 
@@ -235,10 +236,6 @@ public class Controller  {
             Boolean onlineReg = onlineRegBox.isSelected();
             String credits = creditsCourseText.getText();
 
-
-            //String groups = groupsCourseText.getText();
-
-
             Boolean extraCourse = extraCourseBox.isSelected();
             Boolean financing = financingCourseBox.isSelected();
             String finals = finalsDate.getValue().toString();
@@ -247,9 +244,6 @@ public class Controller  {
             String language = creditsCourseText.getText();
 
             // MODUL
-
-
-
             // ZWEITE SEITE
             String chair = chairCombo.getValue().toString();
             String lecturer = lecturerCombo.getValue().toString();
@@ -266,29 +260,13 @@ public class Controller  {
             String canceled = canceledDate.getValue().toString();
 
 
-
-
-
-
-
-            if(editCourse == false) {
-                //dc.writeLecturers(name, surname, title, deputat);
-            }
-            else {
-                //dc.updateLecturers(IDTemp, name, surname, title, deputat);
-                //IDTemp = null;
-                editCourse = false;
-            }
+            dc.writeCourse(number, title, kind, SWS, hyperlink, maxParticipants, expectedParticipants, onlineReg,
+                    credits, extraCourse, financing, finals, start, end, language, chair, lecturer, day, startTime,
+                    endTime, ctSt, rota, participants, requirements, certificate, deputat, description, canceled);
 
             pane_courses_overview_start.setVisible(true);
-            pane_courses_overview_create1.setVisible(false);
-
-            /*lecturerNameText.clear();
-            lecturerSurnameText.clear();
-            lecturerTitleText.clear();
-            lecturerDeputatText.clear();
-
-            fillCourse();*/
+            pane_courses_overview_create2.setVisible(false);
+            fillCourse();
 
         });
 
@@ -346,10 +324,17 @@ public class Controller  {
 
     private void fillCourseProgramCombo(){
 
-        for(int i = 0; i < dc.GetProgramms().size(); i++){
-            courseProgramCombo.getItems().addAll(""+dc.GetProgramms().get(i)+"");
+        for(int i = 0; i < dc.GetPrograms().size(); i++){
+            courseProgramCombo.getItems().addAll(""+dc.GetPrograms().get(i)+"");
+            chairCombo.getItems().addAll(""+dc.GetPrograms().get(i)+"");
         }
         courseProgramCombo.getSelectionModel().selectFirst();
+    }
+
+    private void fillLecturersCombo(){
+        for(int i = 0; i < dc.GetLecturers().size(); i++){
+            lecturerCombo.getItems().addAll(""+dc.GetLecturers().get(i)+"");
+        }
     }
 
     public void courseProgramAction() {
@@ -392,7 +377,7 @@ public class Controller  {
         backCourseButton.setOnAction((event) -> {
 
             pane_courses_overview_create1.setVisible(true);
-            nextCoursePane.setVisible(false);
+            pane_courses_overview_create2.setVisible(false);
 
         });
 
