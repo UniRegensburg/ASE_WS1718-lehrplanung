@@ -11,9 +11,6 @@ import Database.DatabaseInterface;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
-import javax.swing.event.ChangeListener;
-import javax.swing.event.TableModelListener;
-
 public class Controller  {
 
     @FXML
@@ -22,11 +19,11 @@ public class Controller  {
     @FXML
     private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText, courseNumberText,
             courseTitleText, SWScourseText, hypertextCourseText, maxParticipantsCourseText, creditsCourseText,
-            expectedParticipantsCourseText, groupsCourseText, endTimeText, participantsText,
+            expectedParticipantsCourseText, startTimeText, endTimeText, participantsText,
             requirementsText, descriptionText, deputatText;
     @FXML
     private BorderPane pane_teachers_overview, pane_single_teacher, pane_courses_overview_start,
-            pane_courses_overview_create1, nextCoursePane;
+            pane_courses_overview_create1, pane_courses_overview_create2;
     @FXML
     private TableView<Lecturer> LecturerTable;
     @FXML
@@ -182,7 +179,7 @@ public class Controller  {
         nextCourseButton.setOnAction((event) -> {
 
             pane_courses_overview_create1.setVisible(false);
-            nextCoursePane.setVisible(true);
+            pane_courses_overview_create2.setVisible(true);
 
         });
 
@@ -392,7 +389,7 @@ public class Controller  {
         backCourseButton.setOnAction((event) -> {
 
             pane_courses_overview_create1.setVisible(true);
-            nextCoursePane.setVisible(false);
+            pane_courses_overview_create2.setVisible(false);
 
         });
 
