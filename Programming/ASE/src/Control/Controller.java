@@ -244,6 +244,7 @@ public class Controller  {
             String language = creditsCourseText.getText();
 
             // MODUL
+
             // ZWEITE SEITE
             String chair = chairCombo.getValue().toString();
             String lecturer = lecturerCombo.getValue().toString();
@@ -261,8 +262,10 @@ public class Controller  {
 
 
             dc.writeCourse(number, title, kind, SWS, hyperlink, maxParticipants, expectedParticipants, onlineReg,
-                    credits, extraCourse, financing, finals, start, end, language, chair, lecturer, day, startTime,
+                    credits, extraCourse, financing, finals, start, end, language, chair, day, startTime,
                     endTime, ctSt, rota, participants, requirements, certificate, deputat, description, canceled);
+
+            dc.connectCourseWithLecturer(lecturer,title);
 
             pane_courses_overview_start.setVisible(true);
             pane_courses_overview_create2.setVisible(false);

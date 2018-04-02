@@ -86,6 +86,31 @@ public class DatabaseInterface {
         }
     }
 
+    public void connectCourseWithLecturer(String lecturer, String title){
+        int courseID = 0;
+        int lecturerID = 0;
+        String[] Names = lecturer.split(" ");
+        try {
+            Statement getCourseID = conn.createStatement();
+            ResultSet rsCourseID = getCourseID.executeQuery("SELECT ID FROM Kurse WHERE Titel = '"+ title +"'");
+            while(rsCourseID.next()){
+                courseID = rsCourseID.getInt(1);
+            }
+
+            Statement getLecturerID = conn.createStatement();
+            ResultSet rsLecuterID = getLecturerID.executeQuery("SELECT ID FROM Dozenten WHERE Vorname = '"+Names[0]+"' AND Nachname = '"+Names[1]+"'");
+            while(rsLecuterID.next()){
+                lecturerID = rsLecuterID.getInt(1);
+            }
+
+            Statement writeCourseLecturerConnection = conn.createStatement();
+            writeCourseLecturerConnection.executeUpdate("INSERT INTO ZuordnungDozenten(KursID,DozentID)VALUES('"+courseID+"','"+lecturerID+"')");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public ObservableList<Course> GetCourses(){
         try {
 
@@ -125,7 +150,7 @@ public class DatabaseInterface {
 
     }
 
-    public void writeCourse(String number, String title, String kind, String SWS, String hyperlink, String maxP, String expP, Boolean online, String credits, Boolean extra, Boolean finance, String finals, String start, String end, String language, String chair, String lecturer, String day, String startTime, String endTime, String ct, String rotation, String participants, String requirements, String cert, String deputat, String description, String cancelled)
+    public void writeCourse(String number, String title, String kind, String SWS, String hyperlink, String maxP, String expP, Boolean online, String credits, Boolean extra, Boolean finance, String finals, String start, String end, String language, String chair, String day, String startTime, String endTime, String ct, String rotation, String participants, String requirements, String cert, String deputat, String description, String cancelled)
     {
         try{
             Statement getChair = conn.createStatement();
@@ -137,7 +162,7 @@ public class DatabaseInterface {
             }
 
             Statement st = conn.createStatement();
-            st.executeQuery("INSERT INTO Kurse(Kursnummer,Titel,Art,SWS,Hyperlink,MaxTeilnehmer,ErwTeilnehmer," +
+            st.executeUpdate("INSERT INTO Kurse(Kursnummer,Titel,Art,SWS,Hyperlink,MaxTeilnehmer,ErwTeilnehmer," +
                     "OnlineAnmeldung,Credits,Wahlbereich,Finanzierung,Pruefungsdatum,Anfangsdatum,Enddatum,Sprache," +
                     "Studiengang,Kursbeginn,Kursende,CtSt,Turnus,Teilnehmer,Anforderung,Zertifikat,Deputat,Beschreibung)" +
                     "VALUES('"+number+"','"+title+"','"+kind+"','"+SWS+"','"+hyperlink+"','"+maxP+"','"+expP+"','"+online+"'," +
