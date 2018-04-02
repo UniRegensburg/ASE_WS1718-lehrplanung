@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -243,7 +246,7 @@
                   <content>
                     <AnchorPane fx:id="courses_start" style="-fx-background-color: #787878;">
                            <children>
-                              <BorderPane fx:id="pane_courses_overview_start" layoutX="262.0" layoutY="313.0" prefHeight="920.0" prefWidth="1440.0" style="-fx-background-color: #787878;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <BorderPane fx:id="pane_courses_overview_start" layoutX="262.0" layoutY="313.0" prefHeight="920.0" prefWidth="1440.0" style="-fx-background-color: #787878;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <bottom>
                                     <SplitPane dividerPositions="0.4993045897079277" style="-fx-background-color: #787878;" BorderPane.alignment="CENTER">
                                       <items>
@@ -497,7 +500,15 @@
                                                 <Insets left="10.0" />
                                              </GridPane.margin>
                                           </Text>
-                                          <ComboBox fx:id="kindCourseCombo" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <ComboBox fx:id="kindCourseCombo" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                              <items>
+                                                  <FXCollections fx:factory="observableArrayList">
+                                                      <String fx:value="Vorlesung" />
+                                                      <String fx:value="Seminar" />
+                                                      <String fx:value="Übung" />
+                                                  </FXCollections>
+                                              </items>
+                                          </ComboBox>
                                           <TextField fx:id="hypertextCourseText" prefHeight="40.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                              <cursor>
                                                 <Cursor fx:constant="TEXT" />
@@ -858,10 +869,46 @@
                                           </Text>
                                           <TextField fx:id="endTimeText" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                           <ComboBox fx:id="lecturerCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <ComboBox fx:id="dayCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <ComboBox fx:id="ctCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                          <ComboBox fx:id="rotaCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                          <ComboBox fx:id="certCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+
+                                          <ComboBox fx:id="dayCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                              <items>
+                                                  <FXCollections fx:factory="observableArrayList">
+                                                      <String fx:value="Montag" />
+                                                      <String fx:value="Dienstag" />
+                                                      <String fx:value="Mittwoch" />
+                                                      <String fx:value="Donnerstag" />
+                                                      <String fx:value="Freitag" />
+                                                      <String fx:value="Samstag" />
+                                                      <String fx:value="Sonntag" />
+                                                  </FXCollections>
+                                              </items>
+                                          </ComboBox>
+                                          <ComboBox fx:id="ctCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                              <items>
+                                                  <FXCollections fx:factory="observableArrayList">
+                                                      <String fx:value="ct" />
+                                                      <String fx:value="st" />
+                                                  </FXCollections>
+                                              </items>
+                                          </ComboBox>
+                                          <ComboBox fx:id="rotaCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                              <items>
+                                                  <FXCollections fx:factory="observableArrayList">
+                                                      <String fx:value="Ganzjährig" />
+                                                      <String fx:value="Halbjährig" />
+                                                  </FXCollections>
+                                              </items>
+                                          </ComboBox>
+                                          <ComboBox fx:id="certCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                              <items>
+                                                  <FXCollections fx:factory="observableArrayList">
+                                                      <String fx:value="Übung" />
+                                                      <String fx:value="Projekt" />
+                                                      <String fx:value="Klausur" />
+                                                  </FXCollections>
+                                              </items>
+                                          </ComboBox>
+
                                           <ComboBox fx:id="chairCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrstuhl">
                                              <font>
