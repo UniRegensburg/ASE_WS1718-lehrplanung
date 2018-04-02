@@ -22,8 +22,8 @@ public class Controller  {
     @FXML
     private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText, courseNumberText,
             courseTitleText, SWScourseText, hypertextCourseText, maxParticipantsCourseText, creditsCourseText,
-            expectedParticipantsCourseText, groupsCourseText, endTimeText, startTimeText, participantsText,
-            requirementsText, descriptionText;
+            expectedParticipantsCourseText, groupsCourseText, endTimeText, participantsText,
+            requirementsText, descriptionText, deputatText;
     @FXML
     private BorderPane pane_teachers_overview, pane_single_teacher, pane_courses_overview_start,
             pane_courses_overview_create1, nextCoursePane;
@@ -96,11 +96,11 @@ public class Controller  {
     @FXML
     private ObservableList<Course> dataCourse;
     @FXML
-    private ComboBox courseProgramCombo/*, kindCourseCombo*/;
+    private ComboBox courseProgramCombo, chairCombo, dayCombo, ctCombo, rotaCombo, lecturerCombo, certCombo, kindCourseCombo;
     @FXML
     private CheckBox onlineRegBox, extraCourseBox, financingCourseBox;
     @FXML
-    private DatePicker finalsDate, startDate, endDate;
+    private DatePicker finalsDate, startDate, endDate, canceledDate;
 
 
     private Boolean editLecturer = false;
@@ -118,7 +118,7 @@ public class Controller  {
         createCourse();
 
         saveLecturer();
-        //saveCourse();
+        saveCourse();
 
         deleteLecturer();
         updateLecturer();
@@ -131,10 +131,8 @@ public class Controller  {
 
         courseProgramAction();
 
-        //courseKindComboAction();
-
         nextCourseWindow();
-        goBackOourse();
+        goBackCourse();
 
         initSchedule();
 
@@ -228,30 +226,46 @@ public class Controller  {
 
             String number = courseNumberText.getText();
             String title = courseTitleText.getText();
+            String kind = kindCourseCombo.getValue().toString();
+
             String SWS = SWScourseText.getText();
             String hyperlink = hypertextCourseText.getText();
             String maxParticipants = maxParticipantsCourseText.getText();
             String expectedParticipants = expectedParticipantsCourseText.getText();
-            String credits = creditsCourseText.getText();
-            String language = creditsCourseText.getText();
-            String groups = groupsCourseText.getText();
-
-            //String kind = kindCourseCombo.getValue().toString();
             Boolean onlineReg = onlineRegBox.isSelected();
+            String credits = creditsCourseText.getText();
+
+
+            //String groups = groupsCourseText.getText();
+
+
             Boolean extraCourse = extraCourseBox.isSelected();
             Boolean financing = financingCourseBox.isSelected();
             String finals = finalsDate.getValue().toString();
             String start = startDate.getValue().toString();
             String end = endDate.getValue().toString();
+            String language = creditsCourseText.getText();
+
+            // MODUL
 
 
 
             // ZWEITE SEITE
-            /*String start = startTimeText.getText();
-            String end = endTimeText.getText();
-            String requirements = requirementsText.getText();
+            String chair = chairCombo.getValue().toString();
+            String lecturer = lecturerCombo.getValue().toString();
+            String day = dayCombo.getValue().toString();
+            String startTime = startTimeText.getText();
+            String endTime = endTimeText.getText();
+            String ctSt = ctCombo.getValue().toString();
+            String rota = rotaCombo.getValue().toString();
             String participants = participantsText.getText();
-            String description = descriptionText.getText();*/
+            String requirements = requirementsText.getText();
+            String certificate = certCombo.getValue().toString();
+            String deputat = deputatText.getText();
+            String description = descriptionText.getText();
+            String canceled = canceledDate.getValue().toString();
+
+
 
 
 
@@ -345,12 +359,6 @@ public class Controller  {
 
     }
 
-    public void courseKindComboAction() {
-
-        //kindCourseCombo.getSelectionModel().selectFirst();
-
-    }
-
     private void cancelLecturer(){
 
         cancelLecturerButton.setOnAction((event) -> {
@@ -379,7 +387,7 @@ public class Controller  {
 
     }
 
-    private void goBackOourse() {
+    private void goBackCourse() {
 
         backCourseButton.setOnAction((event) -> {
 
