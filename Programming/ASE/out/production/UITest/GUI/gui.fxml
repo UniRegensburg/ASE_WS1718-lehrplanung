@@ -244,7 +244,7 @@
                   <content>
                     <AnchorPane fx:id="courses_start" style="-fx-background-color: #787878;">
                            <children>
-                              <BorderPane fx:id="pane_courses_overview_start" layoutX="262.0" layoutY="313.0" prefHeight="920.0" prefWidth="1440.0" style="-fx-background-color: #787878;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <BorderPane fx:id="pane_courses_overview_start" layoutX="262.0" layoutY="313.0" prefHeight="920.0" prefWidth="1440.0" style="-fx-background-color: #787878;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <bottom>
                                     <SplitPane dividerPositions="0.4993045897079277" style="-fx-background-color: #787878;" BorderPane.alignment="CENTER">
                                       <items>
@@ -383,7 +383,7 @@
                                     </BorderPane>
                                  </left>
                               </BorderPane>
-                              <BorderPane fx:id="pane_courses_overview_create1" prefHeight="947.0" prefWidth="1440.0" style="-fx-background-color: #ffffff;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <BorderPane fx:id="pane_courses_overview_create1" prefHeight="947.0" prefWidth="1440.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <top>
                                     <HBox style="-fx-background-color: #ffffff;">
                                        <children>
@@ -715,7 +715,7 @@
                                     </SplitPane>
                                  </bottom>
                               </BorderPane>
-                              <BorderPane fx:id="nextCoursePane" layoutX="10.0" layoutY="10.0" prefHeight="957.0" prefWidth="1450.0" style="-fx-background-color: #ffffff;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <BorderPane fx:id="nextCoursePane" layoutX="10.0" layoutY="10.0" prefHeight="957.0" prefWidth="1450.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <bottom>
                                     <SplitPane dividerPositions="0.29797979797979796" style="-fx-background-color: #787878;" BorderPane.alignment="CENTER">
                                        <items>
@@ -735,7 +735,7 @@
                                  <center>
                                     <GridPane prefHeight="888.0" prefWidth="836.0" BorderPane.alignment="CENTER">
                                        <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Beschreibung">
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Beschreibung" GridPane.rowIndex="1">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
@@ -743,7 +743,7 @@
                                                 <Insets left="40.0" />
                                              </GridPane.margin>
                                           </Text>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fällt aus am" GridPane.rowIndex="1">
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fällt aus am" GridPane.rowIndex="2">
                                              <font>
                                                 <Font size="15.0" />
                                              </font>
@@ -751,21 +751,31 @@
                                                 <Insets left="40.0" />
                                              </GridPane.margin>
                                           </Text>
-                                          <DatePicker minHeight="-Infinity" prefHeight="40.0" style="-fx-background-radius: #ffffff; -fx-background-radius: 0; -fx-border-radius: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <TextField fx:id="descriptionText" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                          <DatePicker minHeight="-Infinity" prefHeight="40.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <TextField fx:id="descriptionText" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                              <cursor>
                                                 <Cursor fx:constant="TEXT" />
                                              </cursor>
                                              <GridPane.margin>
                                                 <Insets right="100.0" />
                                              </GridPane.margin></TextField>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Deputataufwand">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                             <GridPane.margin>
+                                                <Insets left="40.0" />
+                                             </GridPane.margin>
+                                          </Text>
+                                          <TextField fx:id="startTimeText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="70.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" />
                                        </children>
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="448.30816650390625" minWidth="169.1357421875" prefWidth="182.267333984375" />
                                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="741.8642578125" minWidth="100.0" prefWidth="728.732666015625" />
                                        </columnConstraints>
                                        <rowConstraints>
-                                          <RowConstraints minHeight="200.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="289.6532287597656" minHeight="25.16930389404297" prefHeight="30.67938232421875" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="568.830696105957" minHeight="200.0" prefHeight="563.3206176757812" vgrow="SOMETIMES" />
                                           <RowConstraints minHeight="50.0" vgrow="SOMETIMES" />
                                           <RowConstraints minHeight="50.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
@@ -815,7 +825,6 @@
                                                 <Insets left="10.0" />
                                              </GridPane.margin>
                                           </Text>
-                                          <TextField fx:id="startTimeText" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Uhrzeit bis" GridPane.rowIndex="4">
                                              <font>
                                                 <Font size="15.0" />
@@ -865,6 +874,7 @@
                                                 <Insets left="10.0" />
                                              </GridPane.margin>
                                           </Text>
+                                          <TextField fx:id="endTimeText1" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                        </children>
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
@@ -893,7 +903,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #dddddd;">
                            <children>
-                              <BorderPane prefHeight="947.0" prefWidth="1440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <BorderPane prefHeight="947.0" prefWidth="1440.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
                                  <top>
                                     <GridPane BorderPane.alignment="CENTER">
@@ -958,7 +968,10 @@
                                       <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                              <children>
-                                                <ListView layoutX="2.0" layoutY="100.0" prefHeight="454.0" prefWidth="158.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <ListView layoutX="2.0" layoutY="-5.0" prefHeight="445.0" prefWidth="272.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-5.0">
+                                                   <opaqueInsets>
+                                                      <Insets top="20.0" />
+                                                   </opaqueInsets></ListView>
                                              </children>
                                           </AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ffffff;">
@@ -968,6 +981,12 @@
                                              </children>
                                           </AnchorPane>
                                       </items>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <BorderPane.margin>
+                                          <Insets top="20.0" />
+                                       </BorderPane.margin>
                                     </SplitPane>
                                  </right>
                                  <center>
@@ -980,6 +999,9 @@
                                           <TableColumn maxWidth="0.0" minWidth="100.0" prefWidth="75.0" text="Donnerstag" />
                                           <TableColumn maxWidth="0.0" minWidth="100.0" prefWidth="75.0" text="Freitag" />
                                       </columns>
+                                       <BorderPane.margin>
+                                          <Insets left="15.0" right="15.0" top="20.0" />
+                                       </BorderPane.margin>
                                     </TableView>
                                  </center>
                               </BorderPane>
@@ -997,7 +1019,7 @@
             </TabPane>
          </center>
          <top>
-            <SplitPane dividerPositions="0.9158553546592489" prefHeight="44.0" prefWidth="1440.0" style="-fx-background-color: #dddddd;" BorderPane.alignment="CENTER">
+            <SplitPane prefHeight="44.0" prefWidth="1440.0" style="-fx-background-color: #dddddd;" BorderPane.alignment="CENTER">
               <items>
                 <AnchorPane prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #dddddd;">
                      <children>
@@ -1011,26 +1033,6 @@
                                     <Insets left="5.0" top="5.0" />
                                  </HBox.margin>
                               </Text>
-                           </children>
-                        </HBox>
-                     </children>
-                  </AnchorPane>
-                <AnchorPane prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #787878;">
-                     <children>
-                        <HBox layoutX="4.0" layoutY="1.0" prefHeight="42.0" prefWidth="116.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <MenuButton fx:id="btn_main_menu" layoutX="4.0" layoutY="1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" text="Menu">
-                                <items>
-                                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                                  <MenuItem mnemonicParsing="false" text="Action 2" />
-                                </items>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <HBox.margin>
-                                    <Insets bottom="2.0" left="2.0" top="2.0" />
-                                 </HBox.margin>
-                              </MenuButton>
                            </children>
                         </HBox>
                      </children>
