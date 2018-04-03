@@ -942,7 +942,7 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                  <Tab fx:id="tab_overviews" style="-fx-background-radius: 0; -fx-cursor: hand; hover: #000000;" text="Übersichten">
+                  <Tab fx:id="tab_overviews" style="-fx-background-radius: 0; -fx-cursor: hand; hover: #000000;" text="Lehrplan">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #dddddd;">
                            <children>
