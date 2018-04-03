@@ -185,6 +185,18 @@ public class DatabaseInterface {
         }
     }
 
+    public void deleteCourse(Integer ID){
+
+        try {
+            Statement st = conn.createStatement();
+            st.executeUpdate("DELETE FROM Kurse WHERE ID = '" + ID + "'");
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void updateLecturers(Integer ID, String name, String surname, String title, Integer deputat){
         try{
             Statement st = conn.createStatement();

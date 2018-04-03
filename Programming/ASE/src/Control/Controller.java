@@ -18,7 +18,8 @@ public class Controller  {
 
     @FXML
     private Button createLecturerButton, createCourseButton, saveLecturerButton, saveCourseButton, deleteLecturerButton,
-            updateLecturerButton, cancelLecturerButton, cancelCourseButton, nextCourseButton, backCourseButton;
+            deleteCourseButton, updateLecturerButton, updateCourseButton, cancelLecturerButton, cancelCourseButton,
+            nextCourseButton, backCourseButton;
     @FXML
     private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText, courseNumberText,
             courseTitleText, SWScourseText, hypertextCourseText, maxParticipantsCourseText, creditsCourseText,
@@ -96,7 +97,8 @@ public class Controller  {
     @FXML
     private ObservableList<Course> dataCourse;
     @FXML
-    private ComboBox courseProgramCombo, chairCombo, dayCombo, ctCombo, rotaCombo, lecturerCombo, certCombo, kindCourseCombo;
+    private ComboBox courseProgramCombo, chairCombo, dayCombo, ctCombo, rotaCombo, lecturerCombo, certCombo,
+            kindCourseCombo;
     @FXML
     private CheckBox onlineRegBox, extraCourseBox, financingCourseBox;
     @FXML
@@ -122,6 +124,9 @@ public class Controller  {
 
         deleteLecturer();
         updateLecturer();
+
+        deleteCourse();
+        updateCourse();
 
         fillCourse();
         fillCourseProgramCombo();
@@ -260,16 +265,31 @@ public class Controller  {
             String description = descriptionText.getText();
             String canceled = canceledDate.getValue().toString();
 
+            if(editLecturer == false) {
+                dc.writeCourse(number, title, kind, SWS, hyperlink, maxParticipants, expectedParticipants, onlineReg,
+                        credits, extraCourse, financing, finals, start, end, language, chair, day, startTime,
+                        endTime, ctSt, rota, participants, requirements, certificate, deputat, description, canceled);
 
-            dc.writeCourse(number, title, kind, SWS, hyperlink, maxParticipants, expectedParticipants, onlineReg,
-                    credits, extraCourse, financing, finals, start, end, language, chair, day, startTime,
-                    endTime, ctSt, rota, participants, requirements, certificate, deputat, description, canceled);
+                dc.connectCourseWithLecturer(lecturer, title);
 
-            dc.connectCourseWithLecturer(lecturer,title);
+            }
 
-            pane_courses_overview_start.setVisible(true);
-            pane_courses_overview_create2.setVisible(false);
-            fillCourse();
+            else {
+
+                //dc.updateCourse(IDTemp, name, surname, title, deputat);
+                //editCourse = false;
+
+            }
+
+                pane_courses_overview_start.setVisible(true);
+                pane_courses_overview_create2.setVisible(false);
+
+                /*.clear();
+                .clear();
+                .clear();
+                .clear();*/
+
+                fillCourse();
 
         });
 
@@ -283,6 +303,19 @@ public class Controller  {
             dc.deleteLecturers(selected.getLecturerID());
 
             fillLecturers();
+
+        });
+
+    }
+
+    private void deleteCourse() {
+
+        deleteCourseButton.setOnAction((event) -> {
+
+            Course selected = CourseTable.getSelectionModel().getSelectedItem();
+            dc.deleteCourse(selected.getCourseID());
+
+            fillCourse();
 
         });
 
@@ -304,6 +337,22 @@ public class Controller  {
             lecturerDeputatText.setText(selected.getLecturerDeputat().toString());
 
             IDTemp = selected.getLecturerID();
+
+        });
+
+    }
+
+    private void updateCourse() {
+
+        updateCourseButton.setOnAction((event) -> {
+
+            editCourse = true;
+            Course selected = CourseTable.getSelectionModel().getSelectedItem();
+
+            pane_courses_overview_start.setVisible(false);
+            pane_courses_overview_create1.setVisible(true);
+
+
 
         });
 
