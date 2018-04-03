@@ -98,7 +98,7 @@ public class Controller  {
     private ObservableList<Course> dataCourse;
     @FXML
     private ComboBox courseProgramCombo, chairCombo, dayCombo, ctCombo, rotaCombo, lecturerCombo, certCombo,
-            kindCourseCombo;
+            kindCourseCombo, courseFrequenzyComboBox;
     @FXML
     private CheckBox onlineRegBox, extraCourseBox, financingCourseBox;
     @FXML
@@ -240,7 +240,7 @@ public class Controller  {
             String expectedParticipants = expectedParticipantsCourseText.getText();
             Boolean onlineReg = onlineRegBox.isSelected();
             String credits = creditsCourseText.getText();
-
+            String turnus = courseFrequenzyComboBox.getValue().toString();
             Boolean extraCourse = extraCourseBox.isSelected();
             Boolean financing = financingCourseBox.isSelected();
             String finals = finalsDate.getValue().toString();
@@ -268,9 +268,11 @@ public class Controller  {
             if(editCourse == false) {
                 dc.writeCourse(number, title, kind, SWS, hyperlink, maxParticipants, expectedParticipants, onlineReg,
                         credits, extraCourse, financing, finals, start, end, language, chair, startTime,
-                        endTime, ctSt, rota, participants, requirements, certificate, deputat, description, canceled);
+                        endTime, ctSt, rota, participants, requirements, certificate, deputat, description, canceled,
+                        turnus);
 
                 dc.connectCourseWithLecturerDay(lecturer, title, day);
+                dc.addDeputat(deputat, lecturer);
 
             }
 
@@ -290,6 +292,7 @@ public class Controller  {
                 .clear();*/
 
                 fillCourse();
+                fillLecturers();
 
         });
 
@@ -316,6 +319,8 @@ public class Controller  {
             dc.deleteCourse(selected.getCourseID());
 
             fillCourse();
+
+            //Deputat von Dozenten entfernen, beachten alte Semester!
 
         });
 
@@ -351,8 +356,6 @@ public class Controller  {
 
             pane_courses_overview_start.setVisible(false);
             pane_courses_overview_create1.setVisible(true);
-
-
 
         });
 
