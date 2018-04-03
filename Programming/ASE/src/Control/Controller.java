@@ -125,8 +125,8 @@ public class Controller  {
         deleteLecturer();
         updateLecturer();
 
-        deleteCourse();
-        updateCourse();
+        //deleteCourse();
+        //updateCourse();
 
         fillCourse();
         fillCourseProgramCombo();
@@ -265,12 +265,12 @@ public class Controller  {
             String description = descriptionText.getText();
             String canceled = canceledDate.getValue().toString();
 
-            if(editLecturer == false) {
+            if(editCourse == false) {
                 dc.writeCourse(number, title, kind, SWS, hyperlink, maxParticipants, expectedParticipants, onlineReg,
-                        credits, extraCourse, financing, finals, start, end, language, chair, day, startTime,
+                        credits, extraCourse, financing, finals, start, end, language, chair, startTime,
                         endTime, ctSt, rota, participants, requirements, certificate, deputat, description, canceled);
 
-                dc.connectCourseWithLecturer(lecturer, title);
+                dc.connectCourseWithLecturerDay(lecturer, title, day);
 
             }
 
@@ -308,7 +308,7 @@ public class Controller  {
 
     }
 
-    private void deleteCourse() {
+    /*private void deleteCourse() {
 
         deleteCourseButton.setOnAction((event) -> {
 
@@ -319,7 +319,7 @@ public class Controller  {
 
         });
 
-    }
+    }*/
 
     private void updateLecturer() {
 
@@ -342,7 +342,7 @@ public class Controller  {
 
     }
 
-    private void updateCourse() {
+    /*private void updateCourse() {
 
         updateCourseButton.setOnAction((event) -> {
 
@@ -356,7 +356,7 @@ public class Controller  {
 
         });
 
-    }
+    }*/
 
     private void fillCourse() {
 
