@@ -38,20 +38,21 @@ public class Course {
     private SimpleStringProperty courseCanceled = new SimpleStringProperty();
 
     public Course(Integer courseID, Integer courseSWS, String courseModule, String courseKind, String courseTitle,
-                  String courseChair, String courseHyperlink, String courseMaxParticipants,
+                  String courseChair /*, String courseHyperlink, String courseMaxParticipants,
                   Boolean courseOnlineReg, String courseTurnus, String courseExpParticipants, String courseCredits, String courseFinals,
                   Boolean courseExtraCourse, Boolean courseFinancing, String courseStart, String courseEnd,
                   String courseLanguage, String courseLecturer, String courseDay, String courseStartTime,
                   String courseEndTime, String courseCtSt, String courseRota, String courseParticipants,
                   String courseCertificate, String courseRequirements, String courseDeputat, String courseDescription,
-                  String courseCanceled) {
+                  String courseCanceled*/) {
 
         this.courseID = new SimpleIntegerProperty(courseID);
         this.courseSWS = new SimpleIntegerProperty(courseSWS);
         this.courseModule = new SimpleStringProperty(courseModule);
         this.courseKind = new SimpleStringProperty(courseKind);
         this.courseTitle = new SimpleStringProperty(courseTitle);
-        this.courseTurnus = new SimpleStringProperty(courseTurnus);
+        this.courseChair = new SimpleStringProperty(courseChair);
+        /*this.courseTurnus = new SimpleStringProperty(courseTurnus);
         this.courseHyperlink = new SimpleStringProperty(courseHyperlink);
         this.courseMaxParticipants = new SimpleStringProperty(courseMaxParticipants);
         this.courseExpParticipants = new SimpleStringProperty(courseExpParticipants);
@@ -63,7 +64,6 @@ public class Course {
         this.courseStart = new SimpleStringProperty(courseStart);
         this.courseEnd = new SimpleStringProperty(courseEnd);
         this.courseLanguage = new SimpleStringProperty(courseLanguage);
-        this.courseChair = new SimpleStringProperty(courseChair);
         this.courseLecturer = new SimpleStringProperty(courseLecturer);
         this.courseDay = new SimpleStringProperty(courseDay);
         this.courseStartTime = new SimpleStringProperty(courseStartTime);
@@ -75,7 +75,7 @@ public class Course {
         this.courseRequirements = new SimpleStringProperty(courseRequirements);
         this.courseDeputat = new SimpleStringProperty(courseDeputat);
         this.courseDescription = new SimpleStringProperty(courseDescription);
-        this.courseCanceled = new SimpleStringProperty(courseCanceled);
+        this.courseCanceled = new SimpleStringProperty(courseCanceled);*/
 
     }
 
