@@ -19,7 +19,7 @@ public class Controller  {
     @FXML
     private Button createLecturerButton, createCourseButton, saveLecturerButton, saveCourseButton, deleteLecturerButton,
             deleteCourseButton, updateLecturerButton, updateCourseButton, cancelLecturerButton, cancelCourseButton,
-            nextCourseButton, backCourseButton;
+            nextCourseButton, backCourseButton, btn_course_preview;
     @FXML
     private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText, courseNumberText,
             courseTitleText, SWScourseText, hypertextCourseText, maxParticipantsCourseText, creditsCourseText,
@@ -141,6 +141,7 @@ public class Controller  {
         goBackCourse();
 
         initSchedule();
+        //addCourseToScedule();
 
 
     }
@@ -434,6 +435,19 @@ public class Controller  {
         });
 
     }
+
+    /*private void addCourseToScedule() {
+
+        btn_course_preview.setOnAction((event) -> {
+
+          Course selected = CourseTable.getSelectionModel().getSelectedItem();
+          int courseID = selected.getCourseID();
+
+          dc.getCourse(courseID);
+
+        });
+
+    }*/
 
 //ab hier Julias hässlicher Code
     private void initSchedule(){
