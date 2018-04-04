@@ -1016,7 +1016,7 @@
                                              <children>
                                                 <HBox layoutY="-2.0" prefHeight="60.0" prefWidth="1438.0">
                                                    <children>
-                                                      <TextField style="-fx-background-color: #ffffff; -fx-background-radius: 0;">
+                                                      <TextField fx:id="newSemesterText" style="-fx-background-color: #ffffff; -fx-background-radius: 0;">
                                                          <padding>
                                                             <Insets bottom="5.0" left="10.0" top="5.0" />
                                                          </padding>
@@ -1024,7 +1024,7 @@
                                                             <Insets left="10.0" top="10.0" />
                                                          </HBox.margin>
                                                       </TextField>
-                                                      <Button mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Speichern">
+                                                      <Button fx:id="newSemesterButton" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Speichern">
                                                          <HBox.margin>
                                                             <Insets left="10.0" top="10.0" />
                                                          </HBox.margin>
@@ -1041,7 +1041,7 @@
                                              <children>
                                                 <HBox prefHeight="60.0" prefWidth="1438.0">
                                                    <children>
-                                                      <TextField style="-fx-background-color: #ffffff; -fx-background-radius: 0;">
+                                                      <TextField fx:id="newChairText" style="-fx-background-color: #ffffff; -fx-background-radius: 0;">
                                                          <padding>
                                                             <Insets bottom="5.0" left="10.0" top="5.0" />
                                                          </padding>
@@ -1049,7 +1049,7 @@
                                                             <Insets left="10.0" top="10.0" />
                                                          </HBox.margin>
                                                       </TextField>
-                                                      <Button mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Speichern">
+                                                      <Button fx:id="newChairButton" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Speichern">
                                                          <HBox.margin>
                                                             <Insets left="10.0" top="10.0" />
                                                          </HBox.margin>
@@ -1066,7 +1066,7 @@
                                              <children>
                                                 <HBox prefHeight="60.0" prefWidth="1438.0">
                                                    <children>
-                                                      <TextField style="-fx-background-color: #ffffff; -fx-background-radius: 0;">
+                                                      <TextField fx:id="newProgramText" style="-fx-background-color: #ffffff; -fx-background-radius: 0;">
                                                          <padding>
                                                             <Insets bottom="5.0" left="10.0" top="5.0" />
                                                          </padding>
@@ -1074,7 +1074,7 @@
                                                             <Insets left="10.0" top="10.0" />
                                                          </HBox.margin>
                                                       </TextField>
-                                                      <Button mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Speichern">
+                                                      <Button fx:id="newProgramButton" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Speichern">
                                                          <HBox.margin>
                                                             <Insets left="10.0" top="10.0" />
                                                          </HBox.margin>
