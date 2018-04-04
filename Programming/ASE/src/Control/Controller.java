@@ -19,7 +19,7 @@ public class Controller  {
     @FXML
     private Button createLecturerButton, createCourseButton, saveLecturerButton, saveCourseButton, deleteLecturerButton,
             deleteCourseButton, updateLecturerButton, updateCourseButton, cancelLecturerButton, cancelCourseButton,
-            nextCourseButton, backCourseButton, btn_course_preview;
+            nextCourseButton, backCourseButton;
     @FXML
     private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText, courseNumberText,
             courseTitleText, SWScourseText, hypertextCourseText, maxParticipantsCourseText, creditsCourseText,
@@ -125,7 +125,7 @@ public class Controller  {
         deleteLecturer();
         updateLecturer();
 
-        //deleteCourse();
+        deleteCourse();
         //updateCourse();
 
         fillCourse();
@@ -312,7 +312,7 @@ public class Controller  {
 
     }
 
-    /*private void deleteCourse() {
+    private void deleteCourse() {
 
         deleteCourseButton.setOnAction((event) -> {
 
@@ -323,7 +323,7 @@ public class Controller  {
             //Deputat von Dozenten entfernen, beachten alte Semester!
         });
 
-    }*/
+    }
 
     private void updateLecturer() {
 
