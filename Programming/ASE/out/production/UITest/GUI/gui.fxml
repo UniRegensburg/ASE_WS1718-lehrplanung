@@ -410,7 +410,7 @@
                                                 </AnchorPane>
                                               <AnchorPane style="-fx-background-color: #787878;">
                                                    <children>
-                                                      <Button fx:id="btn_copy_selected_courses" layoutX="7.0" layoutY="24.0" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="ausgewählte Kurse übernehmen" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                      <Button fx:id="addCourseToScheduleButton" layoutX="7.0" layoutY="24.0" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="ausgewählte Kurse übernehmen" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                                          <padding>
                                                             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                                          </padding>
@@ -1187,10 +1187,10 @@
                                       <columns>
                                         <TableColumn fx:id="timeSlot" maxWidth="0.0" minWidth="100.0" prefWidth="75.0" sortable="false" style="-fx-background-color: #f5f5f5;" text="Zeit" />
                                         <TableColumn fx:id="colMonday" maxWidth="0.0" minWidth="100.0" prefWidth="75.0" text="Montag" />
-                                          <TableColumn maxWidth="0.0" minWidth="100.0" prefWidth="75.0" text="Dienstag" />
-                                          <TableColumn maxWidth="0.0" minWidth="100.0" prefWidth="75.0" text="Mittwoch" />
-                                          <TableColumn maxWidth="0.0" minWidth="100.0" prefWidth="75.0" text="Donnerstag" />
-                                          <TableColumn maxWidth="0.0" minWidth="100.0" prefWidth="75.0" text="Freitag" />
+                                          <TableColumn fx:id="colTuesday" maxWidth="0.0" minWidth="100.0" prefWidth="75.0" text="Dienstag" />
+                                          <TableColumn fx:id="colWednesday" maxWidth="0.0" minWidth="100.0" prefWidth="75.0" text="Mittwoch" />
+                                          <TableColumn fx:id="colThursday" maxWidth="0.0" minWidth="100.0" prefWidth="75.0" text="Donnerstag" />
+                                          <TableColumn fx:id="colFriday" maxWidth="0.0" minWidth="100.0" prefWidth="75.0" text="Freitag" />
                                       </columns>
                                        <BorderPane.margin>
                                           <Insets left="15.0" right="15.0" top="20.0" />

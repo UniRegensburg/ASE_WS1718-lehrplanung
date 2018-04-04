@@ -1,11 +1,11 @@
 package Control;
 
-import Interfaces.Schedule;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import Interfaces.Lecturer;
 import Interfaces.Course;
+import Interfaces.TimeTable;
 import javafx.scene.control.*;
 import Database.DatabaseInterface;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -21,7 +21,7 @@ public class Controller  {
     @FXML
     private Button createLecturerButton, createCourseButton, saveLecturerButton, saveCourseButton, deleteLecturerButton,
             deleteCourseButton, updateLecturerButton, editCourseButton, cancelLecturerButton, cancelCourseButton,
-            nextCourseButton, backCourseButton;
+            nextCourseButton, backCourseButton, addCourseToScheduleButton;
     @FXML
     private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText, courseNumberText,
             courseTitleText, SWScourseText, hypertextCourseText, maxParticipantsCourseText, creditsCourseText,
@@ -51,54 +51,9 @@ public class Controller  {
 
 //ab hier Julias hässlicher Code
     @FXML
-    private TableView<Schedule> schedulePreview;
+    private TableView<TimeTable> schedulePreview;
     @FXML
-    private TableColumn<Schedule, String> timeSlot;
-    public ObservableList<Schedule> timeSlotsList= FXCollections.observableArrayList(
-            new Schedule ("08:00"),
-            new Schedule ("08:15"),
-            new Schedule ("08:30"),
-            new Schedule ("08:45"),
-            new Schedule ("09:00"),
-            new Schedule ("09:15"),
-            new Schedule ("09:30"),
-            new Schedule ("09:45"),
-            new Schedule ("10:00"),
-            new Schedule ("10:15"),
-            new Schedule ("10:30"),
-            new Schedule ("10:45"),
-            new Schedule ("11:00"),
-            new Schedule ("11:15"),
-            new Schedule ("11:30"),
-            new Schedule ("11:45"),
-            new Schedule ("12:00"),
-            new Schedule ("12:15"),
-            new Schedule ("12:30"),
-            new Schedule ("12:45"),
-            new Schedule ("13:00"),
-            new Schedule ("13:15"),
-            new Schedule ("13:30"),
-            new Schedule ("13:45"),
-            new Schedule ("14:00"),
-            new Schedule ("14:15"),
-            new Schedule ("14:30"),
-            new Schedule ("14:45"),
-            new Schedule ("15:00"),
-            new Schedule ("15:15"),
-            new Schedule ("15:30"),
-            new Schedule ("15:45"),
-            new Schedule ("16:00"),
-            new Schedule ("16:15"),
-            new Schedule ("16:30"),
-            new Schedule ("16:45"),
-            new Schedule ("17:00"),
-            new Schedule ("17:15"),
-            new Schedule ("17:30"),
-            new Schedule ("17:45"),
-            new Schedule ("18:00")
-    );
-//bis hier Julias hässlicher Code
-
+    private TableColumn<TimeTable, String> timeSlot, colMonday, colTuesday, colWednesday, colThursday, colFriday;
     @FXML
     private ObservableList<Lecturer> data;
     @FXML
@@ -151,8 +106,8 @@ public class Controller  {
         nextCourseWindow();
         goBackCourse();
 
-        initSchedule();
-        //addCourseToScedule();
+        //initSchedule();
+        addCourseToScedule();
 
 
     }
@@ -170,6 +125,60 @@ public class Controller  {
         LecturerTable.setItems(null);
         LecturerTable.setItems(data);
 
+    }
+
+    private void addCourseToScedule() {
+
+        addCourseToScheduleButton.setOnAction((event) -> {
+
+            Course selected = CourseTable.getSelectionModel().getSelectedItem();
+            String name = selected.getCourseTitle();
+            String start = selected.getCourseStartTime();
+            String day = selected.getCourseDay();
+
+
+            timeSlot.setCellValueFactory(new PropertyValueFactory<>("scheduleTime"));
+            colMonday.setCellValueFactory(new PropertyValueFactory<>("scheduleMonday"));
+            colTuesday.setCellValueFactory(new PropertyValueFactory<>("scheduleTuesday"));
+            colWednesday.setCellValueFactory(new PropertyValueFactory<>("scheduleWednesday"));
+            colThursday.setCellValueFactory(new PropertyValueFactory<>("scheduleThursday"));
+            colFriday.setCellValueFactory(new PropertyValueFactory<>("scheduleFriday"));
+
+            schedulePreview.setItems(null);
+            schedulePreview.setItems(fillTimeTable(start, name, day));
+
+        });
+
+    }
+
+    private ObservableList<TimeTable> fillTimeTable(String start, String title, String day){
+
+        ObservableList<TimeTable> data = FXCollections.observableArrayList();
+        String[] Time = start.split(":");
+
+        System.out.println(Time[0]+"  "+day);
+
+        for(int i= 8; i < 21; i++){
+            if(Integer.parseInt(Time[0])==i || (Integer.parseInt(Time[0])+1)==i){
+                switch (day){
+                    case "Montag": data.add(new TimeTable(""+i,""+title,"","","",""));
+                    break;
+                    case "Dienstag": data.add(new TimeTable(""+i,"",""+title,"","",""));
+                    break;
+                    case "Mittwoch": data.add(new TimeTable(""+i,"","",""+title,"",""));
+                    break;
+                    case "Donnerstag": data.add(new TimeTable(""+i,"","","",""+title,""));
+                    break;
+                    case "Freitag": data.add(new TimeTable(""+i,"","","","",""+title));
+                    break;
+                    default: System.out.println("Warum nur?");
+                }
+            }
+            else{
+                data.add(new TimeTable(""+i,"","","","",""));
+            }
+        }
+        return data;
     }
 
     private void createLecturer() {
@@ -552,29 +561,4 @@ public class Controller  {
         chair2Combo.setValue(null);
         descriptionText.clear();
     }
-
-    /*private void addCourseToScedule() {
-
-        btn_course_preview.setOnAction((event) -> {
-
-          Course selected = CourseTable.getSelectionModel().getSelectedItem();
-          int courseID = selected.getCourseID();
-
-          dc.getCourse(courseID);
-
-        });
-
-    }*/
-
-//ab hier Julias hässlicher Code
-    private void initSchedule(){
-        timeSlot.setCellValueFactory(new PropertyValueFactory<Schedule, String>("timeSlot"));;
-        schedulePreview.setItems(timeSlotsList);
-
-    }
-
-//bis hier Julias hässlicher Code
-
-
-
 }

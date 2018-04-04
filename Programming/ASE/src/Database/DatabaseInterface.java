@@ -8,6 +8,7 @@ import java.util.List;
 
 import Interfaces.Lecturer;
 import Interfaces.Course;
+import Interfaces.TimeTable;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
