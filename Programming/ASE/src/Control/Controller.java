@@ -37,9 +37,14 @@ public class Controller  {
     @FXML
     private TableView<Course> CourseTable;
     @FXML
-    private TableColumn<Course, String> CourseTitle, CourseModule, CourseKind, CourseChair;
+    private TableColumn<Course, String> CourseTitle, CourseModule, CourseKind, CourseChair, CourseNumber,
+            CourseFinalsDate, CourseRhythem, CourseMaxPar, CourseExpPar, CoursePar, CourseDeputat, CourseCredits,
+            CourseHyperlink, CourseLanguage, CourseStartDate, CourseEndDate, CourseStartTime, CourseEndTime, CourseCtSt,
+            CourseRequirements, CourseCertificate, CourseDescription;
     @FXML
     private TableColumn<Course, Integer> CourseID, CourseSWS;
+    @FXML
+    private TableColumn<Course, Integer> CourseOnlineReg, CourseExtraCourse, CourseFinancing;
 
 
 //ab hier Julias hässlicher Code
@@ -98,7 +103,7 @@ public class Controller  {
     private ObservableList<Course> dataCourse;
     @FXML
     private ComboBox courseProgramCombo, chairCombo, dayCombo, ctCombo, rotaCombo, lecturerCombo, certCombo,
-            kindCourseCombo, courseFrequencyComboBox;
+            kindCourseCombo, courseFrequencyComboBox, chair2Combo, semesterCombo;
     @FXML
     private CheckBox onlineRegBox, extraCourseBox, financingCourseBox;
     @FXML
@@ -131,6 +136,8 @@ public class Controller  {
         fillCourse();
         fillCourseProgramCombo();
         fillLecturersCombo();
+        fillChairsCombo();
+        fillSemesterCombo();
 
         cancelLecturer();
         cancelCourse();
@@ -145,7 +152,6 @@ public class Controller  {
 
 
     }
-
 
     private void fillLecturers() {
 
@@ -252,7 +258,7 @@ public class Controller  {
             // MODUL
 
             // ZWEITE SEITE
-            String chair = chairCombo.getValue().toString();
+            String program = chairCombo.getValue().toString();
             String lecturer = lecturerCombo.getValue().toString();
             String day = dayCombo.getValue().toString();
             String startTime = startTimeText.getText();
@@ -263,14 +269,15 @@ public class Controller  {
             String requirements = requirementsText.getText();
             String certificate = certCombo.getValue().toString();
             String deputat = deputatText.getText();
+            String chair = chair2Combo.getValue().toString();
             String description = descriptionText.getText();
             String canceled = canceledDate.getValue().toString();
 
             if(editCourse == false) {
                 dc.writeCourse(number, title, kind, SWS, hyperlink, maxParticipants, expectedParticipants, onlineReg,
-                        credits, extraCourse, financing, finals, start, end, language, chair, startTime,
+                        credits, extraCourse, financing, finals, start, end, language, program, startTime,
                         endTime, ctSt, rota, participants, requirements, certificate, deputat, description, canceled,
-                        turnus);
+                        turnus, chair);
 
                 dc.connectCourseWithLecturerDay(lecturer, title, day);
                 dc.addDeputat(deputat, lecturer);
@@ -365,6 +372,9 @@ public class Controller  {
     private void fillCourse() {
 
         dataCourse = dc.GetCourses();
+        /*CourseFinalsDate, CourseRhythem, CourseMaxPar, CourseExpPar, CoursePar, CourseDeputat, CourseCredits,
+                CourseHyperlink, CourseLanguage, CourseStartDate, CourseEndDate, CourseStartTime, CourseEndTime, CourseCtSt,
+                CourseRequirements, CourseCertificate, CourseDescription, CourseOnlineReg, CourseExtraCourse, CourseFinancing*/
 
         CourseID.setCellValueFactory((new PropertyValueFactory<>("courseID")));
         CourseTitle.setCellValueFactory(new PropertyValueFactory<>("courseTitle"));
@@ -372,6 +382,28 @@ public class Controller  {
         CourseKind.setCellValueFactory(new PropertyValueFactory<>("courseKind"));
         CourseModule.setCellValueFactory(new PropertyValueFactory<>("courseModule"));
         CourseChair.setCellValueFactory(new PropertyValueFactory<>("courseChair"));
+        CourseNumber.setCellValueFactory(new PropertyValueFactory<>("courseNumber"));
+        CourseFinalsDate.setCellValueFactory(new PropertyValueFactory<>("courseFinals"));
+        CourseRhythem.setCellValueFactory(new PropertyValueFactory<>("courseRota"));
+        CourseMaxPar.setCellValueFactory(new PropertyValueFactory<>("courseMaxParticipants"));
+        CourseExpPar.setCellValueFactory(new PropertyValueFactory<>("courseExpParticipants"));
+        CoursePar.setCellValueFactory(new PropertyValueFactory<>("courseParticipants"));
+        CourseDeputat.setCellValueFactory(new PropertyValueFactory<>("courseDeputat"));
+        CourseCredits.setCellValueFactory(new PropertyValueFactory<>("courseCredits"));
+        CourseHyperlink.setCellValueFactory(new PropertyValueFactory<>("courseHyperlink"));
+        CourseLanguage.setCellValueFactory(new PropertyValueFactory<>("courseLanguage"));
+        CourseStartDate.setCellValueFactory(new PropertyValueFactory<>("courseStart"));
+        CourseEndDate.setCellValueFactory(new PropertyValueFactory<>("courseEnd"));
+        CourseStartTime.setCellValueFactory(new PropertyValueFactory<>("courseStartTime"));
+        CourseEndTime.setCellValueFactory(new PropertyValueFactory<>("courseEndTime"));
+        CourseCtSt.setCellValueFactory(new PropertyValueFactory<>("courseCtST"));
+        CourseRequirements.setCellValueFactory(new PropertyValueFactory<>("courseRequirements"));
+        CourseCertificate.setCellValueFactory(new PropertyValueFactory<>("courseCertificate"));
+        CourseDescription.setCellValueFactory(new PropertyValueFactory<>("courseDescription"));
+        CourseOnlineReg.setCellValueFactory(new PropertyValueFactory<>("courseOnlineReg"));
+        CourseExtraCourse.setCellValueFactory(new PropertyValueFactory<>("courseExtraCourse"));
+        CourseFinancing.setCellValueFactory(new PropertyValueFactory<>("courseFinancing"));
+
 
         CourseTable.setItems(null);
         CourseTable.setItems(dataCourse);
@@ -390,6 +422,18 @@ public class Controller  {
     private void fillLecturersCombo(){
         for(int i = 0; i < dc.GetLecturers().size(); i++){
             lecturerCombo.getItems().addAll(""+dc.GetLecturers().get(i)+"");
+        }
+    }
+
+    private void fillChairsCombo(){
+        for(int i = 0; i < dc.getChairs().size(); i++){
+            chair2Combo.getItems().addAll(""+dc.getChairs().get(i)+"");
+        }
+    }
+
+    private void fillSemesterCombo(){
+        for(int i = 0; i < dc.getSemester().size(); i++){
+            semesterCombo.getItems().addAll(""+dc.getSemester().get(i)+"");
         }
     }
 
