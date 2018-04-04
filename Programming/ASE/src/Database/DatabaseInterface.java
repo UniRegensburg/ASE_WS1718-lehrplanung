@@ -229,10 +229,14 @@ public class DatabaseInterface {
         try {
             Statement st = conn.createStatement();
             st.executeUpdate("DELETE FROM Kurse WHERE ID = '" + ID + "'");
+            st.executeUpdate("DELETE FROM ZuordnungDozenten WHERE KursID = '"+ID+"'");
+                    st.executeUpdate("DELETE FROM ZuordnungWochentag WHERE CourseID = '"+ID+"'");
         }
         catch (SQLException e) {
             e.printStackTrace();
         }
+
+
 
     }
 
