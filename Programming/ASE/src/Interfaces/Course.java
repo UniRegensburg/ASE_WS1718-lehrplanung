@@ -36,6 +36,7 @@ public class Course {
     private SimpleStringProperty courseDeputat = new SimpleStringProperty();
     private SimpleStringProperty courseDescription = new SimpleStringProperty();
     private SimpleStringProperty courseNumber = new SimpleStringProperty();
+    private SimpleStringProperty courseProgram = new SimpleStringProperty();
 
 
     public Course(Integer courseID, Integer courseSWS, String courseModule, String courseKind, String courseTitle,
@@ -44,7 +45,8 @@ public class Course {
                   Boolean courseExtraCourse, Boolean courseFinancing, String courseStart, String courseEnd,
                   String courseLanguage, String courseLecturer, String courseDay, String courseStartTime,
                   String courseEndTime, String courseCtSt, String courseRota, String courseParticipants,
-                  String courseCertificate, String courseRequirements, String courseDeputat, String courseDescription, String courseNumber) {
+                  String courseCertificate, String courseRequirements, String courseDeputat, String courseDescription,
+                  String courseNumber, String courseProgram) {
 
         this.courseID = new SimpleIntegerProperty(courseID);
         this.courseSWS = new SimpleIntegerProperty(courseSWS);
@@ -76,6 +78,7 @@ public class Course {
         this.courseDeputat = new SimpleStringProperty(courseDeputat);
         this.courseDescription = new SimpleStringProperty(courseDescription);
         this.courseNumber = new SimpleStringProperty(courseNumber);
+        this.courseProgram = new SimpleStringProperty(courseProgram);
 
     }
 
@@ -437,6 +440,18 @@ public class Course {
 
     public void setCourseNumber(String courseNumber) {
         this.courseNumber.set(courseNumber);
+    }
+
+    public String getCourseProgram() {
+        return courseProgram.get();
+    }
+
+    public SimpleStringProperty courseProgramProperty() {
+        return courseProgram;
+    }
+
+    public void setCourseProgram(String courseProgram) {
+        this.courseProgram.set(courseProgram);
     }
 
 }

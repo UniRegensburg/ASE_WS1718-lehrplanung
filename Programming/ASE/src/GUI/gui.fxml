@@ -386,7 +386,7 @@
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </Button>
-                                                <Button fx:id="btn_courses_search_course_overview11" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Kurs bearbeiten" GridPane.columnIndex="2">
+                                                <Button fx:id="editCourseButton" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Kurs bearbeiten" GridPane.columnIndex="2">
                                                    <cursor>
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
