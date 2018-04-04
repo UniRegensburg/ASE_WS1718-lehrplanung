@@ -21,12 +21,14 @@ public class Controller  {
     @FXML
     private Button createLecturerButton, createCourseButton, saveLecturerButton, saveCourseButton, deleteLecturerButton,
             deleteCourseButton, updateLecturerButton, editCourseButton, cancelLecturerButton, cancelCourseButton,
-            nextCourseButton, backCourseButton, addCourseToScheduleButton;
+            nextCourseButton, backCourseButton, addCourseToScheduleButton, newSemesterButton, newChairButton,
+            newProgramButton;
     @FXML
     private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText, courseNumberText,
             courseTitleText, SWScourseText, hypertextCourseText, maxParticipantsCourseText, creditsCourseText,
             expectedParticipantsCourseText, startTimeText, endTimeText, participantsText,
-            requirementsText, descriptionText, deputatText, languageCourseText1;
+            requirementsText, descriptionText, deputatText, languageCourseText1, newSemesterText, newChairText,
+            newProgramText;
     @FXML
     private BorderPane pane_teachers_overview, pane_single_teacher, pane_courses_overview_start,
             pane_courses_overview_create1, pane_courses_overview_create2;
@@ -108,6 +110,10 @@ public class Controller  {
 
         //initSchedule();
         addCourseToScedule();
+
+        createProgram();
+        createChair();
+        createSemester();
 
 
     }
@@ -561,4 +567,38 @@ public class Controller  {
         chair2Combo.setValue(null);
         descriptionText.clear();
     }
+
+    private void createSemester() {
+
+        newSemesterButton.setOnAction((event) -> {
+
+            String semesterName = newSemesterText.getText();
+            dc.writeSemester(semesterName);
+
+        });
+
+    }
+
+    private void createChair() {
+
+        newChairButton.setOnAction((event) -> {
+
+            String chairName = newChairText.getText();
+            dc.writeChair(chairName);
+
+        });
+
+    }
+
+    private void createProgram() {
+
+        newProgramButton.setOnAction((event) -> {
+
+            String programName = newProgramText.getText();
+            dc.writeProgram(programName);
+
+        });
+
+    }
+
 }

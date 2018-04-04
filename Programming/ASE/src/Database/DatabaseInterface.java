@@ -178,6 +178,24 @@ public class DatabaseInterface {
         }
     }
 
+    public void writeSemester(String name){
+
+
+
+    }
+
+    public void writeChair(String name){
+
+
+
+    }
+
+    public void writeProgram(String name){
+
+
+
+    }
+
     public void connectCourseWithLecturerDay(String lecturer, String title, String day){
         int courseID = 0;
         int dayID = 0;
