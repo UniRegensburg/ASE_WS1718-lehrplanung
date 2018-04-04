@@ -287,7 +287,7 @@
                                       <items>
                                           <HBox prefHeight="35.0" prefWidth="240.0" style="-fx-background-color: #dddddd;">
                                              <children>
-                                                <ComboBox fx:id="course_overview_select_semester" promptText="Semester wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;">
+                                                <ComboBox fx:id="semesterCombo" promptText="Semester wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;">
                                                    <HBox.margin>
                                                       <Insets left="5.0" top="5.0" />
                                                    </HBox.margin>
@@ -327,26 +327,26 @@
                                                 <TableColumn fx:id="CourseSWS" minWidth="0.0" prefWidth="178.08383178710938" text="SWS" />
                                                 <TableColumn fx:id="CourseKind" minWidth="0.0" prefWidth="178.08383178710938" text="Art" />
                                                 <TableColumn fx:id="CourseChair" minWidth="0.0" prefWidth="178.08383178710938" text="Lehrstuhl" />
-                                                <TableColumn fx:id="FinalsDate" minWidth="0.0" prefWidth="178.08383178710938" text="Prüfungsdatum" />
-                                                <TableColumn fx:id="Rhythem" minWidth="0.0" prefWidth="178.08383178710938" text="Rhythmus" />
-                                                <TableColumn fx:id="OnlineReg" minWidth="0.0" prefWidth="178.08383178710938" text="Online-Anmeldung" />
-                                                <TableColumn fx:id="MaxPar" minWidth="0.0" prefWidth="178.08383178710938" text="Maximale Teilnehmer" />
-                                                <TableColumn fx:id="ExpPar" minWidth="0.0" prefWidth="178.08383178710938" text="Erwartete Teilnehmer" />
-                                                <TableColumn fx:id="Par" minWidth="0.0" prefWidth="178.08383178710938" text="Teilnehmer" />
-                                                <TableColumn fx:id="DeputatCourse" minWidth="0.0" prefWidth="178.08383178710938" text="Deputat" />
-                                                <TableColumn fx:id="ExtraCourse" minWidth="0.0" prefWidth="178.08383178710938" text="Wahlbereich" />
-                                                <TableColumn fx:id="Credits" minWidth="0.0" prefWidth="178.08383178710938" text="Credits" />
-                                                <TableColumn fx:id="Hyperlink" minWidth="0.0" prefWidth="178.08383178710938" text="Hyperlink" />
-                                                <TableColumn fx:id="Language" minWidth="0.0" prefWidth="178.08383178710938" text="Sprache" />
-                                                <TableColumn fx:id="Financing" minWidth="0.0" prefWidth="178.08383178710938" text="Finanzierung" />
-                                                <TableColumn fx:id="StartDate" minWidth="0.0" prefWidth="178.08383178710938" text="Anfangsdatum" />
-                                                <TableColumn fx:id="EndDate" minWidth="0.0" prefWidth="178.08383178710938" text="Enddatum" />
-                                                <TableColumn fx:id="StartTime" minWidth="0.0" prefWidth="178.08383178710938" text="Kursbeginn" />
-                                                <TableColumn fx:id="EndTime" minWidth="0.0" prefWidth="178.08383178710938" text="Kursende" />
-                                                <TableColumn fx:id="CtSt" minWidth="0.0" prefWidth="178.08383178710938" text="Ct / St" />
-                                                <TableColumn fx:id="Requirements" minWidth="0.0" prefWidth="178.08383178710938" text="Anforderungen" />
-                                                <TableColumn fx:id="Certificate" minWidth="0.0" prefWidth="178.08383178710938" text="Prüfungsart" />
-                                                <TableColumn fx:id="Description" minWidth="0.0" prefWidth="178.08383178710938" text="Beschreibung" />
+                                                <TableColumn fx:id="CourseFinalsDate" minWidth="0.0" prefWidth="178.08383178710938" text="Prüfungsdatum" />
+                                                <TableColumn fx:id="CourseRhythem" minWidth="0.0" prefWidth="178.08383178710938" text="Rhythmus" />
+                                                <TableColumn fx:id="CourseOnlineReg" minWidth="0.0" prefWidth="178.08383178710938" text="Online-Anmeldung" />
+                                                <TableColumn fx:id="CourseMaxPar" minWidth="0.0" prefWidth="178.08383178710938" text="Maximale Teilnehmer" />
+                                                <TableColumn fx:id="CourseExpPar" minWidth="0.0" prefWidth="178.08383178710938" text="Erwartete Teilnehmer" />
+                                                <TableColumn fx:id="CoursePar" minWidth="0.0" prefWidth="178.08383178710938" text="Teilnehmer" />
+                                                <TableColumn fx:id="CourseDeputat" minWidth="0.0" prefWidth="178.08383178710938" text="Deputat" />
+                                                <TableColumn fx:id="CourseExtraCourse" minWidth="0.0" prefWidth="178.08383178710938" text="Wahlbereich" />
+                                                <TableColumn fx:id="CourseCredits" minWidth="0.0" prefWidth="178.08383178710938" text="Credits" />
+                                                <TableColumn fx:id="CourseHyperlink" minWidth="0.0" prefWidth="178.08383178710938" text="Hyperlink" />
+                                                <TableColumn fx:id="CourseLanguage" minWidth="0.0" prefWidth="178.08383178710938" text="Sprache" />
+                                                <TableColumn fx:id="CourseFinancing" minWidth="0.0" prefWidth="178.08383178710938" text="Finanzierung" />
+                                                <TableColumn fx:id="CourseStartDate" minWidth="0.0" prefWidth="178.08383178710938" text="Anfangsdatum" />
+                                                <TableColumn fx:id="CourseEndDate" minWidth="0.0" prefWidth="178.08383178710938" text="Enddatum" />
+                                                <TableColumn fx:id="CourseStartTime" minWidth="0.0" prefWidth="178.08383178710938" text="Kursbeginn" />
+                                                <TableColumn fx:id="CourseEndTime" minWidth="0.0" prefWidth="178.08383178710938" text="Kursende" />
+                                                <TableColumn fx:id="CourseCtSt" minWidth="0.0" prefWidth="178.08383178710938" text="Ct / St" />
+                                                <TableColumn fx:id="CourseRequirements" minWidth="0.0" prefWidth="178.08383178710938" text="Anforderungen" />
+                                                <TableColumn fx:id="CourseCertificate" minWidth="0.0" prefWidth="178.08383178710938" text="Prüfungsart" />
+                                                <TableColumn fx:id="CourseDescription" minWidth="0.0" prefWidth="178.08383178710938" text="Beschreibung" />
                                             </columns>
                                              <padding>
                                                 <Insets top="10.0" />
@@ -835,7 +835,7 @@
                                                 <Insets left="20.0" />
                                              </GridPane.margin>
                                           </Text>
-                                          <ComboBox minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <ComboBox fx:id="chair2Combo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                        </children>
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" maxWidth="448.30816650390625" minWidth="169.1357421875" prefWidth="182.267333984375" />
@@ -1216,7 +1216,7 @@
               <items>
                 <AnchorPane prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #dddddd;">
                      <children>
-                        <HBox layoutX="8.0" layoutY="7.0" prefHeight="42.0" prefWidth="1314.0" style="-fx-background-color: #787878;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <HBox layoutX="8.0" layoutY="7.0" prefHeight="42.0" prefWidth="1314.0" style="-fx-background-color: #787878;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <Text fill="WHITE" layoutX="8.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrplanung" wrappingWidth="182.85295867919922">
                                  <font>

@@ -86,6 +86,36 @@ public class DatabaseInterface {
         }
     }
 
+    public List getChairs(){
+        List <String> chairs = new ArrayList<>();
+        try{
+            ResultSet rs = conn.createStatement().executeQuery("SELECT Name FROM Lehrstuhl");
+            while (rs.next()){
+                chairs.add(rs.getString(1));
+            }
+            return chairs;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List getSemester(){
+        List <String> semester = new ArrayList<>();
+        try{
+            ResultSet rs = conn.createStatement().executeQuery("SELECT Semester FROM Semester");
+            while (rs.next()){
+                semester.add(rs.getString(1));
+            }
+            return semester;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public int getLecturerID(String lecturer){
         int lecturerID = 0;
         String[] Names = lecturer.split(" ");
@@ -137,19 +167,52 @@ public class DatabaseInterface {
 
             ObservableList<Course> data = FXCollections.observableArrayList();
             ResultSet rs;
+            String chairName = "";
+            String dozentName = "";
+            String day = "";
 
             if(programID == 0){
-                rs=conn.createStatement().executeQuery("SELECT ID, SWS, Modul, Art, Titel, Lehrstuhl " +
-                        "FROM Kurse");
+                rs=conn.createStatement().executeQuery("SELECT ID, Titel, Modul, SWS, Art, Lehrstuhl, Pruefungsdatum, Rhythmus, " +
+                        "OnlineAnmeldung, MaxTeilnehmer, Deputat, Wahlbereich, Credits, ErwTeilnehmer, Hyperlink, Sprache," +
+                        "Finanzierung, Anfangsdatum, Enddatum, Kursnummer, Kursbeginn, Kursende, CtSt, Teilnehmer, Anforderung," +
+                        "Zertifikat, Beschreibung, Turnus FROM Kurse");
             }
             else{
-                rs=conn.createStatement().executeQuery("SELECT ID, SWS, Modul, Art, Titel, Lehrstuhl " +
-                        "FROM Kurse WHERE Studiengang ='"+programID+"'");
+                rs=conn.createStatement().executeQuery("SELECT ID, Titel, Modul, SWS, Art, Lehrstuhl, Pruefungsdatum, Rhythmus, " +
+                        "OnlineAnmeldung, MaxTeilnehmer, Deputat, Wahlbereich, Credits, ErwTeilnehmer, Hyperlink, Sprache," +
+                        "Finanzierung, Anfangsdatum, Enddatum, Kursnummer, Kursbeginn, Kursende, CtSt, Teilnehmer, Anforderung," +
+                        "Zertifikat, Beschreibung, Turnus FROM Kurse WHERE Studiengang ='"+programID+"'");
             }
             while (rs.next()) {
 
-                data.add(new Course(rs.getInt(1), rs.getInt(2), rs.getString(3),
-                        rs.getString(4), rs.getString(5), rs.getString(6)));
+                ResultSet rsGetChairName = conn.createStatement().executeQuery("SELECT Name FROM Lehrstuhl " +
+                        "WHERE ID = '"+rs.getInt(7)+"'");
+                while(rsGetChairName.next()){
+                    chairName = rsGetChairName.getString(1);
+                }
+
+                ResultSet rsGetDozentenName = conn.createStatement().executeQuery("SELECT Dozenten.Vorname, " +
+                        "Dozenten.Nachname FROM Dozenten INNER JOIN ZuordnungDozenten ON ZuordnungDozenten.DozentID = " +
+                        "Dozenten.ID WHERE ZuordnungDozenten.KursID = '"+rs.getInt(1)+"'");
+                while(rsGetDozentenName.next()){
+                    dozentName = rsGetDozentenName.getString(1)+" "+ rsGetDozentenName.getString(2);
+                }
+
+                ResultSet rsGetWochentag = conn.createStatement().executeQuery("SELECT Wochentage.Tag FROM Wochentage " +
+                        "INNER JOIN ZuordnungWochentag ON ZuordnungWochentag.DayID = Wochentage.ID WHERE " +
+                        "ZuordnungWochentag.CourseID = '"+rs.getInt(1)+"'");
+                while(rsGetWochentag.next()){
+                    day = rsGetWochentag.getString(1);
+                }
+
+                data.add(new Course(rs.getInt(1), rs.getInt(4), rs.getString(3),
+                        rs.getString(5), rs.getString(2), chairName, rs.getString(15),
+                        rs.getString(10), Boolean.parseBoolean(rs.getString(9)), rs.getString(28),
+                        rs.getString(14), rs.getString(13), rs.getString(7), Boolean.parseBoolean(rs.getString(12)),
+                        Boolean.parseBoolean(rs.getString(17)), rs.getString(18), rs.getString(19),
+                        rs.getString(16), dozentName, day, rs.getString(21), rs.getString(22),
+                        rs.getString(23), rs.getString(8), rs.getString(24), rs.getString(26),
+                        rs.getString(25), rs.getString(11), rs.getString(27), rs.getString(20)));
             }
             return data;
 
@@ -171,25 +234,32 @@ public class DatabaseInterface {
 
     }
 
-    public void writeCourse(String number, String title, String kind, String SWS, String hyperlink, String maxP, String expP, Boolean online, String credits, Boolean extra, Boolean finance, String finals, String start, String end, String language, String chair, String startTime, String endTime, String ct, String rotation, String participants, String requirements, String cert, String deputat, String description, String cancelled, String turnus)
+    public void writeCourse(String number, String title, String kind, String SWS, String hyperlink, String maxP, String expP, Boolean online, String credits, Boolean extra, Boolean finance, String finals, String start, String end, String language, String program, String startTime, String endTime, String ct, String rotation, String participants, String requirements, String cert, String deputat, String description, String cancelled, String turnus, String chair)
     {
         try{
-            Statement getChair = conn.createStatement();
+            int programID = 0;
             int chairID = 0;
 
-            ResultSet rs = getChair.executeQuery("SELECT ID FROM Studiengang WHERE Titel = '"+ chair +"'");
-            while(rs.next()){
-                chairID = rs.getInt(1);
+            Statement getProgram = conn.createStatement();
+            ResultSet rsProgram = getProgram.executeQuery("SELECT ID FROM Studiengang WHERE Titel = '"+ program +"'");
+            while(rsProgram.next()){
+                programID = rsProgram.getInt(1);
+            }
+
+            Statement getChair = conn.createStatement();
+            ResultSet rsChair = getChair.executeQuery("SELECT ID FROM Lehrstuhl WHERE Name = '"+ chair +"'");
+            while(rsChair.next()){
+                chairID = rsChair.getInt(1);
             }
 
             Statement st = conn.createStatement();
             st.executeUpdate("INSERT INTO Kurse(Kursnummer,Titel,Art,SWS,Hyperlink,MaxTeilnehmer,ErwTeilnehmer," +
                     "OnlineAnmeldung,Credits,Wahlbereich,Finanzierung,Pruefungsdatum,Anfangsdatum,Enddatum,Sprache," +
-                    "Studiengang,Kursbeginn,Kursende,CtSt,Rhythmus,Teilnehmer,Anforderung,Zertifikat,Deputat,Beschreibung,Turnus)" +
+                    "Studiengang,Kursbeginn,Kursende,CtSt,Rhythmus,Teilnehmer,Anforderung,Zertifikat,Deputat,Beschreibung,Turnus,Lehrstuhl)" +
                     "VALUES('"+number+"','"+title+"','"+kind+"','"+SWS+"','"+hyperlink+"','"+maxP+"','"+expP+"','"+online+"'," +
-                    "'"+credits+"','"+extra+"','"+finance+"','"+finals+"','"+start+"','"+end+"','"+language+"','"+chairID+"'," +
+                    "'"+credits+"','"+extra+"','"+finance+"','"+finals+"','"+start+"','"+end+"','"+language+"','"+programID+"'," +
                     "'"+startTime+"','"+endTime+"','"+ct+"','"+rotation+"','"+participants+"','"+requirements+"','"+cert+"'," +
-                    "'"+deputat+"','"+description+"','"+turnus+"')");
+                    "'"+deputat+"','"+description+"','"+turnus+"','"+chairID+"')");
 
         } catch (SQLException e) {
             e.printStackTrace();

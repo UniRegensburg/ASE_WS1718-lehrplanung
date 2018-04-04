@@ -35,16 +35,16 @@ public class Course {
     private SimpleStringProperty courseCertificate = new SimpleStringProperty();
     private SimpleStringProperty courseDeputat = new SimpleStringProperty();
     private SimpleStringProperty courseDescription = new SimpleStringProperty();
-    private SimpleStringProperty courseCanceled = new SimpleStringProperty();
+    private SimpleStringProperty courseNumber = new SimpleStringProperty();
+
 
     public Course(Integer courseID, Integer courseSWS, String courseModule, String courseKind, String courseTitle,
-                  String courseChair /*, String courseHyperlink, String courseMaxParticipants,
+                  String courseChair, String courseHyperlink, String courseMaxParticipants,
                   Boolean courseOnlineReg, String courseTurnus, String courseExpParticipants, String courseCredits, String courseFinals,
                   Boolean courseExtraCourse, Boolean courseFinancing, String courseStart, String courseEnd,
                   String courseLanguage, String courseLecturer, String courseDay, String courseStartTime,
                   String courseEndTime, String courseCtSt, String courseRota, String courseParticipants,
-                  String courseCertificate, String courseRequirements, String courseDeputat, String courseDescription,
-                  String courseCanceled*/) {
+                  String courseCertificate, String courseRequirements, String courseDeputat, String courseDescription, String courseNumber) {
 
         this.courseID = new SimpleIntegerProperty(courseID);
         this.courseSWS = new SimpleIntegerProperty(courseSWS);
@@ -52,7 +52,7 @@ public class Course {
         this.courseKind = new SimpleStringProperty(courseKind);
         this.courseTitle = new SimpleStringProperty(courseTitle);
         this.courseChair = new SimpleStringProperty(courseChair);
-        /*this.courseTurnus = new SimpleStringProperty(courseTurnus);
+        this.courseTurnus = new SimpleStringProperty(courseTurnus);
         this.courseHyperlink = new SimpleStringProperty(courseHyperlink);
         this.courseMaxParticipants = new SimpleStringProperty(courseMaxParticipants);
         this.courseExpParticipants = new SimpleStringProperty(courseExpParticipants);
@@ -75,7 +75,7 @@ public class Course {
         this.courseRequirements = new SimpleStringProperty(courseRequirements);
         this.courseDeputat = new SimpleStringProperty(courseDeputat);
         this.courseDescription = new SimpleStringProperty(courseDescription);
-        this.courseCanceled = new SimpleStringProperty(courseCanceled);*/
+        this.courseNumber = new SimpleStringProperty(courseNumber);
 
     }
 
@@ -427,16 +427,16 @@ public class Course {
         this.courseDescription.set(courseDescription);
     }
 
-    public String getCourseCanceled() {
-        return courseCanceled.get();
+    public String getCourseNumber() {
+        return courseNumber.get();
     }
 
-    public SimpleStringProperty courseCanceledProperty() {
-        return courseCanceled;
+    public SimpleStringProperty courseNumberProperty() {
+        return courseNumber;
     }
 
-    public void setCourseCanceled(String courseCanceled) {
-        this.courseCanceled.set(courseCanceled);
+    public void setCourseNumber(String courseNumber) {
+        this.courseNumber.set(courseNumber);
     }
 
 }
