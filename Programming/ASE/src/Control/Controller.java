@@ -62,7 +62,7 @@ public class Controller  {
     private ObservableList<Course> dataCourse;
     @FXML
     private ComboBox courseProgramCombo, chairCombo, dayCombo, ctCombo, rotaCombo, lecturerCombo, certCombo,
-            kindCourseCombo, courseFrequencyComboBox, chair2Combo, semesterCombo;
+            kindCourseCombo, courseFrequencyComboBox, chair2Combo, semesterCombo, semesterTimeTableCombo;
     @FXML
     private CheckBox onlineRegBox, extraCourseBox, financingCourseBox;
     @FXML
@@ -463,7 +463,8 @@ public class Controller  {
     }
 
     private void fillCourseProgramCombo(){
-
+        courseProgramCombo.getItems().clear();
+        chairCombo.getItems().clear();
         for(int i = 0; i < dc.GetPrograms().size(); i++){
             courseProgramCombo.getItems().addAll(""+dc.GetPrograms().get(i)+"");
             chairCombo.getItems().addAll(""+dc.GetPrograms().get(i)+"");
@@ -472,20 +473,25 @@ public class Controller  {
     }
 
     private void fillLecturersCombo(){
+        lecturerCombo.getItems().clear();
         for(int i = 0; i < dc.GetLecturers().size(); i++){
             lecturerCombo.getItems().addAll(""+dc.GetLecturers().get(i)+"");
         }
     }
 
     private void fillChairsCombo(){
+        chair2Combo.getItems().clear();
         for(int i = 0; i < dc.getChairs().size(); i++){
             chair2Combo.getItems().addAll(""+dc.getChairs().get(i)+"");
         }
     }
 
     private void fillSemesterCombo(){
+        semesterCombo.getItems().clear();
+        semesterTimeTableCombo.getItems().clear();
         for(int i = 0; i < dc.getSemester().size(); i++){
             semesterCombo.getItems().addAll(""+dc.getSemester().get(i)+"");
+            semesterTimeTableCombo.getItems().addAll(""+dc.getSemester().get(i)+"");
         }
     }
 
@@ -574,6 +580,8 @@ public class Controller  {
 
             String semesterName = newSemesterText.getText();
             dc.writeSemester(semesterName);
+            newSemesterText.clear();
+            fillSemesterCombo();
 
         });
 
@@ -585,6 +593,8 @@ public class Controller  {
 
             String chairName = newChairText.getText();
             dc.writeChair(chairName);
+            newChairText.clear();
+            fillChairsCombo();
 
         });
 
@@ -596,6 +606,8 @@ public class Controller  {
 
             String programName = newProgramText.getText();
             dc.writeProgram(programName);
+            newProgramText.clear();
+            fillCourseProgramCombo();
 
         });
 
