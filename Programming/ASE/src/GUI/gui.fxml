@@ -1164,7 +1164,7 @@
                                                    <opaqueInsets>
                                                       <Insets top="20.0" />
                                                    </opaqueInsets></ListView>
-                                                <ComboBox layoutX="7.0" layoutY="16.0" prefWidth="200.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                                <ComboBox fx:id="semesterTimeTableCombo" layoutX="7.0" layoutY="16.0" prefWidth="200.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                                              </children>
                                           </AnchorPane>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #ffffff;">

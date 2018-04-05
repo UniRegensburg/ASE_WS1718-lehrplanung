@@ -179,21 +179,33 @@ public class DatabaseInterface {
     }
 
     public void writeSemester(String name){
+        try {
+            Statement st = conn.createStatement();
+            st.executeUpdate("INSERT INTO Semester(Semester)VALUES('"+name+"')");
 
-
-
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void writeChair(String name){
+        try {
+            Statement st = conn.createStatement();
+            st.executeUpdate("INSERT INTO Lehrstuhl(Name)VALUES('"+name+"')");
 
-
-
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void writeProgram(String name){
+        try {
+            Statement st = conn.createStatement();
+            st.executeUpdate("INSERT INTO Studiengang(Titel)VALUES('"+name+"')");
 
-
-
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void connectCourseWithLecturerDay(String lecturer, String title, String day){
