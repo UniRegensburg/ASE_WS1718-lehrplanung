@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
@@ -28,7 +35,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Controller">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Controller">
 
    <content>
       <BorderPane fx:id="bg_pane" style="-fx-background-color: #787878;">
@@ -321,8 +328,8 @@
                                           <TableView fx:id="CourseTable" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
                                             <columns>
                                               <TableColumn fx:id="CourseID" prefWidth="149.99998772144318" text="ID" />
-                                              <TableColumn fx:id="CourseTitle" minWidth="0.0" prefWidth="178.08383178710938" text="Titel" />
-                                                <TableColumn fx:id="CourseNumber" minWidth="0.0" prefWidth="178.08383178710938" text="Kursnummer" />
+                                              <TableColumn fx:id="CourseTitle" minWidth="0.0" prefWidth="172.36538696289062" text="Titel" />
+                                                <TableColumn fx:id="CourseNumber" minWidth="0.0" prefWidth="185.6346435546875" text="Kursnummer" />
                                                 <TableColumn fx:id="CourseModule" minWidth="0.0" prefWidth="178.08383178710938" text="Modul" />
                                                 <TableColumn fx:id="CourseSWS" minWidth="0.0" prefWidth="178.08383178710938" text="SWS" />
                                                 <TableColumn fx:id="CourseKind" minWidth="0.0" prefWidth="178.08383178710938" text="Art" />
@@ -356,9 +363,10 @@
                                        <top>
                                           <GridPane style="-fx-background-color: #dddddd;" BorderPane.alignment="CENTER">
                                             <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="711.4509887695312" minWidth="10.0" prefWidth="362.6502685546875" />
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1170.3975219726562" minWidth="10.0" prefWidth="818.138427734375" />
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1110.5458984375" minWidth="10.0" prefWidth="135.6715087890625" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="711.4509887695312" minWidth="10.0" prefWidth="262.6964111328125" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1170.3975219726562" minWidth="10.0" prefWidth="144.48214721679688" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1170.3975219726562" minWidth="10.0" prefWidth="802.7464599609375" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1110.5458984375" minWidth="10.0" prefWidth="135.2535400390625" />
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="1110.5458984375" minWidth="10.0" prefWidth="154.3284912109375" />
                                             </columnConstraints>
                                             <rowConstraints>
@@ -381,16 +389,17 @@
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </Button>
-                                                <Button fx:id="deleteCourseButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="116.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Kurs löschen" GridPane.columnIndex="3">
+                                                <Button fx:id="deleteCourseButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="116.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Kurs löschen" GridPane.columnIndex="4">
                                                    <cursor>
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </Button>
-                                                <Button fx:id="editCourseButton" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Kurs bearbeiten" GridPane.columnIndex="2">
+                                                <Button fx:id="editCourseButton" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Kurs bearbeiten" GridPane.columnIndex="3">
                                                    <cursor>
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </Button>
+                                                <MenuButton fx:id="filterMenu" mnemonicParsing="false" prefHeight="30.0" prefWidth="245.0" text="Filter" GridPane.columnIndex="2" />
                                              </children>
                                              <opaqueInsets>
                                                 <Insets bottom="5.0" />
@@ -1096,65 +1105,6 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #dddddd;">
                            <children>
                               <BorderPane prefHeight="947.0" prefWidth="1440.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-
-                                 <top>
-                                    <GridPane BorderPane.alignment="CENTER">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                       <children>
-
-                                          <CheckBox mnemonicParsing="false" text="B.A. Medieninformatik">
-                                             <GridPane.margin>
-                                                <Insets left="5.0" />
-                                             </GridPane.margin>
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false" text="M.A. Medieninformatik" GridPane.columnIndex="1">
-                                             <GridPane.margin>
-                                                <Insets left="5.0" />
-                                             </GridPane.margin>
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false" text="B.A. Informationswissenschaft" GridPane.columnIndex="2">
-                                             <GridPane.margin>
-                                                <Insets left="5.0" />
-                                             </GridPane.margin>
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false" text="M.A. Informationswissenschaft" GridPane.columnIndex="3">
-                                             <GridPane.margin>
-                                                <Insets left="5.0" />
-                                             </GridPane.margin>
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-                                          <CheckBox mnemonicParsing="false" text="M.A. Digital Humanities" GridPane.columnIndex="4">
-                                             <GridPane.margin>
-                                                <Insets left="5.0" />
-                                             </GridPane.margin>
-                                             <font>
-                                                <Font size="15.0" />
-                                             </font>
-                                          </CheckBox>
-
-                                       </children>
-                                    </GridPane>
-                                 </top>
                                  <right>
                                     <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="871.0" prefWidth="274.0" BorderPane.alignment="CENTER">
                                       <items>
@@ -1197,6 +1147,13 @@
                                        </BorderPane.margin>
                                     </TableView>
                                  </center>
+                                 <top>
+                                    <AnchorPane BorderPane.alignment="CENTER">
+                                       <children>
+                                          <ComboBox fx:id="filterTimeTableByProgramCombo" prefHeight="29.0" prefWidth="214.0" promptText="nach Studiengang filtern" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="15.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </top>
                               </BorderPane>
                            </children>
                         </AnchorPane>
