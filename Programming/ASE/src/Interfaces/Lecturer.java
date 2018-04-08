@@ -11,15 +11,18 @@ public class Lecturer {
     private SimpleStringProperty LecturerSurname = new SimpleStringProperty();
     private SimpleStringProperty LecturerTitle = new SimpleStringProperty();
     private SimpleIntegerProperty LecturerDeputat = new SimpleIntegerProperty();
+    private SimpleStringProperty LecturerRole = new SimpleStringProperty();
+
 
     public Lecturer(Integer LecturerID, String LecturerSurname, String LecturerName, String LecturerTitle,
-                    Integer LecturerDeputat) {
+                    Integer LecturerDeputat, String LecturerRole) {
 
         this.LecturerName = new SimpleStringProperty(LecturerName);
         this.LecturerSurname = new SimpleStringProperty(LecturerSurname);
         this.LecturerTitle = new SimpleStringProperty(LecturerTitle);
         this.LecturerDeputat = new SimpleIntegerProperty(LecturerDeputat);
         this.LecturerID = new SimpleIntegerProperty(LecturerID);
+        this.LecturerRole = new SimpleStringProperty(LecturerRole);
 
     }
 
@@ -43,6 +46,10 @@ public class Lecturer {
         return LecturerID.get();
     }
 
+    public String getLecturerRole() {
+        return LecturerRole.get();
+    }
+
 
     public void setLecturerName(String value){
         LecturerName.set(value);
@@ -64,6 +71,11 @@ public class Lecturer {
         LecturerID.set(value);
     }
 
+    public void setLecturerRole(String lecturerRole) {
+        this.LecturerRole.set(lecturerRole);
+    }
+
+
     public StringProperty nameProperty() {
         return LecturerName;
     }
@@ -83,5 +95,10 @@ public class Lecturer {
     public IntegerProperty IDProperty() {
         return LecturerID;
     }
+
+    public SimpleStringProperty lecturerRoleProperty() {
+        return LecturerRole;
+    }
+
 
 }
