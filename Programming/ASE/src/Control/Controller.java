@@ -11,9 +11,6 @@ import Database.DatabaseInterface;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import java.time.LocalDate;
 
 public class Controller  {
@@ -44,7 +41,7 @@ public class Controller  {
     private TableColumn<Course, String> CourseTitle, CourseModule, CourseKind, CourseChair, CourseNumber,
             CourseFinalsDate, CourseRhythem, CourseMaxPar, CourseExpPar, CoursePar, CourseDeputat, CourseCredits,
             CourseHyperlink, CourseLanguage, CourseStartDate, CourseEndDate, CourseStartTime, CourseEndTime, CourseCtSt,
-            CourseRequirements, CourseCertificate, CourseDescription;
+            CourseRequirements, CourseCertificate, CourseDescription, Rolle;
     @FXML
     private TableColumn<Course, Integer> CourseID, CourseSWS;
     @FXML
@@ -61,7 +58,8 @@ public class Controller  {
     private ObservableList<Course> dataCourse;
     @FXML
     private ComboBox courseProgramCombo, chairCombo, dayCombo, ctCombo, rotaCombo, lecturerCombo, certCombo,
-            kindCourseCombo, courseFrequencyComboBox, chair2Combo, semesterCombo, semesterTimeTableCombo, filterTimeTableByProgramCombo;
+            kindCourseCombo, courseFrequencyComboBox, chair2Combo, semesterCombo, semesterTimeTableCombo,
+            filterTimeTableByProgramCombo, lecturerRoleCombo;
     @FXML
     private CheckBox onlineRegBox, extraCourseBox, financingCourseBox;
     @FXML
@@ -90,10 +88,10 @@ public class Controller  {
         saveCourse();
 
         deleteLecturer();
-        updateLecturer();
+        editLecturerButton();
 
         deleteCourse();
-        updateCourse();
+        editCourseButton();
 
         fillCourse();
         fillCourseProgramCombo();
@@ -109,7 +107,6 @@ public class Controller  {
         nextCourseWindow();
         goBackCourse();
 
-        //initSchedule();
         addCourseToScedule();
 
         createProgram();
@@ -117,6 +114,9 @@ public class Controller  {
         createSemester();
         fillCourseFilterCombo();
         fillTimeTableProgramFilterCombo();
+
+        lecturerTableDoubleClick();
+        courseTableDoubleClick();
 
 
     }
@@ -159,6 +159,7 @@ public class Controller  {
         Surname.setCellValueFactory(new PropertyValueFactory<>("LecturerSurname"));
         Title.setCellValueFactory(new PropertyValueFactory<>("LecturerTitle"));
         Deputat.setCellValueFactory(new PropertyValueFactory<>("LecturerDeputat"));
+        Rolle.setCellValueFactory(new PropertyValueFactory<>("LecturerRole"));
 
         LecturerTable.setItems(null);
         LecturerTable.setItems(data);
@@ -260,12 +261,16 @@ public class Controller  {
             String surname = lecturerSurnameText.getText();
             String title = lecturerTitleText.getText();
             Integer deputat = Integer.parseInt(lecturerDeputatText.getText());
+            String role = "--";
+            if(!lecturerRoleCombo.getSelectionModel().isEmpty()){
+                role = lecturerRoleCombo.getValue().toString();
+            }
 
             if(editLecturer == false) {
-                dc.writeLecturers(name, surname, title, deputat);
+                dc.writeLecturers(name, surname, title, deputat, role);
             }
             else {
-                dc.updateLecturers(IDTemp, name, surname, title, deputat);
+                dc.updateLecturers(IDTemp, name, surname, title, deputat, role);
                 IDTemp = null;
                 editLecturer = false;
             }
@@ -277,6 +282,7 @@ public class Controller  {
             lecturerSurnameText.clear();
             lecturerTitleText.clear();
             lecturerDeputatText.clear();
+            lecturerRoleCombo.setValue(null);
 
             fillLecturers();
 
@@ -386,73 +392,79 @@ public class Controller  {
 
     }
 
-    private void updateLecturer() {
+    private void editLecturerButton() {
 
         updateLecturerButton.setOnAction((event) -> {
-
-            editLecturer = true;
-            Lecturer selected = LecturerTable.getSelectionModel().getSelectedItem();
-
-            pane_teachers_overview.setVisible(false);
-            pane_single_teacher.setVisible(true);
-
-            lecturerNameText.setText(selected.getLecturerName());
-            lecturerSurnameText.setText(selected.getLecturerSurname());
-            lecturerTitleText.setText(selected.getLecturerTitle());
-            lecturerDeputatText.setText(selected.getLecturerDeputat().toString());
-
-            IDTemp = selected.getLecturerID();
-
+            editLecturer();
         });
 
     }
 
-    private void updateCourse() {
+    private void editLecturer(){
+
+        editLecturer = true;
+        Lecturer selected = LecturerTable.getSelectionModel().getSelectedItem();
+
+        pane_teachers_overview.setVisible(false);
+        pane_single_teacher.setVisible(true);
+
+        lecturerNameText.setText(selected.getLecturerName());
+        lecturerSurnameText.setText(selected.getLecturerSurname());
+        lecturerTitleText.setText(selected.getLecturerTitle());
+        lecturerDeputatText.setText(selected.getLecturerDeputat().toString());
+        lecturerRoleCombo.setValue(selected.getLecturerRole());
+
+        IDTemp = selected.getLecturerID();
+    }
+
+    private void editCourseButton() {
 
         editCourseButton.setOnAction((event) -> {
-
-            editCourse = true;
-
-            Course selected = CourseTable.getSelectionModel().getSelectedItem();
-
-            pane_courses_overview_start.setVisible(false);
-            pane_courses_overview_create1.setVisible(true);
-
-            courseNumberText.setText(selected.getCourseNumber());
-            courseTitleText.setText(selected.getCourseTitle());
-            kindCourseCombo.setValue(selected.getCourseKind());
-            SWScourseText.setText(""+selected.getCourseSWS());
-            hypertextCourseText.setText(selected.getCourseHyperlink());
-            maxParticipantsCourseText.setText(selected.getCourseMaxParticipants());
-            expectedParticipantsCourseText.setText(selected.getCourseExpParticipants());
-            onlineRegBox.setSelected(selected.isCourseOnlineReg());
-            creditsCourseText.setText(selected.getCourseCredits());
-            courseFrequencyComboBox.setValue(selected.getCourseTurnus());
-            extraCourseBox.setSelected(selected.isCourseExtraCourse());
-            financingCourseBox.setSelected(selected.isCourseFinancing());
-            finalsDate.setValue(LocalDate.parse(selected.getCourseFinals()));
-            startDate.setValue(LocalDate.parse(selected.getCourseStart()));
-            endDate.setValue(LocalDate.parse(selected.getCourseEnd()));
-            languageCourseText1.setText(selected.getCourseLanguage());
-            chairCombo.setValue(selected.getCourseProgram());
-            lecturerCombo.setValue(selected.getCourseLecturer());
-            dayCombo.setValue(selected.getCourseDay());
-            startTimeText.setText(selected.getCourseStartTime());
-            endTimeText.setText(selected.getCourseEndTime());
-            ctCombo.setValue(selected.getCourseCtST());
-            rotaCombo.setValue(selected.getCourseRota());
-            participantsText.setText(selected.getCourseParticipants());
-            requirementsText.setText(selected.getCourseRequirements());
-            certCombo.setValue(selected.getCourseCertificate());
-            deputatText.setText(selected.getCourseDeputat());
-            chair2Combo.setValue(selected.getCourseChair());
-            descriptionText.setText(selected.getCourseDescription());
-
-            IDTempCourse = selected.getCourseID();
-            TempLecturer = selected.getCourseLecturer();
-
+            editCourse();
         });
 
+    }
+
+    private void editCourse(){
+        editCourse = true;
+
+        Course selected = CourseTable.getSelectionModel().getSelectedItem();
+
+        pane_courses_overview_start.setVisible(false);
+        pane_courses_overview_create1.setVisible(true);
+
+        courseNumberText.setText(selected.getCourseNumber());
+        courseTitleText.setText(selected.getCourseTitle());
+        kindCourseCombo.setValue(selected.getCourseKind());
+        SWScourseText.setText(""+selected.getCourseSWS());
+        hypertextCourseText.setText(selected.getCourseHyperlink());
+        maxParticipantsCourseText.setText(selected.getCourseMaxParticipants());
+        expectedParticipantsCourseText.setText(selected.getCourseExpParticipants());
+        onlineRegBox.setSelected(selected.isCourseOnlineReg());
+        creditsCourseText.setText(selected.getCourseCredits());
+        courseFrequencyComboBox.setValue(selected.getCourseTurnus());
+        extraCourseBox.setSelected(selected.isCourseExtraCourse());
+        financingCourseBox.setSelected(selected.isCourseFinancing());
+        finalsDate.setValue(LocalDate.parse(selected.getCourseFinals()));
+        startDate.setValue(LocalDate.parse(selected.getCourseStart()));
+        endDate.setValue(LocalDate.parse(selected.getCourseEnd()));
+        languageCourseText1.setText(selected.getCourseLanguage());
+        chairCombo.setValue(selected.getCourseProgram());
+        lecturerCombo.setValue(selected.getCourseLecturer());
+        dayCombo.setValue(selected.getCourseDay());
+        startTimeText.setText(selected.getCourseStartTime());
+        endTimeText.setText(selected.getCourseEndTime());
+        ctCombo.setValue(selected.getCourseCtST());
+        rotaCombo.setValue(selected.getCourseRota());
+        participantsText.setText(selected.getCourseParticipants());
+        requirementsText.setText(selected.getCourseRequirements());
+        certCombo.setValue(selected.getCourseCertificate());
+        deputatText.setText(selected.getCourseDeputat());
+        chair2Combo.setValue(selected.getCourseChair());
+        descriptionText.setText(selected.getCourseDescription());
+
+        IDTempCourse = selected.getCourseID();
+        TempLecturer = selected.getCourseLecturer();
     }
 
     private void fillCourse() {
@@ -486,7 +498,6 @@ public class Controller  {
         CourseOnlineReg.setCellValueFactory(new PropertyValueFactory<>("courseOnlineReg"));
         CourseExtraCourse.setCellValueFactory(new PropertyValueFactory<>("courseExtraCourse"));
         CourseFinancing.setCellValueFactory(new PropertyValueFactory<>("courseFinancing"));
-        CourseChair.setCellValueFactory(new PropertyValueFactory<>("courseProgram"));
 
 
         CourseTable.setItems(null);
@@ -643,6 +654,30 @@ public class Controller  {
 
         });
 
+    }
+
+    private void lecturerTableDoubleClick(){
+        LecturerTable.setRowFactory(tv -> {
+            TableRow<Lecturer> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    editLecturer();
+                }
+            });
+            return row ;
+        });
+    }
+
+    private void courseTableDoubleClick(){
+        CourseTable.setRowFactory(tv -> {
+            TableRow<Course> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    editCourse();
+                }
+            });
+            return row ;
+        });
     }
 
 }

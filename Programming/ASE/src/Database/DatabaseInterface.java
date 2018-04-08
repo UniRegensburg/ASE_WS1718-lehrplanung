@@ -47,7 +47,7 @@ public class DatabaseInterface {
             while (rs.next()) {
 
                 data.add(new Lecturer(rs.getInt(1), rs.getString(2),
-                        rs.getString(3), rs.getString(4), rs.getInt(5)));
+                        rs.getString(3), rs.getString(4), rs.getInt(5),rs.getString(6)));
             }
             return data;
 
@@ -305,11 +305,11 @@ public class DatabaseInterface {
         }
     }
 
-    public void writeLecturers(String name, String surname, String title, Integer deputat) {
+    public void writeLecturers(String name, String surname, String title, Integer deputat, String role) {
         try {
             Statement st = conn.createStatement();
-            st.executeUpdate("INSERT INTO Dozenten(Nachname,Vorname,Titel,Deputat)VALUES('"+name+"'," +
-                    "'"+surname+"','"+title+"','"+deputat+"')");
+            st.executeUpdate("INSERT INTO Dozenten(Nachname,Vorname,Titel,Deputat,Rolle)VALUES('"+name+"'," +
+                    "'"+surname+"','"+title+"','"+deputat+"','"+role+"')");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -402,11 +402,11 @@ public class DatabaseInterface {
 
     }
 
-    public void updateLecturers(Integer ID, String name, String surname, String title, Integer deputat){
+    public void updateLecturers(Integer ID, String name, String surname, String title, Integer deputat, String role){
         try{
             Statement st = conn.createStatement();
             st.executeUpdate("UPDATE Dozenten SET Nachname ='"+name+"', Vorname ='"+surname+"', " +
-                    "Titel ='"+title+"', Deputat ='"+deputat+"' WHERE ID = '"+ID+"'");
+                    "Titel ='"+title+"', Deputat ='"+deputat+"', Rolle ='"+role+"' WHERE ID = '"+ID+"'");
         } catch (SQLException e) {
             e.printStackTrace();
         }
