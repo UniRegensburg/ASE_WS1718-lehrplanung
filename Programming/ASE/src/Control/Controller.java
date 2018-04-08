@@ -51,7 +51,6 @@ public class Controller  {
     private TableColumn<Course, Integer> CourseOnlineReg, CourseExtraCourse, CourseFinancing;
 
 
-//ab hier Julias hässlicher Code
     @FXML
     private TableView<TimeTable> schedulePreview;
     @FXML
@@ -62,11 +61,14 @@ public class Controller  {
     private ObservableList<Course> dataCourse;
     @FXML
     private ComboBox courseProgramCombo, chairCombo, dayCombo, ctCombo, rotaCombo, lecturerCombo, certCombo,
-            kindCourseCombo, courseFrequencyComboBox, chair2Combo, semesterCombo, semesterTimeTableCombo;
+            kindCourseCombo, courseFrequencyComboBox, chair2Combo, semesterCombo, semesterTimeTableCombo, filterTimeTableByProgramCombo;
     @FXML
     private CheckBox onlineRegBox, extraCourseBox, financingCourseBox;
     @FXML
     private DatePicker finalsDate, startDate, endDate;
+
+    @FXML
+    private MenuButton filterMenu;
 
 
     private Boolean editLecturer = false;
@@ -74,8 +76,7 @@ public class Controller  {
     private Integer IDTemp = null;
     private Integer IDTempCourse = null;
     private String TempLecturer = "";
-
-    private DatabaseInterface dc = new DatabaseInterface();;
+    private DatabaseInterface dc = new DatabaseInterface();
 
     @FXML
     private void initialize() {
@@ -114,9 +115,40 @@ public class Controller  {
         createProgram();
         createChair();
         createSemester();
+        fillCourseFilterCombo();
+        fillTimeTableProgramFilterCombo();
 
 
     }
+
+
+
+//JuliaJuliaJulia
+    private void fillTimeTableProgramFilterCombo() {
+        filterTimeTableByProgramCombo.getItems().clear();
+        for(int i = 0; i < dc.GetPrograms().size(); i++){
+            filterTimeTableByProgramCombo.getItems().addAll(""+dc.GetPrograms().get(i)+"");
+        }
+    }
+
+    private void fillCourseFilterCombo() {
+        for(int i=0; i<CourseTable.getColumns().size(); i++){
+            CheckMenuItem checkItem = new CheckMenuItem(CourseTable.getColumns().get(i).getText()+"");
+            checkItem.setOnAction(event -> {
+                if(checkItem.isSelected()){
+                    filterMenu.setText(checkItem.getText());
+                    
+                }
+            });
+            filterMenu.getItems().add(checkItem);
+
+        }
+    }
+
+//JuliaJuliaJulia
+
+    
+
 
     private void fillLecturers() {
 
