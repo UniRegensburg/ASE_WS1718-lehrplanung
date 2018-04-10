@@ -19,7 +19,7 @@ public class Controller  {
     private Button createLecturerButton, createCourseButton, saveLecturerButton, saveCourseButton, deleteLecturerButton,
             deleteCourseButton, updateLecturerButton, editCourseButton, cancelLecturerButton, cancelCourseButton,
             nextCourseButton, backCourseButton, addCourseToScheduleButton, newSemesterButton, newChairButton,
-            newProgramButton;
+            newProgramButton, resetCourseFilterButton;
     @FXML
     private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText, courseNumberText,
             courseTitleText, SWScourseText, hypertextCourseText, maxParticipantsCourseText, creditsCourseText,
@@ -113,17 +113,31 @@ public class Controller  {
         createChair();
         createSemester();
         fillCourseFilterCombo();
+
         fillTimeTableProgramFilterCombo();
+
 
         lecturerTableDoubleClick();
         courseTableDoubleClick();
+        resetCourseFilter();
+
 
 
     }
 
 
 
-//JuliaJuliaJulia
+
+    //JuliaJuliaJulia
+    private void resetCourseFilter() {
+        resetCourseFilterButton.setOnAction((event) -> {
+            filterMenu.getItems().clear();
+            fillCourseFilterCombo();
+        });
+    }
+
+
+
     private void fillTimeTableProgramFilterCombo() {
         filterTimeTableByProgramCombo.getItems().clear();
         for(int i = 0; i < dc.GetPrograms().size(); i++){
@@ -131,23 +145,43 @@ public class Controller  {
         }
     }
 
+
+
+    //maybe save configuration?
     private void fillCourseFilterCombo() {
         for(int i=0; i<CourseTable.getColumns().size(); i++){
+            int colNum = i;
+            CourseTable.getColumns().get(colNum).setVisible(false);
             CheckMenuItem checkItem = new CheckMenuItem(CourseTable.getColumns().get(i).getText()+"");
+            checkItem.setSelected(false);
+
+            if(colNum<7 && colNum>0){
+                checkItem.setSelected(true);
+                CourseTable.getColumns().get(colNum).setVisible(true);
+            }
+
+
             checkItem.setOnAction(event -> {
                 if(checkItem.isSelected()){
                     filterMenu.setText(checkItem.getText());
-                    
+                    CourseTable.getColumns().get(colNum).setVisible(true);
+                }
+                else{
+                    CourseTable.getColumns().get(colNum).setVisible(false);
                 }
             });
-            filterMenu.getItems().add(checkItem);
 
+            filterMenu.getItems().add(checkItem);
         }
     }
 
+
+
+
+
+
 //JuliaJuliaJulia
 
-    
 
 
     private void fillLecturers() {

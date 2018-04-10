@@ -1,0 +1,45 @@
+.table-view{
+-fx-base: #ffffff;
+-fx-border-color: #7D003C;
+-fx-border-width: 1px;
+-fx-background-color: #ffffff;
+-fx-table-cell-border-color: transparent;
+}
+
+.table-row-cell {
+    -fx-background-color: transparent;
+}
+
+.table-row-cell:selected{
+-fx-background-color: #f4f4f4;
+-fx-min-height: 30px;
+-fx-padding: 2px,0px,2px,0px;
+-fx-border-color: #7D003C;
+-fx-border-radius: 0;
+-fx-table-cell-border-color: transparent;
+}
+
+.table-row-cell:selected .text{
+-fx-fill: black;
+-fx-font-size: 13;
+}
+
+.table-view .column-header{
+-fx-font-size: 14px;
+}
+
+.table-view .column-header-background {
+    -fx-background-image: url("https://static.vecteezy.com/system/resources/previews/000/138/963/large_2x/free-vector-marble-texture.jpg");
+    -custom-blending: rgba(193, 106, 148, 0.7);
+    -fx-background-size: auto;
+}
+
+.column-header-background .filler {
+    -fx-background-color: -custom-blending;
+}
+
+.column-header-background .nested-column-header .column-header.table-column {
+    -fx-background-color: -custom-blending;
+
+}
+
