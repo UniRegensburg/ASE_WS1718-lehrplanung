@@ -10,6 +10,8 @@ import javafx.scene.control.*;
 import Database.DatabaseInterface;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import java.util.List;
+
 
 import java.time.LocalDate;
 
@@ -113,7 +115,6 @@ public class Controller  {
         createChair();
         createSemester();
         fillCourseFilterCombo();
-
         fillTimeTableProgramFilterCombo();
 
 
@@ -125,64 +126,32 @@ public class Controller  {
 
     }
 
-
-
-
-    //JuliaJuliaJulia
+    //Morgen nachfragen
     private void resetCourseFilter() {
         resetCourseFilterButton.setOnAction((event) -> {
-            filterMenu.getItems().clear();
-            fillCourseFilterCombo();
+            //filterMenu.getItems().clear();
+            //fillCourseFilterCombo();
         });
     }
 
-
-
-    private void fillTimeTableProgramFilterCombo() {
-        filterTimeTableByProgramCombo.getItems().clear();
-        for(int i = 0; i < dc.GetPrograms().size(); i++){
-            filterTimeTableByProgramCombo.getItems().addAll(""+dc.GetPrograms().get(i)+"");
-        }
-    }
-
-
-
-    //maybe save configuration?
     private void fillCourseFilterCombo() {
-        for(int i=0; i<CourseTable.getColumns().size(); i++){
-            int colNum = i;
-            CourseTable.getColumns().get(colNum).setVisible(false);
-            CheckMenuItem checkItem = new CheckMenuItem(CourseTable.getColumns().get(i).getText()+"");
-            checkItem.setSelected(false);
-
-            if(colNum<7 && colNum>0){
-                checkItem.setSelected(true);
-                CourseTable.getColumns().get(colNum).setVisible(true);
-            }
-
+        List <String> settings = dc.getFilterSettings();
+        for(int i=0; i<settings.size(); i++){
+            String[] Names = settings.get(i).toString().split(";");
+            CheckMenuItem checkItem = new CheckMenuItem(Names[0]);
+            checkItem.setSelected(Boolean.valueOf(Names[1]));
+            CourseTable.getColumns().get(i).setVisible(Boolean.valueOf(Names[1]));
+            filterMenu.getItems().add(checkItem);
 
             checkItem.setOnAction(event -> {
-                if(checkItem.isSelected()){
-                    filterMenu.setText(checkItem.getText());
-                    CourseTable.getColumns().get(colNum).setVisible(true);
-                }
-                else{
-                    CourseTable.getColumns().get(colNum).setVisible(false);
+                if(checkItem.isSelected() || !checkItem.isSelected()){
+                    dc.updateFilterSettings(Names[0], checkItem.isSelected());
+                    filterMenu.getItems().clear();
+                    fillCourseFilterCombo();
                 }
             });
-
-            filterMenu.getItems().add(checkItem);
         }
     }
-
-
-
-
-
-
-//JuliaJuliaJulia
-
-
 
     private void fillLecturers() {
 
@@ -547,6 +516,13 @@ public class Controller  {
             chairCombo.getItems().addAll(""+dc.GetPrograms().get(i)+"");
         }
         courseProgramCombo.getSelectionModel().selectFirst();
+    }
+
+    private void fillTimeTableProgramFilterCombo() {
+        filterTimeTableByProgramCombo.getItems().clear();
+        for(int i = 0; i < dc.GetPrograms().size(); i++){
+            filterTimeTableByProgramCombo.getItems().addAll(""+dc.GetPrograms().get(i)+"");
+        }
     }
 
     private void fillLecturersCombo(){

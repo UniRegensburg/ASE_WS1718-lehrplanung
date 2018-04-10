@@ -1,15 +1,11 @@
 package Database;
 
-
-import java.net.CookieHandler;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import Interfaces.Lecturer;
 import Interfaces.Course;
-import Interfaces.TimeTable;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -175,6 +171,21 @@ public class DatabaseInterface {
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;
+        }
+    }
+
+    public List getFilterSettings(){
+        List <String> settings = new ArrayList<>();
+        try{
+            ResultSet rs = conn.createStatement().executeQuery("SELECT Name, Checked FROM Filter");
+            while (rs.next()){
+                settings.add(rs.getString(1)+";"+rs.getString(2));
+            }
+            return settings;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
@@ -452,6 +463,15 @@ public class DatabaseInterface {
             e.printStackTrace();
         }
 
+    }
+
+    public void updateFilterSettings(String name, Boolean checked){
+        try{
+            Statement st = conn.createStatement();
+            st.executeUpdate("UPDATE Filter SET Checked='"+checked+"' WHERE Name ='"+name+"'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
 
