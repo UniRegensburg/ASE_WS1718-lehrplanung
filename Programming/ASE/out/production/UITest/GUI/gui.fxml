@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
@@ -26,7 +19,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -36,7 +28,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Controller">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Controller">
 
    <content>
       <BorderPane fx:id="bg_pane" style="-fx-background-color: #787878;" stylesheets="@style.css">
@@ -364,12 +356,11 @@
                                                             <TableColumn fx:id="CourseFinancing" minWidth="0.0" prefWidth="178.08383178710938" text="Finanzierung" />
                                                             <TableColumn fx:id="CourseStartDate" minWidth="0.0" prefWidth="178.08383178710938" text="Anfangsdatum" />
                                                             <TableColumn fx:id="CourseEndDate" minWidth="0.0" prefWidth="178.08383178710938" text="Enddatum" />
-                                                            <TableColumn fx:id="CourseStartTime" minWidth="0.0" prefWidth="178.08383178710938" text="Kursbeginn" />
-                                                            <TableColumn fx:id="CourseEndTime" minWidth="0.0" prefWidth="178.08383178710938" text="Kursende" />
                                                             <TableColumn fx:id="CourseCtSt" minWidth="0.0" prefWidth="178.08383178710938" text="Ct / St" />
                                                             <TableColumn fx:id="CourseRequirements" minWidth="0.0" prefWidth="178.08383178710938" text="Anforderungen" />
                                                             <TableColumn fx:id="CourseCertificate" minWidth="0.0" prefWidth="178.08383178710938" text="Prüfungsart" />
                                                             <TableColumn fx:id="CourseDescription" minWidth="0.0" prefWidth="178.08383178710938" text="Beschreibung" />
+                                                            <TableColumn fx:id="CourseTurnus" minWidth="0.0" prefWidth="178.08383178710938" text="Turnus" />
                                                         </columns>
                                                       </TableView>
                                                    </children>
@@ -570,7 +561,7 @@
                                                       <Insets left="10.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <ComboBox fx:id="kindCourseCombo" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                <ComboBox fx:id="kindCourseCombo" prefWidth="150.0" promptText="Kursart wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                     <items>
                                                         <FXCollections fx:factory="observableArrayList">
                                                             <String fx:value="Vorlesung" />
@@ -659,7 +650,7 @@
                                                       <Insets left="20.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <ComboBox fx:id="courseFrequencyComboBox" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1">
+                                                <ComboBox fx:id="courseFrequencyComboBox" prefWidth="150.0" promptText="Turnus wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1">
                                                     <items>
                                                         <FXCollections fx:factory="observableArrayList">
                                                             <String fx:value="Wöchentlich" />
@@ -737,7 +728,6 @@
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </DatePicker>
-                                                <TreeView prefHeight="117.0" prefWidth="295.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modul" textOrigin="CENTER" GridPane.rowIndex="7">
                                                    <font>
                                                       <Font size="15.0" />
@@ -759,6 +749,7 @@
                                                       <Cursor fx:constant="TEXT" />
                                                    </cursor>
                                                 </TextField>
+                                                <ComboBox fx:id="modulCombo" prefWidth="150.0" promptText="Modul wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                              </children>
                                           </GridPane>
                                        </center>
@@ -827,9 +818,9 @@
                                           </HBox>
                                        </bottom>
                                        <center>
-                                          <GridPane prefHeight="888.0" prefWidth="836.0" BorderPane.alignment="CENTER">
+                                          <GridPane prefHeight="1085.0" prefWidth="908.0" BorderPane.alignment="CENTER">
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Beschreibung" GridPane.rowIndex="2">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Beschreibung" GridPane.rowIndex="7">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -837,7 +828,7 @@
                                                       <Insets left="20.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fällt aus am" GridPane.rowIndex="3">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fällt aus am" GridPane.rowIndex="8">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -845,8 +836,8 @@
                                                       <Insets left="20.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <DatePicker fx:id="canceledDate" minHeight="-Infinity" prefHeight="40.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <TextField fx:id="descriptionText" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                <DatePicker fx:id="canceledDate" minHeight="-Infinity" prefHeight="40.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                <TextField fx:id="descriptionText" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                                    <cursor>
                                                       <Cursor fx:constant="TEXT" />
                                                    </cursor>
@@ -854,34 +845,253 @@
                                                       <Insets right="100.0" />
                                                    </GridPane.margin>
                                                 </TextField>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Deputataufwand">
+                                                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Uhrzeit von">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <TextField fx:id="startTimeMonday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                         <padding>
+                                                            <Insets left="10.0" />
+                                                         </padding>
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Uhrzeit bis">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="30.0" top="10.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <TextField fx:id="endTimeMonday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Uhrzeit von">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <TextField fx:id="startTimeTuesday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Uhrzeit bis">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="30.0" top="10.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <TextField fx:id="endTimeTuesday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                         <padding>
+                                                            <Insets left="10.0" />
+                                                         </padding>
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Uhrzeit von">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <TextField fx:id="startTimeWednesday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                         <padding>
+                                                            <Insets left="10.0" />
+                                                         </padding>
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Uhrzeit bis">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="30.0" top="10.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <TextField fx:id="endTimeWednesday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Uhrzeit von">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <TextField fx:id="startTimeThursday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Uhrzeit bis">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="30.0" top="10.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <TextField fx:id="endTimeThursday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                         <padding>
+                                                            <Insets left="10.0" />
+                                                         </padding>
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                   <children>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Uhrzeit von">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <TextField fx:id="startTimeFriday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                         <padding>
+                                                            <Insets left="10.0" />
+                                                         </padding>
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Uhrzeit bis">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets left="30.0" top="10.0" />
+                                                         </HBox.margin>
+                                                      </Text>
+                                                      <TextField fx:id="endTimeFriday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" />
+                                                         </HBox.margin>
+                                                      </TextField>
+                                                   </children>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                                   <children>
+                                                      <CheckBox fx:id="checkMonday" mnemonicParsing="false" text="Mo">
+                                                         <HBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </HBox.margin>
+                                                      </CheckBox>
+                                                   </children>
+                                                   <GridPane.margin>
+                                                      <Insets left="90.0" />
+                                                   </GridPane.margin>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                                   <children>
+                                                      <CheckBox fx:id="checkTuesday" mnemonicParsing="false" text="Di">
+                                                         <HBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </HBox.margin>
+                                                      </CheckBox>
+                                                   </children>
+                                                   <GridPane.margin>
+                                                      <Insets left="90.0" />
+                                                   </GridPane.margin>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
+                                                   <children>
+                                                      <CheckBox fx:id="checkWednesday" mnemonicParsing="false" text="Mi">
+                                                         <HBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </HBox.margin>
+                                                      </CheckBox>
+                                                   </children>
+                                                   <GridPane.margin>
+                                                      <Insets left="90.0" />
+                                                   </GridPane.margin>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
+                                                   <children>
+                                                      <CheckBox fx:id="checkThursday" mnemonicParsing="false" text="Do">
+                                                         <HBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </HBox.margin>
+                                                      </CheckBox>
+                                                   </children>
+                                                   <GridPane.margin>
+                                                      <Insets left="90.0" />
+                                                   </GridPane.margin>
+                                                </HBox>
+                                                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
+                                                   <children>
+                                                      <CheckBox fx:id="checkFriday" mnemonicParsing="false" text="Fr">
+                                                         <HBox.margin>
+                                                            <Insets top="10.0" />
+                                                         </HBox.margin>
+                                                      </CheckBox>
+                                                   </children>
+                                                   <GridPane.margin>
+                                                      <Insets left="90.0" />
+                                                   </GridPane.margin>
+                                                </HBox>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Termine">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
                                                    <GridPane.margin>
-                                                      <Insets left="20.0" />
+                                                      <Insets left="20.0" top="5.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <TextField fx:id="deputatText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="70.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrstuhl" GridPane.rowIndex="1">
-                                                   <font>
-                                                      <Font size="15.0" />
-                                                   </font>
-                                                   <GridPane.margin>
-                                                      <Insets left="20.0" />
-                                                   </GridPane.margin>
-                                                </Text>
-                                                <ComboBox fx:id="chair2Combo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                              </children>
                                              <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="448.30816650390625" minWidth="169.1357421875" prefWidth="182.267333984375" />
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="741.8642578125" minWidth="100.0" prefWidth="728.732666015625" />
                                              </columnConstraints>
                                              <rowConstraints>
-                                                <RowConstraints maxHeight="70.0" minHeight="70.0" prefHeight="70.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="70.0" minHeight="70.0" prefHeight="70.0" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="589.456787109375" minHeight="200.0" prefHeight="589.456787109375" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="50.0" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="589.456787109375" minHeight="39.25352478027344" prefHeight="55.237945556640625" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="589.456787109375" minHeight="39.25352478027344" prefHeight="55.237945556640625" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="589.456787109375" minHeight="52.49147033691406" prefHeight="56.762054443359375" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="589.456787109375" minHeight="22.23333740234375" prefHeight="63.088653564453125" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="589.456787109375" minHeight="46.959564208984375" prefHeight="78.72161865234375" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="589.456787109375" minHeight="31.987579345703125" prefHeight="64.13687133789062" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="208.05282592773438" minHeight="39.205322265625" prefHeight="67.57232666015625" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="589.456787109375" minHeight="200.0" prefHeight="378.7900695800781" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="50.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                           </GridPane>
@@ -898,15 +1108,7 @@
                                                       <Insets left="10.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Uhrzeit von" GridPane.rowIndex="3">
-                                                   <font>
-                                                      <Font size="15.0" />
-                                                   </font>
-                                                   <GridPane.margin>
-                                                      <Insets left="10.0" />
-                                                   </GridPane.margin>
-                                                </Text>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tag" GridPane.rowIndex="2">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrstuhl" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -923,14 +1125,6 @@
                                                    </GridPane.margin>
                                                 </Text>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rhythmus" GridPane.rowIndex="6">
-                                                   <font>
-                                                      <Font size="15.0" />
-                                                   </font>
-                                                   <GridPane.margin>
-                                                      <Insets left="10.0" />
-                                                   </GridPane.margin>
-                                                </Text>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Uhrzeit bis" GridPane.rowIndex="4">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -964,10 +1158,9 @@
                                                       <Insets left="10.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <TextField fx:id="endTimeText" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                                <ComboBox fx:id="lecturerCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <ComboBox fx:id="lecturerCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" promptText="Lehrperson wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       
-                                                <ComboBox fx:id="dayCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                <ComboBox fx:id="chairCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" promptText="Lehrstuhl wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                     <items>
                                                         <FXCollections fx:factory="observableArrayList">
                                                             <String fx:value="Montag" />
@@ -980,7 +1173,7 @@
                                                         </FXCollections>
                                                     </items>
                                                 </ComboBox>
-                                                <ComboBox fx:id="ctCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                <ComboBox fx:id="ctCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" promptText="ct/st wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                                     <items>
                                                         <FXCollections fx:factory="observableArrayList">
                                                             <String fx:value="ct" />
@@ -988,7 +1181,7 @@
                                                         </FXCollections>
                                                     </items>
                                                 </ComboBox>
-                                                <ComboBox fx:id="rotaCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                <ComboBox fx:id="rotaCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" promptText="Rythmus wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                                     <items>
                                                         <FXCollections fx:factory="observableArrayList">
                                                             <String fx:value="Ganzjährig" />
@@ -996,7 +1189,7 @@
                                                         </FXCollections>
                                                     </items>
                                                 </ComboBox>
-                                                <ComboBox fx:id="certCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                                <ComboBox fx:id="certCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" promptText="Leistungsnachweis wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="9">
                                                     <items>
                                                         <FXCollections fx:factory="observableArrayList">
                                                             <String fx:value="Übung" />
@@ -1006,7 +1199,7 @@
                                                     </items>
                                                 </ComboBox>
       
-                                                <ComboBox fx:id="chairCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" />
+                                                <ComboBox fx:id="programCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" promptText="Studiengang wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" />
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Studiengang">
                                                    <font>
                                                       <Font size="15.0" />
@@ -1015,7 +1208,15 @@
                                                       <Insets left="10.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <TextField fx:id="startTimeText" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Deputataufwand" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                   <GridPane.margin>
+                                                      <Insets left="10.0" />
+                                                   </GridPane.margin>
+                                                </Text>
+                                                <TextField fx:id="deputatText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                              </children>
                                              <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
@@ -1121,6 +1322,31 @@
                                                 </AnchorPane>
                                           </content>
                                         </TitledPane>
+                                          <TitledPane animated="false" text="Modul anlegen">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0">
+                                                   <children>
+                                                      <HBox prefHeight="60.0" prefWidth="1438.0">
+                                                         <children>
+                                                            <TextField style="-fx-background-color: #ffffff; -fx-background-radius: 0;">
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="10.0" top="5.0" />
+                                                               </padding>
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" top="10.0" />
+                                                               </HBox.margin>
+                                                            </TextField>
+                                                            <Button fx:id="newProgramButton1" mnemonicParsing="false" stylesheets="@button.css" text="Speichern">
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" top="10.0" />
+                                                               </HBox.margin>
+                                                            </Button>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </TitledPane>
                                       </panes>
                                     </Accordion>
                                  </children>
