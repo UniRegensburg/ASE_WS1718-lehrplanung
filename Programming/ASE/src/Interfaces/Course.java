@@ -25,9 +25,6 @@ public class Course {
     private SimpleStringProperty courseLanguage = new SimpleStringProperty();
     private SimpleStringProperty courseChair = new SimpleStringProperty();
     private SimpleStringProperty courseLecturer = new SimpleStringProperty();
-    private SimpleStringProperty courseDay = new SimpleStringProperty();
-    private SimpleStringProperty courseStartTime = new SimpleStringProperty();
-    private SimpleStringProperty courseEndTime = new SimpleStringProperty();
     private SimpleStringProperty courseCtST = new SimpleStringProperty();
     private SimpleStringProperty courseRota = new SimpleStringProperty();
     private SimpleStringProperty courseParticipants = new SimpleStringProperty();
@@ -40,11 +37,10 @@ public class Course {
 
 
     public Course(Integer courseID, Integer courseSWS, String courseModule, String courseKind, String courseTitle,
-                  String courseChair, String courseHyperlink, String courseMaxParticipants,
-                  Boolean courseOnlineReg, String courseTurnus, String courseExpParticipants, String courseCredits, String courseFinals,
+                  String courseChair, String courseHyperlink, String courseMaxParticipants, Boolean courseOnlineReg,
+                  String courseTurnus, String courseExpParticipants, String courseCredits, String courseFinals,
                   Boolean courseExtraCourse, Boolean courseFinancing, String courseStart, String courseEnd,
-                  String courseLanguage, String courseLecturer, String courseDay, String courseStartTime,
-                  String courseEndTime, String courseCtSt, String courseRota, String courseParticipants,
+                  String courseLanguage, String courseLecturer, String courseCtSt, String courseRota, String courseParticipants,
                   String courseCertificate, String courseRequirements, String courseDeputat, String courseDescription,
                   String courseNumber, String courseProgram) {
 
@@ -67,9 +63,6 @@ public class Course {
         this.courseEnd = new SimpleStringProperty(courseEnd);
         this.courseLanguage = new SimpleStringProperty(courseLanguage);
         this.courseLecturer = new SimpleStringProperty(courseLecturer);
-        this.courseDay = new SimpleStringProperty(courseDay);
-        this.courseStartTime = new SimpleStringProperty(courseStartTime);
-        this.courseEndTime = new SimpleStringProperty(courseEndTime);
         this.courseCtST = new SimpleStringProperty(courseCtSt);
         this.courseRota = new SimpleStringProperty(courseRota);
         this.courseParticipants = new SimpleStringProperty(courseParticipants);
@@ -308,42 +301,6 @@ public class Course {
 
     public void setCourseLecturer(String courseLecturer) {
         this.courseLecturer.set(courseLecturer);
-    }
-
-    public String getCourseDay() {
-        return courseDay.get();
-    }
-
-    public SimpleStringProperty courseDayProperty() {
-        return courseDay;
-    }
-
-    public void setCourseDay(String courseDay) {
-        this.courseDay.set(courseDay);
-    }
-
-    public String getCourseStartTime() {
-        return courseStartTime.get();
-    }
-
-    public SimpleStringProperty courseStartTimeProperty() {
-        return courseStartTime;
-    }
-
-    public void setCourseStartTime(String courseStartTime) {
-        this.courseStartTime.set(courseStartTime);
-    }
-
-    public String getCourseEndTime() {
-        return courseEndTime.get();
-    }
-
-    public SimpleStringProperty courseEndTimeProperty() {
-        return courseEndTime;
-    }
-
-    public void setCourseEndTime(String courseEndTime) {
-        this.courseEndTime.set(courseEndTime);
     }
 
     public String getCourseCtST() {

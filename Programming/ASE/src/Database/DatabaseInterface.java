@@ -68,6 +68,21 @@ public class DatabaseInterface {
         }
     }
 
+    public List getDayTimes(Integer ID){
+        List <String> dayTimes = new ArrayList<String>();
+        try{
+            ResultSet rs = conn.createStatement().executeQuery("SELECT DayID, startTime, endTime FROM ZuordnungWochentag WHERE CourseID ='"+ID+"'");
+            while (rs.next()){
+                dayTimes.add(rs.getString(1)+";"+rs.getString(2)+";"+rs.getString(3));
+            }
+            return dayTimes;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public List GetLecturers(){
         List <String> Lecturers = new ArrayList<>();
         try{
@@ -123,21 +138,6 @@ public class DatabaseInterface {
                 lecturerID = rsLecuterID.getInt(1);
             }
             return lecturerID;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return 0;
-        }
-    }
-
-    public int getDayID(String day){
-        int dayID = 0;
-        try{
-            Statement stDayID = conn.createStatement();
-            ResultSet rsDayID = stDayID.executeQuery("SELECT ID FROM Wochentage WHERE Tag = '"+day+"'");
-            while(rsDayID.next()){
-                dayID = rsDayID.getInt(1);
-            }
-            return dayID;
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;
@@ -219,11 +219,31 @@ public class DatabaseInterface {
         }
     }
 
-    public void connectCourseWithLecturerDay(String lecturer, String title, String day){
+    public void connectCourseWithLecturer(String lecturer, String title){
+        int courseID = 0;
+
+        try {
+            Statement getCourseID = conn.createStatement();
+            ResultSet rsCourseID = getCourseID.executeQuery("SELECT ID FROM Kurse WHERE Titel = '"+ title +"'");
+            while(rsCourseID.next()){
+                courseID = rsCourseID.getInt(1);
+            }
+
+            Statement writeCourseLecturerConnection = conn.createStatement();
+            writeCourseLecturerConnection.executeUpdate("INSERT INTO ZuordnungDozenten(KursID,DozentID)VALUES" +
+                    "('"+courseID+"','"+getLecturerID(lecturer)+"')");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void connectCourseWithDay(String title, String day, String start, String end){
         int courseID = 0;
         int dayID = 0;
 
         try {
+
             Statement getCourseID = conn.createStatement();
             ResultSet rsCourseID = getCourseID.executeQuery("SELECT ID FROM Kurse WHERE Titel = '"+ title +"'");
             while(rsCourseID.next()){
@@ -236,17 +256,14 @@ public class DatabaseInterface {
                 dayID = rsDayID.getInt(1);
             }
 
-            Statement writeCourseLecturerConnection = conn.createStatement();
-            writeCourseLecturerConnection.executeUpdate("INSERT INTO ZuordnungDozenten(KursID,DozentID)VALUES" +
-                    "('"+courseID+"','"+getLecturerID(lecturer)+"')");
-
             Statement writeCourseDayConnection = conn.createStatement();
-            writeCourseDayConnection.executeUpdate("INSERT INTO ZuordnungWochentag(CourseID,DayID)VALUES" +
-                    "('"+courseID+"','"+dayID+"')");
+            writeCourseDayConnection.executeUpdate("INSERT INTO ZuordnungWochentag(CourseID,DayID,startTime,endTime)VALUES" +
+                    "('"+courseID+"','"+dayID+"','"+start+"','"+end+"')");
 
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 
     public ObservableList<Course> GetCourses(){
@@ -256,19 +273,18 @@ public class DatabaseInterface {
             ResultSet rs;
             String chairName = "";
             String dozentName = "";
-            String day = "";
             String programName = "";
 
             if(programID == 0){
                 rs=conn.createStatement().executeQuery("SELECT ID, Titel, Modul, SWS, Art, Lehrstuhl, Pruefungsdatum, Rhythmus, " +
                         "OnlineAnmeldung, MaxTeilnehmer, Deputat, Wahlbereich, Credits, ErwTeilnehmer, Hyperlink, Sprache," +
-                        "Finanzierung, Anfangsdatum, Enddatum, Kursnummer, Kursbeginn, Kursende, CtSt, Teilnehmer, Anforderung," +
+                        "Finanzierung, Anfangsdatum, Enddatum, Kursnummer, CtSt, Teilnehmer, Anforderung," +
                         "Zertifikat, Beschreibung, Turnus, Studiengang FROM Kurse");
             }
             else{
                 rs=conn.createStatement().executeQuery("SELECT ID, Titel, Modul, SWS, Art, Lehrstuhl, Pruefungsdatum, Rhythmus, " +
                         "OnlineAnmeldung, MaxTeilnehmer, Deputat, Wahlbereich, Credits, ErwTeilnehmer, Hyperlink, Sprache," +
-                        "Finanzierung, Anfangsdatum, Enddatum, Kursnummer, Kursbeginn, Kursende, CtSt, Teilnehmer, Anforderung," +
+                        "Finanzierung, Anfangsdatum, Enddatum, Kursnummer, CtSt, Teilnehmer, Anforderung," +
                         "Zertifikat, Beschreibung, Turnus, Studiengang FROM Kurse WHERE Studiengang ='"+programID+"'");
             }
             while (rs.next()) {
@@ -286,27 +302,21 @@ public class DatabaseInterface {
                     dozentName = rsGetDozentenName.getString(1)+" "+ rsGetDozentenName.getString(2);
                 }
 
-                ResultSet rsGetWochentag = conn.createStatement().executeQuery("SELECT Wochentage.Tag FROM Wochentage " +
-                        "INNER JOIN ZuordnungWochentag ON ZuordnungWochentag.DayID = Wochentage.ID WHERE " +
-                        "ZuordnungWochentag.CourseID = '"+rs.getInt(1)+"'");
-                while(rsGetWochentag.next()){
-                    day = rsGetWochentag.getString(1);
-                }
-
                 ResultSet rsGetProgramName = conn.createStatement().executeQuery("SELECT Titel FROM Studiengang " +
-                        "WHERE ID ='"+rs.getString(29)+"'");
+                        "WHERE ID ='"+rs.getString(27)+"'");
                 while(rsGetProgramName.next()){
                     programName = rsGetProgramName.getString(1);
                 }
 
                 data.add(new Course(rs.getInt(1), rs.getInt(4), rs.getString(3),
                         rs.getString(5), rs.getString(2), chairName, rs.getString(15),
-                        rs.getString(10), Boolean.parseBoolean(rs.getString(9)), rs.getString(28),
-                        rs.getString(14), rs.getString(13), rs.getString(7), Boolean.parseBoolean(rs.getString(12)),
-                        Boolean.parseBoolean(rs.getString(17)), rs.getString(18), rs.getString(19),
-                        rs.getString(16), dozentName, day, rs.getString(21), rs.getString(22),
-                        rs.getString(23), rs.getString(8), rs.getString(24), rs.getString(26),
-                        rs.getString(25), rs.getString(11), rs.getString(27), rs.getString(20),programName));
+                        rs.getString(10), Boolean.parseBoolean(rs.getString(9)), rs.getString(26),
+                        rs.getString(14), rs.getString(13), rs.getString(7),
+                        Boolean.parseBoolean(rs.getString(12)), Boolean.parseBoolean(rs.getString(17)),
+                        rs.getString(18), rs.getString(19), rs.getString(16), dozentName,
+                        rs.getString(21), rs.getString(8), rs.getString(22),
+                        rs.getString(24), rs.getString(23), rs.getString(11),
+                        rs.getString(25), rs.getString(20),programName));
             }
             return data;
 
@@ -330,18 +340,18 @@ public class DatabaseInterface {
 
     public void writeCourse(String number, String title, String kind, String SWS, String hyperlink, String maxP,
                             String expP, Boolean online, String credits, Boolean extra, Boolean finance, String finals,
-                            String start, String end, String language, String program, String startTime, String endTime,
-                            String ct, String rotation, String participants, String requirements, String cert,
-                            String deputat, String description, String turnus, String chair)
+                            String startDate, String endDate, String language, String program, String ct, String rotation,
+                            String participants, String requirements, String cert, String deputat, String description,
+                            String turnus, String chair)
     {
         try{
             Statement st = conn.createStatement();
             st.executeUpdate("INSERT INTO Kurse(Kursnummer,Titel,Art,SWS,Hyperlink,MaxTeilnehmer,ErwTeilnehmer," +
                     "OnlineAnmeldung,Credits,Wahlbereich,Finanzierung,Pruefungsdatum,Anfangsdatum,Enddatum,Sprache," +
-                    "Studiengang,Kursbeginn,Kursende,CtSt,Rhythmus,Teilnehmer,Anforderung,Zertifikat,Deputat,Beschreibung,Turnus,Lehrstuhl)" +
+                    "Studiengang,CtSt,Rhythmus,Teilnehmer,Anforderung,Zertifikat,Deputat,Beschreibung,Turnus,Lehrstuhl)" +
                     "VALUES('"+number+"','"+title+"','"+kind+"','"+SWS+"','"+hyperlink+"','"+maxP+"','"+expP+"','"+online+"'," +
-                    "'"+credits+"','"+extra+"','"+finance+"','"+finals+"','"+start+"','"+end+"','"+language+"','"+getProgramID(program)+"'," +
-                    "'"+startTime+"','"+endTime+"','"+ct+"','"+rotation+"','"+participants+"','"+requirements+"','"+cert+"'," +
+                    "'"+credits+"','"+extra+"','"+finance+"','"+finals+"','"+startDate+"','"+endDate+"','"+language+"','" +
+                    getProgramID(program)+"'," + "'"+ct+"','"+rotation+"','"+participants+"','"+requirements+"','"+cert+"'," +
                     "'"+deputat+"','"+description+"','"+turnus+"','"+getChairID(chair)+"')");
 
         } catch (SQLException e) {
@@ -425,25 +435,22 @@ public class DatabaseInterface {
 
     public void updateCourse(Integer ID, String number, String title, String kind, String SWS, String hyperlink, String maxP,
                              String expP, Boolean online, String credits, Boolean extra, Boolean finance, String finals,
-                             String start, String end, String language, String program, String startTime, String endTime,
-                             String ct, String rotation, String participants, String requirements, String cert, String deputat,
-                             String description, String turnus, String chair, String lecturer, String day){
+                             String start, String end, String language, String program, String ct, String rotation,
+                             String participants, String requirements, String cert, String deputat, String description,
+                             String turnus, String chair, String lecturer){
         try{
             Statement st = conn.createStatement();
             st.executeUpdate("UPDATE Kurse SET Kursnummer ='"+number+"', Titel ='"+title+"', Art ='"+kind+"', " +
                     "SWS ='"+SWS+"', Hyperlink ='"+hyperlink+"', MaxTeilnehmer ='"+maxP+"', ErwTeilnehmer ='"+expP+"', " +
                     "OnlineAnmeldung ='"+online+"', Credits ='"+credits+"', Wahlbereich ='"+extra+"', Finanzierung ='"+finance+"', " +
                     "Pruefungsdatum ='"+finals+"', Anfangsdatum ='"+start+"', Enddatum ='"+end+"', Sprache ='"+language+"', " +
-                    "Kursbeginn ='"+startTime+"', Kursende='"+endTime+"', CtSt ='"+ct+"', Rhythmus ='"+rotation+"', " +
-                    "Teilnehmer ='"+participants+"', Anforderung ='"+requirements+"', Zertifikat ='"+cert+"', Deputat ='"+deputat+"', " +
-                    "Beschreibung ='"+description+"', Turnus ='"+turnus+"', Studiengang ='"+getProgramID(program)+"', " +
-                    "Lehrstuhl ='"+getChairID(chair)+"' WHERE ID = '"+ID+"'");
+                    "CtSt ='"+ct+"', Rhythmus ='"+rotation+"', Teilnehmer ='"+participants+"', Anforderung ='"+requirements+"', " +
+                    "Zertifikat ='"+cert+"', Deputat ='"+deputat+"', " + "Beschreibung ='"+description+"', Turnus ='"+turnus+"', " +
+                    "Studiengang ='"+getProgramID(program)+"', " + "Lehrstuhl ='"+getChairID(chair)+"' WHERE ID = '"+ID+"'");
 
             Statement stLecturer = conn.createStatement();
             stLecturer.executeUpdate("UPDATE ZuordnungDozenten SET DozentID ='"+getLecturerID(lecturer)+"' WHERE KursID = '"+ID+"'");
-
-            Statement stDay = conn.createStatement();
-            stDay.executeUpdate("UPDATE ZuordnungWochentag SET DayID = '"+getDayID(day)+"' WHERE CourseID ='"+ID+"'");
+            deleteDayCourseConnection(ID);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -469,6 +476,24 @@ public class DatabaseInterface {
         try{
             Statement st = conn.createStatement();
             st.executeUpdate("UPDATE Filter SET Checked='"+checked+"' WHERE Name ='"+name+"'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void resetFilterSettings(){
+        try{
+            Statement st = conn.createStatement();
+            st.executeUpdate("UPDATE Filter SET Checked='true'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void deleteDayCourseConnection(Integer ID){
+        try{
+            Statement st = conn.createStatement();
+            st.executeUpdate("DELETE FROM ZuordnungWochentag WHERE CourseID ='"+ID+"'");
         } catch (SQLException e) {
             e.printStackTrace();
         }

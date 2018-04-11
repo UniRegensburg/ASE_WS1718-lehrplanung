@@ -10,6 +10,8 @@ import javafx.scene.control.*;
 import Database.DatabaseInterface;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -25,9 +27,10 @@ public class Controller  {
     @FXML
     private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText, courseNumberText,
             courseTitleText, SWScourseText, hypertextCourseText, maxParticipantsCourseText, creditsCourseText,
-            expectedParticipantsCourseText, startTimeText, endTimeText, participantsText,
-            requirementsText, descriptionText, deputatText, languageCourseText1, newSemesterText, newChairText,
-            newProgramText;
+            expectedParticipantsCourseText,  participantsText, requirementsText, descriptionText, deputatText,
+            languageCourseText1, newSemesterText, newChairText, newProgramText, startTimeMonday, endTimeMonday,
+            startTimeTuesday, endTimeTuesday, startTimeWednesday, endTimeWednesday, startTimeThursday, endTimeThursday,
+            startTimeFriday, endTimeFriday;
     @FXML
     private BorderPane pane_teachers_overview, pane_single_teacher, pane_courses_overview_start,
             pane_courses_overview_create1, pane_courses_overview_create2;
@@ -42,8 +45,8 @@ public class Controller  {
     @FXML
     private TableColumn<Course, String> CourseTitle, CourseModule, CourseKind, CourseChair, CourseNumber,
             CourseFinalsDate, CourseRhythem, CourseMaxPar, CourseExpPar, CoursePar, CourseDeputat, CourseCredits,
-            CourseHyperlink, CourseLanguage, CourseStartDate, CourseEndDate, CourseStartTime, CourseEndTime, CourseCtSt,
-            CourseRequirements, CourseCertificate, CourseDescription, Rolle;
+            CourseHyperlink, CourseLanguage, CourseStartDate, CourseEndDate, CourseCtSt, CourseRequirements,
+            CourseCertificate, CourseDescription, Rolle, CourseTurnus;
     @FXML
     private TableColumn<Course, Integer> CourseID, CourseSWS;
     @FXML
@@ -59,11 +62,12 @@ public class Controller  {
     @FXML
     private ObservableList<Course> dataCourse;
     @FXML
-    private ComboBox courseProgramCombo, chairCombo, dayCombo, ctCombo, rotaCombo, lecturerCombo, certCombo,
-            kindCourseCombo, courseFrequencyComboBox, chair2Combo, semesterCombo, semesterTimeTableCombo,
+    private ComboBox courseProgramCombo, programCombo, ctCombo, rotaCombo, lecturerCombo, certCombo,
+            kindCourseCombo, courseFrequencyComboBox, chairCombo, semesterCombo, semesterTimeTableCombo,
             filterTimeTableByProgramCombo, lecturerRoleCombo;
     @FXML
-    private CheckBox onlineRegBox, extraCourseBox, financingCourseBox;
+    private CheckBox onlineRegBox, extraCourseBox, financingCourseBox, checkMonday, checkTuesday, checkWednesday,
+            checkThursday, checkFriday;
     @FXML
     private DatePicker finalsDate, startDate, endDate;
 
@@ -109,7 +113,7 @@ public class Controller  {
         nextCourseWindow();
         goBackCourse();
 
-        addCourseToScedule();
+        //addCourseToScedule();
 
         createProgram();
         createChair();
@@ -126,11 +130,11 @@ public class Controller  {
 
     }
 
-    //Morgen nachfragen
     private void resetCourseFilter() {
         resetCourseFilterButton.setOnAction((event) -> {
-            //filterMenu.getItems().clear();
-            //fillCourseFilterCombo();
+            filterMenu.getItems().clear();
+            dc.resetFilterSettings();
+            fillCourseFilterCombo();
         });
     }
 
@@ -169,7 +173,7 @@ public class Controller  {
 
     }
 
-    private void addCourseToScedule() {
+    /*private void addCourseToScedule() {
 
         addCourseToScheduleButton.setOnAction((event) -> {
 
@@ -191,7 +195,7 @@ public class Controller  {
 
         });
 
-    }
+    }*/
 
     private ObservableList<TimeTable> fillTimeTable(String start, String title, String day){
 
@@ -238,6 +242,9 @@ public class Controller  {
 
         createCourseButton.setOnAction((event) -> {
 
+            startDate.setValue(LocalDate.now());
+            endDate.setValue(LocalDate.now().plusMonths(5));
+            finalsDate.setValue(LocalDate.now().plusMonths(6));
             pane_courses_overview_start.setVisible(false);
             pane_courses_overview_create1.setVisible(true);
 
@@ -315,30 +322,57 @@ public class Controller  {
             String end = endDate.getValue().toString();
             String language = languageCourseText1.getText();
 
-            // MODUL
-
             // ZWEITE SEITE
-            String program = chairCombo.getValue().toString();
+            String program = programCombo.getValue().toString();
             String lecturer = lecturerCombo.getValue().toString();
-            String day = dayCombo.getValue().toString();
-            String startTime = startTimeText.getText();
-            String endTime = endTimeText.getText();
             String ctSt = ctCombo.getValue().toString();
             String rota = rotaCombo.getValue().toString();
             String participants = participantsText.getText();
             String requirements = requirementsText.getText();
             String certificate = certCombo.getValue().toString();
             String deputat = deputatText.getText();
-            String chair = chair2Combo.getValue().toString();
+            String chair = chairCombo.getValue().toString();
             String description = descriptionText.getText();
+
+            //Days + Time
+            Boolean checkMo = checkMonday.isSelected();
+            Boolean checkDi = checkTuesday.isSelected();
+            Boolean checkMi = checkWednesday.isSelected();
+            Boolean checkDo = checkThursday.isSelected();
+            Boolean checkFr = checkFriday.isSelected();
+
+            String startMo = startTimeMonday.getText();
+            String endMo = endTimeMonday.getText();
+            String startDi = startTimeTuesday.getText();
+            String endDi = endTimeTuesday.getText();
+            String startMi = startTimeWednesday.getText();
+            String endMi = endTimeWednesday.getText();
+            String startDo = startTimeThursday.getText();
+            String endDo = endTimeThursday.getText();
+            String startFr = startTimeFriday.getText();
+            String endFr = endTimeFriday.getText();
 
             if(editCourse == false) {
                 dc.writeCourse(number, title, kind, SWS, hyperlink, maxParticipants, expectedParticipants, onlineReg,
-                        credits, extraCourse, financing, finals, start, end, language, program, startTime,
-                        endTime, ctSt, rota, participants, requirements, certificate, deputat, description,
-                        turnus, chair);
+                        credits, extraCourse, financing, finals, start, end, language, program,
+                        ctSt, rota, participants, requirements, certificate, deputat, description, turnus, chair);
 
-                dc.connectCourseWithLecturerDay(lecturer, title, day);
+                dc.connectCourseWithLecturer(lecturer, title);
+                if(checkMo){
+                    dc.connectCourseWithDay(title, "Montag", startMo, endMo);
+                }
+                if(checkDi) {
+                    dc.connectCourseWithDay(title, "Dienstag", startDi, endDi);
+                }
+                if(checkMi) {
+                    dc.connectCourseWithDay(title, "Mittwoch", startMi, endMi);
+                }
+                if(checkDo) {
+                    dc.connectCourseWithDay(title, "Donnerstag", startDo, endDo);
+                }
+                if(checkFr) {
+                    dc.connectCourseWithDay(title, "Freitag", startFr, endFr);
+                }
                 dc.addDeputat(deputat, lecturer);
 
             }
@@ -351,9 +385,23 @@ public class Controller  {
                     TempLecturer = "";
                 }
                 dc.updateCourse(IDTempCourse, number, title, kind, SWS, hyperlink, maxParticipants, expectedParticipants,
-                        onlineReg, credits, extraCourse, financing, finals, start, end, language, program, startTime,
-                        endTime, ctSt, rota, participants, requirements, certificate, deputat, description, turnus,
-                        chair, lecturer, day);
+                        onlineReg, credits, extraCourse, financing, finals, start, end, language, program, ctSt, rota,
+                        participants, requirements, certificate, deputat, description, turnus, chair, lecturer);
+                if(checkMo){
+                    dc.connectCourseWithDay(title, "Montag", startMo, endMo);
+                }
+                if(checkDi) {
+                    dc.connectCourseWithDay(title, "Dienstag", startDi, endDi);
+                }
+                if(checkMi) {
+                    dc.connectCourseWithDay(title, "Mittwoch", startMi, endMi);
+                }
+                if(checkDo) {
+                    dc.connectCourseWithDay(title, "Donnerstag", startDo, endDo);
+                }
+                if(checkFr) {
+                    dc.connectCourseWithDay(title, "Freitag", startFr, endFr);
+                }
                 editCourse = false;
 
             }
@@ -430,11 +478,24 @@ public class Controller  {
 
     private void editCourse(){
         editCourse = true;
-
         Course selected = CourseTable.getSelectionModel().getSelectedItem();
-
-        pane_courses_overview_start.setVisible(false);
-        pane_courses_overview_create1.setVisible(true);
+        List<String> dayTimes = dc.getDayTimes(selected.getCourseID());
+        for(int i = 0; i < dayTimes.size(); i++){
+            String[] dT = dayTimes.get(i).split(";");
+            switch(dT[0]){
+                case "1": checkMonday.setSelected(true); startTimeMonday.setText(dT[1]); endTimeMonday.setText(dT[2]);
+                break;
+                case "2": checkTuesday.setSelected(true); startTimeTuesday.setText(dT[1]); endTimeTuesday.setText(dT[2]);
+                break;
+                case "3": checkWednesday.setSelected(true); startTimeWednesday.setText(dT[1]); endTimeWednesday.setText(dT[2]);
+                break;
+                case "4": checkThursday.setSelected(true); startTimeThursday.setText(dT[1]); endTimeThursday.setText(dT[2]);
+                break;
+                case "5": checkFriday.setSelected(true); startTimeFriday.setText(dT[1]); endTimeFriday.setText(dT[2]);
+                break;
+                default: System.out.println("Error");
+            }
+        }
 
         courseNumberText.setText(selected.getCourseNumber());
         courseTitleText.setText(selected.getCourseTitle());
@@ -452,22 +513,22 @@ public class Controller  {
         startDate.setValue(LocalDate.parse(selected.getCourseStart()));
         endDate.setValue(LocalDate.parse(selected.getCourseEnd()));
         languageCourseText1.setText(selected.getCourseLanguage());
-        chairCombo.setValue(selected.getCourseProgram());
+        programCombo.setValue(selected.getCourseProgram());
         lecturerCombo.setValue(selected.getCourseLecturer());
-        dayCombo.setValue(selected.getCourseDay());
-        startTimeText.setText(selected.getCourseStartTime());
-        endTimeText.setText(selected.getCourseEndTime());
         ctCombo.setValue(selected.getCourseCtST());
         rotaCombo.setValue(selected.getCourseRota());
         participantsText.setText(selected.getCourseParticipants());
         requirementsText.setText(selected.getCourseRequirements());
         certCombo.setValue(selected.getCourseCertificate());
         deputatText.setText(selected.getCourseDeputat());
-        chair2Combo.setValue(selected.getCourseChair());
+        chairCombo.setValue(selected.getCourseChair());
         descriptionText.setText(selected.getCourseDescription());
 
         IDTempCourse = selected.getCourseID();
         TempLecturer = selected.getCourseLecturer();
+
+        pane_courses_overview_start.setVisible(false);
+        pane_courses_overview_create1.setVisible(true);
     }
 
     private void fillCourse() {
@@ -492,8 +553,6 @@ public class Controller  {
         CourseLanguage.setCellValueFactory(new PropertyValueFactory<>("courseLanguage"));
         CourseStartDate.setCellValueFactory(new PropertyValueFactory<>("courseStart"));
         CourseEndDate.setCellValueFactory(new PropertyValueFactory<>("courseEnd"));
-        CourseStartTime.setCellValueFactory(new PropertyValueFactory<>("courseStartTime"));
-        CourseEndTime.setCellValueFactory(new PropertyValueFactory<>("courseEndTime"));
         CourseCtSt.setCellValueFactory(new PropertyValueFactory<>("courseCtST"));
         CourseRequirements.setCellValueFactory(new PropertyValueFactory<>("courseRequirements"));
         CourseCertificate.setCellValueFactory(new PropertyValueFactory<>("courseCertificate"));
@@ -501,7 +560,7 @@ public class Controller  {
         CourseOnlineReg.setCellValueFactory(new PropertyValueFactory<>("courseOnlineReg"));
         CourseExtraCourse.setCellValueFactory(new PropertyValueFactory<>("courseExtraCourse"));
         CourseFinancing.setCellValueFactory(new PropertyValueFactory<>("courseFinancing"));
-
+        CourseTurnus.setCellValueFactory(new PropertyValueFactory<>("courseTurnus"));
 
         CourseTable.setItems(null);
         CourseTable.setItems(dataCourse);
@@ -510,10 +569,10 @@ public class Controller  {
 
     private void fillCourseProgramCombo(){
         courseProgramCombo.getItems().clear();
-        chairCombo.getItems().clear();
+        programCombo.getItems().clear();
         for(int i = 0; i < dc.GetPrograms().size(); i++){
             courseProgramCombo.getItems().addAll(""+dc.GetPrograms().get(i)+"");
-            chairCombo.getItems().addAll(""+dc.GetPrograms().get(i)+"");
+            programCombo.getItems().addAll(""+dc.GetPrograms().get(i)+"");
         }
         courseProgramCombo.getSelectionModel().selectFirst();
     }
@@ -533,9 +592,9 @@ public class Controller  {
     }
 
     private void fillChairsCombo(){
-        chair2Combo.getItems().clear();
+        chairCombo.getItems().clear();
         for(int i = 0; i < dc.getChairs().size(); i++){
-            chair2Combo.getItems().addAll(""+dc.getChairs().get(i)+"");
+            chairCombo.getItems().addAll(""+dc.getChairs().get(i)+"");
         }
     }
 
@@ -576,6 +635,7 @@ public class Controller  {
 
         cancelCourseButton.setOnAction((event) -> {
 
+            clearCourse();
             pane_courses_overview_start.setVisible(true);
             pane_courses_overview_create1.setVisible(false);
 
@@ -604,6 +664,11 @@ public class Controller  {
         maxParticipantsCourseText.clear();
         expectedParticipantsCourseText.clear();
         onlineRegBox.setSelected(false);
+        checkMonday.setSelected(false);
+        checkTuesday.setSelected(false);
+        checkWednesday.setSelected(false);
+        checkThursday.setSelected(false);
+        checkFriday.setSelected(false);
         creditsCourseText.clear();
         courseFrequencyComboBox.setValue(null);
         extraCourseBox.setSelected(false);
@@ -612,19 +677,26 @@ public class Controller  {
         startDate.setValue(null);
         endDate.setValue(null);
         languageCourseText1.clear();
-        chairCombo.setValue(null);
+        programCombo.setValue(null);
         lecturerCombo.setValue(null);
-        dayCombo.setValue(null);
-        startTimeText.clear();
-        endTimeText.clear();
         ctCombo.setValue(null);
         rotaCombo.setValue(null);
         participantsText.clear();
         requirementsText.clear();
         certCombo.setValue(null);
         deputatText.clear();
-        chair2Combo.setValue(null);
+        chairCombo.setValue(null);
         descriptionText.clear();
+        startTimeMonday.clear();
+        startTimeTuesday.clear();
+        startTimeWednesday.clear();
+        startTimeThursday.clear();
+        startTimeFriday.clear();
+        endTimeMonday.clear();
+        endTimeTuesday.clear();
+        endTimeWednesday.clear();
+        endTimeThursday.clear();
+        endTimeFriday.clear();
     }
 
     private void createSemester() {
