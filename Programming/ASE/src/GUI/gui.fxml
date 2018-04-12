@@ -28,7 +28,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Controller">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Controller">
 
    <content>
       <BorderPane fx:id="bg_pane" style="-fx-background-color: #787878;" stylesheets="@style.css">
@@ -653,7 +653,9 @@
                                                 <ComboBox fx:id="courseFrequencyComboBox" prefWidth="150.0" promptText="Turnus wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1">
                                                     <items>
                                                         <FXCollections fx:factory="observableArrayList">
-                                                            <String fx:value="Wöchentlich" />
+                                                            <String fx:value="jedes Semester" />
+                                                            <String fx:value="nur Sommersemester" />
+                                                            <String fx:value="nur Wintersemester" />
                                                         </FXCollections>
                                                     </items>
                                                 </ComboBox>
@@ -820,7 +822,7 @@
                                        <center>
                                           <GridPane prefHeight="1085.0" prefWidth="908.0" BorderPane.alignment="CENTER">
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Beschreibung" GridPane.rowIndex="7">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Beschreibung" GridPane.rowIndex="6">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -828,16 +830,7 @@
                                                       <Insets left="20.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fällt aus am" GridPane.rowIndex="8">
-                                                   <font>
-                                                      <Font size="15.0" />
-                                                   </font>
-                                                   <GridPane.margin>
-                                                      <Insets left="20.0" />
-                                                   </GridPane.margin>
-                                                </Text>
-                                                <DatePicker fx:id="canceledDate" minHeight="-Infinity" prefHeight="40.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                                <TextField fx:id="descriptionText" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                                <TextField fx:id="descriptionText" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                                    <cursor>
                                                       <Cursor fx:constant="TEXT" />
                                                    </cursor>
@@ -877,6 +870,9 @@
                                                          </HBox.margin>
                                                       </TextField>
                                                    </children>
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                                    <children>
@@ -910,6 +906,12 @@
                                                          </HBox.margin>
                                                       </TextField>
                                                    </children>
+                                                   <opaqueInsets>
+                                                      <Insets top="10.0" />
+                                                   </opaqueInsets>
+                                                   <GridPane.margin>
+                                                      <Insets top="10.0" />
+                                                   </GridPane.margin>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                                    <children>
@@ -941,8 +943,17 @@
                                                          <HBox.margin>
                                                             <Insets left="10.0" />
                                                          </HBox.margin>
+                                                         <padding>
+                                                            <Insets top="10.0" />
+                                                         </padding>
                                                       </TextField>
                                                    </children>
+                                                   <opaqueInsets>
+                                                      <Insets top="10.0" />
+                                                   </opaqueInsets>
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                                    <children>
@@ -976,6 +987,12 @@
                                                          </HBox.margin>
                                                       </TextField>
                                                    </children>
+                                                   <opaqueInsets>
+                                                      <Insets top="10.0" />
+                                                   </opaqueInsets>
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                                    <children>
@@ -1009,6 +1026,12 @@
                                                          </HBox.margin>
                                                       </TextField>
                                                    </children>
+                                                   <opaqueInsets>
+                                                      <Insets top="10.0" />
+                                                   </opaqueInsets>
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                                                    <children>
@@ -1021,6 +1044,9 @@
                                                    <GridPane.margin>
                                                       <Insets left="90.0" />
                                                    </GridPane.margin>
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                                                    <children>
@@ -1033,6 +1059,9 @@
                                                    <GridPane.margin>
                                                       <Insets left="90.0" />
                                                    </GridPane.margin>
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="3">
                                                    <children>
@@ -1045,6 +1074,9 @@
                                                    <GridPane.margin>
                                                       <Insets left="90.0" />
                                                    </GridPane.margin>
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
                                                    <children>
@@ -1057,6 +1089,9 @@
                                                    <GridPane.margin>
                                                       <Insets left="90.0" />
                                                    </GridPane.margin>
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
                                                 </HBox>
                                                 <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="5">
                                                    <children>
@@ -1069,6 +1104,9 @@
                                                    <GridPane.margin>
                                                       <Insets left="90.0" />
                                                    </GridPane.margin>
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
                                                 </HBox>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Termine">
                                                    <font>
@@ -1085,12 +1123,11 @@
                                              </columnConstraints>
                                              <rowConstraints>
                                                 <RowConstraints maxHeight="589.456787109375" minHeight="39.25352478027344" prefHeight="55.237945556640625" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="589.456787109375" minHeight="39.25352478027344" prefHeight="55.237945556640625" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="589.456787109375" minHeight="52.49147033691406" prefHeight="56.762054443359375" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="589.456787109375" minHeight="22.23333740234375" prefHeight="63.088653564453125" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="589.456787109375" minHeight="46.959564208984375" prefHeight="78.72161865234375" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="589.456787109375" minHeight="31.987579345703125" prefHeight="64.13687133789062" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="208.05282592773438" minHeight="39.205322265625" prefHeight="67.57232666015625" vgrow="SOMETIMES" />
+                                                <RowConstraints vgrow="SOMETIMES" />
+                                                <RowConstraints vgrow="SOMETIMES" />
+                                                <RowConstraints vgrow="SOMETIMES" />
+                                                <RowConstraints vgrow="SOMETIMES" />
+                                                <RowConstraints vgrow="SOMETIMES" />
                                                 <RowConstraints maxHeight="589.456787109375" minHeight="200.0" prefHeight="378.7900695800781" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="50.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
@@ -1116,7 +1153,7 @@
                                                       <Insets left="10.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ct/st" GridPane.rowIndex="5">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ct/st" GridPane.rowIndex="4">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -1124,7 +1161,7 @@
                                                       <Insets left="10.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rhythmus" GridPane.rowIndex="6">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rhythmus" GridPane.rowIndex="5">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -1132,7 +1169,7 @@
                                                       <Insets left="10.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Teilnehmer" GridPane.rowIndex="7">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Teilnehmer" GridPane.rowIndex="6">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -1140,8 +1177,8 @@
                                                       <Insets left="10.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <TextField fx:id="participantsText" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Voraussetzung" GridPane.rowIndex="8">
+                                                <TextField fx:id="participantsText" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Voraussetzung" GridPane.rowIndex="7">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -1149,8 +1186,8 @@
                                                       <Insets left="10.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <TextField fx:id="requirementsText" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Leistungsnachweis" GridPane.rowIndex="9">
+                                                <TextField fx:id="requirementsText" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Leistungsnachweis" GridPane.rowIndex="8">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -1173,7 +1210,7 @@
                                                         </FXCollections>
                                                     </items>
                                                 </ComboBox>
-                                                <ComboBox fx:id="ctCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" promptText="ct/st wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                <ComboBox fx:id="ctCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" promptText="ct/st wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                                     <items>
                                                         <FXCollections fx:factory="observableArrayList">
                                                             <String fx:value="ct" />
@@ -1181,20 +1218,21 @@
                                                         </FXCollections>
                                                     </items>
                                                 </ComboBox>
-                                                <ComboBox fx:id="rotaCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" promptText="Rythmus wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                <ComboBox fx:id="rotaCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" promptText="Rythmus wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                                     <items>
                                                         <FXCollections fx:factory="observableArrayList">
-                                                            <String fx:value="Ganzjährig" />
-                                                            <String fx:value="Halbjährig" />
+                                                            <String fx:value="Blockkurs" />
+                                                            <String fx:value="Einzeltermin" />
+                                                            <String fx:value="wöchentlich" />
                                                         </FXCollections>
                                                     </items>
                                                 </ComboBox>
-                                                <ComboBox fx:id="certCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" promptText="Leistungsnachweis wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                                <ComboBox fx:id="certCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" promptText="Leistungsnachweis wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="8">
                                                     <items>
                                                         <FXCollections fx:factory="observableArrayList">
-                                                            <String fx:value="Übung" />
-                                                            <String fx:value="Projekt" />
+                                                            <String fx:value="Hausarbeit" />
                                                             <String fx:value="Klausur" />
+                                                            <String fx:value="Projekt" />
                                                         </FXCollections>
                                                     </items>
                                                 </ComboBox>
@@ -1223,7 +1261,6 @@
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
                                              </columnConstraints>
                                              <rowConstraints>
-                                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -1336,6 +1373,7 @@
                                                                   <Insets left="10.0" top="10.0" />
                                                                </HBox.margin>
                                                             </TextField>
+                                                            <ComboBox prefWidth="150.0" />
                                                             <Button fx:id="newProgramButton1" mnemonicParsing="false" stylesheets="@button.css" text="Speichern">
                                                                <HBox.margin>
                                                                   <Insets left="10.0" top="10.0" />
