@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
@@ -28,7 +35,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Controller">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Controller">
 
    <content>
       <BorderPane fx:id="bg_pane" style="-fx-background-color: #787878;" stylesheets="@style.css">
@@ -69,8 +76,6 @@
                                              <children>
                                                 <GridPane>
                                                   <columnConstraints>
-                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="300.0" />
-                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
                                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
                                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
                                                   </columnConstraints>
@@ -78,23 +83,7 @@
                                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                   </rowConstraints>
                                                    <children>
-                                                      <TextField fx:id="textfield_search_teachers" promptText="Lehrperson suchen" style="-fx-background-color: #ffffff; -fx-background-radius: 0;">
-                                                         <cursor>
-                                                            <Cursor fx:constant="TEXT" />
-                                                         </cursor>
-                                                         <opaqueInsets>
-                                                            <Insets />
-                                                         </opaqueInsets>
-                                                      </TextField>
-                                                      <Button fx:id="btn_search_teachers" mnemonicParsing="false" stylesheets="@button.css" text="Suchen" GridPane.columnIndex="1">
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                         <GridPane.margin>
-                                                            <Insets bottom="2.0" left="3.0" top="1.0" />
-                                                         </GridPane.margin>
-                                                      </Button>
-                                                      <Button fx:id="updateLecturerButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="94.0" stylesheets="@button.css" text="Bearbeiten" GridPane.columnIndex="2">
+                                                      <Button fx:id="updateLecturerButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="94.0" stylesheets="@button.css" text="Bearbeiten">
                                                          <cursor>
                                                             <Cursor fx:constant="HAND" />
                                                          </cursor>
@@ -102,7 +91,7 @@
                                                             <Insets bottom="2.0" top="1.0" />
                                                          </GridPane.margin>
                                                       </Button>
-                                                      <Button fx:id="deleteLecturerButton" mnemonicParsing="false" stylesheets="@button.css" text="Löschen" GridPane.columnIndex="3">
+                                                      <Button fx:id="deleteLecturerButton" mnemonicParsing="false" stylesheets="@button.css" text="Löschen" GridPane.columnIndex="1">
                                                          <cursor>
                                                             <Cursor fx:constant="HAND" />
                                                          </cursor>
@@ -246,17 +235,10 @@
                                             </columnConstraints>
                                             <rowConstraints>
                                               <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
       
                                                 <ListView prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f5f5f5;" />
-                                                <Button fx:id="btn_add_courses_to_teacher" mnemonicParsing="false" prefHeight="50.0" prefWidth="303.0" stylesheets="@button.css" text="Kurse übernehmen" GridPane.rowIndex="1">
-                                                   <font>
-                                                      <Font size="15.0" />
-                                                   </font>
-                                                </Button>
                                              </children>
                                           </GridPane>
                                        </right>
@@ -372,8 +354,6 @@
                                              <top>
                                                 <GridPane prefHeight="40.0" prefWidth="1635.0" style="-fx-background-color: #f4f4f4;" BorderPane.alignment="CENTER">
                                                   <columnConstraints>
-                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="711.4509887695312" minWidth="10.0" prefWidth="262.6964111328125" />
-                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1170.3975219726562" minWidth="10.0" prefWidth="168.64852905273438" />
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="1170.3975219726562" minWidth="10.0" prefWidth="254.35147094726562" />
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="1170.3975219726562" minWidth="10.0" prefWidth="487.3140869140625" />
                                                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="1110.5458984375" minWidth="0.0" prefWidth="132.6859130859375" />
@@ -383,34 +363,18 @@
                                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                   </rowConstraints>
                                                    <children>
-                                                      <TextField fx:id="searchbox_courses_overview" prefHeight="27.0" prefWidth="603.0" promptText="Kurse durchsuchen" style="-fx-background-color: #ffffff; -fx-background-radius: 0;">
-                                                         <GridPane.margin>
-                                                            <Insets bottom="5.0" left="5.0" top="5.0" />
-                                                         </GridPane.margin>
-                                                         <cursor>
-                                                            <Cursor fx:constant="TEXT" />
-                                                         </cursor>
-                                                      </TextField>
-                                                      <Button fx:id="btn_courses_search_course_overview" mnemonicParsing="false" stylesheets="@button.css" text="Suchen" GridPane.columnIndex="1">
-                                                         <GridPane.margin>
-                                                            <Insets bottom="5.0" left="10.0" top="5.0" />
-                                                         </GridPane.margin>
+                                                      <Button fx:id="deleteCourseButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="116.0" stylesheets="@button.css" text="Kurs löschen" GridPane.columnIndex="3">
                                                          <cursor>
                                                             <Cursor fx:constant="HAND" />
                                                          </cursor>
                                                       </Button>
-                                                      <Button fx:id="deleteCourseButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="116.0" stylesheets="@button.css" text="Kurs löschen" GridPane.columnIndex="5">
+                                                      <Button fx:id="editCourseButton" mnemonicParsing="false" stylesheets="@button.css" text="Kurs bearbeiten" GridPane.columnIndex="2">
                                                          <cursor>
                                                             <Cursor fx:constant="HAND" />
                                                          </cursor>
                                                       </Button>
-                                                      <Button fx:id="editCourseButton" mnemonicParsing="false" stylesheets="@button.css" text="Kurs bearbeiten" GridPane.columnIndex="4">
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                      </Button>
-                                                      <MenuButton fx:id="filterMenu" mnemonicParsing="false" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: #ffffff; -fx-border-radius: 0; -fx-border-color: #7D003C;" text="Tabelle konfigurieren" GridPane.columnIndex="2" />
-                                                      <Button fx:id="resetCourseFilterButton" mnemonicParsing="false" prefHeight="28.0" prefWidth="202.0" stylesheets="@button.css" text="Konfiguration zurücksetzen" GridPane.columnIndex="3" />
+                                                      <MenuButton fx:id="filterMenu" mnemonicParsing="false" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: #ffffff; -fx-border-radius: 0; -fx-border-color: #7D003C;" text="Tabelle konfigurieren" />
+                                                      <Button fx:id="resetCourseFilterButton" mnemonicParsing="false" prefHeight="28.0" prefWidth="202.0" stylesheets="@button.css" text="Konfiguration zurücksetzen" GridPane.columnIndex="1" />
                                                    </children>
                                                    <opaqueInsets>
                                                       <Insets bottom="5.0" />
@@ -1305,6 +1269,7 @@
                                                             </Button>
                                                          </children>
                                                       </HBox>
+                                                      <ListView layoutX="11.0" layoutY="48.0" prefHeight="249.0" prefWidth="242.0" />
                                                    </children>
                                                 </AnchorPane>
                                           </content>
@@ -1330,6 +1295,7 @@
                                                             </Button>
                                                          </children>
                                                       </HBox>
+                                                      <ListView layoutX="10.0" layoutY="49.0" prefHeight="250.0" prefWidth="243.0" />
                                                    </children>
                                                 </AnchorPane>
                                           </content>
@@ -1355,6 +1321,7 @@
                                                             </Button>
                                                          </children>
                                                       </HBox>
+                                                      <ListView layoutX="11.0" layoutY="49.0" prefHeight="258.0" prefWidth="257.0" />
                                                    </children>
                                                 </AnchorPane>
                                           </content>
@@ -1373,14 +1340,18 @@
                                                                   <Insets left="10.0" top="10.0" />
                                                                </HBox.margin>
                                                             </TextField>
-                                                            <ComboBox prefWidth="150.0" />
+                                                            <ComboBox prefWidth="150.0">
+                                                               <HBox.margin>
+                                                                  <Insets left="20.0" top="10.0" />
+                                                               </HBox.margin></ComboBox>
                                                             <Button fx:id="newProgramButton1" mnemonicParsing="false" stylesheets="@button.css" text="Speichern">
                                                                <HBox.margin>
-                                                                  <Insets left="10.0" top="10.0" />
+                                                                  <Insets left="20.0" top="10.0" />
                                                                </HBox.margin>
                                                             </Button>
                                                          </children>
                                                       </HBox>
+                                                      <ListView layoutX="13.0" layoutY="48.0" prefHeight="251.0" prefWidth="240.0" />
                                                    </children>
                                                 </AnchorPane>
                                              </content>
