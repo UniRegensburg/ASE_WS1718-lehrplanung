@@ -1,6 +1,9 @@
 .button{
 -fx-background-color: #ffffff;
--fx-background-radius: 0;
+-fx-max-height: 20px;
+-fx-background-radius: 25;
+-fx-effect: dropshadow(two-pass-box,rgba(0,0,0,0.3), 2,0,0,1);
+
 }
 
 .button:hover{

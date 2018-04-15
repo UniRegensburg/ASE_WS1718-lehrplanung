@@ -1,0 +1,57 @@
+.borderPane{
+-fx-background-color: transparent;
+  -fx-effect: null;
+}
+
+
+.borderPaneBG{
+-fx-background-image: url("resources/Desktop.png");
+ -fx-background-size: stretch;
+}
+
+
+
+
+.anchorPane{
+-fx-background-color: transparent;
+}
+
+
+.scrollPane{
+ -fx-background-size: stretch;
+}
+
+.hBox{
+
+-fx-background-color: transparent;
+  -fx-effect: null;
+
+}
+
+.tabPane{
+    -fx-background-color: rgba(255,255,255,0.8);
+
+}
+
+
+/*Quelle: https://stackoverflow.com/questions/10609103/remove-gray-bg-behind-the-tabs-in-jfx[10.04.2018]*/
+
+.tabPane .tab-header-background {
+    -fx-background-color: rgba(255,255,255,0.8);
+    -fx-effect: null;
+
+}
+
+
+
+
+.tab{
+-fx-background-color: rgb(242, 230, 236);
+-fx-effect: null;
+
+}
+
+.tab:selected{
+-fx-background-color: rgb(255, 255, 255);
+
+}
