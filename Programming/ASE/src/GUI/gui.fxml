@@ -35,10 +35,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Controller">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" styleClass="scrollPane" stylesheets="@panes.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Controller">
 
    <content>
-      <BorderPane fx:id="bg_pane" style="-fx-background-color: #787878;" stylesheets="@style.css">
+      <BorderPane fx:id="bg_pane" styleClass="borderPaneBG">
          <center>
             <AnchorPane>
                <children>
@@ -1445,7 +1445,7 @@
          <top>
             <SplitPane prefHeight="44.0" prefWidth="1440.0" style="-fx-background-color: #dddddd;" BorderPane.alignment="CENTER">
               <items>
-                <AnchorPane prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #dddddd;">
+                <AnchorPane prefHeight="160.0" prefWidth="100.0" styleClass="anchorPane" stylesheets="@panes.css">
                      <children>
                         <HBox layoutX="8.0" layoutY="7.0" prefHeight="42.0" prefWidth="1314.0" style="-fx-background-color: #787878;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>

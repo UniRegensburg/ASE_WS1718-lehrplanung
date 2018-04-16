@@ -22,16 +22,11 @@
 }
 
 .hBox{
+
 -fx-background-color: transparent;
- -fx-effect: null;
-}
-
-.hBoxBottom{
--fx-background-color: #787878;
+  -fx-effect: null;
 
 }
-
-
 
 .tabPane{
     -fx-background-color: rgba(255,255,255,0.8);
@@ -58,12 +53,5 @@
 
 .tab:selected{
 -fx-background-color: rgb(255, 255, 255);
- -fx-focus-color: #7D003C;
 
-}
-
-
-.titled-pane .title {
-    -fx-background-color: #ffffff;
-    -fx-focus-color: #7D003C;
 }
