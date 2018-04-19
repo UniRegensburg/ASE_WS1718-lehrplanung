@@ -128,6 +128,97 @@ public class DatabaseInterface {
         }
     }
 
+    public List getModule(){
+        List <String> module = new ArrayList<>();
+        try{
+            ResultSet rs = conn.createStatement().executeQuery("SELECT Name FROM Module");
+            while (rs.next()){
+                module.add(rs.getString(1));
+            }
+            return module;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ObservableList<String> getSemesterList(){
+        try{
+            ObservableList<String> semester = FXCollections.observableArrayList();
+            ResultSet rs = conn.createStatement().executeQuery("SELECT Semester FROM Semester");
+            while (rs.next()){
+                semester.add(new String(rs.getString(1)));
+            }
+            return semester;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ObservableList<String> getChairList(){
+        try{
+            ObservableList<String> chair = FXCollections.observableArrayList();
+            ResultSet rs = conn.createStatement().executeQuery("SELECT Name FROM Lehrstuhl");
+            while (rs.next()){
+                chair.add(new String(rs.getString(1)));
+            }
+            return chair;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ObservableList<String> getModuleList(){
+        try{
+            ObservableList<String> module = FXCollections.observableArrayList();
+            ResultSet rs = conn.createStatement().executeQuery("SELECT Name FROM Module");
+            while (rs.next()){
+                module.add(new String(rs.getString(1)));
+            }
+            return module;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ObservableList<String> getProgramsList(){
+        try{
+            ObservableList<String> programs = FXCollections.observableArrayList();
+            ResultSet rs = conn.createStatement().executeQuery("SELECT Titel FROM Studiengang");
+            while (rs.next()){
+                programs.add(new String(rs.getString(1)));
+            }
+            return programs;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ObservableList<String> getLecturerCourses(Integer ID){
+        try{
+            ObservableList<String> courses = FXCollections.observableArrayList();
+            ResultSet rs = conn.createStatement().executeQuery("SELECT Kurse.Titel FROM Kurse JOIN " +
+                    "ZuordnungDozenten ON ZuordnungDozenten.KursID = Kurse.ID WHERE ZuordnungDozenten.DozentID = '"+ID+"'");
+            while (rs.next()){
+                courses.add(new String(rs.getString(1)));
+            }
+            return courses;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public int getLecturerID(String lecturer){
         int lecturerID = 0;
         String[] Names = lecturer.split(" ");
@@ -144,6 +235,36 @@ public class DatabaseInterface {
         }
     }
 
+    public int getTimeTableCount(Integer semesterID, Integer program){
+        int count = 0;
+        try{
+            Statement stCount = conn.createStatement();
+            ResultSet rsCount = stCount.executeQuery("SELECT COUNT(settings) FROM TimeTable WHERE SemesterID ='"+semesterID+"' AND StudiengangID ='"+program+"'");
+            while(rsCount.next()){
+                count = rsCount.getInt(1);
+            }
+            return count;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public String getTimeTableSettings(Integer semesterID, Integer program){
+        String settings="";
+        try{
+            Statement stSettings = conn.createStatement();
+            ResultSet rsSettings = stSettings.executeQuery("SELECT settings FROM TimeTable WHERE SemesterID ='"+semesterID+"' AND StudiengangID ='"+program+"'");
+            while(rsSettings.next()){
+                settings = rsSettings.getString(1);
+            }
+            return settings;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+
     public int getChairID(String chair){
         int chairID = 0;
         try{
@@ -153,6 +274,21 @@ public class DatabaseInterface {
                 chairID = rsChair.getInt(1);
             }
             return chairID;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public int getSemesterID(String semester){
+        int semesterID = 0;
+        try{
+            Statement getChair = conn.createStatement();
+            ResultSet rsChair = getChair.executeQuery("SELECT ID FROM Semester WHERE Semester = '"+ semester +"'");
+            while(rsChair.next()){
+                semesterID = rsChair.getInt(1);
+            }
+            return semesterID;
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;
@@ -203,6 +339,16 @@ public class DatabaseInterface {
         try {
             Statement st = conn.createStatement();
             st.executeUpdate("INSERT INTO Lehrstuhl(Name)VALUES('"+name+"')");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeModule(String name, Integer program){
+        try {
+            Statement st = conn.createStatement();
+            st.executeUpdate("INSERT INTO Module(Name,StudiengangID)VALUES('"+name+"','"+program+"')");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -342,17 +488,17 @@ public class DatabaseInterface {
                             String expP, Boolean online, String credits, Boolean extra, Boolean finance, String finals,
                             String startDate, String endDate, String language, String program, String ct, String rotation,
                             String participants, String requirements, String cert, String deputat, String description,
-                            String turnus, String chair)
+                            String turnus, String chair, String modul)
     {
         try{
             Statement st = conn.createStatement();
             st.executeUpdate("INSERT INTO Kurse(Kursnummer,Titel,Art,SWS,Hyperlink,MaxTeilnehmer,ErwTeilnehmer," +
                     "OnlineAnmeldung,Credits,Wahlbereich,Finanzierung,Pruefungsdatum,Anfangsdatum,Enddatum,Sprache," +
-                    "Studiengang,CtSt,Rhythmus,Teilnehmer,Anforderung,Zertifikat,Deputat,Beschreibung,Turnus,Lehrstuhl)" +
+                    "Studiengang,CtSt,Rhythmus,Teilnehmer,Anforderung,Zertifikat,Deputat,Beschreibung,Turnus,Lehrstuhl,Modul)" +
                     "VALUES('"+number+"','"+title+"','"+kind+"','"+SWS+"','"+hyperlink+"','"+maxP+"','"+expP+"','"+online+"'," +
                     "'"+credits+"','"+extra+"','"+finance+"','"+finals+"','"+startDate+"','"+endDate+"','"+language+"','" +
                     getProgramID(program)+"'," + "'"+ct+"','"+rotation+"','"+participants+"','"+requirements+"','"+cert+"'," +
-                    "'"+deputat+"','"+description+"','"+turnus+"','"+getChairID(chair)+"')");
+                    "'"+deputat+"','"+description+"','"+turnus+"','"+getChairID(chair)+"','"+modul+"')");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -437,7 +583,7 @@ public class DatabaseInterface {
                              String expP, Boolean online, String credits, Boolean extra, Boolean finance, String finals,
                              String start, String end, String language, String program, String ct, String rotation,
                              String participants, String requirements, String cert, String deputat, String description,
-                             String turnus, String chair, String lecturer){
+                             String turnus, String chair, String lecturer, String module){
         try{
             Statement st = conn.createStatement();
             st.executeUpdate("UPDATE Kurse SET Kursnummer ='"+number+"', Titel ='"+title+"', Art ='"+kind+"', " +
@@ -446,7 +592,7 @@ public class DatabaseInterface {
                     "Pruefungsdatum ='"+finals+"', Anfangsdatum ='"+start+"', Enddatum ='"+end+"', Sprache ='"+language+"', " +
                     "CtSt ='"+ct+"', Rhythmus ='"+rotation+"', Teilnehmer ='"+participants+"', Anforderung ='"+requirements+"', " +
                     "Zertifikat ='"+cert+"', Deputat ='"+deputat+"', " + "Beschreibung ='"+description+"', Turnus ='"+turnus+"', " +
-                    "Studiengang ='"+getProgramID(program)+"', " + "Lehrstuhl ='"+getChairID(chair)+"' WHERE ID = '"+ID+"'");
+                    "Studiengang ='"+getProgramID(program)+"', Lehrstuhl ='"+getChairID(chair)+"', Modul ='"+module+"' WHERE ID = '"+ID+"'");
 
             Statement stLecturer = conn.createStatement();
             stLecturer.executeUpdate("UPDATE ZuordnungDozenten SET DozentID ='"+getLecturerID(lecturer)+"' WHERE KursID = '"+ID+"'");
@@ -494,6 +640,17 @@ public class DatabaseInterface {
         try{
             Statement st = conn.createStatement();
             st.executeUpdate("DELETE FROM ZuordnungWochentag WHERE CourseID ='"+ID+"'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void writeTimeTable(Integer semesterID, Integer program, String settings){
+
+        try {
+            Statement st = conn.createStatement();
+            st.executeUpdate("INSERT INTO TimeTable(SemesterID,StudiengangID,Settings)VALUES('"+semesterID+"','"+program+"','"+settings+"')");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
