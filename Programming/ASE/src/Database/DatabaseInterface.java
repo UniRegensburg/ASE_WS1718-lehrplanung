@@ -655,6 +655,18 @@ public class DatabaseInterface {
             e.printStackTrace();
         }
     }
+
+    public void extendTimeTable(Integer semesterID, Integer program, String settings){
+
+        try {
+            Statement st = conn.createStatement();
+            st.executeUpdate("UPDATE TimeTable SET Settings ='"+settings+"' WHERE SemesterID='"+semesterID+"' AND StudiengangID ='"+program+"'");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
 
 

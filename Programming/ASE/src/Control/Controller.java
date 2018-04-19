@@ -8,6 +8,7 @@ import Interfaces.Course;
 import Interfaces.TimeTable;
 import javafx.scene.control.*;
 import Database.DatabaseInterface;
+import Control.Warnings;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.beans.value.ChangeListener;
@@ -25,7 +26,7 @@ public class Controller  {
     private Button createLecturerButton, createCourseButton, saveLecturerButton, saveCourseButton, deleteLecturerButton,
             deleteCourseButton, updateLecturerButton, editCourseButton, cancelLecturerButton, cancelCourseButton,
             nextCourseButton, backCourseButton, addCourseToScheduleButton, newSemesterButton, newChairButton,
-            newProgramButton, resetCourseFilterButton, saveModuleButton, showTimeTableButton;
+            newProgramButton, resetCourseFilterButton, saveModuleButton, showTimeTableButton, clearTimeTableButton;
     @FXML
     private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText, courseNumberText,
             courseTitleText, SWScourseText, hypertextCourseText, maxParticipantsCourseText, creditsCourseText,
@@ -82,6 +83,7 @@ public class Controller  {
     private Integer IDTempCourse = null;
     private String TempLecturer = "";
     private DatabaseInterface dc = new DatabaseInterface();
+    private Warnings warning = new Warnings();
     private HashMap<String, String[]> timeTableGlobal;
 
     @FXML
@@ -134,6 +136,9 @@ public class Controller  {
         addCourseToTimetable();
         createTimeTableHashMap();
 
+        emptyTimeTable();
+        resetTimeTableView();
+
     }
 
     private void resetCourseFilter() {
@@ -141,6 +146,13 @@ public class Controller  {
             filterMenu.getItems().clear();
             dc.resetFilterSettings();
             fillCourseFilterCombo();
+        });
+    }
+
+    private void resetTimeTableView(){
+        clearTimeTableButton.setOnAction((event) -> {
+            createTimeTableHashMap();
+            emptyTimeTable();
         });
     }
 
@@ -192,18 +204,22 @@ public class Controller  {
             colThursday.setCellValueFactory(new PropertyValueFactory<>("scheduleThursday"));
             colFriday.setCellValueFactory(new PropertyValueFactory<>("scheduleFriday"));
 
-            Integer semesterID = dc.getSemesterID(semesterTimeTableCombo.getValue().toString());
-            Integer programID = dc.getProgramID(filterTimeTableByProgramCombo.getValue().toString());
-
-            String[] times = dc.getTimeTableSettings(semesterID, programID).split(";");
-            for(int i = 0; i<times.length; i++){
-                String[] days = times[i].split(",");
-                data.add(new TimeTable(days[0], days[1], days[2], days[3], days[4], days[5]));
+            if(semesterTimeTableCombo.getSelectionModel().isEmpty() || filterTimeTableByProgramCombo.getSelectionModel().isEmpty()){
+                warning.missingTimeTablePerimeter();
             }
+            else{
+                Integer semesterID = dc.getSemesterID(semesterTimeTableCombo.getValue().toString());
+                Integer programID = dc.getProgramID(filterTimeTableByProgramCombo.getValue().toString());
 
-            schedulePreview.setItems(null);
-            schedulePreview.setItems(data);
+                String[] times = dc.getTimeTableSettings(semesterID, programID).split(";");
+                for(int i = 0; i<times.length; i++){
+                    String[] days = times[i].split(",");
+                    data.add(new TimeTable(days[0], days[1], days[2], days[3], days[4], days[5]));
+                }
 
+                schedulePreview.setItems(null);
+                schedulePreview.setItems(data);
+            }
         });
     }
 
@@ -804,7 +820,7 @@ public class Controller  {
                 dc.writeTimeTable(semesterID,programID,createTimeTable());
             }
             else{
-                System.out.println(dc.getTimeTableSettings(semesterID, programID));
+                dc.extendTimeTable(semesterID, programID, extendTimeTable(semesterID, programID));
             }
         });
     }
@@ -868,6 +884,71 @@ public class Controller  {
         timeTableGlobal = timeTable;
     }
 
+    private String extendTimeTable(Integer semesterID, Integer programID){
+
+        String existingTimeTable = dc.getTimeTableSettings(semesterID, programID);
+        String[] splitSettings = existingTimeTable.split(";");
+
+        Course selected = CourseTable.getSelectionModel().getSelectedItem();
+        List<String> daysTimes = dc.getDayTimes(selected.getCourseID());
+
+        LocalTime timeTemp;
+        LocalTime start;
+        LocalTime end = LocalTime.parse("20:00");
+        String resultString = "";
+
+        for(int i = 0; i<splitSettings.length; i++){
+            String[] hashKeys = splitSettings[i].split(",");
+            String key = hashKeys[0];
+            hashKeys[0] = hashKeys[0]+",";
+            hashKeys[1] = hashKeys[1]+",";
+            hashKeys[2] = hashKeys[2]+",";
+            hashKeys[3] = hashKeys[3]+",";
+            hashKeys[4] = hashKeys[4]+",";
+            hashKeys[5] = hashKeys[5]+";";
+            timeTableGlobal.put(key, hashKeys);
+        }
+
+        for(int i = 0; i < daysTimes.size(); i++){
+            String[] daysTimesSplit = daysTimes.get(i).split(";");
+            timeTemp = LocalTime.parse(daysTimesSplit[1]);
+            while(!timeTemp.isAfter(LocalTime.parse(daysTimesSplit[2]))){
+                String[] temp = timeTableGlobal.get(timeTemp.toString());
+                switch(daysTimesSplit[0]){
+                    case "1":
+                        temp[1] = temp[1]+(selected.getCourseTitle());
+                        timeTableGlobal.put(timeTemp.toString(),temp);
+                        break;
+                    case "2":
+                        temp[2] = temp[2]+selected.getCourseTitle();
+                        timeTableGlobal.put(timeTemp.toString(),temp);
+                        break;
+                    case "3":
+                        temp[3] = temp[3]+selected.getCourseTitle();
+                        timeTableGlobal.put(timeTemp.toString(),temp);
+                        break;
+                    case "4":
+                        temp[4] = temp[4]+selected.getCourseTitle();
+                        timeTableGlobal.put(timeTemp.toString(),temp);
+                        break;
+                    case "5":
+                        temp[5] = "";
+                        temp[5] = temp[5]+selected.getCourseTitle()+";";
+                        timeTableGlobal.put(timeTemp.toString(),temp);
+                        break;
+                    default: System.out.println("Oh no");
+                }
+                timeTemp = timeTemp.plusMinutes(30);
+            }
+
+        }
+        for(start = LocalTime.parse("08:00"); !start.isAfter(end); start = start.plusMinutes(30)){
+            String[] result = timeTableGlobal.get(start.toString());
+            resultString += result[0]+result[1]+result[2]+result[3]+result[4]+result[5];
+        }
+        return resultString;
+    }
+
     private String createTimeTable(){
 
         LocalTime timeTemp;
@@ -915,6 +996,35 @@ public class Controller  {
             resultString += result[0]+result[1]+result[2]+result[3]+result[4]+result[5];
         }
         return resultString;
+    }
+
+    private void emptyTimeTable(){
+        LocalTime start;
+        LocalTime end = LocalTime.parse("20:00");
+
+        ObservableList<TimeTable> data = FXCollections.observableArrayList();
+
+        timeSlot.setCellValueFactory(new PropertyValueFactory<>("scheduleTime"));
+        colMonday.setCellValueFactory(new PropertyValueFactory<>("scheduleMonday"));
+        colTuesday.setCellValueFactory(new PropertyValueFactory<>("scheduleTuesday"));
+        colWednesday.setCellValueFactory(new PropertyValueFactory<>("scheduleWednesday"));
+        colThursday.setCellValueFactory(new PropertyValueFactory<>("scheduleThursday"));
+        colFriday.setCellValueFactory(new PropertyValueFactory<>("scheduleFriday"));
+
+
+        for(start = LocalTime.parse("08:00"); !start.isAfter(end); start = start.plusMinutes(30)){
+            String[] result = timeTableGlobal.get(start.toString());
+            result[0] = result[0].replace(";","");
+            result[1] = result[1].replace(",","");
+            result[2] = result[2].replace(",","");
+            result[3] = result[3].replace(",","");
+            result[4] = result[4].replace(",","");
+            result[5] = result[5].replace(",","");
+            data.add(new TimeTable(result[0], result[1], result[2], result[3], result[4], result[5]));
+        }
+
+        schedulePreview.setItems(null);
+        schedulePreview.setItems(data);
     }
 
 }

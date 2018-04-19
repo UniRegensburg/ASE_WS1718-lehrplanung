@@ -1370,7 +1370,7 @@
                                                             <Insets top="20.0" />
                                                          </opaqueInsets>
                                                       </ListView>
-                                                      <ComboBox fx:id="semesterTimeTableCombo" layoutX="7.0" layoutY="16.0" prefWidth="200.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                                                      <ComboBox fx:id="semesterTimeTableCombo" layoutX="7.0" layoutY="16.0" prefWidth="200.0" promptText="Semester wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
                                                    </children>
                                                 </AnchorPane>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #f5f5f5;">
@@ -1409,7 +1409,7 @@
                                                 <HBox layoutX="5.0" layoutY="15.0" AnchorPane.topAnchor="10.0">
                                                    <children>
                                                       <ComboBox fx:id="filterTimeTableByProgramCombo" prefHeight="29.0" prefWidth="214.0" promptText="nach Studiengang filtern" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" />
-                                                      <Button layoutX="339.0" layoutY="17.0" mnemonicParsing="false" stylesheets="@button.css" text="Filter löschen" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="15.0">
+                                                      <Button fx:id="clearTimeTableButton" layoutX="339.0" layoutY="17.0" mnemonicParsing="false" stylesheets="@button.css" text="Ansicht zurücksetzen" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="15.0">
                                                          <HBox.margin>
                                                             <Insets left="10.0" />
                                                          </HBox.margin>
