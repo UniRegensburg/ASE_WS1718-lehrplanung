@@ -10,12 +10,14 @@ import javafx.scene.control.*;
 import Database.DatabaseInterface;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Controller  {
 
@@ -23,14 +25,14 @@ public class Controller  {
     private Button createLecturerButton, createCourseButton, saveLecturerButton, saveCourseButton, deleteLecturerButton,
             deleteCourseButton, updateLecturerButton, editCourseButton, cancelLecturerButton, cancelCourseButton,
             nextCourseButton, backCourseButton, addCourseToScheduleButton, newSemesterButton, newChairButton,
-            newProgramButton, resetCourseFilterButton;
+            newProgramButton, resetCourseFilterButton, saveModuleButton, showTimeTableButton;
     @FXML
     private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText, courseNumberText,
             courseTitleText, SWScourseText, hypertextCourseText, maxParticipantsCourseText, creditsCourseText,
             expectedParticipantsCourseText,  participantsText, requirementsText, descriptionText, deputatText,
             languageCourseText1, newSemesterText, newChairText, newProgramText, startTimeMonday, endTimeMonday,
             startTimeTuesday, endTimeTuesday, startTimeWednesday, endTimeWednesday, startTimeThursday, endTimeThursday,
-            startTimeFriday, endTimeFriday;
+            startTimeFriday, endTimeFriday, writeModuleText;
     @FXML
     private BorderPane pane_teachers_overview, pane_single_teacher, pane_courses_overview_start,
             pane_courses_overview_create1, pane_courses_overview_create2;
@@ -51,8 +53,8 @@ public class Controller  {
     private TableColumn<Course, Integer> CourseID, CourseSWS;
     @FXML
     private TableColumn<Course, Integer> CourseOnlineReg, CourseExtraCourse, CourseFinancing;
-
-
+    @FXML
+    private ListView<String> lecturerCoursesList, semesterList, chairList, programsList, moduleList;
     @FXML
     private TableView<TimeTable> schedulePreview;
     @FXML
@@ -64,7 +66,7 @@ public class Controller  {
     @FXML
     private ComboBox courseProgramCombo, programCombo, ctCombo, rotaCombo, lecturerCombo, certCombo,
             kindCourseCombo, courseFrequencyComboBox, chairCombo, semesterCombo, semesterTimeTableCombo,
-            filterTimeTableByProgramCombo, lecturerRoleCombo;
+            filterTimeTableByProgramCombo, lecturerRoleCombo, moduleProgramCombo, moduleCombo;
     @FXML
     private CheckBox onlineRegBox, extraCourseBox, financingCourseBox, checkMonday, checkTuesday, checkWednesday,
             checkThursday, checkFriday;
@@ -74,18 +76,19 @@ public class Controller  {
     @FXML
     private MenuButton filterMenu;
 
-
     private Boolean editLecturer = false;
     private Boolean editCourse = false;
     private Integer IDTemp = null;
     private Integer IDTempCourse = null;
     private String TempLecturer = "";
     private DatabaseInterface dc = new DatabaseInterface();
+    private HashMap<String, String[]> timeTableGlobal;
 
     @FXML
     private void initialize() {
 
         fillLecturers();
+        fillTimeTable();
 
         createLecturer();
         createCourse();
@@ -100,33 +103,36 @@ public class Controller  {
         editCourseButton();
 
         fillCourse();
-        fillCourseProgramCombo();
+        fillProgramCombos();
         fillLecturersCombo();
         fillChairsCombo();
         fillSemesterCombo();
+        fillModuleCombo();
 
         cancelLecturer();
         cancelCourse();
 
-        courseProgramAction();
-
         nextCourseWindow();
         goBackCourse();
-
-        //addCourseToScedule();
 
         createProgram();
         createChair();
         createSemester();
+        createModule();
         fillCourseFilterCombo();
-        fillTimeTableProgramFilterCombo();
-
 
         lecturerTableDoubleClick();
         courseTableDoubleClick();
         resetCourseFilter();
 
+        fillSemesterList();
+        fillChairList();
+        fillProgramsList();
+        fillModuleList();
 
+        addListenerToProgramCombo();
+        addCourseToTimetable();
+        createTimeTableHashMap();
 
     }
 
@@ -173,15 +179,11 @@ public class Controller  {
 
     }
 
-    /*private void addCourseToScedule() {
+    private void fillTimeTable(){
 
-        addCourseToScheduleButton.setOnAction((event) -> {
+        showTimeTableButton.setOnAction((event) -> {
 
-            Course selected = CourseTable.getSelectionModel().getSelectedItem();
-            String name = selected.getCourseTitle();
-            String start = selected.getCourseStartTime();
-            String day = selected.getCourseDay();
-
+            ObservableList<TimeTable> data = FXCollections.observableArrayList();
 
             timeSlot.setCellValueFactory(new PropertyValueFactory<>("scheduleTime"));
             colMonday.setCellValueFactory(new PropertyValueFactory<>("scheduleMonday"));
@@ -190,41 +192,19 @@ public class Controller  {
             colThursday.setCellValueFactory(new PropertyValueFactory<>("scheduleThursday"));
             colFriday.setCellValueFactory(new PropertyValueFactory<>("scheduleFriday"));
 
+            Integer semesterID = dc.getSemesterID(semesterTimeTableCombo.getValue().toString());
+            Integer programID = dc.getProgramID(filterTimeTableByProgramCombo.getValue().toString());
+
+            String[] times = dc.getTimeTableSettings(semesterID, programID).split(";");
+            for(int i = 0; i<times.length; i++){
+                String[] days = times[i].split(",");
+                data.add(new TimeTable(days[0], days[1], days[2], days[3], days[4], days[5]));
+            }
+
             schedulePreview.setItems(null);
-            schedulePreview.setItems(fillTimeTable(start, name, day));
+            schedulePreview.setItems(data);
 
         });
-
-    }*/
-
-    private ObservableList<TimeTable> fillTimeTable(String start, String title, String day){
-
-        ObservableList<TimeTable> data = FXCollections.observableArrayList();
-        String[] Time = start.split(":");
-
-        System.out.println(Time[0]+"  "+day);
-
-        for(int i= 8; i < 21; i++){
-            if(Integer.parseInt(Time[0])==i || (Integer.parseInt(Time[0])+1)==i){
-                switch (day){
-                    case "Montag": data.add(new TimeTable(""+i,""+title,"","","",""));
-                    break;
-                    case "Dienstag": data.add(new TimeTable(""+i,"",""+title,"","",""));
-                    break;
-                    case "Mittwoch": data.add(new TimeTable(""+i,"","",""+title,"",""));
-                    break;
-                    case "Donnerstag": data.add(new TimeTable(""+i,"","","",""+title,""));
-                    break;
-                    case "Freitag": data.add(new TimeTable(""+i,"","","","",""+title));
-                    break;
-                    default: System.out.println("Warum nur?");
-                }
-            }
-            else{
-                data.add(new TimeTable(""+i,"","","","",""));
-            }
-        }
-        return data;
     }
 
     private void createLecturer() {
@@ -321,6 +301,7 @@ public class Controller  {
             String start = startDate.getValue().toString();
             String end = endDate.getValue().toString();
             String language = languageCourseText1.getText();
+            String module = moduleCombo.getValue().toString();
 
             // ZWEITE SEITE
             String program = programCombo.getValue().toString();
@@ -352,10 +333,11 @@ public class Controller  {
             String startFr = startTimeFriday.getText();
             String endFr = endTimeFriday.getText();
 
+
             if(editCourse == false) {
                 dc.writeCourse(number, title, kind, SWS, hyperlink, maxParticipants, expectedParticipants, onlineReg,
                         credits, extraCourse, financing, finals, start, end, language, program,
-                        ctSt, rota, participants, requirements, certificate, deputat, description, turnus, chair);
+                        ctSt, rota, participants, requirements, certificate, deputat, description, turnus, chair, module);
 
                 dc.connectCourseWithLecturer(lecturer, title);
                 if(checkMo){
@@ -386,7 +368,7 @@ public class Controller  {
                 }
                 dc.updateCourse(IDTempCourse, number, title, kind, SWS, hyperlink, maxParticipants, expectedParticipants,
                         onlineReg, credits, extraCourse, financing, finals, start, end, language, program, ctSt, rota,
-                        participants, requirements, certificate, deputat, description, turnus, chair, lecturer);
+                        participants, requirements, certificate, deputat, description, turnus, chair, lecturer, module);
                 if(checkMo){
                     dc.connectCourseWithDay(title, "Montag", startMo, endMo);
                 }
@@ -438,7 +420,6 @@ public class Controller  {
             dc.deleteCourse(selected.getCourseID());
 
             fillCourse();
-            //Deputat von Dozenten entfernen, beachten alte Semester!
         });
 
     }
@@ -464,6 +445,8 @@ public class Controller  {
         lecturerTitleText.setText(selected.getLecturerTitle());
         lecturerDeputatText.setText(selected.getLecturerDeputat().toString());
         lecturerRoleCombo.setValue(selected.getLecturerRole());
+
+        lecturerCoursesList.setItems(dc.getLecturerCourses(selected.getLecturerID()));
 
         IDTemp = selected.getLecturerID();
     }
@@ -523,6 +506,7 @@ public class Controller  {
         deputatText.setText(selected.getCourseDeputat());
         chairCombo.setValue(selected.getCourseChair());
         descriptionText.setText(selected.getCourseDescription());
+        moduleCombo.setValue(selected.getCourseModule());
 
         IDTempCourse = selected.getCourseID();
         TempLecturer = selected.getCourseLecturer();
@@ -567,20 +551,20 @@ public class Controller  {
 
     }
 
-    private void fillCourseProgramCombo(){
+    private void fillProgramCombos(){
+
         courseProgramCombo.getItems().clear();
         programCombo.getItems().clear();
-        for(int i = 0; i < dc.GetPrograms().size(); i++){
-            courseProgramCombo.getItems().addAll(""+dc.GetPrograms().get(i)+"");
-            programCombo.getItems().addAll(""+dc.GetPrograms().get(i)+"");
-        }
-        courseProgramCombo.getSelectionModel().selectFirst();
-    }
-
-    private void fillTimeTableProgramFilterCombo() {
+        moduleProgramCombo.getItems().clear();
         filterTimeTableByProgramCombo.getItems().clear();
+
+        List<String> Programs = dc.GetPrograms();
+
         for(int i = 0; i < dc.GetPrograms().size(); i++){
-            filterTimeTableByProgramCombo.getItems().addAll(""+dc.GetPrograms().get(i)+"");
+            courseProgramCombo.getItems().addAll(""+Programs.get(i));
+            programCombo.getItems().addAll(""+Programs.get(i));
+            moduleProgramCombo.getItems().addAll(""+Programs.get(i));
+            filterTimeTableByProgramCombo.getItems().addAll(""+Programs.get(i));
         }
     }
 
@@ -598,6 +582,13 @@ public class Controller  {
         }
     }
 
+    private void fillModuleCombo(){
+        moduleCombo.getItems().clear();
+        for(int i = 0; i < dc.getModule().size(); i++){
+            moduleCombo.getItems().addAll(""+dc.getModule().get(i)+"");
+        }
+    }
+
     private void fillSemesterCombo(){
         semesterCombo.getItems().clear();
         semesterTimeTableCombo.getItems().clear();
@@ -607,11 +598,24 @@ public class Controller  {
         }
     }
 
-    public void courseProgramAction() {
+    private void fillSemesterList(){
 
-        dc.getSelectedCourses(courseProgramCombo.getValue().toString());
-        fillCourse();
+        semesterList.setItems(dc.getSemesterList());
+    }
 
+    private void fillChairList(){
+
+        chairList.setItems(dc.getChairList());
+    }
+
+    private void fillProgramsList(){
+
+        programsList.setItems(dc.getProgramsList());
+    }
+
+    private void fillModuleList(){
+
+        moduleList.setItems(dc.getModuleList());
     }
 
     private void cancelLecturer(){
@@ -707,6 +711,7 @@ public class Controller  {
             dc.writeSemester(semesterName);
             newSemesterText.clear();
             fillSemesterCombo();
+            fillSemesterList();
 
         });
 
@@ -720,6 +725,7 @@ public class Controller  {
             dc.writeChair(chairName);
             newChairText.clear();
             fillChairsCombo();
+            fillChairList();
 
         });
 
@@ -732,10 +738,22 @@ public class Controller  {
             String programName = newProgramText.getText();
             dc.writeProgram(programName);
             newProgramText.clear();
-            fillCourseProgramCombo();
+            fillProgramCombos();
+            fillProgramsList();
 
         });
 
+    }
+
+    private void createModule(){
+
+        saveModuleButton.setOnAction((event) -> {
+
+            String moduleName = writeModuleText.getText();
+            dc.writeModule(moduleName, dc.getProgramID(moduleProgramCombo.getValue().toString()));
+            writeModuleText.clear();
+            fillModuleList();
+        });
     }
 
     private void lecturerTableDoubleClick(){
@@ -760,6 +778,143 @@ public class Controller  {
             });
             return row ;
         });
+    }
+
+    private void addListenerToProgramCombo() {
+        courseProgramCombo.valueProperty().addListener(new ChangeListener<String>() {
+            @Override public void changed(ObservableValue ov, String t, String t1) {
+                if(courseProgramCombo.getValue() == null){
+
+                } else {
+                    dc.getSelectedCourses(courseProgramCombo.getValue().toString());
+                    fillCourse();
+                }
+            }
+        });
+    }
+
+    private void addCourseToTimetable(){
+
+        addCourseToScheduleButton.setOnAction((event) -> {
+
+            Integer semesterID = dc.getSemesterID(semesterCombo.getValue().toString());
+            Integer programID = dc.getProgramID(courseProgramCombo.getValue().toString());
+
+            if(dc.getTimeTableCount(semesterID, programID) == 0){
+                dc.writeTimeTable(semesterID,programID,createTimeTable());
+            }
+            else{
+                System.out.println(dc.getTimeTableSettings(semesterID, programID));
+            }
+        });
+    }
+
+    private void createTimeTableHashMap(){
+
+        HashMap<String, String[]> timeTable = new HashMap<>();
+        String[] week8 = new String[]{"08:00",",-",",-",",-",",-",",-"};
+        String[] week830 = new String[]{";08:30",",-",",-",",-",",-",",-"};
+        String[] week9 = new String[]{";09:00",",-",",-",",-",",-",",-"};
+        String[] week930 = new String[]{";09:30",",-",",-",",-",",-",",-"};
+        String[] week10 = new String[]{";10:00",",-",",-",",-",",-",",-"};
+        String[] week1030 = new String[]{";10:30",",-",",-",",-",",-",",-"};
+        String[] week11 = new String[]{";11:00",",-",",-",",-",",-",",-"};
+        String[] week1130 = new String[]{";11:30",",-",",-",",-",",-",",-"};
+        String[] week12 = new String[]{";12:00",",-",",-",",-",",-",",-"};
+        String[] week1230 = new String[]{";12:30",",-",",-",",-",",-",",-"};
+        String[] week13 = new String[]{";13:00",",-",",-",",-",",-",",-"};
+        String[] week1330 = new String[]{";13:30",",-",",-",",-",",-",",-"};
+        String[] week14 = new String[]{";14:00",",-",",-",",-",",-",",-"};
+        String[] week1430 = new String[]{";14:30",",-",",-",",-",",-",",-"};
+        String[] week15 = new String[]{";15:00",",-",",-",",-",",-",",-"};
+        String[] week1530 = new String[]{";15:30",",-",",-",",-",",-",",-"};
+        String[] week16 = new String[]{";16:00",",-",",-",",-",",-",",-"};
+        String[] week1630 = new String[]{";16:30",",-",",-",",-",",-",",-"};
+        String[] week17 = new String[]{";17:00",",-",",-",",-",",-",",-"};
+        String[] week1730 = new String[]{";17:30",",-",",-",",-",",-",",-"};
+        String[] week18 = new String[]{";18:00",",-",",-",",-",",-",",-"};
+        String[] week1830 = new String[]{";18:30",",-",",-",",-",",-",",-"};
+        String[] week19 = new String[]{";19:00",",-",",-",",-",",-",",-"};
+        String[] week1930 = new String[]{";19:30",",-",",-",",-",",-",",-"};
+        String[] week20 = new String[]{";20:00",",-",",-",",-",",-",",-"};
+
+        timeTable.put("08:00", week8);
+        timeTable.put("08:30", week830);
+        timeTable.put("09:00", week9);
+        timeTable.put("09:30", week930);
+        timeTable.put("10:00", week10);
+        timeTable.put("10:30", week1030);
+        timeTable.put("11:00", week11);
+        timeTable.put("11:30", week1130);
+        timeTable.put("12:00", week12);
+        timeTable.put("12:30", week1230);
+        timeTable.put("13:00", week13);
+        timeTable.put("13:30", week1330);
+        timeTable.put("14:00", week14);
+        timeTable.put("14:30", week1430);
+        timeTable.put("15:00", week15);
+        timeTable.put("15:30", week1530);
+        timeTable.put("16:00", week16);
+        timeTable.put("16:30", week1630);
+        timeTable.put("17:00", week17);
+        timeTable.put("17:30", week1730);
+        timeTable.put("18:00", week18);
+        timeTable.put("18:30", week1830);
+        timeTable.put("19:00", week19);
+        timeTable.put("19:30", week1930);
+        timeTable.put("20:00", week20);
+
+
+        timeTableGlobal = timeTable;
+    }
+
+    private String createTimeTable(){
+
+        LocalTime timeTemp;
+        LocalTime start;
+        LocalTime end = LocalTime.parse("20:00");
+        String resultString = "";
+
+        Course selected = CourseTable.getSelectionModel().getSelectedItem();
+        List<String> daysTimes = dc.getDayTimes(selected.getCourseID());
+
+        for(int i = 0; i < daysTimes.size(); i++){
+            String[] daysTimesSplit = daysTimes.get(i).split(";");
+            timeTemp = LocalTime.parse(daysTimesSplit[1]);
+            while(!timeTemp.isAfter(LocalTime.parse(daysTimesSplit[2]))){
+                String[] temp = timeTableGlobal.get(timeTemp.toString());
+                switch(daysTimesSplit[0]){
+                    case "1":
+                        temp[1] = temp[1]+(selected.getCourseTitle());
+                        timeTableGlobal.put(timeTemp.toString(),temp);
+                        break;
+                    case "2":
+                        temp[2] = temp[2]+selected.getCourseTitle();
+                        timeTableGlobal.put(timeTemp.toString(),temp);
+                        break;
+                    case "3":
+                        temp[3] = temp[3]+selected.getCourseTitle();
+                        timeTableGlobal.put(timeTemp.toString(),temp);
+                        break;
+                    case "4":
+                        temp[4] = temp[4]+selected.getCourseTitle();
+                        timeTableGlobal.put(timeTemp.toString(),temp);
+                        break;
+                    case "5":
+                        temp[5] = temp[5]+selected.getCourseTitle();
+                        timeTableGlobal.put(timeTemp.toString(),temp);
+                        break;
+                    default: System.out.println("Oh no");
+                }
+                timeTemp = timeTemp.plusMinutes(30);
+            }
+
+        }
+        for(start = LocalTime.parse("08:00"); !start.isAfter(end); start = start.plusMinutes(30)){
+            String[] result = timeTableGlobal.get(start.toString());
+            resultString += result[0]+result[1]+result[2]+result[3]+result[4]+result[5];
+        }
+        return resultString;
     }
 
 }
