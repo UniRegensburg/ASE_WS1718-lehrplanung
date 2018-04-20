@@ -189,6 +189,39 @@
                                                 </AnchorPane>
                                              </content>
                                           </TitledPane>
+                                          <TitledPane animated="false" prefHeight="578.0" prefWidth="1438.0" text="Datenbank importieren/exportieren">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" styleClass="anchorPane">
+                                                   <children>
+                                                      <HBox prefHeight="60.0" prefWidth="1438.0">
+                                                         <children>
+                                                            <Text fill="#282828" strokeType="OUTSIDE" strokeWidth="0.0" text="Datenbank">
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" right="10.0" top="10.0" />
+                                                               </HBox.margin>
+                                                            </Text>
+                                                            <Button mnemonicParsing="false" stylesheets="@button.css" text="Import">
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                                               </padding>
+                                                               <HBox.margin>
+                                                                  <Insets bottom="10.0" left="10.0" top="5.0" />
+                                                               </HBox.margin>
+                                                            </Button>
+                                                            <Button mnemonicParsing="false" stylesheets="@button.css" text="Export">
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                                               </padding>
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" top="5.0" />
+                                                               </HBox.margin>
+                                                            </Button>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </TitledPane>
                                       </panes>
                                     </Accordion>
                                     <TextArea editable="false" prefHeight="420.0" prefWidth="705.0" stylesheets="@panes.css" text="&#10;Willkommen zur Lehrplanung!&#10;&#10;Um ein neues Semester anzulegen, legen Sie zunächst im Feld &quot;Semester anlegen&quot;, &#10;rechts auf dieser Seite, ein neues Semester an.&#10;&#10;Legen Sie danach im Tab &quot;Lehrpersonen&quot; die neuen Lehrkräfte an.&#10;&#10;Legen Sie schließlich im Tab &quot;Kurse&quot; die Kurse für das gewünschte &#10;Semester und den gewünschten Studiengang an. &#10;&#10;Möchten Sie einen Kurs endgültig in den Stundenplan zu übernehmen, &#10;markieren Sie ihn in der Tabelle und übernehmen Sie ihn durch den &#10;entsprechenden Buttonklick in den neuen Stundenplan.&#10;&#10;Sind alle Kurse eingetragen, können Sie den Lehrplan im entsprechenden&#10;Tab exportieren.">
@@ -1419,19 +1452,26 @@
                                  <children>
                                     <BorderPane prefHeight="947.0" prefWidth="1440.0" styleClass="borderPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <center>
-                                          <TableView fx:id="schedulePreview" prefHeight="834.0" prefWidth="1134.0" BorderPane.alignment="CENTER">
-                                            <columns>
-                                              <TableColumn fx:id="timeSlot" maxWidth="0.0" minWidth="100.0" prefWidth="75.0" sortable="false" style="-fx-background-color: #f5f5f5;" text="Zeit" />
-                                              <TableColumn fx:id="colMonday" maxWidth="0.0" minWidth="100.0" prefWidth="75.0" text="Montag" />
-                                                <TableColumn fx:id="colTuesday" maxWidth="0.0" minWidth="100.0" prefWidth="75.0" text="Dienstag" />
-                                                <TableColumn fx:id="colWednesday" maxWidth="0.0" minWidth="100.0" prefWidth="75.0" text="Mittwoch" />
-                                                <TableColumn fx:id="colThursday" maxWidth="0.0" minWidth="100.0" prefWidth="75.0" text="Donnerstag" />
-                                                <TableColumn fx:id="colFriday" maxWidth="0.0" minWidth="100.0" prefWidth="75.0" text="Freitag" />
-                                            </columns>
-                                             <BorderPane.margin>
-                                                <Insets bottom="20.0" left="5.0" right="5.0" top="5.0" />
-                                             </BorderPane.margin>
-                                          </TableView>
+                                          <ScrollPane prefViewportHeight="843.0" prefViewportWidth="1428.0">
+                                             <content>
+                                                <TableView fx:id="schedulePreview" prefHeight="835.0" prefWidth="1435.0" BorderPane.alignment="CENTER">
+                                                  <columns>
+                                                    <TableColumn fx:id="timeSlot" maxWidth="100.0" minWidth="-Infinity" prefWidth="70.0" sortable="false" style="-fx-background-color: #f5f5f5;" text="Zeit" />
+                                                    <TableColumn fx:id="colMonday" maxWidth="250.0" minWidth="-Infinity" prefWidth="250.0" text="Montag" />
+                                                      <TableColumn fx:id="colTuesday" maxWidth="250.0" minWidth="-Infinity" prefWidth="250.0" text="Dienstag" />
+                                                      <TableColumn fx:id="colWednesday" maxWidth="250.0" minWidth="-Infinity" prefWidth="250.0" text="Mittwoch" />
+                                                      <TableColumn fx:id="colThursday" maxWidth="250.0" minWidth="-Infinity" prefWidth="250.0" text="Donnerstag" />
+                                                      <TableColumn fx:id="colFriday" maxWidth="250.0" minWidth="-Infinity" prefWidth="250.0" text="Freitag" />
+                                                  </columns>
+                                                   <BorderPane.margin>
+                                                      <Insets bottom="20.0" left="5.0" right="5.0" top="5.0" />
+                                                   </BorderPane.margin>
+                                                   <columnResizePolicy>
+                                                      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                   </columnResizePolicy>
+                                                </TableView>
+                                             </content>
+                                          </ScrollPane>
                                        </center>
                                        <top>
                                           <AnchorPane prefHeight="48.0" prefWidth="1438.0" styleClass="anchorPane" BorderPane.alignment="CENTER">
