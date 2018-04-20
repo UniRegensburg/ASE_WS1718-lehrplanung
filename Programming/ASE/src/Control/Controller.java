@@ -1,5 +1,6 @@
 package Control;
 
+import Export.ExportCreator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -8,12 +9,14 @@ import Interfaces.Course;
 import Interfaces.TimeTable;
 import javafx.scene.control.*;
 import Database.DatabaseInterface;
-import Control.Warnings;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 
+import java.io.*;
 import java.util.*;
 
 
@@ -26,7 +29,8 @@ public class Controller  {
     private Button createLecturerButton, createCourseButton, saveLecturerButton, saveCourseButton, deleteLecturerButton,
             deleteCourseButton, updateLecturerButton, editCourseButton, cancelLecturerButton, cancelCourseButton,
             nextCourseButton, backCourseButton, addCourseToScheduleButton, newSemesterButton, newChairButton,
-            newProgramButton, resetCourseFilterButton, saveModuleButton, showTimeTableButton, clearTimeTableButton;
+            newProgramButton, resetCourseFilterButton, saveModuleButton, showTimeTableButton, clearTimeTableButton,
+            dbImportButton, dbExportButton;
     @FXML
     private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText, courseNumberText,
             courseTitleText, SWScourseText, hypertextCourseText, maxParticipantsCourseText, creditsCourseText,
@@ -138,6 +142,10 @@ public class Controller  {
 
         emptyTimeTable();
         resetTimeTableView();
+
+        importDatabase();
+        exportDatabase();
+        exportTimeTable();
 
     }
 
@@ -1026,5 +1034,103 @@ public class Controller  {
         schedulePreview.setItems(null);
         schedulePreview.setItems(data);
     }
+
+    private void importDatabase() {
+
+        // HIER PFAD WO DIE DB FINAL IST EINFÜGEN
+        String destination = "C:\\Users\\weber_000\\Desktop\\TestZiel";
+
+        dbImportButton.setOnAction((event) -> {
+
+            FileChooser fc = new FileChooser();
+
+            fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Datenbank Objekt (*.db)", "*.db"));
+            File selectedFile = fc.showOpenDialog(null);
+
+            if(selectedFile != null){
+
+                moveDatabase(selectedFile.getAbsolutePath(), destination + "\\LehrplanungDB.db" );
+
+            }
+
+
+        });
+
+    }
+
+    private void exportDatabase() {
+
+        //HIER PFAD WO DIE DB FINAL IST EINFÜGEN
+        String origin = "C:\\Users\\weber_000\\Desktop\\TestAnfang";
+
+        dbExportButton.setOnAction((event) -> {
+
+            DirectoryChooser dch = new DirectoryChooser();
+
+            dch.setTitle("Zielordnder auswählen");
+
+            File selectedDirectory = dch.showDialog(null);
+
+            if(selectedDirectory != null) {
+
+                moveDatabase(origin+"\\LehrplanungDB.db", selectedDirectory.getAbsolutePath()+"\\LehrplanungDB.db");
+
+            }
+
+        });
+
+    }
+
+    private void moveDatabase(String origin, String destination){
+
+        FileReader orig = null;
+        FileWriter dest = null;
+
+        try {
+
+            orig = new FileReader(origin);
+            dest = new FileWriter(destination);
+            int c = orig.read();
+
+            while(c!=-1) {
+
+                dest.write(c);
+                c = orig.read();
+
+            }
+
+        } catch(IOException e) {
+
+            e.printStackTrace();
+
+        } finally {
+
+            close(orig);
+            close(dest);
+        }
+
+    }
+
+    private void close(Closeable stream) {
+
+        try {
+            if (stream != null) {
+                stream.close();
+            }
+        } catch(IOException e) {
+
+        }
+
+    }
+
+    private void exportTimeTable() {
+
+        ExportCreator creator = new ExportCreator();
+        //creator.writeCSV("Lehrplanung.csv", HIER DEN STRING FÜR DEN LANGEN TABLE STRING AUS DER DB EINFÜGEN);
+
+
+    }
+
+
 
 }
