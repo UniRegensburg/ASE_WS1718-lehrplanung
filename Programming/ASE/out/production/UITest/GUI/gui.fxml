@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
@@ -28,22 +35,178 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Controller">
+<ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" styleClass="scrollPane" stylesheets="@panes.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Controller">
 
    <content>
-      <BorderPane fx:id="bg_pane" style="-fx-background-color: #787878;" stylesheets="@style.css">
+      <BorderPane fx:id="bg_pane" styleClass="borderPaneBG" stylesheets="@panes.css">
          <center>
-            <AnchorPane>
+            <AnchorPane styleClass="anchorPane" stylesheets="@panes.css">
                <children>
-                  <TabPane prefHeight="300.0" prefWidth="300.0" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" tabMinHeight="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
+                  <TabPane prefHeight="300.0" prefWidth="300.0" styleClass="tabPane" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE" tabMinHeight="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
                     <tabs>
-                      <Tab fx:id="tab_teachers" style="-fx-background-radius: 0; -fx-cursor: hand;" text="Lehrpersonen">
-                           <content>
-                              <AnchorPane prefHeight="891.0" prefWidth="1440.0" style="-fx-background-color: #f4f4f4;">
+                        <Tab text="Allgemein">
+                          <content>
+                              <GridPane styleClass="anchorPane">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="1378.4813232421875" minWidth="10.0" prefWidth="705.2810668945312" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="751.6526489257812" minWidth="10.0" prefWidth="732.7189331054688" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints maxHeight="514.4763641357422" minHeight="10.0" prefHeight="514.4763641357422" vgrow="SOMETIMES" />
+                                 </rowConstraints>
                                  <children>
-                                    <BorderPane fx:id="pane_teachers_overview" layoutX="6.0" prefHeight="920.0" prefWidth="1440.0" style="-fx-background-color: #f4f4f4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <Accordion layoutX="-1.0" minWidth="500.0" prefHeight="800.0" prefWidth="1440.0" GridPane.columnIndex="1">
+                                      <panes>
+                                        <TitledPane animated="false" prefHeight="544.0" prefWidth="1438.0" text="Semester anlegen">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" styleClass="anchorPane">
+                                                   <children>
+                                                      <HBox layoutY="-2.0" prefHeight="60.0" prefWidth="1438.0">
+                                                         <children>
+                                                            <TextField fx:id="newSemesterText" style="-fx-background-color: #ffffff; -fx-background-radius: 0;">
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="10.0" top="5.0" />
+                                                               </padding>
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" top="10.0" />
+                                                               </HBox.margin>
+                                                            </TextField>
+                                                            <Button fx:id="newSemesterButton" mnemonicParsing="false" stylesheets="@button.css" text="Speichern">
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" top="10.0" />
+                                                               </HBox.margin>
+                                                            </Button>
+                                                         </children>
+                                                      </HBox>
+                                                      <ListView fx:id="semesterList" layoutX="11.0" layoutY="48.0" prefHeight="249.0" prefWidth="242.0" />
+                                                      <Button layoutX="38.0" layoutY="308.0" mnemonicParsing="false" stylesheets="@button.css" text="Löschen" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="300.0">
+                                                         <padding>
+                                                            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                                         </padding>
+                                                      </Button>
+                                                   </children>
+                                                   <padding>
+                                                      <Insets top="10.0" />
+                                                   </padding>
+                                                </AnchorPane>
+                                          </content>
+                                        </TitledPane>
+                                        <TitledPane animated="false" text="Lehrstuhl anlegen">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" styleClass="anchorPane">
+                                                   <children>
+                                                      <HBox prefHeight="60.0" prefWidth="1438.0">
+                                                         <children>
+                                                            <TextField fx:id="newChairText" style="-fx-background-color: #ffffff; -fx-background-radius: 0;">
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="10.0" top="5.0" />
+                                                               </padding>
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" top="10.0" />
+                                                               </HBox.margin>
+                                                            </TextField>
+                                                            <Button fx:id="newChairButton" mnemonicParsing="false" stylesheets="@button.css" text="Speichern">
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" top="10.0" />
+                                                               </HBox.margin>
+                                                            </Button>
+                                                         </children>
+                                                      </HBox>
+                                                      <ListView fx:id="chairList" layoutX="10.0" layoutY="49.0" prefHeight="250.0" prefWidth="243.0" />
+                                                      <Button layoutX="-6.0" layoutY="319.0" mnemonicParsing="false" stylesheets="@button.css" text="Löschen" AnchorPane.leftAnchor="10.0">
+                                                         <padding>
+                                                            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                                         </padding>
+                                                      </Button>
+                                                   </children>
+                                                </AnchorPane>
+                                          </content>
+                                        </TitledPane>
+                                        <TitledPane animated="false" text="Studiengang anlegen">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" styleClass="anchorPane">
+                                                   <children>
+                                                      <HBox prefHeight="60.0" prefWidth="1438.0">
+                                                         <children>
+                                                            <TextField fx:id="newProgramText" style="-fx-background-color: #ffffff; -fx-background-radius: 0;">
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="10.0" top="5.0" />
+                                                               </padding>
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" top="10.0" />
+                                                               </HBox.margin>
+                                                            </TextField>
+                                                            <Button fx:id="newProgramButton" mnemonicParsing="false" stylesheets="@button.css" text="Speichern">
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" top="10.0" />
+                                                               </HBox.margin>
+                                                            </Button>
+                                                         </children>
+                                                      </HBox>
+                                                      <ListView fx:id="programsList" layoutX="11.0" layoutY="49.0" prefHeight="258.0" prefWidth="257.0" />
+                                                      <Button layoutX="20.0" layoutY="328.0" mnemonicParsing="false" stylesheets="@button.css" text="Löschen">
+                                                         <padding>
+                                                            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                                         </padding>
+                                                      </Button>
+                                                   </children>
+                                                </AnchorPane>
+                                          </content>
+                                        </TitledPane>
+                                          <TitledPane animated="false" prefHeight="578.0" prefWidth="1438.0" text="Modul anlegen">
+                                             <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" styleClass="anchorPane">
+                                                   <children>
+                                                      <HBox prefHeight="60.0" prefWidth="1438.0">
+                                                         <children>
+                                                            <TextField fx:id="writeModuleText" style="-fx-background-color: #ffffff; -fx-background-radius: 0;">
+                                                               <padding>
+                                                                  <Insets bottom="5.0" left="10.0" top="5.0" />
+                                                               </padding>
+                                                               <HBox.margin>
+                                                                  <Insets left="10.0" top="10.0" />
+                                                               </HBox.margin>
+                                                            </TextField>
+                                                            <ComboBox fx:id="moduleProgramCombo" prefWidth="150.0" promptText="Studiengang wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;">
+                                                               <HBox.margin>
+                                                                  <Insets left="20.0" top="10.0" />
+                                                               </HBox.margin>
+                                                            </ComboBox>
+                                                            <Button fx:id="saveModuleButton" mnemonicParsing="false" stylesheets="@button.css" text="Speichern">
+                                                               <HBox.margin>
+                                                                  <Insets left="20.0" top="10.0" />
+                                                               </HBox.margin>
+                                                            </Button>
+                                                         </children>
+                                                      </HBox>
+                                                      <ListView fx:id="moduleList" layoutX="13.0" layoutY="48.0" prefHeight="251.0" prefWidth="240.0" />
+                                                      <Button layoutX="24.0" layoutY="319.0" mnemonicParsing="false" stylesheets="@button.css" text="Löschen">
+                                                         <padding>
+                                                            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                                                         </padding>
+                                                      </Button>
+                                                   </children>
+                                                </AnchorPane>
+                                             </content>
+                                          </TitledPane>
+                                      </panes>
+                                    </Accordion>
+                                    <TextArea editable="false" prefHeight="420.0" prefWidth="705.0" stylesheets="@panes.css" text="&#10;Willkommen zur Lehrplanung!&#10;&#10;Um ein neues Semester anzulegen, legen Sie zunächst im Feld &quot;Semester anlegen&quot;, &#10;rechts auf dieser Seite, ein neues Semester an.&#10;&#10;Legen Sie danach im Tab &quot;Lehrpersonen&quot; die neuen Lehrkräfte an.&#10;&#10;Legen Sie schließlich im Tab &quot;Kurse&quot; die Kurse für das gewünschte &#10;Semester und den gewünschten Studiengang an. &#10;&#10;Möchten Sie einen Kurs endgültig in den Stundenplan zu übernehmen, &#10;markieren Sie ihn in der Tabelle und übernehmen Sie ihn durch den &#10;entsprechenden Buttonklick in den neuen Stundenplan.&#10;&#10;Sind alle Kurse eingetragen, können Sie den Lehrplan im entsprechenden&#10;Tab exportieren.">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </TextArea>
+                                 </children>
+                              </GridPane>
+                          </content>
+                        </Tab>
+                      <Tab fx:id="tab_teachers" text="Lehrpersonen">
+                           <content>
+                              <AnchorPane prefHeight="891.0" prefWidth="1440.0" styleClass="anchorPane">
+                                 <children>
+                                    <BorderPane fx:id="pane_teachers_overview" layoutX="6.0" prefHeight="920.0" prefWidth="1440.0" styleClass="borderPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <center>
-                                          <AnchorPane>
+                                          <AnchorPane styleClass="anchorPane">
                                              <children>
                                                 <TableView fx:id="LecturerTable" prefHeight="0.0" prefWidth="1433.0" stylesheets="@tableview.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" BorderPane.alignment="CENTER">
                                                   <columns>
@@ -65,35 +228,30 @@
                                           </AnchorPane>
                                        </center>
                                        <top>
-                                          <HBox prefHeight="50.0" prefWidth="1438.0" stylesheets="@style.css" BorderPane.alignment="CENTER">
+                                          <HBox fillHeight="false" styleClass="hBox" BorderPane.alignment="CENTER">
                                              <children>
-                                                <GridPane>
-                                                  <columnConstraints>
-                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
-                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
-                                                  </columnConstraints>
-                                                  <rowConstraints>
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                  </rowConstraints>
-                                                   <children>
-                                                      <Button fx:id="updateLecturerButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="94.0" stylesheets="@button.css" text="Bearbeiten">
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                         <GridPane.margin>
-                                                            <Insets bottom="2.0" top="1.0" />
-                                                         </GridPane.margin>
-                                                      </Button>
-                                                      <Button fx:id="deleteLecturerButton" mnemonicParsing="false" stylesheets="@button.css" text="Löschen" GridPane.columnIndex="1">
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                         <GridPane.margin>
-                                                            <Insets bottom="2.0" top="1.0" />
-                                                         </GridPane.margin>
-                                                      </Button>
-                                                   </children>
-                                                </GridPane>
+                                                <Button fx:id="updateLecturerButton" alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="94.0" stylesheets="@button.css" text="Bearbeiten">
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                   <HBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" top="10.0" />
+                                                   </HBox.margin>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                </Button>
+                                                <Button fx:id="deleteLecturerButton" alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" stylesheets="@button.css" text="Löschen">
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                   <HBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" top="10.0" />
+                                                   </HBox.margin>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                </Button>
                                              </children>
                                              <opaqueInsets>
                                                 <Insets top="5.0" />
@@ -104,8 +262,8 @@
                                           </HBox>
                                        </top>
                                        <bottom>
-                                          <SplitPane prefHeight="51.0" prefWidth="1433.0" style="-fx-background-color: #787878;" BorderPane.alignment="CENTER">
-                                             <items>
+                                          <HBox style="-fx-background-color: #787878;" BorderPane.alignment="CENTER">
+                                             <children>
                                                 <Button fx:id="createLecturerButton" mnemonicParsing="false" stylesheets="@button.css" text="Neue Lehrperson hinzufügen">
                                                    <padding>
                                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -113,15 +271,15 @@
                                                    <cursor>
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
+                                                   <HBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" top="10.0" />
+                                                   </HBox.margin>
                                                 </Button>
-                                             </items>
-                                             <cursor>
-                                                <Cursor fx:constant="DEFAULT" />
-                                             </cursor>
-                                          </SplitPane>
+                                             </children>
+                                          </HBox>
                                        </bottom>
                                     </BorderPane>
-                                    <BorderPane fx:id="pane_single_teacher" layoutX="16.0" layoutY="10.0" prefHeight="920.0" prefWidth="1440.0" style="-fx-background-color: f4f4f4;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <BorderPane fx:id="pane_single_teacher" layoutX="16.0" layoutY="10.0" prefHeight="920.0" prefWidth="1440.0" stylesheets="@panes.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                                        <top>
                                           <SplitPane BorderPane.alignment="CENTER">
                                              <items>
@@ -141,7 +299,7 @@
                                           </SplitPane>
                                        </top>
                                        <center>
-                                          <AnchorPane prefHeight="758.0" prefWidth="1118.0" style="-fx-background-color: #ffffff;">
+                                          <AnchorPane prefHeight="707.0" prefWidth="1131.0" style="-fx-background-color: #ffffff;">
                                              <children>
                                                 <GridPane layoutX="12.0" layoutY="2.0" prefHeight="186.0" prefWidth="266.0" AnchorPane.leftAnchor="12.0">
                                                   <columnConstraints>
@@ -201,25 +359,6 @@
                                              </children>
                                           </AnchorPane>
                                        </center>
-                                       <bottom>
-                                          <AnchorPane style="-fx-background-color: #787878;">
-                                             <children>
-                                                <Button fx:id="cancelLecturerButton" mnemonicParsing="false" stylesheets="@button.css" text="Abbrechen" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
-                                                   <padding>
-                                                      <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
-                                                   </padding>
-                                                </Button>
-                                                <Button fx:id="saveLecturerButton" layoutX="99.0" layoutY="1.0" mnemonicParsing="false" stylesheets="@button.css" text="Speichern" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="10.0">
-                                                   <padding>
-                                                      <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
-                                                   </padding>
-                                                   <opaqueInsets>
-                                                      <Insets />
-                                                   </opaqueInsets>
-                                                </Button>
-                                             </children>
-                                          </AnchorPane>
-                                       </bottom>
                                        <right>
                                           <GridPane prefHeight="828.0" prefWidth="297.0" style="-fx-background-color: #f5f5f5;" BorderPane.alignment="CENTER">
       
@@ -235,6 +374,31 @@
                                              </children>
                                           </GridPane>
                                        </right>
+                                       <bottom>
+                                          <HBox style="-fx-background-color: #787878;" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button fx:id="cancelLecturerButton" mnemonicParsing="false" stylesheets="@button.css" text="Abbrechen" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" top="10.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                                <Button fx:id="saveLecturerButton" mnemonicParsing="false" stylesheets="@button.css" text="Speichern">
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                   <HBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" top="10.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </bottom>
                                     </BorderPane>
                                  </children>
                                  <padding>
@@ -243,50 +407,17 @@
                               </AnchorPane>
                            </content>
                       </Tab>
-                      <Tab fx:id="tab_courses" style="-fx-background-radius: 0; -fx-cursor: hand;" text="Kurse">
+                      <Tab fx:id="tab_courses" text="Kurse">
                         <content>
-                          <AnchorPane fx:id="courses_start" style="-fx-background-color: #787878;">
+                          <AnchorPane fx:id="courses_start" styleClass="anchorPane">
                                  <children>
-                                    <BorderPane fx:id="pane_courses_overview_start" layoutX="262.0" layoutY="313.0" prefHeight="920.0" prefWidth="1440.0" style="-fx-background-color: #f4f4f4;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <bottom>
-                                          <HBox style="-fx-background-color: #787878;">
-                                             <children>
-                                                <AnchorPane>
-                                                   <children>
-                                                      <Button fx:id="createCourseButton" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" stylesheets="@button.css" text="Neuen Kurs anlegen" AnchorPane.leftAnchor="5.0">
-                                                         <padding>
-                                                            <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
-                                                         </padding>
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                         <HBox.margin>
-                                                            <Insets left="5.0" />
-                                                         </HBox.margin>
-                                                      </Button>
-                                                   </children>
-                                                   <HBox.margin>
-                                                      <Insets top="5.0" />
-                                                   </HBox.margin>
-                                                </AnchorPane>
-                                              <AnchorPane prefHeight="0.0" prefWidth="817.0" style="-fx-background-color: #787878;">
-                                                   <children>
-                                                      <Button fx:id="btn_course_preview" layoutX="172.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: #ffffff; -fx-background-radius: 0;" text="Vorschau" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="20.0">
-                                                         <cursor>
-                                                            <Cursor fx:constant="HAND" />
-                                                         </cursor>
-                                                      </Button>
-                                                   </children>
-                                                </AnchorPane>
-                                             </children>
-                                          </HBox>
-                                       </bottom>
+                                    <BorderPane fx:id="pane_courses_overview_start" layoutX="262.0" layoutY="313.0" prefHeight="920.0" prefWidth="1440.0" styleClass="borderPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <top>
                                           <HBox>
                                              <children>
                                                 <ComboBox fx:id="semesterCombo" promptText="Semester wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;">
                                                    <HBox.margin>
-                                                      <Insets left="5.0" top="5.0" />
+                                                      <Insets left="10.0" top="5.0" />
                                                    </HBox.margin>
                                                    <cursor>
                                                       <Cursor fx:constant="HAND" />
@@ -344,66 +475,63 @@
                                                    </BorderPane.margin>
                                                 </AnchorPane>
                                              </center>
-                                             <top>
-                                                <GridPane prefHeight="40.0" prefWidth="1635.0" style="-fx-background-color: #f4f4f4;" BorderPane.alignment="CENTER">
-                                                  <columnConstraints>
-                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1170.3975219726562" minWidth="10.0" prefWidth="254.35147094726562" />
-                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1170.3975219726562" minWidth="10.0" prefWidth="487.3140869140625" />
-                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1110.5458984375" minWidth="0.0" prefWidth="132.6859130859375" />
-                                                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1110.5458984375" minWidth="0.0" prefWidth="148.24267578125" />
-                                                  </columnConstraints>
-                                                  <rowConstraints>
-                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                  </rowConstraints>
+                                             <bottom>
+                                                <HBox style="-fx-background-color: #787878;">
                                                    <children>
-                                                      <Button fx:id="deleteCourseButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="116.0" stylesheets="@button.css" text="Kurs löschen" GridPane.columnIndex="3">
+                                                      <Button fx:id="createCourseButton" mnemonicParsing="false" stylesheets="@button.css" text="Neuen Kurs anlegen">
+                                                         <padding>
+                                                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                         </padding>
                                                          <cursor>
                                                             <Cursor fx:constant="HAND" />
                                                          </cursor>
+                                                         <HBox.margin>
+                                                            <Insets bottom="10.0" left="10.0" top="10.0" />
+                                                         </HBox.margin>
                                                       </Button>
+                                                      <Button fx:id="addCourseToScheduleButton" mnemonicParsing="false" stylesheets="@button.css" text="ausgewählten Kurs übernehmen">
+                                                         <padding>
+                                                            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                         </padding>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
+                                                         <HBox.margin>
+                                                            <Insets bottom="10.0" left="10.0" top="10.0" />
+                                                         </HBox.margin>
+                                                      </Button>
+                                                   </children>
+                                                </HBox>
+                                             </bottom>
+                                             <top>
+                                                <HBox styleClass="hBox" BorderPane.alignment="CENTER">
+                                                   <children>
+                                                      <MenuButton fx:id="filterMenu" mnemonicParsing="false" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: #ffffff; -fx-border-radius: 0; -fx-border-color: #7D003C;" text="Tabelle konfigurieren">
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" />
+                                                         </HBox.margin>
+                                                      </MenuButton>
+                                                      <Button fx:id="resetCourseFilterButton" mnemonicParsing="false" prefHeight="28.0" prefWidth="202.0" stylesheets="@button.css" text="Konfiguration zurücksetzen" GridPane.columnIndex="1" />
                                                       <Button fx:id="editCourseButton" mnemonicParsing="false" stylesheets="@button.css" text="Kurs bearbeiten" GridPane.columnIndex="2">
                                                          <cursor>
                                                             <Cursor fx:constant="HAND" />
                                                          </cursor>
                                                       </Button>
-                                                      <MenuButton fx:id="filterMenu" mnemonicParsing="false" prefHeight="30.0" prefWidth="245.0" style="-fx-background-color: #ffffff; -fx-border-radius: 0; -fx-border-color: #7D003C;" text="Tabelle konfigurieren" />
-                                                      <Button fx:id="resetCourseFilterButton" mnemonicParsing="false" prefHeight="28.0" prefWidth="202.0" stylesheets="@button.css" text="Konfiguration zurücksetzen" GridPane.columnIndex="1" />
+                                                      <Button fx:id="deleteCourseButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="116.0" stylesheets="@button.css" text="Kurs löschen" GridPane.columnIndex="3">
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
+                                                      </Button>
                                                    </children>
-                                                   <opaqueInsets>
-                                                      <Insets bottom="5.0" />
-                                                   </opaqueInsets>
-                                                   <padding>
-                                                      <Insets bottom="5.0" top="5.0" />
-                                                   </padding>
-                                                </GridPane>
-                                             </top>
-                                             <bottom>
-                                                <HBox style="-fx-background-color: #787878;">
-                                                   <children>
-                                                    <AnchorPane minHeight="0.0" minWidth="1000.0" style="-fx-background-color: #787878;">
-                                                         <children>
-                                                            <TextField fx:id="number_of_selected_courses" layoutX="301.0" layoutY="6.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                    <AnchorPane style="-fx-background-color: #787878;">
-                                                         <children>
-                                                            <Button fx:id="addCourseToScheduleButton" layoutX="7.0" layoutY="24.0" mnemonicParsing="false" stylesheets="@button.css" text="ausgewählten Kurse übernehmen" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                                                               <padding>
-                                                                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                               </padding>
-                                                               <cursor>
-                                                                  <Cursor fx:constant="HAND" />
-                                                               </cursor>
-                                                            </Button>
-                                                         </children>
-                                                      </AnchorPane>
-                                                   </children>
+                                                   <BorderPane.margin>
+                                                      <Insets top="10.0" />
+                                                   </BorderPane.margin>
                                                 </HBox>
-                                             </bottom>
+                                             </top>
                                           </BorderPane>
                                        </left>
                                     </BorderPane>
-                                    <BorderPane fx:id="pane_courses_overview_create1" prefHeight="947.0" prefWidth="1440.0" style="-fx-background-color: #787878;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <BorderPane fx:id="pane_courses_overview_create1" prefHeight="947.0" prefWidth="1440.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <top>
                                           <HBox style="-fx-background-color: #ffffff;">
                                              <children>
@@ -412,10 +540,18 @@
                                                       <Insets bottom="5.0" left="10.0" top="5.0" />
                                                    </BorderPane.margin>
                                                    <font>
-                                                      <Font size="18.0" />
+                                                      <Font size="24.0" />
                                                    </font>
                                                    <HBox.margin>
                                                       <Insets bottom="5.0" left="10.0" top="5.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Text fill="#787878" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="1/2" translateX="40.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="5.0" top="5.0" />
                                                    </HBox.margin>
                                                 </Text>
                                              </children>
@@ -425,7 +561,7 @@
                                           </HBox>
                                        </top>
                                        <left>
-                                          <GridPane prefHeight="786.0" prefWidth="528.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+                                          <GridPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="786.0" prefWidth="528.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
       
                                             <columnConstraints>
                                               <ColumnConstraints hgrow="SOMETIMES" />
@@ -470,7 +606,7 @@
                                                       <Insets left="10.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Art" GridPane.rowIndex="2">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Art*" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -568,7 +704,7 @@
                                                       <Insets left="10.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="gehört zu" GridPane.rowIndex="3">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="gehört zu*" GridPane.rowIndex="3">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -582,24 +718,25 @@
                                           </GridPane>
                                        </left>
                                        <center>
-                                          <GridPane prefHeight="731.0" prefWidth="493.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+                                          <GridPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="731.0" prefWidth="493.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
                                             <columnConstraints>
-                                              <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="540.9344482421875" minWidth="10.0" prefWidth="347.53741455078125" />
-                                              <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="624.899169921875" minWidth="10.0" prefWidth="564.4625854492188" />
+                                              <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="540.9344482421875" minWidth="10.0" prefWidth="347.0" />
+                                              <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="624.899169921875" minWidth="10.0" prefWidth="564.0" />
                                             </columnConstraints>
                                             <rowConstraints>
-                                              <RowConstraints maxHeight="66.30815124511719" minHeight="50.0" prefHeight="52.847412109375" vgrow="SOMETIMES" />
-                                              <RowConstraints maxHeight="95.152587890625" minHeight="10.0" prefHeight="61.38665771484375" vgrow="SOMETIMES" />
-                                              <RowConstraints maxHeight="140.22666931152344" minHeight="50.0" prefHeight="56.927398681640625" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="116.2266845703125" minHeight="50.0" prefHeight="61.234100341796875" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="85.76589965820312" minHeight="50.0" prefHeight="61.00146484375" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="144.9215087890625" minHeight="50.0" prefHeight="54.6207275390625" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="144.9215087890625" minHeight="50.0" prefHeight="54.6207275390625" vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="289.6859130859375" minHeight="50.0" prefHeight="272.3792724609375" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="82.55625915527344" minHeight="50.0" prefHeight="69.93376159667969" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="95.152587890625" minHeight="10.0" prefHeight="66.06623840332031" vgrow="SOMETIMES" />
+                                              <RowConstraints maxHeight="140.22666931152344" minHeight="50.0" prefHeight="55.65122985839844" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="116.2266845703125" minHeight="50.0" prefHeight="61.4437255859375" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="109.59378051757812" minHeight="50.0" prefHeight="64.13250732421875" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="144.9215087890625" minHeight="50.0" prefHeight="58.613739013671875" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="146.77252197265625" minHeight="34.850006103515625" prefHeight="57.991241455078125" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="458.27130126953125" minHeight="50.0" prefHeight="363.2650146484375" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="289.6859130859375" minHeight="41.72869873046875" prefHeight="52.2474365234375" vgrow="SOMETIMES" />
                                             </rowConstraints>
       
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Turnus">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Turnus*">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -648,7 +785,7 @@
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </CheckBox>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prüfungsdatum" GridPane.rowIndex="3">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prüfungsdatum*" GridPane.rowIndex="3">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -661,7 +798,7 @@
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </DatePicker>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Anfangsdatum" GridPane.rowIndex="4">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Anfangsdatum*" GridPane.rowIndex="4">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -669,7 +806,7 @@
                                                       <Insets left="20.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enddatum" GridPane.rowIndex="5">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enddatum*" GridPane.rowIndex="5">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -687,7 +824,7 @@
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </DatePicker>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modul" textOrigin="CENTER" GridPane.rowIndex="7">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modul*" textOrigin="CENTER" GridPane.rowIndex="7">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -709,6 +846,11 @@
                                                    </cursor>
                                                 </TextField>
                                                 <ComboBox fx:id="moduleCombo" prefWidth="150.0" promptText="Modul wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <Text fill="#7d003c" strokeType="OUTSIDE" strokeWidth="0.0" text="* markierte Felder dürfen nicht leer bleiben" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Text>
                                              </children>
                                           </GridPane>
                                        </center>
@@ -727,7 +869,7 @@
                                        <bottom>
                                           <HBox style="-fx-background-color: #787878;" BorderPane.alignment="CENTER">
                                              <children>
-                                                <Button fx:id="cancelCourseButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="49.0" stylesheets="@button.css" text="Abbrechen">
+                                                <Button fx:id="cancelCourseButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" stylesheets="@button.css" text="Abbrechen">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -737,8 +879,11 @@
                                                    <HBox.margin>
                                                       <Insets bottom="5.0" left="5.0" top="5.0" />
                                                    </HBox.margin>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
                                                 </Button>
-                                                <Button fx:id="nextCourseButton" alignment="CENTER" mnemonicParsing="false" prefHeight="49.0" stylesheets="@button.css" text="Speichern &amp; Weiter">
+                                                <Button fx:id="nextCourseButton" alignment="CENTER" mnemonicParsing="false" stylesheets="@button.css" text="Speichern &amp; Weiter">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -748,6 +893,9 @@
                                                    <HBox.margin>
                                                       <Insets bottom="5.0" left="10.0" top="5.0" />
                                                    </HBox.margin>
+                                                   <padding>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </padding>
                                                 </Button>
                                              </children>
                                           </HBox>
@@ -1073,6 +1221,11 @@
                                                       <Insets left="20.0" top="5.0" />
                                                    </GridPane.margin>
                                                 </Text>
+                                                <Text fill="#7d003c" strokeType="OUTSIDE" strokeWidth="0.0" text="* markierte Felder dürfen nicht leer bleiben" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Text>
                                              </children>
                                              <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="448.30816650390625" minWidth="169.1357421875" prefWidth="182.267333984375" />
@@ -1088,13 +1241,16 @@
                                                 <RowConstraints maxHeight="589.456787109375" minHeight="200.0" prefHeight="378.7900695800781" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="50.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
+                                             <BorderPane.margin>
+                                                <Insets left="20.0" />
+                                             </BorderPane.margin>
                                           </GridPane>
                                        </center>
                                        <left>
                                           <GridPane prefHeight="752.0" prefWidth="528.0" BorderPane.alignment="CENTER">
                                              <children>
       
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrperson" GridPane.rowIndex="1">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrperson*" GridPane.rowIndex="1">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -1102,7 +1258,7 @@
                                                       <Insets left="10.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrstuhl" GridPane.rowIndex="2">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrstuhl*" GridPane.rowIndex="2">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -1110,7 +1266,7 @@
                                                       <Insets left="10.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ct/st" GridPane.rowIndex="4">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ct/st*" GridPane.rowIndex="4">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -1118,7 +1274,7 @@
                                                       <Insets left="10.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rhythmus" GridPane.rowIndex="5">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rhythmus*" GridPane.rowIndex="5">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -1144,7 +1300,7 @@
                                                    </GridPane.margin>
                                                 </Text>
                                                 <TextField fx:id="requirementsText" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Leistungsnachweis" GridPane.rowIndex="8">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Leistungsnachweis*" GridPane.rowIndex="8">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -1195,7 +1351,7 @@
                                                 </ComboBox>
       
                                                 <ComboBox fx:id="programCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" promptText="Studiengang wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Studiengang">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Studiengang*">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -1230,164 +1386,38 @@
                                              </rowConstraints>
                                           </GridPane>
                                        </left>
+                                       <top>
+                                          <HBox prefHeight="43.0" prefWidth="1439.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Text fill="#787878" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="Kurs anlegen">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="5.0" left="10.0" top="5.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <Text fill="#787878" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="2/2" translateX="40.0">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets bottom="5.0" top="5.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                             </children>
+                                          </HBox>
+                                       </top>
                                     </BorderPane>
                                  </children>
                               </AnchorPane>
                         </content>
                       </Tab>
-                        <Tab style="-fx-background-radius: 0;" text="Allgemein">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="877.0" prefWidth="1438.0">
-                                 <children>
-                                    <Accordion layoutX="-1.0" minWidth="500.0" prefHeight="800.0" prefWidth="1440.0">
-                                      <panes>
-                                        <TitledPane animated="false" text="Semester anlegen">
-                                          <content>
-                                            <AnchorPane minHeight="0.0" minWidth="0.0">
-                                                   <children>
-                                                      <HBox layoutY="-2.0" prefHeight="60.0" prefWidth="1438.0">
-                                                         <children>
-                                                            <TextField fx:id="newSemesterText" style="-fx-background-color: #ffffff; -fx-background-radius: 0;">
-                                                               <padding>
-                                                                  <Insets bottom="5.0" left="10.0" top="5.0" />
-                                                               </padding>
-                                                               <HBox.margin>
-                                                                  <Insets left="10.0" top="10.0" />
-                                                               </HBox.margin>
-                                                            </TextField>
-                                                            <Button fx:id="newSemesterButton" mnemonicParsing="false" stylesheets="@button.css" text="Speichern">
-                                                               <HBox.margin>
-                                                                  <Insets left="10.0" top="10.0" />
-                                                               </HBox.margin>
-                                                            </Button>
-                                                         </children>
-                                                      </HBox>
-                                                      <ListView fx:id="semesterList" layoutX="11.0" layoutY="48.0" prefHeight="249.0" prefWidth="242.0" />
-                                                   </children>
-                                                </AnchorPane>
-                                          </content>
-                                        </TitledPane>
-                                        <TitledPane animated="false" text="Lehrstuhl anlegen">
-                                          <content>
-                                            <AnchorPane minHeight="0.0" minWidth="0.0">
-                                                   <children>
-                                                      <HBox prefHeight="60.0" prefWidth="1438.0">
-                                                         <children>
-                                                            <TextField fx:id="newChairText" style="-fx-background-color: #ffffff; -fx-background-radius: 0;">
-                                                               <padding>
-                                                                  <Insets bottom="5.0" left="10.0" top="5.0" />
-                                                               </padding>
-                                                               <HBox.margin>
-                                                                  <Insets left="10.0" top="10.0" />
-                                                               </HBox.margin>
-                                                            </TextField>
-                                                            <Button fx:id="newChairButton" mnemonicParsing="false" stylesheets="@button.css" text="Speichern">
-                                                               <HBox.margin>
-                                                                  <Insets left="10.0" top="10.0" />
-                                                               </HBox.margin>
-                                                            </Button>
-                                                         </children>
-                                                      </HBox>
-                                                      <ListView fx:id="chairList" layoutX="10.0" layoutY="49.0" prefHeight="250.0" prefWidth="243.0" />
-                                                   </children>
-                                                </AnchorPane>
-                                          </content>
-                                        </TitledPane>
-                                        <TitledPane animated="false" text="Studiengang anlegen">
-                                          <content>
-                                            <AnchorPane minHeight="0.0" minWidth="0.0">
-                                                   <children>
-                                                      <HBox prefHeight="60.0" prefWidth="1438.0">
-                                                         <children>
-                                                            <TextField fx:id="newProgramText" style="-fx-background-color: #ffffff; -fx-background-radius: 0;">
-                                                               <padding>
-                                                                  <Insets bottom="5.0" left="10.0" top="5.0" />
-                                                               </padding>
-                                                               <HBox.margin>
-                                                                  <Insets left="10.0" top="10.0" />
-                                                               </HBox.margin>
-                                                            </TextField>
-                                                            <Button fx:id="newProgramButton" mnemonicParsing="false" stylesheets="@button.css" text="Speichern">
-                                                               <HBox.margin>
-                                                                  <Insets left="10.0" top="10.0" />
-                                                               </HBox.margin>
-                                                            </Button>
-                                                         </children>
-                                                      </HBox>
-                                                      <ListView fx:id="programsList" layoutX="11.0" layoutY="49.0" prefHeight="258.0" prefWidth="257.0" />
-                                                   </children>
-                                                </AnchorPane>
-                                          </content>
-                                        </TitledPane>
-                                          <TitledPane animated="false" text="Modul anlegen">
-                                             <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0">
-                                                   <children>
-                                                      <HBox prefHeight="60.0" prefWidth="1438.0">
-                                                         <children>
-                                                            <TextField fx:id="writeModuleText" style="-fx-background-color: #ffffff; -fx-background-radius: 0;">
-                                                               <padding>
-                                                                  <Insets bottom="5.0" left="10.0" top="5.0" />
-                                                               </padding>
-                                                               <HBox.margin>
-                                                                  <Insets left="10.0" top="10.0" />
-                                                               </HBox.margin>
-                                                            </TextField>
-                                                            <ComboBox fx:id="moduleProgramCombo" prefWidth="150.0" promptText="Studiengang wählen">
-                                                               <HBox.margin>
-                                                                  <Insets left="20.0" top="10.0" />
-                                                               </HBox.margin></ComboBox>
-                                                            <Button fx:id="saveModuleButton" mnemonicParsing="false" stylesheets="@button.css" text="Speichern">
-                                                               <HBox.margin>
-                                                                  <Insets left="20.0" top="10.0" />
-                                                               </HBox.margin>
-                                                            </Button>
-                                                         </children>
-                                                      </HBox>
-                                                      <ListView fx:id="moduleList" layoutX="13.0" layoutY="48.0" prefHeight="251.0" prefWidth="240.0" />
-                                                   </children>
-                                                </AnchorPane>
-                                             </content>
-                                          </TitledPane>
-                                      </panes>
-                                    </Accordion>
-                                 </children>
-                              </AnchorPane>
-                          </content>
-                        </Tab>
-                        <Tab fx:id="tab_overviews" style="-fx-background-radius: 0; -fx-cursor: hand; hover: #000000;" text="Lehrplan">
+                        <Tab fx:id="tab_overviews" text="Lehrplan">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #dddddd;">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="anchorPane">
                                  <children>
-                                    <BorderPane prefHeight="947.0" prefWidth="1440.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <right>
-                                          <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="871.0" prefWidth="274.0" BorderPane.alignment="CENTER">
-                                            <items>
-                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                                   <children>
-                                                      <ListView layoutX="2.0" layoutY="52.0" prefHeight="388.0" prefWidth="272.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="52.0">
-                                                         <opaqueInsets>
-                                                            <Insets top="20.0" />
-                                                         </opaqueInsets>
-                                                      </ListView>
-                                                      <ComboBox fx:id="semesterTimeTableCombo" layoutX="7.0" layoutY="16.0" prefWidth="200.0" promptText="Semester wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-                                                   </children>
-                                                </AnchorPane>
-                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #f5f5f5;">
-                                                   <children>
-                                                      <Button fx:id="showTimeTableButton" layoutX="15.0" layoutY="17.0" mnemonicParsing="false" stylesheets="@button.css" text="Anzeigen" />
-                                                      <Button layoutX="15.0" layoutY="58.0" mnemonicParsing="false" stylesheets="@button.css" text="Exportieren" />
-                                                   </children>
-                                                </AnchorPane>
-                                            </items>
-                                             <opaqueInsets>
-                                                <Insets />
-                                             </opaqueInsets>
-                                             <BorderPane.margin>
-                                                <Insets top="5.0" />
-                                             </BorderPane.margin>
-                                          </SplitPane>
-                                       </right>
+                                    <BorderPane prefHeight="947.0" prefWidth="1440.0" styleClass="borderPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <center>
                                           <TableView fx:id="schedulePreview" prefHeight="834.0" prefWidth="1134.0" BorderPane.alignment="CENTER">
                                             <columns>
@@ -1399,19 +1429,37 @@
                                                 <TableColumn fx:id="colFriday" maxWidth="0.0" minWidth="100.0" prefWidth="75.0" text="Freitag" />
                                             </columns>
                                              <BorderPane.margin>
-                                                <Insets left="5.0" right="15.0" top="5.0" />
+                                                <Insets bottom="20.0" left="5.0" right="5.0" top="5.0" />
                                              </BorderPane.margin>
                                           </TableView>
                                        </center>
                                        <top>
-                                          <AnchorPane prefHeight="48.0" prefWidth="1438.0" style="-fx-background-color: #f5f5f5;" BorderPane.alignment="CENTER">
+                                          <AnchorPane prefHeight="48.0" prefWidth="1438.0" styleClass="anchorPane" BorderPane.alignment="CENTER">
                                              <children>
-                                                <HBox layoutX="5.0" layoutY="15.0" AnchorPane.topAnchor="10.0">
+                                                <HBox layoutX="5.0" layoutY="15.0" styleClass="hBox" AnchorPane.topAnchor="10.0">
                                                    <children>
-                                                      <ComboBox fx:id="filterTimeTableByProgramCombo" prefHeight="29.0" prefWidth="214.0" promptText="nach Studiengang filtern" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" />
+                                                      <ComboBox fx:id="filterTimeTableByProgramCombo" prefHeight="29.0" prefWidth="214.0" promptText="nach Studiengang filtern" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" top="5.0" />
+                                                         </HBox.margin></ComboBox>
+                                                      <ComboBox fx:id="semesterTimeTableCombo" prefWidth="200.0" promptText="Semester wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="10.0" top="5.0" />
+                                                         </HBox.margin>
+                                                      </ComboBox>
+                                                      <Button fx:id="showTimeTableButton" mnemonicParsing="false" stylesheets="@button.css" text="Anzeigen">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="10.0" top="5.0" />
+                                                         </HBox.margin>
+                                                      </Button>
                                                       <Button fx:id="clearTimeTableButton" layoutX="339.0" layoutY="17.0" mnemonicParsing="false" stylesheets="@button.css" text="Ansicht zurücksetzen" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="15.0">
                                                          <HBox.margin>
-                                                            <Insets left="10.0" />
+                                                            <Insets bottom="5.0" left="10.0" top="5.0" />
+                                                         </HBox.margin>
+                                                      </Button>
+                                                      <Button mnemonicParsing="false" stylesheets="@button.css" text="Exportieren">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="50.0" top="5.0" />
                                                          </HBox.margin>
                                                       </Button>
                                                    </children>
@@ -1436,31 +1484,14 @@
             </AnchorPane>
          </center>
          <top>
-            <SplitPane prefHeight="44.0" prefWidth="1440.0" style="-fx-background-color: #dddddd;" BorderPane.alignment="CENTER">
-              <items>
-                <AnchorPane prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #dddddd;">
-                     <children>
-                        <HBox layoutX="8.0" layoutY="7.0" prefHeight="42.0" prefWidth="1314.0" style="-fx-background-color: #787878;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Text fill="WHITE" layoutX="8.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrplanung" wrappingWidth="182.85295867919922">
-                                 <font>
-                                    <Font name="System Bold" size="26.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="5.0" top="5.0" />
-                                 </HBox.margin>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <Text fill="#515151" layoutX="158.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrplanung" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </AnchorPane>
-              </items>
-            </SplitPane>
+            <Text fill="#787878" nodeOrientation="LEFT_TO_RIGHT" strokeType="OUTSIDE" strokeWidth="0.0" text="Lehrplanung" BorderPane.alignment="TOP_LEFT">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" top="10.0" />
+               </BorderPane.margin>
+            </Text>
          </top>
       </BorderPane>
    </content>

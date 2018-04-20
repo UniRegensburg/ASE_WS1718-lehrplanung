@@ -1,13 +1,18 @@
+/*Quelle: https://stackoverflow.com/questions/10609103/remove-gray-bg-behind-the-tabs-in-jfx[10.04.2018]*/
+
 .tab-pane{
--fx-tab-min-height: 40px;
+-fx-background-color: rgba(255,255,255,0.8);
+-fx-tab-min-height: 35px;
 -fx-tab-min-width: 80px;
+
 }
 
 
 .tab{
--fx-background-color:   #ffffff;
-
+-fx-background-color: rgb(242, 230, 236);
+-fx-background-radius: 2px;
 }
+
 
 
 .tab:hover{
@@ -15,9 +20,15 @@
 -fx-cursor: hand;
 }
 
-.tab:selected{
--fx-background-color:  #f4f4f4;
 
+.tab:selected{
+-fx-background-color: rgb(255, 255, 255);
+-fx-effect: null;
 }
 
 
+.tab-header-background {
+ -fx-background-color: rgba(255,255,255,0.5);
+ -fx-effect: null;
+
+}

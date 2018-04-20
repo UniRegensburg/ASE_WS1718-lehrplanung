@@ -1,0 +1,14 @@
+#custom-textfield{
+
+-fx-max-height: 25px;
+-fx-background-radius: 5;
+-fx-background-color: #ffffff;
+
+
+}
+
+
+
+#custom-textfield:focused{
+   -fx-background-color: transparent, #ffa500, transparent, white;
+}
