@@ -208,7 +208,7 @@
                                        <center>
                                           <AnchorPane styleClass="anchorPane">
                                              <children>
-                                                <TableView fx:id="LecturerTable" prefHeight="0.0" prefWidth="1433.0" stylesheets="@tableview.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" BorderPane.alignment="CENTER">
+                                                <TableView fx:id="LecturerTable" prefHeight="0.0" prefWidth="1433.0" stylesheets="@tableview.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
                                                   <columns>
                                                       <TableColumn fx:id="ID" prefWidth="75.0" text="ID" visible="false" />
                                                       <TableColumn fx:id="Title" maxWidth="-1.0" minWidth="100.0" prefWidth="100.0" text="Titel" />
@@ -238,7 +238,7 @@
                                                       <Insets bottom="10.0" left="10.0" top="10.0" />
                                                    </HBox.margin>
                                                    <padding>
-                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                      <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                                                    </padding>
                                                 </Button>
                                                 <Button fx:id="deleteLecturerButton" alignment="TOP_RIGHT" contentDisplay="CENTER" mnemonicParsing="false" stylesheets="@button.css" text="Löschen">
@@ -249,12 +249,12 @@
                                                       <Insets bottom="10.0" left="10.0" top="10.0" />
                                                    </HBox.margin>
                                                    <padding>
-                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                      <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                                                    </padding>
                                                 </Button>
                                              </children>
                                              <opaqueInsets>
-                                                <Insets top="5.0" />
+                                                <Insets />
                                              </opaqueInsets>
                                              <cursor>
                                                 <Cursor fx:constant="DEFAULT" />
@@ -511,11 +511,17 @@
                                                             <Insets left="10.0" />
                                                          </HBox.margin>
                                                       </MenuButton>
-                                                      <Button fx:id="resetCourseFilterButton" mnemonicParsing="false" prefHeight="28.0" prefWidth="202.0" stylesheets="@button.css" text="Konfiguration zurücksetzen" GridPane.columnIndex="1" />
+                                                      <Button fx:id="resetCourseFilterButton" mnemonicParsing="false" prefHeight="28.0" prefWidth="202.0" stylesheets="@button.css" text="Konfiguration zurücksetzen" GridPane.columnIndex="1">
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" right="10.0" />
+                                                         </HBox.margin></Button>
                                                       <Button fx:id="editCourseButton" mnemonicParsing="false" stylesheets="@button.css" text="Kurs bearbeiten" GridPane.columnIndex="2">
                                                          <cursor>
                                                             <Cursor fx:constant="HAND" />
                                                          </cursor>
+                                                         <HBox.margin>
+                                                            <Insets left="10.0" right="10.0" />
+                                                         </HBox.margin>
                                                       </Button>
                                                       <Button fx:id="deleteCourseButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="116.0" stylesheets="@button.css" text="Kurs löschen" GridPane.columnIndex="3">
                                                          <cursor>
@@ -580,7 +586,7 @@
                                                 <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <TextField fx:id="courseTitleText" minHeight="-Infinity" prefHeight="40.0" prefWidth="201.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                <TextField fx:id="courseTitleText" minHeight="-Infinity" prefHeight="40.0" prefWidth="201.0" promptText="e.g. Einfuehrung in die Medieninformatik" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                    <cursor>
                                                       <Cursor fx:constant="TEXT" />
                                                    </cursor>
@@ -593,7 +599,7 @@
                                                       <Insets left="10.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <TextField fx:id="courseNumberText" minHeight="-Infinity" prefHeight="40.0" prefWidth="201.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1">
+                                                <TextField fx:id="courseNumberText" minHeight="-Infinity" prefHeight="40.0" prefWidth="201.0" promptText="e.g. 33056 / 33056a" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1">
                                                    <cursor>
                                                       <Cursor fx:constant="TEXT" />
                                                    </cursor>
@@ -663,22 +669,22 @@
                                                         </FXCollections>
                                                     </items>
                                                 </ComboBox>
-                                                <TextField fx:id="hypertextCourseText" prefHeight="40.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                <TextField fx:id="hypertextCourseText" prefHeight="40.0" promptText="e.g. https://linktext" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                                    <cursor>
                                                       <Cursor fx:constant="TEXT" />
                                                    </cursor>
                                                 </TextField>
-                                                <TextField fx:id="SWScourseText" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                <TextField fx:id="SWScourseText" prefHeight="40.0" prefWidth="153.0" promptText="e.g. 4" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                                    <cursor>
                                                       <Cursor fx:constant="TEXT" />
                                                    </cursor>
                                                 </TextField>
-                                                <TextField fx:id="maxParticipantsCourseText" prefHeight="40.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                <TextField fx:id="maxParticipantsCourseText" prefHeight="40.0" promptText="e.g. 20" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                                    <cursor>
                                                       <Cursor fx:constant="TEXT" />
                                                    </cursor>
                                                 </TextField>
-                                                <TextField fx:id="expectedParticipantsCourseText" prefHeight="40.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                                <TextField fx:id="expectedParticipantsCourseText" prefHeight="40.0" promptText="e.g. 20" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                                    <cursor>
                                                       <Cursor fx:constant="TEXT" />
                                                    </cursor>
@@ -691,7 +697,7 @@
                                                       <Cursor fx:constant="HAND" />
                                                    </cursor>
                                                 </CheckBox>
-                                                <TextField fx:id="creditsCourseText" prefHeight="40.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                                <TextField fx:id="creditsCourseText" prefHeight="40.0" promptText="e.g. 2" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="9">
                                                    <cursor>
                                                       <Cursor fx:constant="TEXT" />
                                                    </cursor>
@@ -840,7 +846,7 @@
                                                       <Insets left="20.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <TextField fx:id="languageCourseText1" prefHeight="40.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                                <TextField fx:id="languageCourseText1" prefHeight="40.0" promptText="e.g. Deutsch" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                                    <cursor>
                                                       <Cursor fx:constant="TEXT" />
                                                    </cursor>
@@ -953,7 +959,7 @@
                                                             <Insets top="10.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <TextField fx:id="startTimeMonday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                      <TextField fx:id="startTimeMonday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" promptText="e.g. 10:00" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
                                                          <padding>
                                                             <Insets left="10.0" />
                                                          </padding>
@@ -969,7 +975,7 @@
                                                             <Insets left="30.0" top="10.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <TextField fx:id="endTimeMonday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                      <TextField fx:id="endTimeMonday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" promptText="e.g. 10:00" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
                                                          <HBox.margin>
                                                             <Insets left="10.0" />
                                                          </HBox.margin>
@@ -989,7 +995,7 @@
                                                             <Insets top="10.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <TextField fx:id="startTimeTuesday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                      <TextField fx:id="startTimeTuesday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" promptText="e.g. 10:00" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
                                                          <HBox.margin>
                                                             <Insets left="10.0" />
                                                          </HBox.margin>
@@ -1002,7 +1008,7 @@
                                                             <Insets left="30.0" top="10.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <TextField fx:id="endTimeTuesday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                      <TextField fx:id="endTimeTuesday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" promptText="e.g. 10:00" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
                                                          <padding>
                                                             <Insets left="10.0" />
                                                          </padding>
@@ -1028,7 +1034,7 @@
                                                             <Insets top="10.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <TextField fx:id="startTimeWednesday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                      <TextField fx:id="startTimeWednesday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" promptText="e.g. 10:00" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
                                                          <padding>
                                                             <Insets left="10.0" />
                                                          </padding>
@@ -1044,7 +1050,7 @@
                                                             <Insets left="30.0" top="10.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <TextField fx:id="endTimeWednesday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                      <TextField fx:id="endTimeWednesday" alignment="TOP_LEFT" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" promptText="   e.g. 10:00" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
                                                          <HBox.margin>
                                                             <Insets left="10.0" />
                                                          </HBox.margin>
@@ -1070,7 +1076,7 @@
                                                             <Insets top="10.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <TextField fx:id="startTimeThursday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                      <TextField fx:id="startTimeThursday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" promptText="e.g. 10:00" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
                                                          <HBox.margin>
                                                             <Insets left="10.0" />
                                                          </HBox.margin>
@@ -1083,7 +1089,7 @@
                                                             <Insets left="30.0" top="10.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <TextField fx:id="endTimeThursday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                      <TextField fx:id="endTimeThursday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" promptText="e.g. 10:00" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
                                                          <padding>
                                                             <Insets left="10.0" />
                                                          </padding>
@@ -1109,7 +1115,7 @@
                                                             <Insets top="10.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <TextField fx:id="startTimeFriday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                      <TextField fx:id="startTimeFriday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" promptText="e.g. 10" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
                                                          <padding>
                                                             <Insets left="10.0" />
                                                          </padding>
@@ -1125,7 +1131,7 @@
                                                             <Insets left="30.0" top="10.0" />
                                                          </HBox.margin>
                                                       </Text>
-                                                      <TextField fx:id="endTimeFriday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
+                                                      <TextField fx:id="endTimeFriday" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" promptText="e.g. 10:00" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;">
                                                          <HBox.margin>
                                                             <Insets left="10.0" />
                                                          </HBox.margin>
@@ -1233,12 +1239,12 @@
                                              </columnConstraints>
                                              <rowConstraints>
                                                 <RowConstraints maxHeight="589.456787109375" minHeight="39.25352478027344" prefHeight="55.237945556640625" vgrow="SOMETIMES" />
-                                                <RowConstraints vgrow="SOMETIMES" />
-                                                <RowConstraints vgrow="SOMETIMES" />
-                                                <RowConstraints vgrow="SOMETIMES" />
-                                                <RowConstraints vgrow="SOMETIMES" />
-                                                <RowConstraints vgrow="SOMETIMES" />
-                                                <RowConstraints maxHeight="589.456787109375" minHeight="200.0" prefHeight="378.7900695800781" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="79.45877075195312" minHeight="55.1468505859375" prefHeight="66.2293701171875" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="91.00906372070312" minHeight="67.91748046875" prefHeight="70.7706298828125" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="99.00906372070312" minHeight="66.22030639648438" prefHeight="79.08251953125" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="110.77969360351562" minHeight="63.752471923828125" prefHeight="67.90841674804688" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="118.24752807617188" minHeight="79.541259765625" prefHeight="114.09158325195312" vgrow="SOMETIMES" />
+                                                <RowConstraints maxHeight="589.456787109375" minHeight="200.0" prefHeight="337.376220703125" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="50.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <BorderPane.margin>
@@ -1282,7 +1288,7 @@
                                                       <Insets left="10.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Teilnehmer" GridPane.rowIndex="6">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Voraussetzung" GridPane.rowIndex="6">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -1290,17 +1296,8 @@
                                                       <Insets left="10.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <TextField fx:id="participantsText" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Voraussetzung" GridPane.rowIndex="7">
-                                                   <font>
-                                                      <Font size="15.0" />
-                                                   </font>
-                                                   <GridPane.margin>
-                                                      <Insets left="10.0" />
-                                                   </GridPane.margin>
-                                                </Text>
-                                                <TextField fx:id="requirementsText" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Leistungsnachweis*" GridPane.rowIndex="8">
+                                                <TextField fx:id="requirementsText" minHeight="-Infinity" prefHeight="40.0" prefWidth="153.0" promptText="e.g. keine" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Leistungsnachweis*" GridPane.rowIndex="7">
                                                    <font>
                                                       <Font size="15.0" />
                                                    </font>
@@ -1340,7 +1337,7 @@
                                                         </FXCollections>
                                                     </items>
                                                 </ComboBox>
-                                                <ComboBox fx:id="certCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" promptText="Leistungsnachweis wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                                <ComboBox fx:id="certCombo" minHeight="-Infinity" prefHeight="40.0" prefWidth="150.0" promptText="Leistungsnachweis wählen" style="-fx-background-color: #ffffff; -fx-background-radius: 0; -fx-border-color: #7D003C;" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                                     <items>
                                                         <FXCollections fx:factory="observableArrayList">
                                                             <String fx:value="Hausarbeit" />
@@ -1367,14 +1364,13 @@
                                                       <Insets left="10.0" />
                                                    </GridPane.margin>
                                                 </Text>
-                                                <TextField fx:id="deputatText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="127.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <TextField fx:id="deputatText" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="127.0" promptText="e.g. 5" style="-fx-background-color: #f5f5f5; -fx-background-radius: 0;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                              </children>
                                              <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" />
                                              </columnConstraints>
                                              <rowConstraints>
-                                                <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
