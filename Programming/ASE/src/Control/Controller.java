@@ -30,7 +30,7 @@ public class Controller  {
             deleteCourseButton, updateLecturerButton, editCourseButton, cancelLecturerButton, cancelCourseButton,
             nextCourseButton, backCourseButton, addCourseToScheduleButton, newSemesterButton, newChairButton,
             newProgramButton, resetCourseFilterButton, saveModuleButton, showTimeTableButton, clearTimeTableButton,
-            dbImportButton, dbExportButton;
+            dbImportButton, dbExportButton, exportTimetableButton;
     @FXML
     private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText, courseNumberText,
             courseTitleText, SWScourseText, hypertextCourseText, maxParticipantsCourseText, creditsCourseText,
@@ -1123,11 +1123,24 @@ public class Controller  {
 
     }
 
+
+    // HOLT BEI BUTTON PRESS DEN LANGEN STRING UND SCHREIBT DEN IN EINE CSV MIT DER EXPORTCREATOR KLASSE
+    // CSV LIEGT <---- UNTER INTERFACES STANDARDMÄSSIG, KANN DA BLEIBEN; WIRD ÜBERSCHRIEBEN SOWEIT ICH WEISS
+    // ALS NÄCHSTES SOLLTE DIE CSV NOCH IN PDF UMGEWANDELT WERDEN
+
     private void exportTimeTable() {
 
-        ExportCreator creator = new ExportCreator();
-        //creator.writeCSV("Lehrplanung.csv", HIER DEN STRING FÜR DEN LANGEN TABLE STRING AUS DER DB EINFÜGEN);
+        exportTimetableButton.setOnAction((event) -> {
 
+            Integer semesterID = dc.getSemesterID(semesterTimeTableCombo.getValue().toString());
+            Integer programID = dc.getProgramID(filterTimeTableByProgramCombo.getValue().toString());
+
+            String table = dc.getTimeTableSettings(semesterID, programID);
+
+            ExportCreator creator = new ExportCreator();
+            creator.writeCSV("Lehrplanung.csv", table);
+
+        });
 
     }
 
