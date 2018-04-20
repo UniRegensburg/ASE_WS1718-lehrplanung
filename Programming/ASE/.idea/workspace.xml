@@ -58,46 +58,70 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="button.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/button.css">
+      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Control/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="29" lean-forward="false" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
-              <folding />
+            <state relative-caret-position="377">
+              <caret line="1129" column="0" lean-forward="true" selection-start-line="1129" selection-start-column="0" selection-end-line="1129" selection-end-column="0" />
+              <folding>
+                <element signature="method#resetCourseFilter#0;class#Controller#0" expanded="false" />
+                <element signature="method#resetTimeTableView#0;class#Controller#0" expanded="false" />
+                <element signature="method#fillCourseFilterCombo#0;class#Controller#0" expanded="false" />
+                <element signature="method#fillLecturers#0;class#Controller#0" expanded="false" />
+                <element signature="method#fillTimeTable#0;class#Controller#0" expanded="false" />
+                <element signature="method#createLecturer#0;class#Controller#0" expanded="false" />
+                <element signature="method#createCourse#0;class#Controller#0" expanded="false" />
+                <element signature="method#nextCourseWindow#0;class#Controller#0" expanded="false" />
+                <element signature="method#saveLecturer#0;class#Controller#0" expanded="false" />
+                <element signature="method#saveCourse#0;class#Controller#0" expanded="false" />
+                <element signature="method#deleteLecturer#0;class#Controller#0" expanded="false" />
+                <element signature="method#deleteCourse#0;class#Controller#0" expanded="false" />
+                <element signature="method#editLecturerButton#0;class#Controller#0" expanded="false" />
+                <element signature="method#editLecturer#0;class#Controller#0" expanded="false" />
+                <element signature="method#editCourseButton#0;class#Controller#0" expanded="false" />
+                <element signature="method#editCourse#0;class#Controller#0" expanded="false" />
+                <element signature="method#fillCourse#0;class#Controller#0" expanded="false" />
+                <element signature="method#fillProgramCombos#0;class#Controller#0" expanded="false" />
+                <element signature="method#fillLecturersCombo#0;class#Controller#0" expanded="false" />
+                <element signature="method#fillChairsCombo#0;class#Controller#0" expanded="false" />
+                <element signature="method#fillModuleCombo#0;class#Controller#0" expanded="false" />
+                <element signature="method#fillSemesterCombo#0;class#Controller#0" expanded="false" />
+                <element signature="method#fillSemesterList#0;class#Controller#0" expanded="false" />
+                <element signature="method#fillChairList#0;class#Controller#0" expanded="false" />
+                <element signature="method#fillProgramsList#0;class#Controller#0" expanded="false" />
+                <element signature="method#fillModuleList#0;class#Controller#0" expanded="false" />
+                <element signature="method#cancelLecturer#0;class#Controller#0" expanded="false" />
+                <element signature="method#cancelCourse#0;class#Controller#0" expanded="false" />
+                <element signature="method#goBackCourse#0;class#Controller#0" expanded="false" />
+                <element signature="method#clearCourse#0;class#Controller#0" expanded="false" />
+                <element signature="method#createSemester#0;class#Controller#0" expanded="false" />
+                <element signature="method#createChair#0;class#Controller#0" expanded="false" />
+                <element signature="method#createProgram#0;class#Controller#0" expanded="false" />
+                <element signature="method#createModule#0;class#Controller#0" expanded="false" />
+                <element signature="method#lecturerTableDoubleClick#0;class#Controller#0" expanded="false" />
+                <element signature="method#courseTableDoubleClick#0;class#Controller#0" expanded="false" />
+                <element signature="method#addListenerToProgramCombo#0;class#Controller#0" expanded="false" />
+                <element signature="method#addCourseToTimetable#0;class#Controller#0" expanded="false" />
+                <element signature="method#createTimeTableHashMap#0;class#Controller#0" expanded="false" />
+                <element signature="method#extendTimeTable#0;class#Controller#0" expanded="false" />
+                <element signature="method#createTimeTable#0;class#Controller#0" expanded="false" />
+                <element signature="method#emptyTimeTable#0;class#Controller#0" expanded="false" />
+                <element signature="method#importDatabase#0;class#Controller#0" expanded="false" />
+                <element signature="method#exportDatabase#0;class#Controller#0" expanded="false" />
+                <element signature="method#moveDatabase#0;class#Controller#0" expanded="false" />
+                <element signature="method#close#0;class#Controller#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="panes.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GUI/panes.css">
+      <file leaf-file-name="ExportCreator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Export/ExportCreator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="17" lean-forward="false" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+            <state relative-caret-position="408">
+              <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/out/production/UITest/GUI/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gui.fxml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/out/production/UITest/GUI/gui.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="1421" column="108" lean-forward="false" selection-start-line="1421" selection-start-column="108" selection-end-line="1421" selection-end-column="108" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
           </provider>
         </entry>
       </file>
@@ -122,13 +146,16 @@
       <find>combobox</find>
       <find>fillLecturers</find>
       <find>combo</find>
-      <find>table</find>
       <find>createProgram</find>
       <find>rota</find>
       <find>o</find>
       <find>timeTableButton</find>
       <find>lecturerCoursesList</find>
       <find>tableview</find>
+      <find>export</find>
+      <find>table</find>
+      <find>schedulepr</find>
+      <find>return</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -165,8 +192,6 @@
         <option value="$PROJECT_DIR$/src/Control/Main.java" />
         <option value="$PROJECT_DIR$/src/Database/DatabaseInterface.java" />
         <option value="$PROJECT_DIR$/src/Interfaces/Schedule.java" />
-        <option value="$PROJECT_DIR$/src/Control/Controller.java" />
-        <option value="$PROJECT_DIR$/src/Control/Controller.java" />
         <option value="$PROJECT_DIR$/src/GUI/style.css" />
         <option value="$PROJECT_DIR$/src/GUI/tableview.css" />
         <option value="$PROJECT_DIR$/src/GUI/gui.fxml" />
@@ -174,15 +199,18 @@
         <option value="$PROJECT_DIR$/src/GUI/panes.css" />
         <option value="$PROJECT_DIR$/out/production/UITest/GUI/style.css" />
         <option value="$PROJECT_DIR$/out/production/UITest/GUI/gui.fxml" />
+        <option value="$PROJECT_DIR$/src/Export/PDFCreator.java" />
+        <option value="$PROJECT_DIR$/src/Export/ExportCreator.java" />
+        <option value="$PROJECT_DIR$/src/Control/Controller.java" />
+        <option value="$PROJECT_DIR$/src/Control/Controller.java" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds">
-    <option name="x" value="37" />
-    <option name="y" value="28" />
-    <option name="width" value="1363" />
-    <option name="height" value="825" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="827" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -222,7 +250,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -233,40 +263,6 @@
             <path>
               <item name="ASE" type="b2602c69:ProjectViewProjectNode" />
               <item name="ASE" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ASE" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ASE" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ASE" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ASE" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-              <item name="UITest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ASE" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ASE" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-              <item name="UITest" type="462c0819:PsiDirectoryNode" />
-              <item name="Control" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ASE" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ASE" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-              <item name="UITest" type="462c0819:PsiDirectoryNode" />
-              <item name="GUI" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ASE" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ASE" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -279,15 +275,29 @@
               <item name="ASE" type="b2602c69:ProjectViewProjectNode" />
               <item name="ASE" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ASE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ASE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Export" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ASE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ASE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="GUI" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ASE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -301,9 +311,9 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Itext" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="ToolWindowFind.ShowToolbar" value="false" />
@@ -537,7 +547,8 @@
     <option name="totallyTimeSpent" value="1302000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="37" y="28" width="1363" height="825" extended-state="0" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -548,11 +559,11 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31308413" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26294822" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22018349" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32258064" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.190022" sideWeight="0.6703755" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16875" sideWeight="0.6703755" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2489019" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -560,18 +571,38 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31308413" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="21" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2489019" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23841059" sideWeight="0.5" order="20" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26294822" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32258064" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="20" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.190022" sideWeight="0.6703755" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.33021808" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -631,23 +662,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Control/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Control/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/gui.fxml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="495">
@@ -664,7 +678,52 @@
         <state relative-caret-position="870">
           <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#resetCourseFilter#0;class#Controller#0" expanded="false" />
+            <element signature="method#resetTimeTableView#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillCourseFilterCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillLecturers#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#createLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#createCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#nextCourseWindow#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#editLecturerButton#0;class#Controller#0" expanded="false" />
+            <element signature="method#editLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#editCourseButton#0;class#Controller#0" expanded="false" />
+            <element signature="method#editCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillProgramCombos#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillLecturersCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillChairsCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillModuleCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillSemesterCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillSemesterList#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillChairList#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillProgramsList#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillModuleList#0;class#Controller#0" expanded="false" />
+            <element signature="method#cancelLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#cancelCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#goBackCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#clearCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#createSemester#0;class#Controller#0" expanded="false" />
+            <element signature="method#createChair#0;class#Controller#0" expanded="false" />
+            <element signature="method#createProgram#0;class#Controller#0" expanded="false" />
+            <element signature="method#createModule#0;class#Controller#0" expanded="false" />
+            <element signature="method#lecturerTableDoubleClick#0;class#Controller#0" expanded="false" />
+            <element signature="method#courseTableDoubleClick#0;class#Controller#0" expanded="false" />
+            <element signature="method#addListenerToProgramCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#addCourseToTimetable#0;class#Controller#0" expanded="false" />
+            <element signature="method#createTimeTableHashMap#0;class#Controller#0" expanded="false" />
+            <element signature="method#extendTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#createTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#emptyTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#importDatabase#0;class#Controller#0" expanded="false" />
+            <element signature="method#exportDatabase#0;class#Controller#0" expanded="false" />
+            <element signature="method#moveDatabase#0;class#Controller#0" expanded="false" />
+            <element signature="method#close#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -730,7 +789,52 @@
         <state relative-caret-position="870">
           <caret line="67" column="0" lean-forward="true" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#resetCourseFilter#0;class#Controller#0" expanded="false" />
+            <element signature="method#resetTimeTableView#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillCourseFilterCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillLecturers#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#createLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#createCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#nextCourseWindow#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#editLecturerButton#0;class#Controller#0" expanded="false" />
+            <element signature="method#editLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#editCourseButton#0;class#Controller#0" expanded="false" />
+            <element signature="method#editCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillProgramCombos#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillLecturersCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillChairsCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillModuleCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillSemesterCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillSemesterList#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillChairList#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillProgramsList#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillModuleList#0;class#Controller#0" expanded="false" />
+            <element signature="method#cancelLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#cancelCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#goBackCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#clearCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#createSemester#0;class#Controller#0" expanded="false" />
+            <element signature="method#createChair#0;class#Controller#0" expanded="false" />
+            <element signature="method#createProgram#0;class#Controller#0" expanded="false" />
+            <element signature="method#createModule#0;class#Controller#0" expanded="false" />
+            <element signature="method#lecturerTableDoubleClick#0;class#Controller#0" expanded="false" />
+            <element signature="method#courseTableDoubleClick#0;class#Controller#0" expanded="false" />
+            <element signature="method#addListenerToProgramCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#addCourseToTimetable#0;class#Controller#0" expanded="false" />
+            <element signature="method#createTimeTableHashMap#0;class#Controller#0" expanded="false" />
+            <element signature="method#extendTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#createTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#emptyTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#importDatabase#0;class#Controller#0" expanded="false" />
+            <element signature="method#exportDatabase#0;class#Controller#0" expanded="false" />
+            <element signature="method#moveDatabase#0;class#Controller#0" expanded="false" />
+            <element signature="method#close#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -747,7 +851,52 @@
         <state relative-caret-position="480">
           <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#resetCourseFilter#0;class#Controller#0" expanded="false" />
+            <element signature="method#resetTimeTableView#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillCourseFilterCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillLecturers#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#createLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#createCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#nextCourseWindow#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#editLecturerButton#0;class#Controller#0" expanded="false" />
+            <element signature="method#editLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#editCourseButton#0;class#Controller#0" expanded="false" />
+            <element signature="method#editCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillProgramCombos#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillLecturersCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillChairsCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillModuleCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillSemesterCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillSemesterList#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillChairList#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillProgramsList#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillModuleList#0;class#Controller#0" expanded="false" />
+            <element signature="method#cancelLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#cancelCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#goBackCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#clearCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#createSemester#0;class#Controller#0" expanded="false" />
+            <element signature="method#createChair#0;class#Controller#0" expanded="false" />
+            <element signature="method#createProgram#0;class#Controller#0" expanded="false" />
+            <element signature="method#createModule#0;class#Controller#0" expanded="false" />
+            <element signature="method#lecturerTableDoubleClick#0;class#Controller#0" expanded="false" />
+            <element signature="method#courseTableDoubleClick#0;class#Controller#0" expanded="false" />
+            <element signature="method#addListenerToProgramCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#addCourseToTimetable#0;class#Controller#0" expanded="false" />
+            <element signature="method#createTimeTableHashMap#0;class#Controller#0" expanded="false" />
+            <element signature="method#extendTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#createTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#emptyTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#importDatabase#0;class#Controller#0" expanded="false" />
+            <element signature="method#exportDatabase#0;class#Controller#0" expanded="false" />
+            <element signature="method#moveDatabase#0;class#Controller#0" expanded="false" />
+            <element signature="method#close#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -771,7 +920,52 @@
         <state relative-caret-position="561">
           <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#resetCourseFilter#0;class#Controller#0" expanded="false" />
+            <element signature="method#resetTimeTableView#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillCourseFilterCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillLecturers#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#createLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#createCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#nextCourseWindow#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#editLecturerButton#0;class#Controller#0" expanded="false" />
+            <element signature="method#editLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#editCourseButton#0;class#Controller#0" expanded="false" />
+            <element signature="method#editCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillProgramCombos#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillLecturersCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillChairsCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillModuleCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillSemesterCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillSemesterList#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillChairList#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillProgramsList#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillModuleList#0;class#Controller#0" expanded="false" />
+            <element signature="method#cancelLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#cancelCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#goBackCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#clearCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#createSemester#0;class#Controller#0" expanded="false" />
+            <element signature="method#createChair#0;class#Controller#0" expanded="false" />
+            <element signature="method#createProgram#0;class#Controller#0" expanded="false" />
+            <element signature="method#createModule#0;class#Controller#0" expanded="false" />
+            <element signature="method#lecturerTableDoubleClick#0;class#Controller#0" expanded="false" />
+            <element signature="method#courseTableDoubleClick#0;class#Controller#0" expanded="false" />
+            <element signature="method#addListenerToProgramCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#addCourseToTimetable#0;class#Controller#0" expanded="false" />
+            <element signature="method#createTimeTableHashMap#0;class#Controller#0" expanded="false" />
+            <element signature="method#extendTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#createTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#emptyTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#importDatabase#0;class#Controller#0" expanded="false" />
+            <element signature="method#exportDatabase#0;class#Controller#0" expanded="false" />
+            <element signature="method#moveDatabase#0;class#Controller#0" expanded="false" />
+            <element signature="method#close#0;class#Controller#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -840,20 +1034,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Database/DatabaseInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="130" column="9" lean-forward="false" selection-start-line="130" selection-start-column="9" selection-end-line="130" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/lib/src.zip!/javafx.base/javafx/event/EventHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="44" column="9" lean-forward="false" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/lib/src.zip!/javafx.base/javafx/event/EventHandler.java" />
     <entry file="file://$PROJECT_DIR$/src/Interfaces/Lecturer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
@@ -861,20 +1042,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Control/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/reflect/Method.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="563" column="0" lean-forward="false" selection-start-line="563" selection-start-column="0" selection-end-line="563" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-9.0.1.jdk/Contents/Home/lib/src.zip!/java.base/java/lang/reflect/Method.java" />
     <entry file="file://$PROJECT_DIR$/src/Interfaces/Schedule.java" />
     <entry file="file://$PROJECT_DIR$/src/GUI/style.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -902,21 +1070,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/out/production/UITest/GUI/textinput.css" />
-    <entry file="file://$PROJECT_DIR$/src/Control/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="483" column="26" lean-forward="true" selection-start-line="483" selection-start-column="26" selection-end-line="483" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/button.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="29" lean-forward="false" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -924,7 +1081,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="22" column="17" lean-forward="false" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -932,7 +1088,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -940,11 +1095,97 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="1421" column="108" lean-forward="false" selection-start-line="1421" selection-start-column="108" selection-end-line="1421" selection-end-column="108" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Database/DatabaseInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1091">
+          <caret line="106" column="13" lean-forward="false" selection-start-line="106" selection-start-column="13" selection-end-line="106" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Export/ExportCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="45" column="1" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="45" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Control/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="43" lean-forward="true" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Export/ExportCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Control/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="1129" column="0" lean-forward="true" selection-start-line="1129" selection-start-column="0" selection-end-line="1129" selection-end-column="0" />
+          <folding>
+            <element signature="method#resetCourseFilter#0;class#Controller#0" expanded="false" />
+            <element signature="method#resetTimeTableView#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillCourseFilterCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillLecturers#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#createLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#createCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#nextCourseWindow#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#saveCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#deleteCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#editLecturerButton#0;class#Controller#0" expanded="false" />
+            <element signature="method#editLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#editCourseButton#0;class#Controller#0" expanded="false" />
+            <element signature="method#editCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillProgramCombos#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillLecturersCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillChairsCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillModuleCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillSemesterCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillSemesterList#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillChairList#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillProgramsList#0;class#Controller#0" expanded="false" />
+            <element signature="method#fillModuleList#0;class#Controller#0" expanded="false" />
+            <element signature="method#cancelLecturer#0;class#Controller#0" expanded="false" />
+            <element signature="method#cancelCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#goBackCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#clearCourse#0;class#Controller#0" expanded="false" />
+            <element signature="method#createSemester#0;class#Controller#0" expanded="false" />
+            <element signature="method#createChair#0;class#Controller#0" expanded="false" />
+            <element signature="method#createProgram#0;class#Controller#0" expanded="false" />
+            <element signature="method#createModule#0;class#Controller#0" expanded="false" />
+            <element signature="method#lecturerTableDoubleClick#0;class#Controller#0" expanded="false" />
+            <element signature="method#courseTableDoubleClick#0;class#Controller#0" expanded="false" />
+            <element signature="method#addListenerToProgramCombo#0;class#Controller#0" expanded="false" />
+            <element signature="method#addCourseToTimetable#0;class#Controller#0" expanded="false" />
+            <element signature="method#createTimeTableHashMap#0;class#Controller#0" expanded="false" />
+            <element signature="method#extendTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#createTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#emptyTimeTable#0;class#Controller#0" expanded="false" />
+            <element signature="method#importDatabase#0;class#Controller#0" expanded="false" />
+            <element signature="method#exportDatabase#0;class#Controller#0" expanded="false" />
+            <element signature="method#moveDatabase#0;class#Controller#0" expanded="false" />
+            <element signature="method#close#0;class#Controller#0" expanded="false" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
