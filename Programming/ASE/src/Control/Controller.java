@@ -1088,7 +1088,7 @@ public class Controller  {
     private void importDatabase() {
 
         // HIER PFAD WO DIE DB FINAL IST EINFÜGEN
-        String destination = "src\\Database\\Lehrplanung.db";
+        String destination = "src/Database";
 
         dbImportButton.setOnAction((event) -> {
 
@@ -1111,7 +1111,7 @@ public class Controller  {
     private void exportDatabase() {
 
         //HIER PFAD WO DIE DB FINAL IST EINFÜGEN
-        String origin = "src\\Database\\Lehrplanung.db";
+        String origin = "src/Database";
 
         dbExportButton.setOnAction((event) -> {
 
@@ -1183,11 +1183,26 @@ public class Controller  {
 
             Integer semesterID = dc.getSemesterID(semesterTimeTableCombo.getValue().toString());
             Integer programID = dc.getProgramID(filterTimeTableByProgramCombo.getValue().toString());
+            String origin = "Lehrplanung.csv";
 
             String table = dc.getTimeTableSettings(semesterID, programID);
 
             ExportCreator creator = new ExportCreator();
             creator.writeCSV("Lehrplanung.csv", table);
+
+            DirectoryChooser choser = new DirectoryChooser();
+
+            choser.setTitle("Zielordnder auswählen");
+
+            File selectedDirectory = choser.showDialog(null);
+
+            if(selectedDirectory != null) {
+
+                moveDatabase(origin, selectedDirectory.getAbsolutePath()+"\\Lehrplanung.csv");
+
+            }
+
+
 
         });
 
