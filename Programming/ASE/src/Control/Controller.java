@@ -30,7 +30,8 @@ public class Controller  {
             deleteCourseButton, updateLecturerButton, editCourseButton, cancelLecturerButton, cancelCourseButton,
             nextCourseButton, backCourseButton, addCourseToScheduleButton, newSemesterButton, newChairButton,
             newProgramButton, resetCourseFilterButton, saveModuleButton, showTimeTableButton, clearTimeTableButton,
-            dbImportButton, dbExportButton, exportTimetableButton;
+            dbImportButton, dbExportButton, exportTimetableButton, deleteSemesterButton, deleteChairButton,
+            deleteProgramButton, deleteModuleButton;
     @FXML
     private TextField lecturerNameText, lecturerSurnameText, lecturerTitleText, lecturerDeputatText, courseNumberText,
             courseTitleText, SWScourseText, hypertextCourseText, maxParticipantsCourseText, creditsCourseText,
@@ -122,9 +123,17 @@ public class Controller  {
         goBackCourse();
 
         createProgram();
+        deleteProgam();
+
         createChair();
+        deleteChair();
+
         createSemester();
+        deleteSemester();
+
         createModule();
+        deleteModule();
+
         fillCourseFilterCombo();
 
         lecturerTableDoubleClick();
@@ -741,6 +750,16 @@ public class Controller  {
 
     }
 
+    private void deleteSemester(){
+
+        deleteSemesterButton.setOnAction((event) -> {
+            dc.deleteSemester(semesterList.getSelectionModel().getSelectedItem().toString());
+            fillSemesterCombo();
+            fillSemesterList();
+        });
+
+    }
+
     private void createChair() {
 
         newChairButton.setOnAction((event) -> {
@@ -753,6 +772,16 @@ public class Controller  {
 
         });
 
+    }
+
+    private void deleteChair(){
+
+        deleteChairButton.setOnAction((event) -> {
+
+            dc.deleteChair(chairList.getSelectionModel().getSelectedItem().toString());
+            fillChairsCombo();
+            fillChairList();
+        });
     }
 
     private void createProgram() {
@@ -769,6 +798,17 @@ public class Controller  {
 
     }
 
+    private void deleteProgam(){
+
+        deleteProgramButton.setOnAction((event) -> {
+
+            dc.deleteProgram(programsList.getSelectionModel().getSelectedItem().toString());
+            fillProgramCombos();
+            fillProgramsList();
+
+        });
+    }
+
     private void createModule(){
 
         saveModuleButton.setOnAction((event) -> {
@@ -778,6 +818,16 @@ public class Controller  {
             writeModuleText.clear();
             fillModuleList();
         });
+    }
+
+    private void deleteModule(){
+
+        deleteModuleButton.setOnAction((event) -> {
+
+            dc.deleteModule(moduleList.getSelectionModel().getSelectedItem().toString());
+            fillModuleList();
+        });
+
     }
 
     private void lecturerTableDoubleClick(){
@@ -1122,7 +1172,6 @@ public class Controller  {
         }
 
     }
-
 
     // HOLT BEI BUTTON PRESS DEN LANGEN STRING UND SCHREIBT DEN IN EINE CSV MIT DER EXPORTCREATOR KLASSE
     // CSV LIEGT <---- UNTER INTERFACES STANDARDMÄSSIG, KANN DA BLEIBEN; WIRD ÜBERSCHRIEBEN SOWEIT ICH WEISS

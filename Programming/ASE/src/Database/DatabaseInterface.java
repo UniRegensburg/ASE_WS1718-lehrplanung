@@ -335,10 +335,30 @@ public class DatabaseInterface {
         }
     }
 
+    public void deleteSemester(String semester){
+        try {
+            Statement st = conn.createStatement();
+            st.executeUpdate("DELETE FROM Semester WHERE Semester ='"+semester+"'");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void writeChair(String name){
         try {
             Statement st = conn.createStatement();
             st.executeUpdate("INSERT INTO Lehrstuhl(Name)VALUES('"+name+"')");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteChair(String name){
+        try {
+            Statement st = conn.createStatement();
+            st.executeUpdate("DELETE FROM Lehrstuhl WHERE Name ='"+name+"'");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -355,10 +375,30 @@ public class DatabaseInterface {
         }
     }
 
+    public void deleteModule(String name){
+        try {
+            Statement st = conn.createStatement();
+            st.executeUpdate("DELETE FROM Module WHERE Name ='"+name+"'");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void writeProgram(String name){
         try {
             Statement st = conn.createStatement();
             st.executeUpdate("INSERT INTO Studiengang(Titel)VALUES('"+name+"')");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteProgram(String name){
+        try {
+            Statement st = conn.createStatement();
+            st.executeUpdate("DELETE FROM Studiengang WHERE Titel ='"+name+"'");
 
         } catch (SQLException e) {
             e.printStackTrace();
