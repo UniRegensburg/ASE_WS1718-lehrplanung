@@ -15,6 +15,8 @@ Julia Grötsch julia.groetsch@stud.uni-regensburg.de
 
 Inbetriebnahme:
 
+Vorraussetzung: installiertes Java, Version 9 oder höher. 
+Download des finalen Builds als .zip und entpackend des Projekts.
 Zum Starten der Applikation im Ordner build die LehrplanungsTool.jar Datei doppelklicken.
 
 
