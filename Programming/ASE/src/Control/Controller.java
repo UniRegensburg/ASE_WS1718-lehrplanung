@@ -1088,7 +1088,7 @@ public class Controller  {
     private void importDatabase() {
 
         // HIER PFAD WO DIE DB FINAL IST EINFÜGEN
-        String destination = "C:\\Users\\weber_000\\Desktop\\TestZiel";
+        String destination = "src\\Database\\Lehrplanung.db";
 
         dbImportButton.setOnAction((event) -> {
 
@@ -1111,7 +1111,7 @@ public class Controller  {
     private void exportDatabase() {
 
         //HIER PFAD WO DIE DB FINAL IST EINFÜGEN
-        String origin = "C:\\Users\\weber_000\\Desktop\\TestAnfang";
+        String origin = "src\\Database\\Lehrplanung.db";
 
         dbExportButton.setOnAction((event) -> {
 
