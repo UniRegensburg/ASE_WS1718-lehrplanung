@@ -4,6 +4,9 @@ import javafx.beans.property.*;
 
 import java.util.List;
 
+// Class for creating Lecturer objects
+// Provides getter / setter methods for Lecturer Objects
+
 public class Lecturer {
 
     private SimpleIntegerProperty LecturerID = new SimpleIntegerProperty();

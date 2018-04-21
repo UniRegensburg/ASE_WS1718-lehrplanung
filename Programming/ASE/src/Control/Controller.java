@@ -1,3 +1,11 @@
+//
+// Verwendete Quellen:
+// https://docs.oracle.com/javafx/scenebuilder/1/get_started/jsbpub-get_started.htm
+// http://code.makery.ch/library/javafx-8-tutorial/part1/
+// https://examples.javacodegeeks.com/core-java/writeread-csv-files-in-java-example/
+// http://www.sqlitetutorial.net/sqlite-java/sqlite-jdbc-driver/
+//
+
 package Control;
 
 import Export.ExportCreator;
@@ -56,9 +64,7 @@ public class Controller  {
             CourseHyperlink, CourseLanguage, CourseStartDate, CourseEndDate, CourseCtSt, CourseRequirements,
             CourseCertificate, CourseDescription, Rolle, CourseTurnus;
     @FXML
-    private TableColumn<Course, Integer> CourseID, CourseSWS;
-    @FXML
-    private TableColumn<Course, Integer> CourseOnlineReg, CourseExtraCourse, CourseFinancing;
+    private TableColumn<Course, Integer> CourseID, CourseSWS, CourseOnlineReg, CourseExtraCourse, CourseFinancing;
     @FXML
     private ListView<String> lecturerCoursesList, semesterList, chairList, programsList, moduleList;
     @FXML
@@ -221,7 +227,8 @@ public class Controller  {
             colThursday.setCellValueFactory(new PropertyValueFactory<>("scheduleThursday"));
             colFriday.setCellValueFactory(new PropertyValueFactory<>("scheduleFriday"));
 
-            if(semesterTimeTableCombo.getSelectionModel().isEmpty() || filterTimeTableByProgramCombo.getSelectionModel().isEmpty()){
+            if(semesterTimeTableCombo.getSelectionModel().isEmpty() ||
+                    filterTimeTableByProgramCombo.getSelectionModel().isEmpty()){
                 warning.missingTimeTablePerimeter();
             }
             else{
@@ -370,7 +377,8 @@ public class Controller  {
             if(editCourse == false) {
                 dc.writeCourse(number, title, kind, SWS, hyperlink, maxParticipants, expectedParticipants, onlineReg,
                         credits, extraCourse, financing, finals, start, end, language, program,
-                        ctSt, rota, participants, requirements, certificate, deputat, description, turnus, chair, module);
+                        ctSt, rota, participants, requirements, certificate, deputat, description, turnus, chair,
+                        module);
 
                 dc.connectCourseWithLecturer(lecturer, title);
                 if(checkMo){
@@ -399,9 +407,10 @@ public class Controller  {
                     dc.addDeputat(deputat, lecturer);
                     TempLecturer = "";
                 }
-                dc.updateCourse(IDTempCourse, number, title, kind, SWS, hyperlink, maxParticipants, expectedParticipants,
-                        onlineReg, credits, extraCourse, financing, finals, start, end, language, program, ctSt, rota,
-                        participants, requirements, certificate, deputat, description, turnus, chair, lecturer, module);
+                dc.updateCourse(IDTempCourse, number, title, kind, SWS, hyperlink, maxParticipants,
+                        expectedParticipants, onlineReg, credits, extraCourse, financing, finals, start, end, language,
+                        program, ctSt, rota, participants, requirements, certificate, deputat, description, turnus,
+                        chair, lecturer, module);
                 if(checkMo){
                     dc.connectCourseWithDay(title, "Montag", startMo, endMo);
                 }
@@ -499,15 +508,20 @@ public class Controller  {
         for(int i = 0; i < dayTimes.size(); i++){
             String[] dT = dayTimes.get(i).split(";");
             switch(dT[0]){
-                case "1": checkMonday.setSelected(true); startTimeMonday.setText(dT[1]); endTimeMonday.setText(dT[2]);
+                case "1": checkMonday.setSelected(true); startTimeMonday.setText(dT[1]);
+                endTimeMonday.setText(dT[2]);
                 break;
-                case "2": checkTuesday.setSelected(true); startTimeTuesday.setText(dT[1]); endTimeTuesday.setText(dT[2]);
+                case "2": checkTuesday.setSelected(true); startTimeTuesday.setText(dT[1]);
+                endTimeTuesday.setText(dT[2]);
                 break;
-                case "3": checkWednesday.setSelected(true); startTimeWednesday.setText(dT[1]); endTimeWednesday.setText(dT[2]);
+                case "3": checkWednesday.setSelected(true); startTimeWednesday.setText(dT[1]);
+                endTimeWednesday.setText(dT[2]);
                 break;
-                case "4": checkThursday.setSelected(true); startTimeThursday.setText(dT[1]); endTimeThursday.setText(dT[2]);
+                case "4": checkThursday.setSelected(true); startTimeThursday.setText(dT[1]);
+                endTimeThursday.setText(dT[2]);
                 break;
-                case "5": checkFriday.setSelected(true); startTimeFriday.setText(dT[1]); endTimeFriday.setText(dT[2]);
+                case "5": checkFriday.setSelected(true); startTimeFriday.setText(dT[1]);
+                endTimeFriday.setText(dT[2]);
                 break;
                 default: System.out.println("Error");
             }
@@ -1087,14 +1101,14 @@ public class Controller  {
 
     private void importDatabase() {
 
-        // HIER PFAD WO DIE DB FINAL IST EINFÜGEN
         String destination = "src/Database";
 
         dbImportButton.setOnAction((event) -> {
 
             FileChooser fc = new FileChooser();
 
-            fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Datenbank Objekt (*.db)", "*.db"));
+            fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Datenbank Objekt (*.db)",
+                    "*.db"));
             File selectedFile = fc.showOpenDialog(null);
 
             if(selectedFile != null){
@@ -1110,7 +1124,6 @@ public class Controller  {
 
     private void exportDatabase() {
 
-        //HIER PFAD WO DIE DB FINAL IST EINFÜGEN
         String origin = "src/Database";
 
         dbExportButton.setOnAction((event) -> {
@@ -1123,7 +1136,8 @@ public class Controller  {
 
             if(selectedDirectory != null) {
 
-                moveDatabase(origin+"\\LehrplanungDB.db", selectedDirectory.getAbsolutePath()+"\\LehrplanungDB.db");
+                moveDatabase(origin+"\\LehrplanungDB.db",
+                        selectedDirectory.getAbsolutePath()+"\\LehrplanungDB.db");
 
             }
 
@@ -1140,12 +1154,12 @@ public class Controller  {
 
             orig = new FileReader(origin);
             dest = new FileWriter(destination);
-            int c = orig.read();
+            int file = orig.read();
 
-            while(c!=-1) {
+            while(file!=-1) {
 
-                dest.write(c);
-                c = orig.read();
+                dest.write(file);
+                file = orig.read();
 
             }
 
@@ -1161,6 +1175,7 @@ public class Controller  {
 
     }
 
+    // closes the datastream when moving files
     private void close(Closeable stream) {
 
         try {
@@ -1172,10 +1187,6 @@ public class Controller  {
         }
 
     }
-
-    // HOLT BEI BUTTON PRESS DEN LANGEN STRING UND SCHREIBT DEN IN EINE CSV MIT DER EXPORTCREATOR KLASSE
-    // CSV LIEGT <---- UNTER INTERFACES STANDARDMÄSSIG, KANN DA BLEIBEN; WIRD ÜBERSCHRIEBEN SOWEIT ICH WEISS
-    // ALS NÄCHSTES SOLLTE DIE CSV NOCH IN PDF UMGEWANDELT WERDEN
 
     private void exportTimeTable() {
 
@@ -1207,7 +1218,5 @@ public class Controller  {
         });
 
     }
-
-
 
 }

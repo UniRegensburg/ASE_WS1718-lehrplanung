@@ -2,6 +2,8 @@ package Control;
 
 import javafx.scene.control.Alert;
 
+// Class that provides a warning message for specific error cases
+
 public class Warnings {
 
     public Warnings(){

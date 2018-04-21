@@ -4,6 +4,9 @@ import javafx.beans.property.*;
 
 import java.util.List;
 
+// Class for creating Course objects
+// Provides getter / setter methods for Course Objects
+
 public class Course {
 
     private SimpleIntegerProperty courseID = new SimpleIntegerProperty();

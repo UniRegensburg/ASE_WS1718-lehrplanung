@@ -2,13 +2,15 @@ package Export;
 
 import java.io.*;
 
+// Class that provides the export function for the timetable.
+
 public class ExportCreator {
 
     private static final String header = "zeit,montag,dienstag,mittwoch,donnerstag,freitag";
     private static final String seperator ="\n";
 
 
-
+    // Writes a .csv file from the timetable object in order to export it
     public static void writeCSV(String fileName, String table) {
 
         FileWriter writer = null;

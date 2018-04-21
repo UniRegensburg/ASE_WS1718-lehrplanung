@@ -2,6 +2,9 @@ package Interfaces;
 
 import javafx.beans.property.*;
 
+// Class for creating TimeTable objects
+// Provides getter / setter methods for TimeTable Objects
+
 public class TimeTable {
 
     private SimpleStringProperty scheduleTime = new SimpleStringProperty();
